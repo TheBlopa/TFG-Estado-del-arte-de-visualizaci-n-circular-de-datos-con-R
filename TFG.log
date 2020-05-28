@@ -1,0 +1,1925 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.6)  7 MAY 2020 12:42
+entering extended mode
+**./TFG.tex
+(TFG.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-04-06>
+("C:\Program Files\MiKTeX 2.9\tex/latex/base\article.cls"
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex/latex/base\size10.clo"
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@figure=\count173
+\c@table=\count174
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/graphics\graphicx.sty"
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/graphics\graphics.sty"
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/graphics-cfg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/graphics-def\pdftex.def"
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen135
+\Gin@req@width=\dimen136
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/graphics\color.sty"
+Package: color 2019/11/23 v1.2a Standard LaTeX Color (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+)
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/latex/framed\framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip49
+\fb@frw=\dimen137
+\fb@frh=\dimen138
+\FrameRule=\dimen139
+\FrameSep=\dimen140
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/base\alltt.sty"
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/base\inputenc.sty"
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/tools\enumerate.sty"
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks18
+)
+("C:\Program Files\MiKTeX 2.9\tex/generic/babel\babel.sty"
+Package: babel 2020/03/22 3.42 The Babel package
+
+("C:\Program Files\MiKTeX 2.9\tex/generic/babel\switch.def"
+File: switch.def 2020/03/22 3.42 Babel switching mechanism
+)
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Program Files\MiKTeX 2.9\tex/latex/arabi\bblopts.cfg"
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/latex/babel-spanish\spanish.ldf
+Language: spanish.ldf 2016/03/03 v5.0p Spanish support from the babel system
+
+("C:\Program Files\MiKTeX 2.9\tex/generic/babel\babel.def"
+File: babel.def 2020/03/22 3.42 Babel common definitions
+\babel@savecnt=\count175
+\U@D=\dimen141
+
+("C:\Program Files\MiKTeX 2.9\tex/generic/babel\txtbabel.def")
+\bbl@readstream=\read2
+\bbl@dirlevel=\count176
+)
+\es@quottoks=\toks19
+\es@quotdepth=\count177
+Package babel Info: Making " an active character on input line 561.
+Package babel Info: Making . an active character on input line 662.
+Package babel Info: Making < an active character on input line 707.
+Package babel Info: Making > an active character on input line 707.
+))
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/latex/caption\subcaption.sty
+Package: subcaption 2020/01/22 v1.3d Sub-captions (AR)
+
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/latex/caption\caption.sty
+Package: caption 2020/01/03 v3.4h Customizing captions (AR)
+
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/latex/caption\caption3.sty
+Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+\captionmargin=\dimen142
+\captionmargin@=\dimen143
+\captionwidth=\dimen144
+\caption@tempdima=\dimen145
+\caption@indent=\dimen146
+\caption@parindent=\dimen147
+\caption@hangindent=\dimen148
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count178
+\c@continuedfloat=\count179
+)
+\c@subfigure=\count180
+\c@subtable=\count181
+)
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/latex/multirow\multirow.sty
+Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
+\multirow@colwidth=\skip50
+\multirow@cntb=\count182
+\multirow@dima=\skip51
+\bigstrutjot=\dimen149
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\hyperref.sty"
+Package: hyperref 2020/01/14 v7.00d Hypertext links for LaTeX
+
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex/generic/iftex\iftex.sty"
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/pdftexcmds\pdftexcmds.sty"
+Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/generic/infwarerr\infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/generic/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/generic/kvdefinekeys\kvdefinekey
+s.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/generic/pdfescape\pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/latex/letltxmacro\letltxmacro.st
+y
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+) (C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/latex/auxhook\auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+)
+\@linkdim=\dimen150
+\Hy@linkcounter=\count183
+\Hy@pagecounter=\count184
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\pd1enc.def"
+File: pd1enc.def 2020/01/14 v7.00d Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/generic/etexcmds\etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count185
+Package hyperref Info: Hyper figures OFF on input line 4547.
+Package hyperref Info: Link nesting OFF on input line 4552.
+Package hyperref Info: Hyper index ON on input line 4555.
+Package hyperref Info: Plain pages OFF on input line 4562.
+Package hyperref Info: Backreferencing OFF on input line 4567.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4800.
+\c@Hy@tempcnt=\count186
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/url\url.sty"
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5159.
+\XeTeXLinkMargin=\dimen151
+
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/generic/bigintcalc\bigintcalc.st
+y
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count187
+\Field@Width=\dimen152
+\Fld@charsize=\dimen153
+Package hyperref Info: Hyper figures OFF on input line 6430.
+Package hyperref Info: Link nesting OFF on input line 6435.
+Package hyperref Info: Hyper index ON on input line 6438.
+Package hyperref Info: backreferencing OFF on input line 6445.
+Package hyperref Info: Link coloring OFF on input line 6450.
+Package hyperref Info: Link coloring with OCG OFF on input line 6455.
+Package hyperref Info: PDF/A mode OFF on input line 6460.
+LaTeX Info: Redefining \ref on input line 6500.
+LaTeX Info: Redefining \pageref on input line 6504.
+
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/generic/atbegshi\atbegshi.sty
+Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
+)
+\Hy@abspage=\count188
+\c@Item=\count189
+\c@Hfootnote=\count190
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\hpdftex.def"
+File: hpdftex.def 2020/01/14 v7.00d Hyperref driver for pdfTeX
+
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/latex/atveryend\atveryend.sty
+Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+)
+\Fld@listcount=\count191
+\c@bookmark@seq@number=\count192
+
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/latex/rerunfilecheck\rerunfilech
+eck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/generic/uniquecounter\uniquecoun
+ter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip52
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 64.
+ ("C:\Program Files\MiKTeX 2.9\tex/latex/geometry\geometry.sty"
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+("C:\Program Files\MiKTeX 2.9\tex/generic/iftex\ifvtex.sty"
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count193
+\Gm@cntv=\count194
+\c@Gm@tempcnt=\count195
+\Gm@bindingoffset=\dimen154
+\Gm@wd@mp=\dimen155
+\Gm@odd@mp=\dimen156
+\Gm@even@mp=\dimen157
+\Gm@layoutwidth=\dimen158
+\Gm@layoutheight=\dimen159
+\Gm@layouthoffset=\dimen160
+\Gm@layoutvoffset=\dimen161
+\Gm@dimlist=\toks20
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/geometry\geometry.cfg"))
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/latex/upquote\upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/l3backend\l3backend-pdfmode.def"
+File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count196
+\l__pdf_internal_box=\box45
+)
+(TFG.aux
+LaTeX Info: Redefining \. on input line 24.
+LaTeX Info: Redefining \% on input line 24.
+)
+\openout1 = `TFG.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+ ("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count197
+\scratchdimen=\dimen162
+\scratchbox=\box46
+\nofMPsegments=\count198
+\nofMParguments=\count199
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count266
+\MPscratchDim=\dimen163
+\MPnumerator=\count267
+\makeMPintoPDFobject=\count268
+\everyMPtoPDFconversion=\toks22
+) ("C:\Program Files\MiKTeX 2.9\tex/latex/epstopdf-pkg\epstopdf-base.sty"
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+)
+LaTeX Info: Redefining \. on input line 93.
+LaTeX Info: Redefining \% on input line 93.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\AtBeginShipoutBox=\box47
+Package hyperref Info: Link coloring ON on input line 93.
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\nameref.sty"
+Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(C:\Users\pablo\AppData\Roaming\MiKTeX\2.9\tex/generic/gettitlestring\gettitles
+tring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count269
+)
+LaTeX Info: Redefining \ref on input line 93.
+LaTeX Info: Redefining \pageref on input line 93.
+LaTeX Info: Redefining \nameref on input line 93.
+ (TFG.out) (TFG.out)
+\@outlinefile=\write3
+\openout3 = `TFG.out'.
+
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
+* v-part:(T,H,B)=(85.35826pt, 674.33032pt, 85.35826pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69687pt
+* \textheight=674.33032pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-23.91173pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+<imag/logo.png, id=435, 408.77719pt x 143.03438pt>
+File: imag/logo.png Graphic file (type png)
+<use imag/logo.png>
+Package pdftex.def Info: imag/logo.png  used on input line 97.
+(pdftex.def)             Requested size: 290.22107pt x 101.5551pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 99.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 99.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 99.
+(TFG.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [1
+
+{C:/Users/pablo/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./imag/logo
+.png>]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 4.
+ [2] [3])
+\tf@toc=\write4
+\openout4 = `TFG.toc'.
+
+ [4]
+Underfull \hbox (badness 10000) in paragraph at lines 103--113
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--113
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--113
+
+ []
+
+[5
+
+]
+<imag/anillos.png, id=572, 51.19125pt x 52.998pt>
+File: imag/anillos.png Graphic file (type png)
+<use imag/anillos.png>
+Package pdftex.def Info: imag/anillos.png  used on input line 135.
+(pdftex.def)             Requested size: 96.73788pt x 100.15865pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--137
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--137
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--137
+
+ []
+
+[6
+
+ <./imag/anillos.png>]
+<imag/barras_radiales.png, id=578, 80.7015pt x 83.1105pt>
+File: imag/barras_radiales.png Graphic file (type png)
+<use imag/barras_radiales.png>
+Package pdftex.def Info: imag/barras_radiales.png  used on input line 143.
+(pdftex.def)             Requested size: 96.73788pt x 99.63188pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--145
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--145
+
+ []
+
+<imag/espiral.png, id=579, 56.6115pt x 52.39575pt>
+File: imag/espiral.png Graphic file (type png)
+<use imag/espiral.png>
+Package pdftex.def Info: imag/espiral.png  used on input line 151.
+(pdftex.def)             Requested size: 96.73788pt x 89.53688pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--153
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--153
+
+ []
+
+[7
+
+ <./imag/barras_radiales.png> <./imag/espiral.png>]
+<imag/columnas.png, id=587, 51.19125pt x 52.998pt>
+File: imag/columnas.png Graphic file (type png)
+<use imag/columnas.png>
+Package pdftex.def Info: imag/columnas.png  used on input line 161.
+(pdftex.def)             Requested size: 96.73788pt x 100.15865pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--163
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--163
+
+ []
+
+<imag/sectores.png, id=588, 52.39575pt x 54.2025pt>
+File: imag/sectores.png Graphic file (type png)
+<use imag/sectores.png>
+Package pdftex.def Info: imag/sectores.png  used on input line 171.
+(pdftex.def)             Requested size: 96.73788pt x 100.08281pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 164--173
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 164--173
+
+ []
+
+[8
+
+ <./imag/columnas.png> <./imag/sectores.png>]
+<imag/rose.png, id=595, 44.5665pt x 53.60025pt>
+File: imag/rose.png Graphic file (type png)
+<use imag/rose.png>
+Package pdftex.def Info: imag/rose.png  used on input line 180.
+(pdftex.def)             Requested size: 96.73788pt x 116.35628pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--182
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--182
+
+ []
+
+<imag/cu_ord.png, id=596, 52.998pt x 56.00925pt>
+File: imag/cu_ord.png Graphic file (type png)
+<use imag/cu_ord.png>
+Package pdftex.def Info: imag/cu_ord.png  used on input line 189.
+(pdftex.def)             Requested size: 96.73788pt x 102.24461pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--191
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--191
+
+ []
+
+[9
+
+ <./imag/rose.png> <./imag/cu_ord.png>]
+<imag/cu_des.png, id=603, 51.7935pt x 52.998pt>
+File: imag/cu_des.png Graphic file (type png)
+<use imag/cu_des.png>
+Package pdftex.def Info: imag/cu_des.png  used on input line 199.
+(pdftex.def)             Requested size: 96.73788pt x 98.99576pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--201
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--201
+
+ []
+
+<imag/rayos.png, id=604, 53.60025pt x 52.39575pt>
+File: imag/rayos.png Graphic file (type png)
+<use imag/rayos.png>
+Package pdftex.def Info: imag/rayos.png  used on input line 208.
+(pdftex.def)             Requested size: 96.73788pt x 94.5745pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--210
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--210
+
+ []
+
+[10
+
+ <./imag/cu_des.png> <./imag/rayos.png>]
+<imag/radar.png, id=612, 52.998pt x 52.998pt>
+File: imag/radar.png Graphic file (type png)
+<use imag/radar.png>
+Package pdftex.def Info: imag/radar.png  used on input line 218.
+(pdftex.def)             Requested size: 96.73788pt x 96.74762pt.
+<imag/columnas_sep.png, id=615, 51.7935pt x 53.60025pt>
+File: imag/columnas_sep.png Graphic file (type png)
+<use imag/columnas_sep.png>
+Package pdftex.def Info: imag/columnas_sep.png  used on input line 227.
+(pdftex.def)             Requested size: 96.73788pt x 100.12068pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 221--229
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 221--229
+
+ []
+
+[11
+
+ <./imag/radar.png> <./imag/columnas_sep.png>]
+<imag/flow.png, id=624, 52.39575pt x 53.60025pt>
+File: imag/flow.png Graphic file (type png)
+<use imag/flow.png>
+Package pdftex.def Info: imag/flow.png  used on input line 237.
+(pdftex.def)             Requested size: 96.73788pt x 98.97075pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--239
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--239
+
+ []
+
+<imag/bubbles.png, id=625, 51.19125pt x 52.998pt>
+File: imag/bubbles.png Graphic file (type png)
+<use imag/bubbles.png>
+Package pdftex.def Info: imag/bubbles.png  used on input line 247.
+(pdftex.def)             Requested size: 96.73788pt x 100.15865pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--249
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--249
+
+ []
+
+[12
+
+ <./imag/flow.png> <./imag/bubbles.png>]
+<imag/arbol.png, id=633, 52.39575pt x 53.60025pt>
+File: imag/arbol.png Graphic file (type png)
+<use imag/arbol.png>
+Package pdftex.def Info: imag/arbol.png  used on input line 256.
+(pdftex.def)             Requested size: 96.73788pt x 98.97075pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 251--258
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 251--258
+
+ []
+
+<imag/poli.png, id=634, 51.7935pt x 52.998pt>
+File: imag/poli.png Graphic file (type png)
+<use imag/poli.png>
+Package pdftex.def Info: imag/poli.png  used on input line 265.
+(pdftex.def)             Requested size: 96.73788pt x 98.99576pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 259--267
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 259--267
+
+ []
+
+[13
+
+ <./imag/arbol.png> <./imag/poli.png>]
+<imag/planos.png, id=642, 52.998pt x 51.7935pt>
+File: imag/planos.png Graphic file (type png)
+<use imag/planos.png>
+Package pdftex.def Info: imag/planos.png  used on input line 274.
+(pdftex.def)             Requested size: 96.73788pt x 94.54881pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 269--276
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 269--276
+
+ []
+
+<imag/carreteras.png, id=643, 51.7935pt x 52.39575pt>
+File: imag/carreteras.png Graphic file (type png)
+<use imag/carreteras.png>
+Package pdftex.def Info: imag/carreteras.png  used on input line 283.
+(pdftex.def)             Requested size: 96.73788pt x 97.8708pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 277--285
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 277--285
+
+ []
+
+<imag/esferas.png, id=644, 49.98676pt x 53.60025pt>
+File: imag/esferas.png Graphic file (type png)
+<use imag/esferas.png>
+Package pdftex.def Info: imag/esferas.png  used on input line 291.
+(pdftex.def)             Requested size: 96.73788pt x 103.73486pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 286--293
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 286--293
+
+ []
+
+[14
+
+ <./imag/planos.png> <./imag/carreteras.png> <./imag/esferas.png>]
+<imag/dendo.png, id=652, 52.39575pt x 56.00925pt>
+File: imag/dendo.png Graphic file (type png)
+<use imag/dendo.png>
+Package pdftex.def Info: imag/dendo.png  used on input line 301.
+(pdftex.def)             Requested size: 96.73788pt x 103.41888pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--303
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--303
+
+ []
+
+<imag/cuer.png, id=653, 52.39575pt x 53.60025pt>
+File: imag/cuer.png Graphic file (type png)
+<use imag/cuer.png>
+Package pdftex.def Info: imag/cuer.png  used on input line 310.
+(pdftex.def)             Requested size: 96.73788pt x 98.97075pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 304--312
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 304--312
+
+ []
+
+[15
+
+ <./imag/dendo.png> <./imag/cuer.png>]
+<imag/redes.png, id=660, 51.7935pt x 54.2025pt>
+File: imag/redes.png Graphic file (type png)
+<use imag/redes.png>
+Package pdftex.def Info: imag/redes.png  used on input line 321.
+(pdftex.def)             Requested size: 96.73788pt x 101.24567pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 314--323
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 314--323
+
+ []
+
+[16
+
+ <./imag/redes.png>]
+Package color Info: Redefining color shadecolor on input line 338.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 340.
+Package color Info: Redefining color shadecolor on input line 351.
+Package color Info: Redefining color shadecolor on input line 359.
+Package color Info: Redefining color shadecolor on input line 367.
+ [17
+
+]
+Package color Info: Redefining color shadecolor on input line 376.
+Package color Info: Redefining color shadecolor on input line 384.
+Package color Info: Redefining color shadecolor on input line 393.
+<figure/plot_ring_gg1-1.pdf, id=671, 289.08pt x 289.08pt>
+File: figure/plot_ring_gg1-1.pdf Graphic file (type pdf)
+<use figure/plot_ring_gg1-1.pdf>
+Package pdftex.def Info: figure/plot_ring_gg1-1.pdf  used on input line 395.
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+ [18
+
+ <./figure/plot_ring_gg1-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 407.
+<figure/plot_ring_gg2-1.pdf, id=679, 289.08pt x 289.08pt>
+File: figure/plot_ring_gg2-1.pdf Graphic file (type pdf)
+<use figure/plot_ring_gg2-1.pdf>
+Package pdftex.def Info: figure/plot_ring_gg2-1.pdf  used on input line 417.
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+ [19
+
+ <./figure/plot_ring_gg2-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 430.
+Package color Info: Redefining color shadecolor on input line 444.
+Package color Info: Redefining color shadecolor on input line 454.
+LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
+456.
+ (C:/PROGRA~1/R/R-36~1.3/share/texmf/tex/latex\omscmtt.fd
+File: omscmtt.fd 
+)
+LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 456.
+Package color Info: Redefining color shadecolor on input line 463.
+Package color Info: Redefining color shadecolor on input line 472.
+Package color Info: Redefining color shadecolor on input line 480.
+Package color Info: Redefining color shadecolor on input line 491.
+[20
+
+]
+Package color Info: Redefining color shadecolor on input line 501.
+
+Underfull \hbox (badness 10000) in paragraph at lines 499--502
+
+ []
+
+<figure/plot_ring_cir-1.pdf, id=693, 325.215pt x 325.215pt>
+File: figure/plot_ring_cir-1.pdf Graphic file (type pdf)
+<use figure/plot_ring_cir-1.pdf>
+Package pdftex.def Info: figure/plot_ring_cir-1.pdf  used on input line 503.
+(pdftex.def)             Requested size: 325.2142pt x 325.23901pt.
+Package color Info: Redefining color shadecolor on input line 519.
+[21
+
+ <./figure/plot_ring_cir-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 531.
+Package color Info: Redefining color shadecolor on input line 540.
+Package color Info: Redefining color shadecolor on input line 549.
+Package color Info: Redefining color shadecolor on input line 557.
+<imag/CMplot.jpg, id=707, 722.7pt x 722.7pt>
+File: imag/CMplot.jpg Graphic file (type jpg)
+<use imag/CMplot.jpg>
+Package pdftex.def Info: imag/CMplot.jpg  used on input line 567.
+(pdftex.def)             Requested size: 290.22107pt x 290.22173pt.
+ [22
+
+ <./imag/CMplot.jpg>] [23
+
+]
+Package color Info: Redefining color shadecolor on input line 589.
+Package color Info: Redefining color shadecolor on input line 602.
+Package color Info: Redefining color shadecolor on input line 611.
+Package color Info: Redefining color shadecolor on input line 623.
+Package color Info: Redefining color shadecolor on input line 632.
+Package color Info: Redefining color shadecolor on input line 640.
+ [24
+
+]
+Package color Info: Redefining color shadecolor on input line 649.
+Package color Info: Redefining color shadecolor on input line 658.
+Package color Info: Redefining color shadecolor on input line 676.
+
+Underfull \hbox (badness 10000) in paragraph at lines 674--677
+
+ []
+
+<figure/plot_ggp_cb-1.pdf, id=720, 325.215pt x 325.215pt>
+File: figure/plot_ggp_cb-1.pdf Graphic file (type pdf)
+<use figure/plot_ggp_cb-1.pdf>
+Package pdftex.def Info: figure/plot_ggp_cb-1.pdf  used on input line 678.
+(pdftex.def)             Requested size: 325.2142pt x 325.23901pt.
+[25
+
+ <./figure/plot_ggp_cb-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 690.
+Package color Info: Redefining color shadecolor on input line 706.
+Package color Info: Redefining color shadecolor on input line 724.
+Package color Info: Redefining color shadecolor on input line 735.
+ [26
+
+]
+Package color Info: Redefining color shadecolor on input line 745.
+<figure/plot_br_final-1.pdf, id=736, 433.62pt x 433.62pt>
+File: figure/plot_br_final-1.pdf Graphic file (type pdf)
+<use figure/plot_br_final-1.pdf>
+Package pdftex.def Info: figure/plot_br_final-1.pdf  used on input line 747.
+(pdftex.def)             Requested size: 433.61894pt x 433.63878pt.
+Package color Info: Redefining color shadecolor on input line 762.
+ [27
+
+ <./figure/plot_br_final-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 775.
+Package color Info: Redefining color shadecolor on input line 797.
+<imag/bar_interactive.png, id=747, 380.01974pt x 379.4175pt>
+File: imag/bar_interactive.png Graphic file (type png)
+<use imag/bar_interactive.png>
+Package pdftex.def Info: imag/bar_interactive.png  used on input line 806.
+(pdftex.def)             Requested size: 241.84843pt x 241.46585pt.
+
+[28
+
+ <./imag/bar_interactive.png>]
+Package color Info: Redefining color shadecolor on input line 817.
+Package color Info: Redefining color shadecolor on input line 825.
+Package color Info: Redefining color shadecolor on input line 833.
+Package color Info: Redefining color shadecolor on input line 841.
+Package color Info: Redefining color shadecolor on input line 849.
+Package color Info: Redefining color shadecolor on input line 858.
+Package color Info: Redefining color shadecolor on input line 870.
+<figure/plot_plotrix_cb-1.pdf, id=753, 389.455pt x 389.455pt>
+File: figure/plot_plotrix_cb-1.pdf Graphic file (type pdf)
+<use figure/plot_plotrix_cb-1.pdf>
+Package pdftex.def Info: figure/plot_plotrix_cb-1.pdf  used on input line 878.
+(pdftex.def)             Requested size: 389.45404pt x 389.46591pt.
+ [29
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 889--896
+
+ []
+
+Package color Info: Redefining color shadecolor on input line 900.
+[30 <./figure/plot_plotrix_cb-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 915.
+Package color Info: Redefining color shadecolor on input line 923.
+Package color Info: Redefining color shadecolor on input line 931.
+Package color Info: Redefining color shadecolor on input line 941.
+Package color Info: Redefining color shadecolor on input line 953.
+Package color Info: Redefining color shadecolor on input line 963.
+ [31
+
+]
+Package color Info: Redefining color shadecolor on input line 972.
+<figure/plot_circlize_cb-1.pdf, id=772, 289.08pt x 289.08pt>
+File: figure/plot_circlize_cb-1.pdf Graphic file (type pdf)
+<use figure/plot_circlize_cb-1.pdf>
+Package pdftex.def Info: figure/plot_circlize_cb-1.pdf  used on input line 974.
+
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+ [32
+
+ <./figure/plot_circlize_cb-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 1001.
+Package color Info: Redefining color shadecolor on input line 1024.
+Package color Info: Redefining color shadecolor on input line 1032.
+Package color Info: Redefining color shadecolor on input line 1041.
+ [33
+
+]
+Package color Info: Redefining color shadecolor on input line 1058.
+Package color Info: Redefining color shadecolor on input line 1078.
+Package color Info: Redefining color shadecolor on input line 1087.
+Package color Info: Redefining color shadecolor on input line 1095.
+Package color Info: Redefining color shadecolor on input line 1107.
+Package color Info: Redefining color shadecolor on input line 1115.
+ [34
+
+]
+Package color Info: Redefining color shadecolor on input line 1127.
+<figure/plot_rect-1.pdf, id=790, 505.89pt x 289.08pt>
+File: figure/plot_rect-1.pdf Graphic file (type pdf)
+<use figure/plot_rect-1.pdf>
+Package pdftex.def Info: figure/plot_rect-1.pdf  used on input line 1129.
+(pdftex.def)             Requested size: 483.69687pt x 276.40207pt.
+Package color Info: Redefining color shadecolor on input line 1144.
+Package color Info: Redefining color shadecolor on input line 1153.
+Package color Info: Redefining color shadecolor on input line 1161.
+Package color Info: Redefining color shadecolor on input line 1177.
+<figure/polt_segment-1.pdf, id=791, 469.755pt x 289.08pt>
+File: figure/polt_segment-1.pdf Graphic file (type pdf)
+<use figure/polt_segment-1.pdf>
+Package pdftex.def Info: figure/polt_segment-1.pdf  used on input line 1179.
+(pdftex.def)             Requested size: 469.75386pt x 289.07928pt.
+ [35
+
+ <./figure/plot_rect-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 1194.
+
+Overfull \hbox (4.54887pt too wide) in paragraph at lines 1196--1196
+[][]\OT1/cmtt/m/n/10 ggplot[][](dat.smry,[] []aes[][]([][]x[][]=[][]as.numeric[
+][](hour.group)[] []+[] []0.25[][]/[][]2[][],[] []xend[][]=[][]as.numeric[][](h
+our.group)[] []+[] []0.25[][]/[][]2[][],[][] 
+ []
+
+[36 <./figure/polt_segment-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 1215.
+<figure/plot_title-1.pdf, id=812, 578.16pt x 361.35pt>
+File: figure/plot_title-1.pdf Graphic file (type pdf)
+<use figure/plot_title-1.pdf>
+Package pdftex.def Info: figure/plot_title-1.pdf  used on input line 1217.
+(pdftex.def)             Requested size: 483.69687pt x 302.30788pt.
+ [37
+
+ <./figure/plot_title-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 1237.
+Package color Info: Redefining color shadecolor on input line 1252.
+Package color Info: Redefining color shadecolor on input line 1261.
+Package color Info: Redefining color shadecolor on input line 1269.
+Package color Info: Redefining color shadecolor on input line 1277.
+ [38
+
+]
+Package color Info: Redefining color shadecolor on input line 1292.
+<figure/plot_ggplot_cr-1.pdf, id=830, 216.81pt x 216.81pt>
+File: figure/plot_ggplot_cr-1.pdf Graphic file (type pdf)
+<use figure/plot_ggplot_cr-1.pdf>
+Package pdftex.def Info: figure/plot_ggplot_cr-1.pdf  used on input line 1294.
+(pdftex.def)             Requested size: 216.80946pt x 216.81938pt.
+Package color Info: Redefining color shadecolor on input line 1308.
+Package color Info: Redefining color shadecolor on input line 1323.
+Package color Info: Redefining color shadecolor on input line 1337.
+
+[39
+
+ <./figure/plot_ggplot_cr-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 1347.
+Package color Info: Redefining color shadecolor on input line 1357.
+<figure/plot_ggplot_final_cr-1.pdf, id=839, 252.945pt x 289.08pt>
+File: figure/plot_ggplot_final_cr-1.pdf Graphic file (type pdf)
+<use figure/plot_ggplot_final_cr-1.pdf>
+Package pdftex.def Info: figure/plot_ggplot_final_cr-1.pdf  used on input line 
+1359.
+(pdftex.def)             Requested size: 252.94438pt x 289.0837pt.
+Package color Info: Redefining color shadecolor on input line 1372.
+<imag/ggplot2_inte_cr.png, id=840, 379.4175pt x 372.79276pt>
+File: imag/ggplot2_inte_cr.png Graphic file (type png)
+<use imag/ggplot2_inte_cr.png>
+Package pdftex.def Info: imag/ggplot2_inte_cr.png  used on input line 1393.
+(pdftex.def)             Requested size: 241.84843pt x 237.6309pt.
+ [40
+
+ <./figure/plot_ggplot_final_cr-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 1404.
+Package color Info: Redefining color shadecolor on input line 1412.
+Package color Info: Redefining color shadecolor on input line 1420.
+<figure/plot_plotrix_cr-1.pdf, id=853, 266.9975pt x 216.81pt>
+File: figure/plot_plotrix_cr-1.pdf Graphic file (type pdf)
+<use figure/plot_plotrix_cr-1.pdf>
+Package pdftex.def Info: figure/plot_plotrix_cr-1.pdf  used on input line 1428.
+
+(pdftex.def)             Requested size: 266.99683pt x 216.8293pt.
+[41 <./imag/ggplot2_inte_cr.png>]
+<figure/plot_plotrix_cr-2.pdf, id=859, 266.9975pt x 216.81pt>
+File: figure/plot_plotrix_cr-2.pdf Graphic file (type pdf)
+<use figure/plot_plotrix_cr-2.pdf>
+Package pdftex.def Info: figure/plot_plotrix_cr-2.pdf  used on input line 1439.
+
+(pdftex.def)             Requested size: 266.99683pt x 216.8293pt.
+ [42 <./figure/plot_plotrix_cr-1.pdf> <./figure/plot_plotrix_cr-2.pdf>]
+Package color Info: Redefining color shadecolor on input line 1453.
+Package color Info: Redefining color shadecolor on input line 1465.
+<figure/plot_cplots_cr-1.pdf, id=876, 289.08pt x 289.08pt>
+File: figure/plot_cplots_cr-1.pdf Graphic file (type pdf)
+<use figure/plot_cplots_cr-1.pdf>
+Package pdftex.def Info: figure/plot_cplots_cr-1.pdf  used on input line 1471.
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+ [43
+
+ <./figure/plot_cplots_cr-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 1481.
+<figure/plot_cplots_cr1-1.pdf, id=888, 289.08pt x 289.08pt>
+File: figure/plot_cplots_cr1-1.pdf Graphic file (type pdf)
+<use figure/plot_cplots_cr1-1.pdf>
+Package pdftex.def Info: figure/plot_cplots_cr1-1.pdf  used on input line 1487.
+
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+Package color Info: Redefining color shadecolor on input line 1503.
+Package color Info: Redefining color shadecolor on input line 1512.
+ [44
+
+ <./figure/plot_cplots_cr1-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 1521.
+Package color Info: Redefining color shadecolor on input line 1530.
+Package color Info: Redefining color shadecolor on input line 1540.
+Package color Info: Redefining color shadecolor on input line 1548.
+<figure/circlize_colum-1.pdf, id=900, 216.81pt x 194.7275pt>
+File: figure/circlize_colum-1.pdf Graphic file (type pdf)
+<use figure/circlize_colum-1.pdf>
+Package pdftex.def Info: figure/circlize_colum-1.pdf  used on input line 1550.
+(pdftex.def)             Requested size: 216.80946pt x 194.73592pt.
+ [45
+
+ <./figure/circlize_colum-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 1574.
+Package color Info: Redefining color shadecolor on input line 1582.
+Package color Info: Redefining color shadecolor on input line 1591.
+Package color Info: Redefining color shadecolor on input line 1599.
+Package color Info: Redefining color shadecolor on input line 1607.
+<figure/plot_pie_basic-1.pdf, id=909, 361.35pt x 361.35pt>
+File: figure/plot_pie_basic-1.pdf Graphic file (type pdf)
+<use figure/plot_pie_basic-1.pdf>
+Package pdftex.def Info: figure/plot_pie_basic-1.pdf  used on input line 1608.
+(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
+ [46
+
+ <./figure/plot_pie_basic-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 1618.
+Package color Info: Redefining color shadecolor on input line 1630.
+Package color Info: Redefining color shadecolor on input line 1643.
+Package color Info: Redefining color shadecolor on input line 1655.
+ [47
+
+]
+Package color Info: Redefining color shadecolor on input line 1665.
+<figure/plot_ggplot_pie-1.pdf, id=923, 216.81pt x 216.81pt>
+File: figure/plot_ggplot_pie-1.pdf Graphic file (type pdf)
+<use figure/plot_ggplot_pie-1.pdf>
+Package pdftex.def Info: figure/plot_ggplot_pie-1.pdf  used on input line 1667.
+
+(pdftex.def)             Requested size: 216.80946pt x 216.81938pt.
+Package color Info: Redefining color shadecolor on input line 1681.
+<imag/pie_ggplot2.png, id=924, 412.54124pt x 411.33675pt>
+File: imag/pie_ggplot2.png Graphic file (type png)
+<use imag/pie_ggplot2.png>
+Package pdftex.def Info: imag/pie_ggplot2.png  used on input line 1695.
+(pdftex.def)             Requested size: 193.47578pt x 192.91405pt.
+ [48
+
+ <./figure/plot_ggplot_pie-1.pdf> <./imag/pie_ggplot2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1699--1702
+
+ []
+
+Package color Info: Redefining color shadecolor on input line 1705.
+Package color Info: Redefining color shadecolor on input line 1714.
+Package color Info: Redefining color shadecolor on input line 1723.
+Package color Info: Redefining color shadecolor on input line 1731.
+Package color Info: Redefining color shadecolor on input line 1744.
+<figure/plot_plotrix_2D-1.pdf, id=935, 505.89pt x 289.08pt>
+File: figure/plot_plotrix_2D-1.pdf Graphic file (type pdf)
+<use figure/plot_plotrix_2D-1.pdf>
+Package pdftex.def Info: figure/plot_plotrix_2D-1.pdf  used on input line 1746.
+
+(pdftex.def)             Requested size: 483.69687pt x 276.40207pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1753--1754
+
+ []
+
+[49
+
+ <./figure/plot_plotrix_2D-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 1757.
+Package color Info: Redefining color shadecolor on input line 1765.
+Package color Info: Redefining color shadecolor on input line 1774.
+<imag/3d_sectores.png, id=947, 481.8pt x 481.8pt>
+File: imag/3d_sectores.png Graphic file (type png)
+<use imag/3d_sectores.png>
+Package pdftex.def Info: imag/3d_sectores.png  used on input line 1783.
+(pdftex.def)             Requested size: 193.47578pt x 193.4738pt.
+Package color Info: Redefining color shadecolor on input line 1793.
+Package color Info: Redefining color shadecolor on input line 1802.
+<imag/sectores_rcharts.png, id=948, 420.97275pt x 227.04825pt>
+File: imag/sectores_rcharts.png Graphic file (type png)
+<use imag/sectores_rcharts.png>
+Package pdftex.def Info: imag/sectores_rcharts.png  used on input line 1811.
+(pdftex.def)             Requested size: 338.58632pt x 182.61235pt.
+ [50 <./imag/3d_sectores.png>]
+Package color Info: Redefining color shadecolor on input line 1821.
+Package color Info: Redefining color shadecolor on input line 1833.
+<imag/plotly_pie.png, id=954, 525.76425pt x 496.85625pt>
+File: imag/plotly_pie.png Graphic file (type png)
+<use imag/plotly_pie.png>
+Package pdftex.def Info: imag/plotly_pie.png  used on input line 1843.
+(pdftex.def)             Requested size: 193.47578pt x 182.84076pt.
+Package color Info: Redefining color shadecolor on input line 1850.
+ [51 <./imag/sectores_rcharts.png> <./imag/plotly_pie.png>]
+<imag/pir_ggiraph.png, id=961, 308.95425pt x 306.54526pt>
+File: imag/pir_ggiraph.png Graphic file (type png)
+<use imag/pir_ggiraph.png>
+Package pdftex.def Info: imag/pir_ggiraph.png  used on input line 1859.
+(pdftex.def)             Requested size: 193.47578pt x 191.96451pt.
+ [52 <./imag/pir_ggiraph.png>]
+Package color Info: Redefining color shadecolor on input line 1878.
+Package color Info: Redefining color shadecolor on input line 1896.
+Package color Info: Redefining color shadecolor on input line 1921.
+Package color Info: Redefining color shadecolor on input line 1931.
+Package color Info: Redefining color shadecolor on input line 1940.
+
+[53
+
+]
+Package color Info: Redefining color shadecolor on input line 1953.
+<figure/plot_rose_1-1.pdf, id=971, 289.08pt x 289.08pt>
+File: figure/plot_rose_1-1.pdf Graphic file (type pdf)
+<use figure/plot_rose_1-1.pdf>
+Package pdftex.def Info: figure/plot_rose_1-1.pdf  used on input line 1955.
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+Package color Info: Redefining color shadecolor on input line 1968.
+Package color Info: Redefining color shadecolor on input line 1979.
+Package color Info: Redefining color shadecolor on input line 1992.
+ [54 <./figure/plot_rose_1-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 2004.
+<figure/plot_rose_gg-1.pdf, id=981, 361.35pt x 289.08pt>
+File: figure/plot_rose_gg-1.pdf Graphic file (type pdf)
+<use figure/plot_rose_gg-1.pdf>
+Package pdftex.def Info: figure/plot_rose_gg-1.pdf  used on input line 2021.
+(pdftex.def)             Requested size: 361.34912pt x 289.07928pt.
+ [55 <./figure/plot_rose_gg-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 2030.
+<figure/plot_rose_2_gg-1.pdf, id=992, 361.35pt x 361.35pt>
+File: figure/plot_rose_2_gg-1.pdf Graphic file (type pdf)
+<use figure/plot_rose_2_gg-1.pdf>
+Package pdftex.def Info: figure/plot_rose_2_gg-1.pdf  used on input line 2047.
+(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
+
+[56
+
+ <./figure/plot_rose_2_gg-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 2058.
+<imag/ggplot2_inte_rose.png, id=1002, 701.62125pt x 504.08325pt>
+File: imag/ggplot2_inte_rose.png Graphic file (type png)
+<use imag/ggplot2_inte_rose.png>
+Package pdftex.def Info: imag/ggplot2_inte_rose.png  used on input line 2081.
+(pdftex.def)             Requested size: 290.22107pt x 208.51378pt.
+ [57
+
+ <./imag/ggplot2_inte_rose.png>]
+Package color Info: Redefining color shadecolor on input line 2090.
+<figure/plot_rose_ggiraph-1.pdf, id=1008, 505.89pt x 289.08pt>
+File: figure/plot_rose_ggiraph-1.pdf Graphic file (type pdf)
+<use figure/plot_rose_ggiraph-1.pdf>
+Package pdftex.def Info: figure/plot_rose_ggiraph-1.pdf  used on input line 210
+6.
+(pdftex.def)             Requested size: 483.69687pt x 276.40207pt.
+Package color Info: Redefining color shadecolor on input line 2114.
+
+[58
+
+ <./figure/plot_rose_ggiraph-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 2126.
+<figure/plot_bar_rose-1.pdf, id=1018, 505.89pt x 289.08pt>
+File: figure/plot_bar_rose-1.pdf Graphic file (type pdf)
+<use figure/plot_bar_rose-1.pdf>
+Package pdftex.def Info: figure/plot_bar_rose-1.pdf  used on input line 2141.
+(pdftex.def)             Requested size: 483.69687pt x 276.40207pt.
+
+Overfull \hbox (8.38612pt too wide) in paragraph at lines 2158--2160
+[]\OT1/cmr/m/n/10 Para es-te dia-gra-ma se han en-con-tra-dos dos pa-que-tes, p
+e-ro que en reali-dad es so-lo \OT1/cmtt/m/n/10 ggplot2 \OT1/cmr/m/n/10 ya que 
+\OT1/cmtt/m/n/10 ggiraphExtra
+ []
+
+[59
+
+ <./figure/plot_bar_rose-1.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 2165--2168
+
+ []
+
+Package color Info: Redefining color shadecolor on input line 2171.
+Package color Info: Redefining color shadecolor on input line 2181.
+Package color Info: Redefining color shadecolor on input line 2190.
+Package color Info: Redefining color shadecolor on input line 2199.
+[60
+
+]
+Package color Info: Redefining color shadecolor on input line 2219.
+Package color Info: Redefining color shadecolor on input line 2231.
+Package color Info: Redefining color shadecolor on input line 2248.
+Package color Info: Redefining color shadecolor on input line 2262.
+Package color Info: Redefining color shadecolor on input line 2271.
+ [61
+
+]
+Package color Info: Redefining color shadecolor on input line 2280.
+<figure/cuadri_circle-1.pdf, id=1037, 289.08pt x 289.08pt>
+File: figure/cuadri_circle-1.pdf Graphic file (type pdf)
+<use figure/cuadri_circle-1.pdf>
+Package pdftex.def Info: figure/cuadri_circle-1.pdf  used on input line 2282.
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+ [62
+
+ <./figure/cuadri_circle-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 2301.
+Package color Info: Redefining color shadecolor on input line 2314.
+Package color Info: Redefining color shadecolor on input line 2322.
+Package color Info: Redefining color shadecolor on input line 2331.
+<figure/plot_ggraph_sol-1.pdf, id=1055, 252.945pt x 252.945pt>
+File: figure/plot_ggraph_sol-1.pdf Graphic file (type pdf)
+<use figure/plot_ggraph_sol-1.pdf>
+Package pdftex.def Info: figure/plot_ggraph_sol-1.pdf  used on input line 2333.
+
+(pdftex.def)             Requested size: 252.94438pt x 252.94823pt.
+ [63
+
+ <./figure/plot_ggraph_sol-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 2343.
+Package color Info: Redefining color shadecolor on input line 2360.
+Package color Info: Redefining color shadecolor on input line 2368.
+<figure/plot_ggraph2-1.pdf, id=1063, 361.35pt x 361.35pt>
+File: figure/plot_ggraph2-1.pdf Graphic file (type pdf)
+<use figure/plot_ggraph2-1.pdf>
+Package pdftex.def Info: figure/plot_ggraph2-1.pdf  used on input line 2370.
+(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
+ [64
+
+ <./figure/plot_ggraph2-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 2383.
+Package color Info: Redefining color shadecolor on input line 2420.
+ [65
+
+]
+Package color Info: Redefining color shadecolor on input line 2437.
+Package color Info: Redefining color shadecolor on input line 2452.
+Package color Info: Redefining color shadecolor on input line 2467.
+<imag/rayos_interactive.png, id=1077, 707.64375pt x 336.0555pt>
+File: imag/rayos_interactive.png Graphic file (type png)
+<use imag/rayos_interactive.png>
+Package pdftex.def Info: imag/rayos_interactive.png  used on input line 2477.
+(pdftex.def)             Requested size: 435.32422pt x 206.737pt.
+ [66
+
+ <./imag/rayos_interactive.png>]
+Package color Info: Redefining color shadecolor on input line 2484.
+Package color Info: Redefining color shadecolor on input line 2493.
+<figure/plot_webr-1.pdf, id=1083, 397.485pt x 397.485pt>
+File: figure/plot_webr-1.pdf Graphic file (type pdf)
+<use figure/plot_webr-1.pdf>
+Package pdftex.def Info: figure/plot_webr-1.pdf  used on input line 2503.
+(pdftex.def)             Requested size: 397.48402pt x 397.49614pt.
+ [67
+
+ <./figure/plot_webr-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 2518.
+<imag/pieDonut_inte.png, id=1097, 428.802pt x 393.8715pt>
+File: imag/pieDonut_inte.png Graphic file (type png)
+<use imag/pieDonut_inte.png>
+Package pdftex.def Info: imag/pieDonut_inte.png  used on input line 2529.
+(pdftex.def)             Requested size: 290.22107pt x 266.591pt.
+Package color Info: Redefining color shadecolor on input line 2539.
+ [68
+
+ <./imag/pieDonut_inte.png>]
+Package color Info: Redefining color shadecolor on input line 2560.
+Package color Info: Redefining color shadecolor on input line 2577.
+<imag/sunburts_interactive_1.png, id=1103, 209.583pt x 202.356pt>
+File: imag/sunburts_interactive_1.png Graphic file (type png)
+<use imag/sunburts_interactive_1.png>
+Package pdftex.def Info: imag/sunburts_interactive_1.png  used on input line 25
+89.
+(pdftex.def)             Requested size: 193.47578pt x 186.80583pt.
+<imag/sunburts_interactive_2.png, id=1104, 400.49625pt x 276.43275pt>
+File: imag/sunburts_interactive_2.png Graphic file (type png)
+<use imag/sunburts_interactive_2.png>
+Package pdftex.def Info: imag/sunburts_interactive_2.png  used on input line 25
+93.
+(pdftex.def)             Requested size: 338.58632pt x 233.71619pt.
+ [69
+
+ <./imag/sunburts_interactive_1.png> <./imag/sunburts_interactive_2.png>] [70]
+Package color Info: Redefining color shadecolor on input line 2612.
+Package color Info: Redefining color shadecolor on input line 2624.
+Package color Info: Redefining color shadecolor on input line 2633.
+Package color Info: Redefining color shadecolor on input line 2642.
+ [71
+
+]
+Package color Info: Redefining color shadecolor on input line 2653.
+<figure/plot_fmsb-1.pdf, id=1119, 289.08pt x 289.08pt>
+File: figure/plot_fmsb-1.pdf Graphic file (type pdf)
+<use figure/plot_fmsb-1.pdf>
+Package pdftex.def Info: figure/plot_fmsb-1.pdf  used on input line 2655.
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+Package color Info: Redefining color shadecolor on input line 2671.
+Package color Info: Redefining color shadecolor on input line 2679.
+Package color Info: Redefining color shadecolor on input line 2688.
+Package color Info: Redefining color shadecolor on input line 2699.
+Package color Info: Redefining color shadecolor on input line 2709.
+
+[72
+
+ <./figure/plot_fmsb-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 2723.
+<imag/radar_interactive.png, id=1133, 516.12825pt x 508.299pt>
+File: imag/radar_interactive.png Graphic file (type png)
+<use imag/radar_interactive.png>
+Package pdftex.def Info: imag/radar_interactive.png  used on input line 2732.
+(pdftex.def)             Requested size: 241.84843pt x 238.17924pt.
+Package color Info: Redefining color shadecolor on input line 2745.
+<figure/plot_plotrix_1-1.pdf, id=1134, 252.945pt x 252.945pt>
+File: figure/plot_plotrix_1-1.pdf Graphic file (type pdf)
+<use figure/plot_plotrix_1-1.pdf>
+Package pdftex.def Info: figure/plot_plotrix_1-1.pdf  used on input line 2754.
+(pdftex.def)             Requested size: 252.94438pt x 252.94823pt.
+ [73 <./imag/radar_interactive.png>]
+Package color Info: Redefining color shadecolor on input line 2763.
+Package color Info: Redefining color shadecolor on input line 2771.
+Package color Info: Redefining color shadecolor on input line 2780.
+Package color Info: Redefining color shadecolor on input line 2787.
+<figure/plot_plotrix_2-1.pdf, id=1141, 289.08pt x 252.945pt>
+File: figure/plot_plotrix_2-1.pdf Graphic file (type pdf)
+<use figure/plot_plotrix_2-1.pdf>
+Package pdftex.def Info: figure/plot_plotrix_2-1.pdf  used on input line 2789.
+(pdftex.def)             Requested size: 289.07928pt x 252.95595pt.
+ [74 <./figure/plot_plotrix_1-1.pdf> <./figure/plot_plotrix_2-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 2803.
+Package color Info: Redefining color shadecolor on input line 2812.
+Package color Info: Redefining color shadecolor on input line 2822.
+Package color Info: Redefining color shadecolor on input line 2830.
+Package color Info: Redefining color shadecolor on input line 2841.
+<figure/data_prep-1.pdf, id=1158, 505.89pt x 289.08pt>
+File: figure/data_prep-1.pdf Graphic file (type pdf)
+<use figure/data_prep-1.pdf>
+Package pdftex.def Info: figure/data_prep-1.pdf  used on input line 2843.
+(pdftex.def)             Requested size: 483.69687pt x 276.40207pt.
+ [75 <./figure/data_prep-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 2853.
+<imag/ggplot2_interactive_radar.png, id=1171, 638.385pt x 458.9145pt>
+File: imag/ggplot2_interactive_radar.png Graphic file (type png)
+<use imag/ggplot2_interactive_radar.png>
+Package pdftex.def Info: imag/ggplot2_interactive_radar.png  used on input line
+ 2863.
+(pdftex.def)             Requested size: 241.84843pt x 173.85713pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2865--2866
+
+ []
+
+[76
+
+ <./imag/ggplot2_interactive_radar.png>]
+Package color Info: Redefining color shadecolor on input line 2885.
+Package color Info: Redefining color shadecolor on input line 2895.
+Package color Info: Redefining color shadecolor on input line 2908.
+Package color Info: Redefining color shadecolor on input line 2917.
+Package color Info: Redefining color shadecolor on input line 2925.
+Package color Info: Redefining color shadecolor on input line 2933.
+ [77
+
+]
+Package color Info: Redefining color shadecolor on input line 2942.
+Package color Info: Redefining color shadecolor on input line 2950.
+Package color Info: Redefining color shadecolor on input line 2963.
+<figure/plot_col_sep_gg-1.pdf, id=1182, 289.08pt x 289.08pt>
+File: figure/plot_col_sep_gg-1.pdf Graphic file (type pdf)
+<use figure/plot_col_sep_gg-1.pdf>
+Package pdftex.def Info: figure/plot_col_sep_gg-1.pdf  used on input line 2965.
+
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+Package color Info: Redefining color shadecolor on input line 2982.
+Package color Info: Redefining color shadecolor on input line 2993.
+ [78
+
+ <./figure/plot_col_sep_gg-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 3001.
+Package color Info: Redefining color shadecolor on input line 3016.
+<imag/ggiraph_inte.png, id=1191, 287.0725pt x 268.00125pt>
+File: imag/ggiraph_inte.png Graphic file (type png)
+<use imag/ggiraph_inte.png>
+Package pdftex.def Info: imag/ggiraph_inte.png  used on input line 3025.
+(pdftex.def)             Requested size: 290.22107pt x 270.949pt.
+ [79 <./imag/ggiraph_inte.png>]
+Package color Info: Redefining color shadecolor on input line 3033.
+<figure/ggiraphExtra-1.pdf, id=1198, 361.35pt x 361.35pt>
+File: figure/ggiraphExtra-1.pdf Graphic file (type pdf)
+<use figure/ggiraphExtra-1.pdf>
+Package pdftex.def Info: figure/ggiraphExtra-1.pdf  used on input line 3048.
+(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
+ [80
+
+ <./figure/ggiraphExtra-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 3063.
+Package color Info: Redefining color shadecolor on input line 3072.
+Package color Info: Redefining color shadecolor on input line 3080.
+Package color Info: Redefining color shadecolor on input line 3090.
+Package color Info: Redefining color shadecolor on input line 3100.
+Package color Info: Redefining color shadecolor on input line 3112.
+Package color Info: Redefining color shadecolor on input line 3121.
+
+[81
+
+]
+Package color Info: Redefining color shadecolor on input line 3130.
+<figure/circlize_col_sep-1.pdf, id=1212, 361.35pt x 361.35pt>
+File: figure/circlize_col_sep-1.pdf Graphic file (type pdf)
+<use figure/circlize_col_sep-1.pdf>
+Package pdftex.def Info: figure/circlize_col_sep-1.pdf  used on input line 3132
+.
+(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
+ [82
+
+ <./figure/circlize_col_sep-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 3157.
+Package color Info: Redefining color shadecolor on input line 3165.
+Package color Info: Redefining color shadecolor on input line 3178.
+Package color Info: Redefining color shadecolor on input line 3187.
+Package color Info: Redefining color shadecolor on input line 3196.
+Package color Info: Redefining color shadecolor on input line 3204.
+ [83
+
+]
+Package color Info: Redefining color shadecolor on input line 3215.
+Package color Info: Redefining color shadecolor on input line 3225.
+Package color Info: Redefining color shadecolor on input line 3240.
+<figure/plot_flow_gg_lineas-1.pdf, id=1226, 325.215pt x 325.215pt>
+File: figure/plot_flow_gg_lineas-1.pdf Graphic file (type pdf)
+<use figure/plot_flow_gg_lineas-1.pdf>
+Package pdftex.def Info: figure/plot_flow_gg_lineas-1.pdf  used on input line 3
+242.
+(pdftex.def)             Requested size: 325.2142pt x 325.23901pt.
+ [84
+
+ <./figure/plot_flow_gg_lineas-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 3252.
+<imag/area.png, id=1236, 395.076pt x 491.436pt>
+File: imag/area.png Graphic file (type png)
+<use imag/area.png>
+Package pdftex.def Info: imag/area.png  used on input line 3276.
+(pdftex.def)             Requested size: 290.22107pt x 361.0174pt.
+ [85
+
+ <./imag/area.png>]
+Package color Info: Redefining color shadecolor on input line 3290.
+Package color Info: Redefining color shadecolor on input line 3299.
+Package color Info: Redefining color shadecolor on input line 3307.
+Package color Info: Redefining color shadecolor on input line 3315.
+Package color Info: Redefining color shadecolor on input line 3325.
+Package color Info: Redefining color shadecolor on input line 3334.
+Package color Info: Redefining color shadecolor on input line 3342.
+ [86
+
+]
+Package color Info: Redefining color shadecolor on input line 3353.
+<figure/plotgg_bu-1.pdf, id=1247, 289.08pt x 289.08pt>
+File: figure/plotgg_bu-1.pdf Graphic file (type pdf)
+<use figure/plotgg_bu-1.pdf>
+Package pdftex.def Info: figure/plotgg_bu-1.pdf  used on input line 3355.
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+Package color Info: Redefining color shadecolor on input line 3373.
+Package color Info: Redefining color shadecolor on input line 3383.
+Package color Info: Redefining color shadecolor on input line 3391.
+Package color Info: Redefining color shadecolor on input line 3400.
+ [87
+
+ <./figure/plotgg_bu-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 3409.
+<figure/plot_bu-1.pdf, id=1255, 289.08pt x 289.08pt>
+File: figure/plot_bu-1.pdf Graphic file (type pdf)
+<use figure/plot_bu-1.pdf>
+Package pdftex.def Info: figure/plot_bu-1.pdf  used on input line 3420.
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+
+[88
+
+ <./figure/plot_bu-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 3447.
+Package color Info: Redefining color shadecolor on input line 3460.
+Package color Info: Redefining color shadecolor on input line 3469.
+Package color Info: Redefining color shadecolor on input line 3479.
+<figure/plot_ggraph-1.pdf, id=1267, 216.81pt x 216.81pt>
+File: figure/plot_ggraph-1.pdf Graphic file (type pdf)
+<use figure/plot_ggraph-1.pdf>
+Package pdftex.def Info: figure/plot_ggraph-1.pdf  used on input line 3481.
+(pdftex.def)             Requested size: 216.80946pt x 216.81938pt.
+Package color Info: Redefining color shadecolor on input line 3491.
+ [89
+
+ <./figure/plot_ggraph-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 3506.
+Package color Info: Redefining color shadecolor on input line 3514.
+<figure/plot_ggraph-1-1.pdf, id=1275, 289.08pt x 289.08pt>
+File: figure/plot_ggraph-1-1.pdf Graphic file (type pdf)
+<use figure/plot_ggraph-1-1.pdf>
+Package pdftex.def Info: figure/plot_ggraph-1-1.pdf  used on input line 3525.
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+ [90 <./figure/plot_ggraph-1-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 3539.
+Package color Info: Redefining color shadecolor on input line 3550.
+Package color Info: Redefining color shadecolor on input line 3563.
+Package color Info: Redefining color shadecolor on input line 3576.
+Package color Info: Redefining color shadecolor on input line 3585.
+<imag/tree_interactive.png, id=1286, 294.50024pt x 295.1025pt>
+File: imag/tree_interactive.png Graphic file (type png)
+<use imag/tree_interactive.png>
+Package pdftex.def Info: imag/tree_interactive.png  used on input line 3594.
+(pdftex.def)             Requested size: 256.35875pt x 256.90819pt.
+ [91
+
+]
+Package color Info: Redefining color shadecolor on input line 3602.
+Package color Info: Redefining color shadecolor on input line 3616.
+Package color Info: Redefining color shadecolor on input line 3626.
+Package color Info: Redefining color shadecolor on input line 3635.
+ [92 <./imag/tree_interactive.png>]
+<imag/tree_pob_interactive.png, id=1297, 292.09125pt x 291.489pt>
+File: imag/tree_pob_interactive.png Graphic file (type png)
+<use imag/tree_pob_interactive.png>
+Package pdftex.def Info: imag/tree_pob_interactive.png  used on input line 3645
+.
+(pdftex.def)             Requested size: 256.35875pt x 255.85283pt.
+ [93
+
+ <./imag/tree_pob_interactive.png>]
+Package color Info: Redefining color shadecolor on input line 3663.
+Package color Info: Redefining color shadecolor on input line 3682.
+Package color Info: Redefining color shadecolor on input line 3690.
+Package color Info: Redefining color shadecolor on input line 3698.
+<imag/pol_interactive.png, id=1303, 548.64975pt x 298.716pt>
+File: imag/pol_interactive.png Graphic file (type png)
+<use imag/pol_interactive.png>
+Package pdftex.def Info: imag/pol_interactive.png  used on input line 3707.
+(pdftex.def)             Requested size: 435.32422pt x 237.02228pt.
+ [94
+
+]
+Package color Info: Redefining color shadecolor on input line 3717.
+<imag/lista.png, id=1308, 358.941pt x 358.941pt>
+File: imag/lista.png Graphic file (type png)
+<use imag/lista.png>
+Package pdftex.def Info: imag/lista.png  used on input line 3733.
+(pdftex.def)             Requested size: 290.22107pt x 290.22029pt.
+Package color Info: Redefining color shadecolor on input line 3738.
+
+Underfull \hbox (badness 10000) in paragraph at lines 3730--3738
+
+ []
+
+[95 <./imag/pol_interactive.png>]
+<imag/mouse_interactive.png, id=1314, 723.9045pt x 351.11176pt>
+File: imag/mouse_interactive.png Graphic file (type png)
+<use imag/mouse_interactive.png>
+Package pdftex.def Info: imag/mouse_interactive.png  used on input line 3750.
+(pdftex.def)             Requested size: 580.43475pt x 281.53267pt.
+
+Overfull \hbox (96.73788pt too wide) in paragraph at lines 3750--3751
+ [][] 
+ []
+
+[96 <./imag/lista.png> <./imag/mouse_interactive.png>]
+Package color Info: Redefining color shadecolor on input line 3764.
+Package color Info: Redefining color shadecolor on input line 3774.
+Package color Info: Redefining color shadecolor on input line 3783.
+Package color Info: Redefining color shadecolor on input line 3791.
+Package color Info: Redefining color shadecolor on input line 3800.
+Package color Info: Redefining color shadecolor on input line 3808.
+Package color Info: Redefining color shadecolor on input line 3816.
+<figure/plot_carretera-1.pdf, id=1321, 361.35pt x 361.35pt>
+File: figure/plot_carretera-1.pdf Graphic file (type pdf)
+<use figure/plot_carretera-1.pdf>
+Package pdftex.def Info: figure/plot_carretera-1.pdf  used on input line 3826.
+(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
+ [97
+
+] [98 <./figure/plot_carretera-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 3843.
+Package color Info: Redefining color shadecolor on input line 3855.
+Package color Info: Redefining color shadecolor on input line 3863.
+Package color Info: Redefining color shadecolor on input line 3872.
+<imag/ape.png, id=1334, 714.87074pt x 718.48425pt>
+File: imag/ape.png Graphic file (type png)
+<use imag/ape.png>
+Package pdftex.def Info: imag/ape.png  used on input line 3882.
+(pdftex.def)             Requested size: 290.22107pt x 291.69713pt.
+Package color Info: Redefining color shadecolor on input line 3890.
+ [99
+
+ <./imag/ape.png>]
+Package color Info: Redefining color shadecolor on input line 3900.
+Package color Info: Redefining color shadecolor on input line 3909.
+Package color Info: Redefining color shadecolor on input line 3917.
+Package color Info: Redefining color shadecolor on input line 3927.
+Package color Info: Redefining color shadecolor on input line 3937.
+Package color Info: Redefining color shadecolor on input line 3945.
+Package color Info: Redefining color shadecolor on input line 3955.
+ [100]
+Package color Info: Redefining color shadecolor on input line 3966.
+Package color Info: Redefining color shadecolor on input line 3981.
+<figure/grafo_ggrpah-1.pdf, id=1344, 361.35pt x 361.35pt>
+File: figure/grafo_ggrpah-1.pdf Graphic file (type pdf)
+<use figure/grafo_ggrpah-1.pdf>
+Package pdftex.def Info: figure/grafo_ggrpah-1.pdf  used on input line 3983.
+(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
+ [101
+
+ <./figure/grafo_ggrpah-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 3995.
+Package color Info: Redefining color shadecolor on input line 4007.
+Package color Info: Redefining color shadecolor on input line 4015.
+<figure/plot_dendo_ggplot2-1.pdf, id=1357, 289.08pt x 289.08pt>
+File: figure/plot_dendo_ggplot2-1.pdf Graphic file (type pdf)
+<use figure/plot_dendo_ggplot2-1.pdf>
+Package pdftex.def Info: figure/plot_dendo_ggplot2-1.pdf  used on input line 40
+24.
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+ [102
+
+ <./figure/plot_dendo_ggplot2-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 4037.
+Package color Info: Redefining color shadecolor on input line 4048.
+Package color Info: Redefining color shadecolor on input line 4056.
+<figure/plot_circlize_dendo_1-1.pdf, id=1367, 361.35pt x 361.35pt>
+File: figure/plot_circlize_dendo_1-1.pdf Graphic file (type pdf)
+<use figure/plot_circlize_dendo_1-1.pdf>
+Package pdftex.def Info: figure/plot_circlize_dendo_1-1.pdf  used on input line
+ 4063.
+(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
+ [103
+
+ <./figure/plot_circlize_dendo_1-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 4073.
+Package color Info: Redefining color shadecolor on input line 4087.
+Package color Info: Redefining color shadecolor on input line 4095.
+Package color Info: Redefining color shadecolor on input line 4103.
+Package color Info: Redefining color shadecolor on input line 4112.
+Package color Info: Redefining color shadecolor on input line 4123.
+Package color Info: Redefining color shadecolor on input line 4131.
+
+Overfull \hbox (10.3577pt too wide) in paragraph at lines 4129--4131
+[]\OT1/cmr/m/n/10 Por ulti-mo, se pro-ce-de a la rea-li-za-cion de las ra-mas
+ gra-cias a \OT1/cmtt/m/n/10 trackPlotRegion \OT1/cmr/m/n/10 y la fun-cion \OT
+1/cmtt/m/n/10 circos.dendrogram
+ []
+
+Package color Info: Redefining color shadecolor on input line 4138.
+Package color Info: Redefining color shadecolor on input line 4149.
+Package color Info: Redefining color shadecolor on input line 4156.
+<figure/plot_circlize_dendo_2-1.pdf, id=1378, 289.08pt x 289.08pt>
+File: figure/plot_circlize_dendo_2-1.pdf Graphic file (type pdf)
+<use figure/plot_circlize_dendo_2-1.pdf>
+Package pdftex.def Info: figure/plot_circlize_dendo_2-1.pdf  used on input line
+ 4158.
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+[104
+
+] [105 <./figure/plot_circlize_dendo_2-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 4185.
+
+Overfull \hbox (20.10736pt too wide) in paragraph at lines 4181--4185
+[]\OT1/cmr/m/n/10 Se vuel-ve a ver es-te pa-que-te , pe-ro es-ta vez en vez de 
+usar las fun-cio-nes \OT1/cmtt/m/n/10 circos.track, circos.trackPlotRegion
+ []
+
+Package color Info: Redefining color shadecolor on input line 4205.
+Package color Info: Redefining color shadecolor on input line 4217.
+Package color Info: Redefining color shadecolor on input line 4229.
+Package color Info: Redefining color shadecolor on input line 4248.
+[106
+
+]
+Package color Info: Redefining color shadecolor on input line 4277.
+<figure/plot-1.pdf, id=1397, 357.335pt x 357.335pt>
+File: figure/plot-1.pdf Graphic file (type pdf)
+<use figure/plot-1.pdf>
+Package pdftex.def Info: figure/plot-1.pdf  used on input line 4279.
+(pdftex.def)             Requested size: 357.33412pt x 357.35048pt.
+Package color Info: Redefining color shadecolor on input line 4291.
+ [107 <./figure/plot-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 4307.
+<imag/cuerdas_inte.png, id=1411, 523.9575pt x 510.708pt>
+File: imag/cuerdas_inte.png Graphic file (type png)
+<use imag/cuerdas_inte.png>
+Package pdftex.def Info: imag/cuerdas_inte.png  used on input line 4318.
+(pdftex.def)             Requested size: 338.58632pt x 330.03145pt.
+ [108 <./imag/cuerdas_inte.png>]
+Package color Info: Redefining color shadecolor on input line 4323.
+<imag/cuerdasmigra_inte.png, id=1417, 517.935pt x 561.297pt>
+File: imag/cuerdasmigra_inte.png Graphic file (type png)
+<use imag/cuerdasmigra_inte.png>
+Package pdftex.def Info: imag/cuerdasmigra_inte.png  used on input line 4347.
+(pdftex.def)             Requested size: 338.58632pt x 366.94563pt.
+ [109
+
+ <./imag/cuerdasmigra_inte.png>]
+<imag/cuerdasmigratra_inte.png, id=1424, 543.83176pt x 499.8675pt>
+File: imag/cuerdasmigratra_inte.png Graphic file (type png)
+<use imag/cuerdasmigratra_inte.png>
+Package pdftex.def Info: imag/cuerdasmigratra_inte.png  used on input line 4354
+.
+(pdftex.def)             Requested size: 338.58632pt x 311.21892pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 4356--4357
+
+ []
+
+[110
+
+ <./imag/cuerdasmigratra_inte.png>]
+Package color Info: Redefining color shadecolor on input line 4375.
+Package color Info: Redefining color shadecolor on input line 4385.
+Package color Info: Redefining color shadecolor on input line 4396.
+Package color Info: Redefining color shadecolor on input line 4404.
+Package color Info: Redefining color shadecolor on input line 4412.
+Package color Info: Redefining color shadecolor on input line 4420.
+ [111
+
+]
+Package color Info: Redefining color shadecolor on input line 4430.
+<figure/explo_red-1.pdf, id=1434, 289.08pt x 289.08pt>
+File: figure/explo_red-1.pdf Graphic file (type pdf)
+<use figure/explo_red-1.pdf>
+Package pdftex.def Info: figure/explo_red-1.pdf  used on input line 4432.
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+Package color Info: Redefining color shadecolor on input line 4449.
+Package color Info: Redefining color shadecolor on input line 4459.
+Package color Info: Redefining color shadecolor on input line 4468.
+ [112
+
+ <./figure/explo_red-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 4482.
+Package color Info: Redefining color shadecolor on input line 4498.
+Package color Info: Redefining color shadecolor on input line 4506.
+<imag/eliptica.png, id=1518, 437.2335pt x 439.04025pt>
+File: imag/eliptica.png Graphic file (type png)
+<use imag/eliptica.png>
+Package pdftex.def Info: imag/eliptica.png  used on input line 4515.
+(pdftex.def)             Requested size: 290.22107pt x 291.42886pt.
+
+[113
+
+ <./imag/eliptica.png>] [114
+
+]
+File: imag/cu_des.png Graphic file (type png)
+<use imag/cu_des.png>
+Package pdftex.def Info: imag/cu_des.png  used on input line 4546.
+(pdftex.def)             Requested size: 108.83104pt x 111.37103pt.
+File: imag/planos.png Graphic file (type png)
+<use imag/planos.png>
+Package pdftex.def Info: imag/planos.png  used on input line 4550.
+(pdftex.def)             Requested size: 108.83104pt x 106.36859pt.
+File: imag/esferas.png Graphic file (type png)
+<use imag/esferas.png>
+Package pdftex.def Info: imag/esferas.png  used on input line 4556.
+(pdftex.def)             Requested size: 111.2482pt x 119.29489pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 4536--4558
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4536--4558
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4536--4558
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4536--4558
+
+ []
+
+[115
+
+] [116
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 4645--4649
+
+ []
+
+Package color Info: Redefining color shadecolor on input line 4710.
+Package color Info: Redefining color shadecolor on input line 4719.
+[117
+
+]
+Package color Info: Redefining color shadecolor on input line 4728.
+ [118
+
+] [119]
+Underfull \hbox (badness 10000) in paragraph at lines 4864--4870
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4864--4870
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4864--4870
+
+ []
+
+[120
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4875.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4875.
+ (TFG.aux
+LaTeX Info: Redefining \. on input line 24.
+LaTeX Info: Redefining \% on input line 24.
+)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4875.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4875.
+
+Package rerunfilecheck Info: File `TFG.out' has not changed.
+(rerunfilecheck)             Checksum: 620278C926EAC38B33B78F36BD8F9E13;8184.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4875.
+ ) 
+Here is how much of TeX's memory you used:
+ 9155 strings out of 480930
+ 150433 string characters out of 2909548
+ 417208 words of memory out of 3000000
+ 24556 multiletter control sequences out of 15000+200000
+ 537236 words of font info for 41 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 48i,13n,46p,1212b,655s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on TFG.pdf (120 pages, 8584121 bytes).
+PDF statistics:
+ 1667 PDF objects out of 1728 (max. 8388607)
+ 236 named destinations out of 1000 (max. 500000)
+ 1350 words of extra memory for PDF output out of 10000 (max. 10000000)
+
