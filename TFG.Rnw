@@ -730,7 +730,7 @@ Para obtener este grafo, habr\'a que tener unos datos adecuados, que suelen impl
 \subsubsection{Paquete ggplot2}
 Se vuelve a ver este paquete%\cite{docu_ggplot2}
 debido a su versatilidad, pero ahora se depende mas de los datos que del paquete, este usa tres posibles generadores de barras: \texttt{rect, segment y title}~\\
-Estos datos son el movimiento de una persona durante 5 d\'ias, indicando la hora cuando se recogieron dichos datos.
+Estos datos son el tiempo en movimiento de una persona durante 5 d\'ias, indicando la hora cuando se recogieron dichos datos.
 <<datos_spiral, message=FALSE>>=
 library(dplyr)
 library(readxl)
