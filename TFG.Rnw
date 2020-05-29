@@ -859,7 +859,7 @@ Con este m\'etodo se puede variar su tama\~no para dar una forma similar al prim
 Dando el resultado de:~\\
 <<plot_title, echo=FALSE, fig.align='center', fig.height=5, fig.width=8>>=
 @
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%hecho
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Diagrama de Columnas Radiales}\label{ssec:columnasRadiales}
@@ -870,7 +870,7 @@ Para realizar este tipo de diagramas, la gran mayoria de paquetes lo afrontan cr
 Con este paquete %\cite{docu_ggplot2}
 se procede a copiar la manera de crear el diagrama de Barras Radiales \autoref{ssec:barrasRadiales}
  pero, en esta ocasi\'on, la coordenada a transformar esta vez se la X.~\\
-Primero se va a crear los datos de ejemplo para representar en este gr\'afico junto con la llamada de la libreria.
+Primero se va a crear los datos de ejemplo para representar en este gr\'afico, estableciendo las entidades (barras), sus valores y el grupo al que pertenecen las barras, junto con la llamada de la libreria.
 <<datos_ggplot_cr>>=
 data <- data.frame(
   id=seq(1,20),
@@ -1564,6 +1564,7 @@ vertices <- flare$vertices
 library(igraph)
 mygraph <- graph_from_data_frame( ramas, vertices=vertices)
 @
+La base de datos, flare, consiste en unos datos con estructura jer\'arquica; de esta estructura se escogen las ramas, tabla con datos de como se relacionan los nodos (from-to), y los v\'ertices, llamados tambi\'en nodos con el nombre de cada nodo, el tama\~no del nodo y el nombre de la ruta que de ra\'iz hasta \'el (ra\'iz.grupo1.subgrupo1.nodo).
 <<plot_ggraph_sol, echo=FALSE, eval=FALSE>>= 
 ggraph(mygraph, 'partition', circular = TRUE) +
   geom_node_arc_bar(aes(fill = depth), size = 0.25) +
