@@ -282,14 +282,14 @@ Se empieza con uno de los paquetes que m\'as ser\'a usado a lo largo del trabajo
 , debido a que es uno de los m\'as vers\'atiles y personalizables, pues se puede retocar y ajustar cada uno de los componentes del gr\'afico que resulte de este; como la escala, el sistema de coordenadas, la etiquetas, etc.
 Tambi\'en, una de las mejores caracteristicas de este paquete, es su compatibilidad con otros paquetes de modificaci\'on de datos o de realizaci\'on de gr\'aficos.~\\
 Lo primero que se va a necesitar en todas las demostraciones de este trabajo es la obtenci\'on y manipulaci\'on de los datos. En este caso se necesitan 2 variables, indicando cuantos anillos componen el diagrama y el ancho de cada uno de ellos.~\\
-La primera forma de crear los anillos usa la funci\'on \texttt{geom-bar}, la cual reproduce el diagramas de barras cl\'asico, obteniendo su magnitud de la varible que se asigne para indicar su ancho.
+La primera forma de crear los anillos usa la funci\'on \texttt{geom-bar}, la cual reproduce el diagramas de barras cl\'asico, obteniendo su magnitud de la varible que se asigne para indicar su ancho.~\\Los datos que se van a usar son: una serie de entidades y sus valores porcentuales. En este caso se generan aleatoriamente, pero se pueden obtener como la frecuencia de los datos en una columna, de cualquier base de datos, proporcionando un valor porcentual a la frecuencia.
 <<data_ring_gg1>>==
 datos <- data.frame(
   anillos=LETTERS[1:10],
-  ancho=c(rep(1, 10))
+  ancho=c(10,8,10,9,5,12,20,6,10,10)
 )
 @
-En esta prueba se establecen 10 anillos designados por letras y el ancho de cada uno es igual.
+En esta prueba se establecen 10 anillos designados por letras, como el nombre de entidades, y el ancho de cada uno es el valor porcentual.
 <<plot_ring_gg1, echo=FALSE, eval=FALSE>>=
 library(ggplot2)
 ggplot(datos, aes(x="", y=ancho, fill=anillos)) +
@@ -320,13 +320,16 @@ Resultando en:
 
 \clearpage
 Otras de las funciones que pueden imitar al \texttt{geom-bar} son: \texttt{geom-col, geom-tile}. Para cada una de ellas, es necesario una aproximaci\'on diferente; \texttt{geom-col} es muy similar a bar solo que no hace falta el argumento stat=identity.
-La funci\'on \texttt{geom-tile} sirve para crear rect\'angulos y, para delimitarlos, sirven los mismos valores que antes, s\'olo que esta vez se utiliza el eje X para los anillos y, como antes, el eje Y para el ancho. Esta vez hay que especificar qu\'e variable se transforma a coordenadas polares aunque, por lo dem\'as, es lo mismo salvo que se experimenta a no colorear los bordes de los rect\'angulos.
+La funci\'on \texttt{geom-tile} sirve para crear rect\'angulos y, para delimitarlos, no sirven los mismos datos que antes, ya que esto solo se pueden crear anillos con mismo valor, por ejemplo 1. Con esta funci\'on se puede representar la variedad de entidades que existen, por ejemplo, los diferentes valores en una columna de cualquier base de datos. Esta vez se utiliza el eje X para los anillos y, como antes, el eje Y para el ancho. Esta vez hay que especificar qu\'e variable se transforma a coordenadas polares aunque, por lo dem\'as, es lo mismo salvo que se experimenta a no colorear los bordes de los rect\'angulos.
 <<plot_ring_gg2, fig.align='center', fig.height=4, fig.width=4>>=
+datos <- data.frame(
+  anillos=LETTERS[1:10],
+  ancho=c(rep(1,10))
+)
 ggplot(datos, aes(x=anillos, y=ancho)) +
   geom_tile(aes(fill = anillos)) + 
   coord_polar('y') +
-  theme_void() +
-  theme(legend.position = "none") 
+  theme_void() 
 @
 \clearpage
 \subsubsection{Paquete circlize}
@@ -355,7 +358,7 @@ circos.track(datos$division, x = datos$x[order(datos$x)], y = datos$y[order(dato
 circos.axis(h="bottom",direction = "inside", labels.facing= "clockwise", labels.cex = 0.5)
 circos.clear()
 @
-La variable divisi\'on establece que cada anillo solo tendr\'a un vector con 1000 datos y las otras dos variables se van a usar en los diferentes diagramas de cada anillo.~\\
+La variable divisi\'on establece que cada anillo solo tendr\'a un vector con 1000 datos y las otras dos variables se van a usar en los diferentes diagramas de cada anillo. Representando la variable X e Y de los gr\'aficos l\'ineas y puntos. Para la parte del histograma s\'olo se requiere de una variable de los datos, mostrando la frecuencia de los valores de la variable entre intervalos. ~\\~\\
 Se necesita crear una plantilla para cada diagrama. Esta se genera primero al inicializar el gr\'afico y luego con las funciones \texttt{trackPlotRegion} o \texttt{track} para realizar las plantillas de cada anillo.
 <<plot_ring_cir, echo=1:3, eval=FALSE>>=
 @
@@ -436,7 +439,7 @@ En este apartado se encuentran un paquete para la primera f\'ormula y dos para l
 \subsubsection{Paquete ggplot2}
 En el punto anterior ya se ha visto este paquete%\cite{docu_ggplot2}
  y, durante todos los dem\'as puntos, se demostrar\'a lo vers\'atil que es. En este tipo de grafo, lo que hay que hacer es un buen diagrama de barras tradicional con este paquete y aplicarle la coordenada polar, la cual transforma la coordenada deseada de formato lineal a circular.~\\
-Primero se crea la tabla con el nombre de las barras y su valor y se carga la libreria para despu\'es usar sus funciones:
+Primero se crea la tabla con el nombre de las barras y su valor, en este caso la importancia de Internet que tienen las categorias al tomar decisiones. Y se carga la libreria para despu\'es usar sus funciones:
 <<datos_ggp_cb, echo=FALSE, warning=FALSE>>=
 library(ggplot2)
 Category <- c("Electronics", "Appliances", "Books", "Music", "Clothing", 
@@ -520,6 +523,7 @@ stockCheck$Name <- factor(stockCheck$Name,
 @
 <<datos_br_final, echo=1:9, eval=FALSE>>=
 @
+Los datos representan la cantidad de a\~nos que tardan las categor\'ias en desaparecer.~\\
 Para poder tener un espacio vacio en el centro hay que incluir varias lineas vacias, para que al implementarlas la funci\'on las borre, dejando el espacio en blanco
 <<datos_br_final, echo=10:16, eval=FALSE>>=
 @
@@ -567,7 +571,7 @@ Resultando en el siguiente gr\'afico.
 ~\\Existe un paquete que proporciona interactividad a los gr\'aficos del paquete ggplot2, y suele funcionar mejor cuando hay una gran cantidad de datos.~\\
 El paquete \texttt{ggiraph}%\cite{docu_ggiraph}
 ayuda a crear la interactividad con algunas funciones que se unen al gr\'afico de ggplot2, en este caso, se usa \texttt{geom-col-interactive}, para crear las barras interactivas. Para que se represente bien hay que dar los valores aduacuados a las nuevas variables interactivas \texttt{tooltip} y \texttt{data-id}.~\\
-Primero se necesita una gran cantidad de datos, aleatorios en este caso.
+Primero se necesita una gran cantidad de datos, aleatorios en este caso, creando los nombres de las entidades (barras) y sus valores.
 <<plot_interactive_datos_br>>=
 data <- data.frame(
   id=seq(1,30),
@@ -608,7 +612,7 @@ Dando como resultado el siguiente gr\'afico.~\\
 El paquete plotrix proporciona una serie de plots espec\'ificos que ofrecen una f\'acil personalizaci\'on (color, posici\'on del texto...).~\\
 A lo largo del proyecto, se observar\'a dichos grafos utilizarse en los diferentes tipos de diagramas circulares.~\\
 En la documentaci\'on %\cite{docu_plotrix}
-se encuentran los m\'etodos para crear este Diagrama de Barras Radiales, \texttt{draw.circle} y \texttt{draw.arc}, que se encargan de recrear los c\'irculos que se usaran de plantilla para que se expongan las barras. La orden \texttt{draw.arc} necesita conocer en cual \'angulo comienza las barras y en cual terminan, adem\'as de los datos de las barras.
+se encuentran los m\'etodos para crear este Diagrama de Barras Radiales, \texttt{draw.circle} y \texttt{draw.arc}, que se encargan de recrear los c\'irculos que se usaran de plantilla para que se expongan las barras. La orden \texttt{draw.arc} necesita conocer en cual \'angulo comienzan las barras y en cual terminan, adem\'as de los datos de las barras.
 <<funcion_plotrix_cb, echo=FALSE>>=
 library(plotrix)
 circBarPlot <- function(x, labels, colors=rainbow(length(x)), cex.lab=1) {
