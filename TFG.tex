@@ -333,18 +333,18 @@ Se empieza con uno de los paquetes que m\'as ser\'a usado a lo largo del trabajo
 , debido a que es uno de los m\'as vers\'atiles y personalizables, pues se puede retocar y ajustar cada uno de los componentes del gr\'afico que resulte de este; como la escala, el sistema de coordenadas, la etiquetas, etc.
 Tambi\'en, una de las mejores caracteristicas de este paquete, es su compatibilidad con otros paquetes de modificaci\'on de datos o de realizaci\'on de gr\'aficos.~\\
 Lo primero que se va a necesitar en todas las demostraciones de este trabajo es la obtenci\'on y manipulaci\'on de los datos. En este caso se necesitan 2 variables, indicando cuantos anillos componen el diagrama y el ancho de cada uno de ellos.~\\
-La primera forma de crear los anillos usa la funci\'on \texttt{geom-bar}, la cual reproduce el diagramas de barras cl\'asico, obteniendo su magnitud de la varible que se asigne para indicar su ancho.
+La primera forma de crear los anillos usa la funci\'on \texttt{geom-bar}, la cual reproduce el diagramas de barras cl\'asico, obteniendo su magnitud de la varible que se asigne para indicar su ancho.~\\Los datos que se van a usar son: una serie de entidades y sus valores porcentuales. En este caso se generan aleatoriamente, pero se pueden obtener como la frecuencia de los datos en una columna, de cualquier base de datos, proporcionando un valor porcentual a la frecuencia.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{datos} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}
   \hlkwc{anillos}\hlstd{=LETTERS[}\hlnum{1}\hlopt{:}\hlnum{10}\hlstd{],}
-  \hlkwc{ancho}\hlstd{=}\hlkwd{c}\hlstd{(}\hlkwd{rep}\hlstd{(}\hlnum{1}\hlstd{,} \hlnum{10}\hlstd{))}
+  \hlkwc{ancho}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{10}\hlstd{,}\hlnum{8}\hlstd{,}\hlnum{10}\hlstd{,}\hlnum{9}\hlstd{,}\hlnum{5}\hlstd{,}\hlnum{12}\hlstd{,}\hlnum{20}\hlstd{,}\hlnum{6}\hlstd{,}\hlnum{10}\hlstd{,}\hlnum{10}\hlstd{)}
 \hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-En esta prueba se establecen 10 anillos designados por letras y el ancho de cada uno es igual.
+En esta prueba se establecen 10 anillos designados por letras, como el nombre de entidades, y el ancho de cada uno es el valor porcentual.
 
 Lo primero ser\'a cargar la librer\'ia ggplot2 para poder usar sus funciones.
 \begin{knitrout}
@@ -402,15 +402,18 @@ Resultando en:
 
 \clearpage
 Otras de las funciones que pueden imitar al \texttt{geom-bar} son: \texttt{geom-col, geom-tile}. Para cada una de ellas, es necesario una aproximaci\'on diferente; \texttt{geom-col} es muy similar a bar solo que no hace falta el argumento stat=identity.
-La funci\'on \texttt{geom-tile} sirve para crear rect\'angulos y, para delimitarlos, sirven los mismos valores que antes, s\'olo que esta vez se utiliza el eje X para los anillos y, como antes, el eje Y para el ancho. Esta vez hay que especificar qu\'e variable se transforma a coordenadas polares aunque, por lo dem\'as, es lo mismo salvo que se experimenta a no colorear los bordes de los rect\'angulos.
+La funci\'on \texttt{geom-tile} sirve para crear rect\'angulos y, para delimitarlos, no sirven los mismos datos que antes, ya que esto solo se pueden crear anillos con mismo valor, por ejemplo 1. Con esta funci\'on se puede representar la variedad de entidades que existen, por ejemplo, los diferentes valores en una columna de cualquier base de datos. Esta vez se utiliza el eje X para los anillos y, como antes, el eje Y para el ancho. Esta vez hay que especificar qu\'e variable se transforma a coordenadas polares aunque, por lo dem\'as, es lo mismo salvo que se experimenta a no colorear los bordes de los rect\'angulos.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
+\hlstd{datos} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}
+  \hlkwc{anillos}\hlstd{=LETTERS[}\hlnum{1}\hlopt{:}\hlnum{10}\hlstd{],}
+  \hlkwc{ancho}\hlstd{=}\hlkwd{c}\hlstd{(}\hlkwd{rep}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{10}\hlstd{))}
+\hlstd{)}
 \hlkwd{ggplot}\hlstd{(datos,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=anillos,} \hlkwc{y}\hlstd{=ancho))} \hlopt{+}
   \hlkwd{geom_tile}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{fill} \hlstd{= anillos))} \hlopt{+}
   \hlkwd{coord_polar}\hlstd{(}\hlstr{'y'}\hlstd{)} \hlopt{+}
-  \hlkwd{theme_void}\hlstd{()} \hlopt{+}
-  \hlkwd{theme}\hlstd{(}\hlkwc{legend.position} \hlstd{=} \hlstr{"none"}\hlstd{)}
+  \hlkwd{theme_void}\hlstd{()}
 \end{alltt}
 \end{kframe}
 
@@ -438,7 +441,7 @@ Lo primero que se necesita hacer es establecer que no se divida cada anillo, ya 
 \end{kframe}
 \end{knitrout}
 
-La variable divisi\'on establece que cada anillo solo tendr\'a un vector con 1000 datos y las otras dos variables se van a usar en los diferentes diagramas de cada anillo.~\\
+La variable divisi\'on establece que cada anillo solo tendr\'a un vector con 1000 datos y las otras dos variables se van a usar en los diferentes diagramas de cada anillo. Representando la variable X e Y de los gr\'aficos l\'ineas y puntos. Para la parte del histograma s\'olo se requiere de una variable de los datos, mostrando la frecuencia de los valores de la variable entre intervalos. ~\\~\\
 Se necesita crear una plantilla para cada diagrama. Esta se genera primero al inicializar el gr\'afico y luego con las funciones \texttt{trackPlotRegion} o \texttt{track} para realizar las plantillas de cada anillo.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -583,7 +586,7 @@ En este apartado se encuentran un paquete para la primera f\'ormula y dos para l
 \subsubsection{Paquete ggplot2}
 En el punto anterior ya se ha visto este paquete\cite{docu_ggplot2}
  y, durante todos los dem\'as puntos, se demostrar\'a lo vers\'atil que es. En este tipo de grafo, lo que hay que hacer es un buen diagrama de barras tradicional con este paquete y aplicarle la coordenada polar, la cual transforma la coordenada deseada de formato lineal a circular.~\\
-Primero se crea la tabla con el nombre de las barras y su valor y se carga la libreria para despu\'es usar sus funciones:
+Primero se crea la tabla con el nombre de las barras y su valor, en este caso la importancia de Internet que tienen las categorias al tomar decisiones. Y se carga la libreria para despu\'es usar sus funciones:
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -701,6 +704,7 @@ Ahora se va a implementar uno de los grafos del libro\cite[p\'ag 76]{Circle}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+Los datos representan la cantidad de a\~nos que tardan las categor\'ias en desaparecer.~\\
 Para poder tener un espacio vacio en el centro hay que incluir varias lineas vacias, para que al implementarlas la funci\'on las borre, dejando el espacio en blanco
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -757,7 +761,7 @@ Resultando en el siguiente gr\'afico.
 ~\\Existe un paquete que proporciona interactividad a los gr\'aficos del paquete ggplot2, y suele funcionar mejor cuando hay una gran cantidad de datos.~\\
 El paquete \texttt{ggiraph}\cite{docu_ggiraph}
 ayuda a crear la interactividad con algunas funciones que se unen al gr\'afico de ggplot2, en este caso, se usa \texttt{geom-col-interactive}, para crear las barras interactivas. Para que se represente bien hay que dar los valores aduacuados a las nuevas variables interactivas \texttt{tooltip} y \texttt{data-id}.~\\
-Primero se necesita una gran cantidad de datos, aleatorios en este caso.
+Primero se necesita una gran cantidad de datos, aleatorios en este caso, creando los nombres de las entidades (barras) y sus valores.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -810,7 +814,7 @@ Dando como resultado el siguiente gr\'afico.~\\
 El paquete plotrix proporciona una serie de plots espec\'ificos que ofrecen una f\'acil personalizaci\'on (color, posici\'on del texto...).~\\
 A lo largo del proyecto, se observar\'a dichos grafos utilizarse en los diferentes tipos de diagramas circulares.~\\
 En la documentaci\'on \cite{docu_plotrix}
-se encuentran los m\'etodos para crear este Diagrama de Barras Radiales, \texttt{draw.circle} y \texttt{draw.arc}, que se encargan de recrear los c\'irculos que se usaran de plantilla para que se expongan las barras. La orden \texttt{draw.arc} necesita conocer en cual \'angulo comienza las barras y en cual terminan, adem\'as de los datos de las barras.
+se encuentran los m\'etodos para crear este Diagrama de Barras Radiales, \texttt{draw.circle} y \texttt{draw.arc}, que se encargan de recrear los c\'irculos que se usaran de plantilla para que se expongan las barras. La orden \texttt{draw.arc} necesita conocer en cual \'angulo comienzan las barras y en cual terminan, adem\'as de los datos de las barras.
 
 Primero llamar a la libreria.
 \begin{knitrout}
@@ -996,7 +1000,7 @@ Para obtener este grafo, habr\'a que tener unos datos adecuados, que suelen impl
 \subsubsection{Paquete ggplot2}
 Se vuelve a ver este paquete\cite{docu_ggplot2}
 debido a su versatilidad, pero ahora se depende mas de los datos que del paquete, este usa tres posibles generadores de barras: \texttt{rect, segment y title}~\\
-Estos datos son el movimiento de una persona durante 5 d\'ias, indicando la hora cuando se recogieron dichos datos.
+Estos datos son el tiempo en movimiento de una persona durante 5 d\'ias, indicando la hora cuando se recogieron dichos datos.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -1221,7 +1225,7 @@ Dando el resultado de:~\\
 
 
 \end{knitrout}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%hecho
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Diagrama de Columnas Radiales}\label{ssec:columnasRadiales}
@@ -1232,7 +1236,7 @@ Para realizar este tipo de diagramas, la gran mayoria de paquetes lo afrontan cr
 Con este paquete \cite{docu_ggplot2}
 se procede a copiar la manera de crear el diagrama de Barras Radiales \autoref{ssec:barrasRadiales}
  pero, en esta ocasi\'on, la coordenada a transformar esta vez se la X.~\\
-Primero se va a crear los datos de ejemplo para representar en este gr\'afico junto con la llamada de la libreria.
+Primero se va a crear los datos de ejemplo para representar en este gr\'afico, estableciendo las entidades (barras), sus valores y el grupo al que pertenecen las barras, junto con la llamada de la libreria.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -2308,6 +2312,7 @@ para transformarla en datos que entienda ggraph.
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+La base de datos, flare, consiste en unos datos con estructura jer\'arquica; de esta estructura se escogen las ramas, tabla con datos de como se relacionan los nodos (from-to), y los v\'ertices, llamados tambi\'en nodos con el nombre de cada nodo, el tama\~no del nodo y el nombre de la ruta que de ra\'iz hasta \'el (ra\'iz.grupo1.subgrupo1.nodo).
 
 Para preparar la plantilla del gr\'afico se necesitan los datos, el tipo particion y establecerlo como circular.
 \begin{knitrout}
@@ -2607,7 +2612,7 @@ Para realizar estos diagramas se han encontrado cuatro paquetes, algunos ofrecen
 \subsubsection{Paquete fmsb}
 El nombre de este paquete \cite{docu_fmsb}
 viene de Functions for Medical Statistics Book with some Demographic Data. Las funciones que tiene el paquete son implementaciones del libro Practices of Medical and Health Data Analysis using R. Y, para recrear este diagrama, el paquete cuenta con la funci\'on \texttt{radarchart}.
-Para realizarlo se necesitan los datos adecuados, por lo que se va a optar por representar uno de los gr\'aficos del libro de Manuel Lima \cite[p\'ag 151]{Circle}
+Para realizarlo se necesitan los datos adecuados, basados en los nombres de las entidades y sus valores, por lo que se va a optar por representar uno de los gr\'aficos del libro de Manuel Lima \cite[p\'ag 151]{Circle}, el ratio de muertes por accidentes por mes.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -2890,7 +2895,7 @@ Para empezar se cargan las librerias b\'asicas para crear el diagrama: \texttt{g
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Despu\'es, para crear los datos de las columnas apiladas en este caso, se usan tres valores generados con aleatoriedad, con un total de 60 columnas con tres valores cada una.
+Despu\'es, para crear los datos de las columnas apiladas en este caso, se usan tres valores generados con aleatoriedad, con un total de 60 columnas con tres valores cada una. Agrupando tres categor\'ias por medio de una cuarta.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -3441,7 +3446,7 @@ Para implementar este gr\'afico se pueden usar dos paquetes, los dos faciles de 
 \subsubsection{Paquete ggraph}
 En este paquete \cite{docu_ggraph}, 
 como se ha visto en el diagrama de Grid \'Arbol (\ref{ssec:rayosSol}
-), se va a recurrir a la misma funci\'on y misma base de datos, solo que ahora cambia el layout de \texttt{partition} a \texttt{circlepack}, pero por lo dem\'as, consiste en lo mismo.~\\
+), se va a recurrir a la misma funci\'on y misma base de datos, con estructura de datos jer\'arquicos, donde las ramas son como se unen los nodos (from-to) y los vertices los propios nodos, con su nombre, tama\~no y ruta. S\'olo que ahora cambia el layout de \texttt{partition} a \texttt{circlepack}, pero por lo dem\'as, consiste en lo mismo.~\\
 Se escogen los datos del propio paquete (\texttt{flare}) y gracias al paquete \texttt{igraph} se tranforman en unos datos con los que poder trabajar.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -3544,7 +3549,7 @@ Primero se necesita descargar el paquete del \href{https://github.com/jeromefroe
 \end{kframe}
 \end{knitrout}
 
-Y para los datos, por ejemplo, se encuentra, como se ha dicho en la introducci\'on de este diagrama, una base de datos con la poblacion de cada pais.
+Y para los datos, por ejemplo, se encuentra, como se ha dicho en la introducci\'on de este diagrama, una base de datos con la poblacion de cada pais. Donde se obtiene en cada fila el valor de poblaci\'on, su nombre (Pa\'is), el padre inmediato (Regi\'on) y el 'abuelo' (Continente).
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -3710,7 +3715,7 @@ Debido a que cuenta con interactividad solo se muestra una foto del diagrama obt
 \textbf{. . .}
 \end{center}
 ~\\
-Para poder realizar los datos que se necesiten existen dos posibilidades: una, seguir la estructura de ExampleGDP, y dos crear la estructura de nodos gracias a \texttt{vt-create-node} y \texttt{vt-add-nodes} como en el siguiente ejemplo recreando el gr\'afico de \cite[p\'ag 194]{Circle}.
+Para poder realizar los datos que se necesiten existen dos posibilidades: una, seguir la estructura de ExampleGDP, y dos crear la estructura de nodos gracias a \texttt{vt-create-node} y \texttt{vt-add-nodes} como en el siguiente ejemplo recreando el gr\'afico de \cite[p\'ag 194]{Circle}. Representando la cantidad de prote\'inas de diferentes tejidos de un rat\'on, agrup\'andolas por su funci\'on.
 
 Se ve como se pueden contruir los nodos mediante las dos funciones.
 \begin{knitrout}
@@ -3838,7 +3843,7 @@ Esta es la \'ultima forma de representar los diagramas de \'arbol con formato ci
 ~\\Para crear este diagrama, como los anteriores de este tipo, se busca unas estructuras de datos jer\'arquicas para que se indique qu\'e nodos hijo tiene cada padre y viceversa.
 \subsubsection{R B\'asico y ape}
 En esta parte se van a implementar los dendogramas circulares gracias al tratamiento de datos que ofrece la librer\'ia ape y una funci\'on b\'asica de R.~\\
-Primero se obtienen los datos para poder trabajar con ellos, creando unos datos gracias al agrupamiento jer\'arquico (hierarchical clustering).
+Primero se obtienen los datos para poder trabajar con ellos, creando unos datos gracias al agrupamiento jer\'arquico (hierarchical clustering). Los datos constan de valores porcentuales de arrestos por asesinato, asalto, etc., agrup\'andolos por territorio.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}

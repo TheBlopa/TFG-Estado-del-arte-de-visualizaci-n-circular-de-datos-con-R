@@ -1577,7 +1577,7 @@ Para preparar la plantilla del gr\'afico se necesitan los datos, el tipo partici
 La funci\'on elegida para crear el gr\'afico es \texttt{geom-node-arc-bar}, ya que establece los nodos del grafo como barras, la cuales se van a colorear en funci\'on de la profundidad. Y, para mejor est\'etica, se quitan el fondo y la leyenda.
 <<plot_ggraph_sol, echo=2:4, eval=FALSE>>=
 @
-<<plot_ggraph_sol, echo=FALSE, fig.align='center', fig.height=3.5, fig.width=3.5>>=
+<<plot_ggraph_sol, echo=FALSE, fig.align='center', fig.height=3.4, fig.width=3.4>>=
 @
 \clearpage
 Como se ve en el resultado del gr\'afico, para que se puedan poner etiquetas y entenderse, se necesitara quitar alg\'un nivel de profundidad. Y al final reconstruir el gr\'afico de nuevo con la funci\'on de igraph.
@@ -1762,7 +1762,7 @@ Para realizar estos diagramas se han encontrado cuatro paquetes, algunos ofrecen
 \subsubsection{Paquete fmsb}
 El nombre de este paquete %\cite{docu_fmsb}
 viene de Functions for Medical Statistics Book with some Demographic Data. Las funciones que tiene el paquete son implementaciones del libro Practices of Medical and Health Data Analysis using R. Y, para recrear este diagrama, el paquete cuenta con la funci\'on \texttt{radarchart}.
-Para realizarlo se necesitan los datos adecuados, por lo que se va a optar por representar uno de los gr\'aficos del libro de Manuel Lima %\cite[p\'ag 151]{Circle}
+Para realizarlo se necesitan los datos adecuados, basados en los nombres de las entidades y sus valores, por lo que se va a optar por representar uno de los gr\'aficos del libro de Manuel Lima %\cite[p\'ag 151]{Circle}, el ratio de muertes por accidentes por mes.
 <<data_fsmb>>=
 values <- c(5.3, 5.3, 5.2, 5.6, 6.4, 7.9, 7.5, 7.0, 6.5, 5.6, 5.6, 5.7)
 names <- c("Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", 
@@ -1946,7 +1946,7 @@ library(tidyverse)
 library(viridis)
 library(ggplot2)
 @
-Despu\'es, para crear los datos de las columnas apiladas en este caso, se usan tres valores generados con aleatoriedad, con un total de 60 columnas con tres valores cada una.
+Despu\'es, para crear los datos de las columnas apiladas en este caso, se usan tres valores generados con aleatoriedad, con un total de 60 columnas con tres valores cada una. Agrupando tres categor\'ias por medio de una cuarta.
 <<data_col_sep_ggplo>>=
 data <- data.frame(
   individual=seq(1,60),
@@ -2297,7 +2297,7 @@ Para implementar este gr\'afico se pueden usar dos paquetes, los dos faciles de 
 \subsubsection{Paquete ggraph}
 En este paquete %\cite{docu_ggraph}, 
 como se ha visto en el diagrama de Grid \'Arbol (\ref{ssec:rayosSol}
-), se va a recurrir a la misma funci\'on y misma base de datos, solo que ahora cambia el layout de \texttt{partition} a \texttt{circlepack}, pero por lo dem\'as, consiste en lo mismo.~\\
+), se va a recurrir a la misma funci\'on y misma base de datos, con estructura de datos jer\'arquicos, donde las ramas son como se unen los nodos (from-to) y los vertices los propios nodos, con su nombre, tama\~no y ruta. S\'olo que ahora cambia el layout de \texttt{partition} a \texttt{circlepack}, pero por lo dem\'as, consiste en lo mismo.~\\
 Se escogen los datos del propio paquete (\texttt{flare}) y gracias al paquete \texttt{igraph} se tranforman en unos datos con los que poder trabajar.
 <<datos_ggraph, message=FALSE>>=
 library(ggraph)
@@ -2360,7 +2360,7 @@ library(circlepackeR)
 @
 <<install, echo=FALSE, eval=2>>=
 @
-Y para los datos, por ejemplo, se encuentra, como se ha dicho en la introducci\'on de este diagrama, una base de datos con la poblacion de cada pais.
+Y para los datos, por ejemplo, se encuentra, como se ha dicho en la introducci\'on de este diagrama, una base de datos con la poblacion de cada pais. Donde se obtiene en cada fila el valor de poblaci\'on, su nombre (Pa\'is), el padre inmediato (Regi\'on) y el 'abuelo' (Continente).
 <<datos_cicle, echo=FALSE>>=
 url<-"https://raw.githubusercontent.com/"
 github <- "holtzy/data_to_viz/master/Example_dataset/"
@@ -2470,7 +2470,7 @@ saveWidget(p,file="pol_interactive.html")
 \textbf{. . .}
 \end{center}
 ~\\
-Para poder realizar los datos que se necesiten existen dos posibilidades: una, seguir la estructura de ExampleGDP, y dos crear la estructura de nodos gracias a \texttt{vt-create-node} y \texttt{vt-add-nodes} como en el siguiente ejemplo recreando el gr\'afico de %\cite[p\'ag 194]{Circle}.
+Para poder realizar los datos que se necesiten existen dos posibilidades: una, seguir la estructura de ExampleGDP, y dos crear la estructura de nodos gracias a \texttt{vt-create-node} y \texttt{vt-add-nodes} como en el siguiente ejemplo recreando el gr\'afico de %\cite[p\'ag 194]{Circle}. Representando la cantidad de prote\'inas de diferentes tejidos de un rat\'on, agrup\'andolas por su funci\'on.
 <<create_data, echo=FALSE>>=
 n <- vt_create_node("Proteinas")
 n <- vt_add_nodes(n, refnode="Proteinas",node_names=c("DNA", "Metabolism", "Cells",
@@ -2572,7 +2572,7 @@ Esta es la \'ultima forma de representar los diagramas de \'arbol con formato ci
 ~\\Para crear este diagrama, como los anteriores de este tipo, se busca unas estructuras de datos jer\'arquicas para que se indique qu\'e nodos hijo tiene cada padre y viceversa.
 \subsubsection{R B\'asico y ape}
 En esta parte se van a implementar los dendogramas circulares gracias al tratamiento de datos que ofrece la librer\'ia ape y una funci\'on b\'asica de R.~\\
-Primero se obtienen los datos para poder trabajar con ellos, creando unos datos gracias al agrupamiento jer\'arquico (hierarchical clustering).
+Primero se obtienen los datos para poder trabajar con ellos, creando unos datos gracias al agrupamiento jer\'arquico (hierarchical clustering). Los datos constan de valores porcentuales de arrestos por asesinato, asalto, etc., agrup\'andolos por territorio.
 <<datos_den>>=
 data(USArrests)
 dd <- dist(scale(USArrests), method = "euclidean")
