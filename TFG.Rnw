@@ -1692,7 +1692,7 @@ Otra forma de crear estos pieDonuts es con este paquete %\cite{docu_ggiraphExtra
 , pero en este caso pueden ser interactivos. Este paquete es una extensi\'on del paquete ggplot2 %\cite{docu_ggplot2}
 usando las funciones sustitutivas del paquete ggiraph %\cite{docu_ggiraph}
 .
-Se usan datos de las bases de datos moonbook.
+Se usan datos de las bases de datos moonbook. Con pacientes con STEMI (S\'indrome coronario agudo con elevaci\'on del segmento ST), NSTEMI (S\'indrome coronario agudo sin elevaci\'on del segmento ST), Unstable Angina (Angina inestable); relacion\'andolos con los h\'abitos de fumar de dichos pacientes.
 <<plot_ggiraph, eval=FALSE>>=
 library(ggiraphExtra)
 library(ggplot2)
