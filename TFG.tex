@@ -108,13 +108,13 @@ Para cada situaci\'on existe un tipo de visualizaci\'on de datos: para n\'umeros
 Todas estas variedades de visualizaciones se pueden, como  es objetivo de este trabajo, realizar con un formato de c\'irculos. Estos son una de las figuras geom\'etricas que m\'as fascinan a la humanidad, debido a que se vislumbraban con mucha facilidad en la naturaleza, como astros celestiales, lagos, ondas generadas en el agua, frutas, etc.~\\
 Los c\'irculos empezaron a usarse en arquitectura, por ejemplo, en b\'ovedas; en ciudades, como las aldeas de nativos americanos; en fortificaciones, como la muralla de \'Avila (Espa\~na); met\'aforas universales, como de la perfecci\'on (God the Architect, William de Bailes), la unidad (Fra Mauro map, Fra Mauro), el movimiento (Yama holding the wheel of life), la infinidad (Miracles of Each Moment); en mucha de la simbolog\'ia como , la representaci\'on del tiempo, el ciclo de la vida, en los logos de empresas como, Vodafone, Bayer, Motorola, Mercedes; y en simbolog\'ia antigua como los petroglifos prehistoricos de Argyll.~\\~\\
 Los humanos est\'an constantemente buscando patrones, orden, pautas, instruciones, debido a ello consiguen compreder mejor lo que les rodea, como los seres vivos (biolog\'ia), seres inertes, lo terrenal, lo espacial y en general, los patrones que gobiernan el universo. Y gracias al formato circular de los diagramas, que se representar\'an a lo largo de este trabajo, se pueden identificar dichas pautas, normalmente c\'iclicas, en los diferentes datos que recreen los distintos diagramas.~\\~\\
-Para este trabajo se ha optado por R\cite{R}
+Para este trabajo se ha optado por R%\cite{R}
 , lenguaje de programaci\'on con enfoque estad\'istico basado en software libre, donde cada persona pueda contribuir a su crecimiento mediante un conjunto de funciones agrupadas en paquetes. Este lenguaje es uno de los m\'as usados para Big Data, miner\'ia de datos, matem\'aticas financieras, aprendizaje autom\'atico, etc. En este caso, se trabaja en el \'area de Big Data con la visualizaci\'on de datos, por lo que estos diferentes diagramas ayudan a la observacion y comprensi\'on de grandes cantidades de datos.
 \clearpage
 \section{A\'nalisis de los Diagramas}\label{sec:Analisis}
 Para poder usar cada uno de los diagramas, es necesario comprender sus virtudes, sus defectos y como se estructuran los datos para depu\'es elegir el mas adecuado.~\\
 En esta secci\'on se estudia la definici\'on de los diagramas, c\'omo y de qu\'e se componen , para poder identificar despu\'es qu\'e paquetes de R pueden implementar dichos diagramas sus ventajas e inconvenientes a la hora de visualizar los datos requeridos respecto a otros formatos.~\\
-Esta selecci\'on de diagramas circulares se han escogido siguiendo el libro de Manuel de Lima \cite{Circle}
+Esta selecci\'on de diagramas circulares se han escogido siguiendo el libro de Manuel de Lima %\cite{Circle}
 , donde se presenta una clasificaci\'on diferenciada en familias seg\'un la similaridad de construcci\'on.~\\ Estos se agrupan en siete familias:
 \begin{itemize}
 \item Familia de anillos y espirales. Estos diagramas presentan patrones de c\'irculos conc\'entricos.
@@ -313,7 +313,7 @@ Existe una variante de este diagrama llamado de Cuerdas sin Cintas que simplific
 \subsection{Diagrama de Redes Circulares}
 El diagrama de redes circulares es una variante de los de redes o, tambi\'en llamados gr\'afico de red, mapa de red y de nodo-enlace, cuyo formato cambia a circular.~\\
 Los diagramas de redes son un tipo de visualizaci\'on que muestra como las diferentes entidades, o nodos, se relacionan entre s\'i. Su estructura consta de las entidades, representadas como puntos, y las conexiones entre s\'i, como l\'ineas que pueden ser dirigidas, para representar dependencia, o no, para simples conexiones.~\\
-Todos estos diagramas se han estudiado en el trabajo de Cristopher Calva C\'ardenas\cite{tfg}
+Todos estos diagramas se han estudiado en el trabajo de Cristopher Calva C\'ardenas%\cite{tfg}
 , que estudia, al igual que este proyecto, la implementaci\'on de los diferentes diagramas de redes con el lenguaje R. Por lo que se escoger\'an las variantes circulares de dichas redes. 
 ~\\~\\~\\
 \vbox{
@@ -329,22 +329,21 @@ En las siguientes subsecciones se expondr\'an los diagramas circulares que se ha
 \subsection{Diagrama de Anillos}\label{ssec:anillos}
 Este diagrama consiste en un grupo de c\'irculos conc\'entricos. En cada uno de ellos se puede representar: una informaci\'on diferente con diferentes gr\'aficos o, la misma informaci\'on con mismos tipos de gr\'aficos solo que con una variable diferente para poder realizar comparaciones.
 \subsubsection{Paquete ggplot2}
-Se empieza con uno de los paquetes que m\'as ser\'a usado a lo largo del trabajo\cite{docu_ggplot2}
+Se empieza con uno de los paquetes que m\'as ser\'a usado a lo largo del trabajo%\cite{docu_ggplot2}
 , debido a que es uno de los m\'as vers\'atiles y personalizables, pues se puede retocar y ajustar cada uno de los componentes del gr\'afico que resulte de este; como la escala, el sistema de coordenadas, la etiquetas, etc.
 Tambi\'en, una de las mejores caracteristicas de este paquete, es su compatibilidad con otros paquetes de modificaci\'on de datos o de realizaci\'on de gr\'aficos.~\\
 Lo primero que se va a necesitar en todas las demostraciones de este trabajo es la obtenci\'on y manipulaci\'on de los datos. En este caso se necesitan 2 variables, indicando cuantos anillos componen el diagrama y el ancho de cada uno de ellos.~\\
-La primera forma de crear los anillos usa la funci\'on \texttt{geom-bar}, la cual reproduce el diagramas de barras cl\'asico, obteniendo su magnitud de la varible que se asigne para indicar su ancho.~\\Los datos que se van a usar son: una serie de entidades y sus valores porcentuales. En este caso se generan aleatoriamente, pero se pueden obtener como la frecuencia de los datos en una columna, de cualquier base de datos, proporcionando un valor porcentual a la frecuencia.
+La primera forma de crear los anillos usa la funci\'on \texttt{geom-bar}, la cual reproduce el diagramas de barras cl\'asico, obteniendo su magnitud de la varible que se asigne para indicar su ancho.~\\Los datos que se van a usar son: una serie de entidades y sus valores porcentuales. En este caso obtiene la frecuencia de los veh\'iculos en la columna de carb, exponiendo en el ancho de cada anillo, la cantidad de coches por el n\'umero de carburadores .
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{datos} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}
-  \hlkwc{anillos}\hlstd{=LETTERS[}\hlnum{1}\hlopt{:}\hlnum{10}\hlstd{],}
-  \hlkwc{ancho}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{10}\hlstd{,}\hlnum{8}\hlstd{,}\hlnum{10}\hlstd{,}\hlnum{9}\hlstd{,}\hlnum{5}\hlstd{,}\hlnum{12}\hlstd{,}\hlnum{20}\hlstd{,}\hlnum{6}\hlstd{,}\hlnum{10}\hlstd{,}\hlnum{10}\hlstd{)}
+  \hlkwc{ancho}\hlstd{=}\hlkwd{table}\hlstd{(mtcars}\hlopt{$}\hlstd{carb)}
 \hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-En esta prueba se establecen 10 anillos designados por letras, como el nombre de entidades, y el ancho de cada uno es el valor porcentual.
+En esta prueba se establecen 6 anillos designados el n\'umero de carburadores, como el nombre de entidades, y el ancho de cada uno es la cantidad de coches con esa caracter\'istica.
 
 Lo primero ser\'a cargar la librer\'ia ggplot2 para poder usar sus funciones.
 \begin{knitrout}
@@ -358,7 +357,7 @@ Para empezar con la funci\'on principal del paquete, es necesario indicar la fue
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggplot}(datos, \hlkwd{aes}(x=\hlstr{""}, y=ancho, fill=anillos)) +
+\hlkwd{ggplot}(datos, \hlkwd{aes}(x=\hlstr{""}, y=ancho.Freq, fill=ancho.Var1)) +
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -371,7 +370,7 @@ Una vez establecidos los par\'ametros iniciales se procede a usar la funci\'on p
 \end{kframe}
 \end{knitrout}
 \clearpage
-Ahora no es mas que un diagrama de barras tradicional, donde las barras tienen la misma longitud, asi que, para hacer que las barras se conviertan en anillos, es necesario cambiar su sistema de coordenadas de cartesianas a polares, con la funci\'on \texttt{coord-polar}. Por defecto se establece que la primera variable con datos sea la que se cambia de sistema de coordenadas, en este caso el eje Y.
+Ahora no es mas que un diagrama de barras tradicional, donde las barras tienen la longitud deseada, asi que, para hacer que las barras se conviertan en anillos, es necesario cambiar su sistema de coordenadas de cartesianas a polares, con la funci\'on \texttt{coord-polar}. Por defecto se establece que la primera variable con datos sea la que se cambia de sistema de coordenadas, en este caso el eje Y.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -379,12 +378,13 @@ Ahora no es mas que un diagrama de barras tradicional, donde las barras tienen l
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Por \'ultimo, se usan unas funciones para alterar el tema del gr\'afico como el fondo, la cuadr\'icula, la leyenda, etc. Pero, para este ejemplo, se prefiere carecer de todo ello para una mejor est\'etica.
+Por \'ultimo, se usan unas funciones para alterar el tema del gr\'afico como el fondo, la cuadr\'icula, la leyenda, etc. Pero, para este ejemplo, se prefiere una est\'etica vac\'ia y la leyenda de los colores.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-  \hlkwd{theme_void}\hlstd{()} \hlopt{+}
-  \hlkwd{theme}\hlstd{(}\hlkwc{legend.position}\hlstd{=}\hlstr{"none"}\hlstd{)}
+  \hlkwd{theme_void}\hlstd{()} \hlopt{+} \hlkwd{labs}\hlstd{(}\hlkwc{title} \hlstd{=} \hlstr{"Coches por Carburadores"}\hlstd{)}
+  \hlkwd{labs}\hlstd{(}\hlkwc{fill}\hlstd{=}\hlstr{'N Carburadores'}\hlstd{)} \hlopt{+}
+  \hlkwd{theme}\hlstd{(}\hlkwc{legend.position} \hlstd{=} \hlstr{'bottom'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -397,7 +397,10 @@ Resultando en:
 }
 
 
-
+\begin{kframe}\begin{verbatim}
+## NULL
+\end{verbatim}
+\end{kframe}
 \end{knitrout}
 
 \clearpage
@@ -407,13 +410,13 @@ La funci\'on \texttt{geom-tile} sirve para crear rect\'angulos y, para delimitar
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{datos} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}
-  \hlkwc{anillos}\hlstd{=LETTERS[}\hlnum{1}\hlopt{:}\hlnum{10}\hlstd{],}
-  \hlkwc{ancho}\hlstd{=}\hlkwd{c}\hlstd{(}\hlkwd{rep}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{10}\hlstd{))}
+  \hlkwc{anillos}\hlstd{=datos}\hlopt{$}\hlstd{ancho.Var1,}
+  \hlkwc{ancho}\hlstd{=}\hlkwd{c}\hlstd{(}\hlkwd{rep}\hlstd{(}\hlnum{1}\hlstd{,}\hlkwd{nrow}\hlstd{(datos)))}
 \hlstd{)}
 \hlkwd{ggplot}\hlstd{(datos,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=anillos,} \hlkwc{y}\hlstd{=ancho))} \hlopt{+}
   \hlkwd{geom_tile}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{fill} \hlstd{= anillos))} \hlopt{+}
   \hlkwd{coord_polar}\hlstd{(}\hlstr{'y'}\hlstd{)} \hlopt{+}
-  \hlkwd{theme_void}\hlstd{()}
+  \hlkwd{theme_void}\hlstd{()} \hlopt{+} \hlkwd{labs}\hlstd{(}\hlkwc{title} \hlstd{=} \hlstr{"Coches por Carburadores"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 
@@ -422,26 +425,33 @@ La funci\'on \texttt{geom-tile} sirve para crear rect\'angulos y, para delimitar
 }
 
 
-
+\begin{kframe}\begin{alltt}
+  \hlkwd{labs}\hlstd{(}\hlkwc{fill}\hlstd{=}\hlstr{'N Carburadores'}\hlstd{)} \hlopt{+}
+  \hlkwd{theme}\hlstd{(}\hlkwc{legend.position} \hlstd{=} \hlstr{'bottom'}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## NULL
+\end{verbatim}
+\end{kframe}
 \end{knitrout}
 \clearpage
 \subsubsection{Paquete circlize}
-Este es otro de los paquetes m\'as versatiles para los gr\'aficos con dise\~no circular\cite{docu_circlize}
+Este es otro de los paquetes m\'as versatiles para los gr\'aficos con dise\~no circular%\cite{docu_circlize}
 . Al contrario que ggplot2 que crea gr\'aficos y necesita cambiarlos de sistemas de coordenadas, este paquete ya esta dise\~nado para diagramas circulares.~\\
 Lo primero que se necesita hacer es establecer que no se divida cada anillo, ya que circlize permite la posibilidad de dividirlos generando una cuadr\'icula circular.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{datos} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}
-  \hlkwc{division} \hlstd{=} \hlkwd{sample}\hlstd{(letters[}\hlnum{1}\hlstd{],} \hlnum{1000}\hlstd{,} \hlkwc{replace} \hlstd{=} \hlnum{TRUE}\hlstd{),}
-  \hlkwc{x} \hlstd{=} \hlkwd{runif}\hlstd{(}\hlnum{1000}\hlstd{)}\hlopt{*}\hlnum{10}\hlstd{,}
-  \hlkwc{y} \hlstd{=} \hlkwd{runif}\hlstd{(}\hlnum{1000}\hlstd{)}
+  \hlkwc{division} \hlstd{=} \hlkwd{sample}\hlstd{(letters[}\hlnum{1}\hlstd{],} \hlnum{150}\hlstd{,} \hlkwc{replace} \hlstd{=} \hlnum{TRUE}\hlstd{),}
+  \hlkwc{x} \hlstd{= iris}\hlopt{$}\hlstd{Sepal.Length,}
+  \hlkwc{y} \hlstd{= iris}\hlopt{$}\hlstd{Sepal.Width}
 \hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 
-La variable divisi\'on establece que cada anillo solo tendr\'a un vector con 1000 datos y las otras dos variables se van a usar en los diferentes diagramas de cada anillo. Representando la variable X e Y de los gr\'aficos l\'ineas y puntos. Para la parte del histograma s\'olo se requiere de una variable de los datos, mostrando la frecuencia de los valores de la variable entre intervalos. ~\\~\\
+La variable divisi\'on establece que cada anillo solo tendr\'a un vector con 150 datos y las otras dos variables se van a usar en los diferentes diagramas de cada anillo, correlacionando las variables de longitud y ancho de los s\'epalos, recogidos de la base de datos de plantas iris. Representando la variable X e Y de los gr\'aficos l\'ineas y puntos. Para la parte del histograma s\'olo se requiere de una variable de los datos, mostrando la frecuencia de los valores de la variable entre intervalos. ~\\~\\
 Se necesita crear una plantilla para cada diagrama. Esta se genera primero al inicializar el gr\'afico y luego con las funciones \texttt{trackPlotRegion} o \texttt{track} para realizar las plantillas de cada anillo.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -465,7 +475,7 @@ Para recrear los diferentes gr\'aficos, se van a usar 3 m\'etodos diferentes. El
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{circos.trackLines}\hlstd{(datos}\hlopt{$}\hlstd{division, datos}\hlopt{$}\hlstd{x[}\hlkwd{order}\hlstd{(datos}\hlopt{$}\hlstd{x)], datos}\hlopt{$}\hlstd{y[}\hlkwd{order}\hlstd{(datos}\hlopt{$}\hlstd{x)],}
+\hlkwd{circos.trackLines}\hlstd{(datos}\hlopt{$}\hlstd{division, datos}\hlopt{$}\hlstd{x[}\hlkwd{order}\hlstd{(datos}\hlopt{$}\hlstd{x)], datos}\hlopt{$}\hlstd{y,}
                   \hlkwc{col} \hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0.1}\hlstd{,}\hlnum{0.5}\hlstd{,}\hlnum{0.8}\hlstd{,}\hlnum{0.3}\hlstd{),} \hlkwc{lwd}\hlstd{=}\hlnum{2}\hlstd{)}
 \end{alltt}
 \end{kframe}
@@ -482,13 +492,14 @@ Por \'ultimo, el tercer m\'etodo consiste en crear la plantilla con \texttt{trac
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{circos.track}\hlstd{(datos}\hlopt{$}\hlstd{division,} \hlkwc{x} \hlstd{= datos}\hlopt{$}\hlstd{x[}\hlkwd{order}\hlstd{(datos}\hlopt{$}\hlstd{x)],} \hlkwc{y} \hlstd{= datos}\hlopt{$}\hlstd{y[}\hlkwd{order}\hlstd{(datos}\hlopt{$}\hlstd{x)],}
+\hlkwd{circos.track}\hlstd{(datos}\hlopt{$}\hlstd{division,} \hlkwc{x} \hlstd{= datos}\hlopt{$}\hlstd{x[}\hlkwd{order}\hlstd{(datos}\hlopt{$}\hlstd{x)],} \hlkwc{y} \hlstd{= datos}\hlopt{$}\hlstd{y,}
              \hlkwc{panel.fun} \hlstd{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{,} \hlkwc{y}\hlstd{) \{}
                \hlkwd{circos.points}\hlstd{(x, y,} \hlkwc{pch} \hlstd{=} \hlnum{16}\hlstd{,} \hlkwc{cex} \hlstd{=} \hlnum{0.5}\hlstd{)\})}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 Todas las funciones usadas se pueden realizar con los tres m\'etodos, ya que existe la funci\'on para usar sin la funci\'on \texttt{track} y la que se usa dentro de ella.~\\
+\clearpage
 Al final se vuelve a representar el eje X para mejor visualizaci\'on. Y se emplea \texttt{circos.clear} para limpiar las variables, para que al volver a crear con circlize todas sus variables no esten modificadas.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -498,7 +509,6 @@ Al final se vuelve a representar el eje X para mejor visualizaci\'on. Y se emple
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-\clearpage
 Resultando en el siguiente gr\'afico:~\\~\\
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
@@ -514,7 +524,7 @@ Resultando en el siguiente gr\'afico:~\\~\\
 \textbf{. . .}
 \end{center}
 \subsubsection{Paquete CMplot}
-Este paquete se sustenta en el diagrama Manhattan convirti\'endolo en una variable circular del Manhattan\cite{docu_CMplot}
+Este paquete se sustenta en el diagrama Manhattan convirti\'endolo en una variable circular del Manhattan%\cite{docu_CMplot}
 . Este es un tipo de diagrama de dispersi\'on, generalmente usado para representar datos con una gran cantidad de puntos y con una distribuci\'on de valores de gran magnitud.~\\
 Este diagrama se usa mucho para representar estudios de genoma, situando en el eje X la posici\'on del cromosoma y en el eje Y el rango de asociaci\'on con un rasgo.~\\
 Para el ejemplo con este paquete, se va a hacer uso de uno de los datos que proporciona el propio paquete \texttt{pig60k}, el cual da los resultados de asociaci\'on de todo el genoma de 3 rasgos, cuyos individuos fueron genotipados por chip de cerdo 60k.
@@ -584,7 +594,7 @@ En conclusi\'on; el paquete m\'as versatil a la hora de este diagrama es \texttt
 Hay varias formas de aproximarse para realizar este tipo de diagramas, una de ellas consiste en realizar un diagrama de barras tradicional y convertir su eje Y al formato radial, la otra forma, se realiza creando un c\'irculo como plantilla y arcos como las barras (c\'irculos conc\'entricos).~\\
 En este apartado se encuentran un paquete para la primera f\'ormula y dos para la segunda, pero todos los paquetes dan un gr\'afico muy similar. Aunque unos dan m\'as  posiblilidades de personalizaci\'on, son m\'as complejos.
 \subsubsection{Paquete ggplot2}
-En el punto anterior ya se ha visto este paquete\cite{docu_ggplot2}
+En el punto anterior ya se ha visto este paquete%\cite{docu_ggplot2}
  y, durante todos los dem\'as puntos, se demostrar\'a lo vers\'atil que es. En este tipo de grafo, lo que hay que hacer es un buen diagrama de barras tradicional con este paquete y aplicarle la coordenada polar, la cual transforma la coordenada deseada de formato lineal a circular.~\\
 Primero se crea la tabla con el nombre de las barras y su valor, en este caso la importancia de Internet que tienen las categorias al tomar decisiones. Y se carga la libreria para despu\'es usar sus funciones:
 
@@ -686,7 +696,7 @@ Y la figura queda como se ve a continuaci\'on.~\\~\\
 
 \end{knitrout}
 \clearpage
-Ahora se va a implementar uno de los grafos del libro\cite[p\'ag 76]{Circle}
+Ahora se va a implementar uno de los grafos del libro%\cite[p\'ag 76]{Circle}
 , para ello se vuelven a preparar los datos como antes:
 
 \begin{knitrout}
@@ -759,7 +769,7 @@ Resultando en el siguiente gr\'afico.
 \textbf{. . .}
 \end{center}
 ~\\Existe un paquete que proporciona interactividad a los gr\'aficos del paquete ggplot2, y suele funcionar mejor cuando hay una gran cantidad de datos.~\\
-El paquete \texttt{ggiraph}\cite{docu_ggiraph}
+El paquete \texttt{ggiraph}%\cite{docu_ggiraph}
 ayuda a crear la interactividad con algunas funciones que se unen al gr\'afico de ggplot2, en este caso, se usa \texttt{geom-col-interactive}, para crear las barras interactivas. Para que se represente bien hay que dar los valores aduacuados a las nuevas variables interactivas \texttt{tooltip} y \texttt{data-id}.~\\
 Primero se necesita una gran cantidad de datos, aleatorios en este caso, creando los nombres de las entidades (barras) y sus valores.
 \begin{knitrout}
@@ -813,7 +823,7 @@ Dando como resultado el siguiente gr\'afico.~\\
 \subsubsection{Paquete Plotrix}
 El paquete plotrix proporciona una serie de plots espec\'ificos que ofrecen una f\'acil personalizaci\'on (color, posici\'on del texto...).~\\
 A lo largo del proyecto, se observar\'a dichos grafos utilizarse en los diferentes tipos de diagramas circulares.~\\
-En la documentaci\'on \cite{docu_plotrix}
+En la documentaci\'on %\cite{docu_plotrix}
 se encuentran los m\'etodos para crear este Diagrama de Barras Radiales, \texttt{draw.circle} y \texttt{draw.arc}, que se encargan de recrear los c\'irculos que se usaran de plantilla para que se expongan las barras. La orden \texttt{draw.arc} necesita conocer en cual \'angulo comienzan las barras y en cual terminan, adem\'as de los datos de las barras.
 
 Primero llamar a la libreria.
@@ -893,7 +903,7 @@ Despu\'es se usar\'a con los datos del primer gr\'afico.
 El paquete circlize usa la filosof\'ia de descomponer el c\'irculo en figuras geom\'etricas m\'as 
 simples, como l\'ineas y puntos, implementando grafos circulares a partir de gr\'aficos m\'as 
 simples; ``implementa funciones gr\'aficas de bajo nivel para agregar gr\'aficos en las regiones de 
-trazado circular".\cite{docu_circlize}
+trazado circular".%\cite{docu_circlize}
 ~\\Dichas funciones simples son: puntos, l\'ineas, rect\'angulos, texto, etc. Y, para organizar las 
 regiones de trazado circulan, existen las siguientes funciones: inicializar, actualizar, trazado, 
 limpiar, etc.~\\
@@ -998,7 +1008,7 @@ En conclusi\'on, la mejor opci\'on para crear estos diagramas de barras radiales
 Este diagrama se puede usar para representar datos a lo largo del tiempo, por lo que la preparaci\'on de dichos datos, es lo m\'as importante en \'este. 
 Para obtener este grafo, habr\'a que tener unos datos adecuados, que suelen implicar tres variables; una para ver los grados del c\'irculo, otro para su altura dentro del c\'irculo y por \'ultimo, a veces puede haber otra variable para generar el tama\~no de la figura geom\'etrica que se decida (barra, c\'irculo, etc.).
 \subsubsection{Paquete ggplot2}
-Se vuelve a ver este paquete\cite{docu_ggplot2}
+Se vuelve a ver este paquete%\cite{docu_ggplot2}
 debido a su versatilidad, pero ahora se depende mas de los datos que del paquete, este usa tres posibles generadores de barras: \texttt{rect, segment y title}~\\
 Estos datos son el tiempo en movimiento de una persona durante 5 d\'ias, indicando la hora cuando se recogieron dichos datos.
 \begin{knitrout}
@@ -1233,21 +1243,28 @@ Este diagrama es una variante de los diagramas m\'as usados (diagrama de barras)
 , esta es otra variante que en vez de posicionar el valor de las barras en el eje X lo situ\'a en el eje Y quedando el eje X para los nombres de las barras.
 Para realizar este tipo de diagramas, la gran mayoria de paquetes lo afrontan creando un diagrama de barras con sistema de coordenadas cartesianas y transforman el sistema del eje X a polares, pero otros paquetes simplemente crear el diagrama cambiando la direcci\'on de las barras.
 \subsubsection{Paquete ggplot2}
-Con este paquete \cite{docu_ggplot2}
+Con este paquete %\cite{docu_ggplot2}
 se procede a copiar la manera de crear el diagrama de Barras Radiales \autoref{ssec:barrasRadiales}
  pero, en esta ocasi\'on, la coordenada a transformar esta vez se la X.~\\
-Primero se va a crear los datos de ejemplo para representar en este gr\'afico, estableciendo las entidades (barras), sus valores y el grupo al que pertenecen las barras, junto con la llamada de la libreria.
+Primero se va a crear los datos de ejemplo para representar en este gr\'afico, estableciendo las entidades (barras) y sus valores, junto con la llamada de la libreria. Se escoge una base de datos de multas por velocidad, siendo el eje X la velocidad y el eje Y la cantidad de multas que hay de dicha velocidad.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
+\hlstd{data} \hlkwb{<-} \hlkwd{read.csv}\hlstd{(}\hlstr{"amis.csv"}\hlstd{,} \hlkwc{header} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \hlstd{data} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}
-  \hlkwc{id}\hlstd{=}\hlkwd{seq}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{20}\hlstd{),}
-  \hlkwc{individual}\hlstd{=}\hlkwd{paste}\hlstd{(} \hlstr{"Colum. "}\hlstd{,} \hlkwd{seq}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{20}\hlstd{),} \hlkwc{sep}\hlstd{=}\hlstr{""}\hlstd{),}
-  \hlkwc{group}\hlstd{=}\hlkwd{c}\hlstd{(} \hlkwd{rep}\hlstd{(}\hlstr{'A'}\hlstd{,} \hlnum{5}\hlstd{),} \hlkwd{rep}\hlstd{(}\hlstr{'B'}\hlstd{,} \hlnum{8}\hlstd{),} \hlkwd{rep}\hlstd{(}\hlstr{'C'}\hlstd{,} \hlnum{5}\hlstd{),} \hlkwd{rep}\hlstd{(}\hlstr{'D'}\hlstd{,} \hlnum{2}\hlstd{)) ,}
-  \hlkwc{value}\hlstd{=}\hlkwd{sample}\hlstd{(} \hlkwd{seq}\hlstd{(}\hlnum{10}\hlstd{,}\hlnum{50}\hlstd{),} \hlnum{20}\hlstd{,} \hlkwc{replace}\hlstd{=T)}
+  \hlkwc{velocidad}\hlstd{=}\hlkwd{table}\hlstd{(data}\hlopt{$}\hlstd{speed)}
 \hlstd{)}
 \hlkwd{library}\hlstd{(ggplot2)}
+\hlkwd{head}\hlstd{(data,}\hlnum{5}\hlstd{)}
 \end{alltt}
+\begin{verbatim}
+##   velocidad.Var1 velocidad.Freq
+## 1             26            103
+## 2             27            101
+## 3             28            198
+## 4             29            212
+## 5             30            330
+\end{verbatim}
 \end{kframe}
 \end{knitrout}
 
@@ -1255,8 +1272,8 @@ Para implementar este gr\'afico se escogen los datos, asignando los ejes corresp
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggplot}(data, \hlkwd{aes}(x=\hlkwd{as.factor}(id), y=value)) +
-  \hlkwd{geom_bar}(stat=\hlstr{"identity"}, fill=\hlkwd{alpha}(\hlstr{"blue"},0.2)) +
+\hlkwd{ggplot}(data, \hlkwd{aes}(x=velocidad.Var1, y=velocidad.Freq)) +
+  \hlkwd{geom_bar}(stat=\hlstr{"identity"}, fill=\hlkwd{alpha}(\hlstr{"lightblue"})) +
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1264,7 +1281,7 @@ Esta vez se puede controlar el espacio del centro mediante la variable \texttt{y
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-  \hlkwd{ylim}(-10,60) +
+  \hlkwd{ylim}(-10,600) +
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1272,21 +1289,16 @@ Se transforma el eje x de lineal a radial y se hace coincidir el principio del g
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-  \hlkwd{coord_polar}(start = 0) +
+  \hlkwd{coord_polar}(start = 90) +
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Y, por \'ultimo, se ajusta la est\'etica deseada ajustando el fondo y elementos como la leyenda y el texto de los ejes.
+Y, por \'ultimo, se ajusta la est\'etica deseada ajustando el fondo y elementos como el texto de los ejes.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
   \hlkwd{theme_minimal}\hlstd{()} \hlopt{+}
-  \hlkwd{theme}\hlstd{(}
-    \hlkwc{axis.text} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-    \hlkwc{axis.title} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-    \hlkwc{panel.grid} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-    \hlkwc{plot.margin} \hlstd{=} \hlkwd{unit}\hlstd{(}\hlkwd{rep}\hlstd{(}\hlopt{-}\hlnum{2}\hlstd{,}\hlnum{4}\hlstd{),} \hlstr{"cm"}\hlstd{)}
-  \hlstd{)}
+  \hlkwd{xlab}\hlstd{(}\hlstr{"Velocidad (mph)"}\hlstd{)} \hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Cantidad de multas"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1307,52 +1319,69 @@ Quedando el gr\'afico de la siguiente forma.
 \end{center}
 ~\\
 Como se ha observado con anterioridad, este paquete deja mucho espacio para la personalizaci\'on de estos gr\'aficos, por lo que se va a implementar el mismo gr\'afico que antes con grupos con espacios diferenciados y etiquetas.~\\
- Para crear los espacios entre los grupos, se va a a\~nadir al igual que en el diagrama de barras radiales, barras con datos vac\'ios para que dejen el espacio al no ser representados.
+ Para crear los espacios entre los grupos, se va a a\~nadir al igual que en el diagrama de barras radiales, barras con datos vac\'ios para que dejen el espacio al no ser representados. Se necesitan unos datos agrupados por alguna variable, para ello se escoge la base de datos de mtcars exponiendo cada coche con su velocidad, y agrupando los veh\'iculos por la cantidad de marchas que tienen.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{datos}\hlkwb{<-} \hlstd{mtcars}
+\hlstd{datos}\hlopt{$}\hlstd{name} \hlkwb{<-} \hlkwd{rownames}\hlstd{(datos)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Se suman varias barras que act\'uen de espaciadores. Creando una matriz vacia con 8 barras por cada grupo y juntarlo a los datos.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{empty_bar} \hlkwb{<-} \hlnum{8}
+\hlstd{to_add} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(} \hlkwd{matrix}\hlstd{(}\hlnum{NA}\hlstd{, empty_bar}\hlopt{*}\hlkwd{nrow}\hlstd{(}\hlkwd{table}\hlstd{(mtcars}\hlopt{$}\hlstd{gear)),} \hlkwd{ncol}\hlstd{(datos)) )}
+\hlkwd{colnames}\hlstd{(to_add)} \hlkwb{<-} \hlkwd{colnames}\hlstd{(datos)}
+\hlstd{to_add}\hlopt{$}\hlstd{gear} \hlkwb{<-} \hlkwd{rep}\hlstd{(}\hlkwd{rownames}\hlstd{(}\hlkwd{table}\hlstd{(datos}\hlopt{$}\hlstd{gear)),} \hlkwc{each}\hlstd{=empty_bar)}
+\hlstd{to_add}\hlopt{$}\hlstd{name} \hlkwb{<-} \hlkwd{rep}\hlstd{(}\hlstr{""}\hlstd{,} \hlkwc{each}\hlstd{=empty_bar)}
+\hlstd{datatrans} \hlkwb{<-} \hlkwd{rbind}\hlstd{(datos, to_add)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Ahora se reordenan los datos por sus marchas y se establece una variable para representar todas las filas.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(tidyverse)}
-\hlstd{empty_bar} \hlkwb{<-} \hlnum{4}
-\hlstd{to_add} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(} \hlkwd{matrix}\hlstd{(}\hlnum{NA}\hlstd{, empty_bar}\hlopt{*}\hlkwd{nlevels}\hlstd{(data}\hlopt{$}\hlstd{group),} \hlkwd{ncol}\hlstd{(data)) )}
-\hlkwd{colnames}\hlstd{(to_add)} \hlkwb{<-} \hlkwd{colnames}\hlstd{(data)}
-\hlstd{to_add}\hlopt{$}\hlstd{group} \hlkwb{<-} \hlkwd{rep}\hlstd{(}\hlkwd{levels}\hlstd{(data}\hlopt{$}\hlstd{group),} \hlkwc{each}\hlstd{=empty_bar)}
-\hlstd{datatrans} \hlkwb{<-} \hlkwd{rbind}\hlstd{(data, to_add)}
-\hlstd{datatrans} \hlkwb{<-} \hlstd{datatrans} \hlopt{%>%} \hlkwd{arrange}\hlstd{(group)}
+\hlstd{datatrans} \hlkwb{<-} \hlstd{datatrans} \hlopt{%>%} \hlkwd{arrange}\hlstd{(gear)}
 \hlstd{datatrans}\hlopt{$}\hlstd{id} \hlkwb{<-} \hlkwd{seq}\hlstd{(}\hlnum{1}\hlstd{,} \hlkwd{nrow}\hlstd{(datatrans))}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Para la parte de las etiquetas habr\'a que poner el datos que se quiera visualizar en todas las columnas y ajustar su altura y \'angulo
+Para la parte de las etiquetas habr\'a que poner el datos que se quiera visualizar en todas las columnas y ajustar que no se solapen entre s\'i. Esto se puede conseguir gracias a la librer\'ia ggrepel.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{label_data} \hlkwb{<-} \hlstd{datatrans}
-\hlstd{number_of_bar} \hlkwb{<-} \hlkwd{nrow}\hlstd{(label_data)}
-\hlstd{angle} \hlkwb{<-} \hlnum{90} \hlopt{-} \hlnum{360} \hlopt{*} \hlstd{(label_data}\hlopt{$}\hlstd{id}\hlopt{-}\hlnum{0.5}\hlstd{)} \hlopt{/}\hlstd{number_of_bar}
-\hlstd{label_data}\hlopt{$}\hlstd{hjust} \hlkwb{<-} \hlkwd{ifelse}\hlstd{( angle} \hlopt{< -}\hlnum{90}\hlstd{,} \hlnum{1}\hlstd{,} \hlnum{0}\hlstd{)}
-\hlstd{label_data}\hlopt{$}\hlstd{angle} \hlkwb{<-} \hlkwd{ifelse}\hlstd{(angle} \hlopt{< -}\hlnum{90}\hlstd{, angle}\hlopt{+}\hlnum{180}\hlstd{, angle)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-Para ahora crear el gr\'afico usamos las siguentes funciones.
-
-Lo primero que es distinto es el hecho de que pinta las columnas dependiendo del grupo.
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{ggplot}(datatrans, \hlkwd{aes}(x=\hlkwd{as.factor}(id), y=value, fill=group)) +
-  \hlkwd{geom_bar}(stat=\hlstr{"identity"}, alpha=0.5) +
+\hlkwd{library}\hlstd{(ggrepel)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 \clearpage
-Por lo dem\'as, todo es igual hasta que se a\~nade la \'ultima funci\'on, la cual genera las etiquetas del gr\'afico ajustadas a la altura y el \'angulo.
+Para ahora crear el gr\'afico usamos las siguentes funciones.
+
+Lo primero que es distinto es el hecho de que pinta las columnas dependiendo del grupo (marchas), y el uso de ggrepel para el texto de las barras.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-  \hlkwd{geom_text}\hlstd{(}\hlkwc{data}\hlstd{=label_data,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=id,} \hlkwc{y}\hlstd{=value}\hlopt{+}\hlnum{10}\hlstd{,} \hlkwc{label}\hlstd{=individual,} \hlkwc{hjust}\hlstd{=hjust),}
-      \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fontface}\hlstd{=}\hlstr{"bold"}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.6}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2.5}\hlstd{,} \hlkwc{angle}\hlstd{= label_data}\hlopt{$}\hlstd{angle,}
-      \hlkwc{inherit.aes} \hlstd{=} \hlnum{FALSE} \hlstd{)}
+\hlkwd{ggplot}(datatrans , \hlkwd{aes}(x=id, y=mpg, fill= gear, label=mpg))+
+  \hlkwd{geom_bar}(stat = \hlstr{"identity"}) +
+  \hlkwd{geom_label_repel}() +
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Por lo dem\'as, todo es igual con el ajuste del sistema coordenadas, l\'imite del eje Y, nombre de ejes y legenda, junto al tema.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+  \hlkwd{coord_polar}\hlstd{()} \hlopt{+}
+  \hlkwd{ylim}\hlstd{(}\hlopt{-}\hlnum{10}\hlstd{,}\hlnum{40}\hlstd{)} \hlopt{+} \hlkwd{labs}\hlstd{(}\hlkwc{title} \hlstd{=} \hlstr{"Coches por Marchas"}\hlstd{)} \hlopt{+}
+  \hlkwd{xlab}\hlstd{(}\hlstr{"Coches"}\hlstd{)} \hlopt{+} \hlkwd{labs}\hlstd{(}\hlkwc{fill}\hlstd{=}\hlstr{'N Marchas'}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_minimal}\hlstd{()} \hlopt{+}
+  \hlkwd{theme}\hlstd{(}\hlkwc{axis.text.x} \hlstd{=} \hlkwd{element_blank}\hlstd{(),} \hlkwc{legend.position} \hlstd{=} \hlstr{'bottom'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1367,27 +1396,20 @@ Resultando en este \'ultimo gr\'afico
 
 
 \end{knitrout}
-\begin{center}
-\textbf{. . .}
-\end{center}
-~\\
+\clearpage
 Existe una forma de realizar este mismo gr\'afico con interactividad con la ayuda de ggplot2 y ggiraph. Ya se ha explicado en otros diagramas com\'o, asi que, en este solo se ense\~na el resultado.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(ggiraph)}
-\hlstd{p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(data,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=}\hlkwd{as.factor}\hlstd{(id),} \hlkwc{y}\hlstd{=value,} \hlkwc{tooltip}\hlstd{=}\hlkwd{as.factor}\hlstd{(id),}
-                      \hlkwc{data_id} \hlstd{=} \hlkwd{as.factor}\hlstd{(id),} \hlkwc{fill} \hlstd{= group))} \hlopt{+}
+\hlstd{p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(datatrans,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=}\hlkwd{as.factor}\hlstd{(id),} \hlkwc{y}\hlstd{=mpg,} \hlkwc{tooltip}\hlstd{=}\hlkwd{as.factor}\hlstd{(name),}
+                      \hlkwc{data_id} \hlstd{=} \hlkwd{as.factor}\hlstd{(id),} \hlkwc{fill} \hlstd{= gear))} \hlopt{+}
   \hlkwd{geom_col_interactive}\hlstd{()} \hlopt{+}
-  \hlkwd{ylim}\hlstd{(}\hlopt{-}\hlnum{10}\hlstd{,}\hlnum{60}\hlstd{)} \hlopt{+}
+  \hlkwd{ylim}\hlstd{(}\hlopt{-}\hlnum{10}\hlstd{,}\hlnum{40}\hlstd{)} \hlopt{+}
   \hlkwd{coord_polar}\hlstd{(}\hlkwc{start} \hlstd{=} \hlnum{0}\hlstd{)} \hlopt{+}
+  \hlkwd{xlab}\hlstd{(}\hlstr{"Coches"}\hlstd{)} \hlopt{+} \hlkwd{labs}\hlstd{(}\hlkwc{fill}\hlstd{=}\hlstr{'N Marchas'}\hlstd{)} \hlopt{+}
   \hlkwd{theme_minimal}\hlstd{()} \hlopt{+}
-  \hlkwd{theme}\hlstd{(}
-    \hlkwc{axis.text} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-    \hlkwc{axis.title} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-    \hlkwc{panel.grid} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-    \hlkwc{plot.margin} \hlstd{=} \hlkwd{unit}\hlstd{(}\hlkwd{rep}\hlstd{(}\hlopt{-}\hlnum{2}\hlstd{,}\hlnum{4}\hlstd{),} \hlstr{"cm"}\hlstd{)}
-  \hlstd{)}
+  \hlkwd{theme}\hlstd{(}\hlkwc{axis.text.x} \hlstd{=} \hlkwd{element_blank}\hlstd{(),} \hlkwc{legend.position} \hlstd{=} \hlstr{'bottom'}\hlstd{)}
 \hlkwd{girafe}\hlstd{(}\hlkwc{ggobj} \hlstd{= p)}
 \end{alltt}
 \end{kframe}
@@ -1403,29 +1425,31 @@ Existe una forma de realizar este mismo gr\'afico con interactividad con la ayud
 Como se dijo, \autoref{ssec:barrasRadiales}
 , este paquete ser\'ia usado para otros gr\'aficos m\'as adelante por sus plots espec\'ificos. Y gracias a las funciones \texttt{polar plot} y \texttt{radial plot} se pude contar con \'el en este apartado. 
 Para ello se establecen los datos usados.~\\
-Primero la longitud de las columnas con n\'umeros aleatorios.
+Primero la longitud de las columnas con las cantidad de multas segun la velocidad.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{long} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlkwd{rnorm}\hlstd{(}\hlnum{36}\hlstd{)}\hlopt{*}\hlnum{2}\hlopt{+}\hlnum{5}\hlstd{)}
+\hlstd{long} \hlkwb{<-} \hlstd{data}\hlopt{$}\hlstd{velocidad.Freq}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Luego la posici\'on de cada columna en el c\'irculo, siempre en grados.
+Luego la posici\'on de cada columna en el c\'irculo, siempre en grados. Dividiendo los grados por la cantidad de columnas a representar.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{pos} \hlkwb{<-} \hlkwd{seq}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{350}\hlstd{,}\hlkwc{by}\hlstd{=}\hlnum{10}\hlstd{)}
+\hlstd{pos} \hlkwb{<-} \hlkwd{seq}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{345.6}\hlstd{,}\hlkwc{by}\hlstd{=}\hlnum{14.4}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+\clearpage
 Para luego usar las dos funciones, estas son capaces de usar los mismos par\'ametros.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(plotrix)}
 \hlkwd{polar.plot}\hlstd{(long, pos,}\hlkwc{main}\hlstd{=}\hlstr{"Polar Plot"}\hlstd{,}\hlkwc{lwd}\hlstd{=}\hlnum{3}\hlstd{,}\hlkwc{line.col}\hlstd{=}\hlnum{2}\hlstd{,}
-           \hlkwc{rad.col}\hlstd{=} \hlstr{"lightblue"}\hlstd{,} \hlkwc{grid.col}\hlstd{=} \hlstr{"lightblue"}\hlstd{,}\hlkwc{start} \hlstd{=} \hlnum{0}\hlstd{)}
+           \hlkwc{rad.col}\hlstd{=} \hlstr{"lightblue"}\hlstd{,} \hlkwc{grid.col}\hlstd{=} \hlstr{"lightblue"}\hlstd{,}\hlkwc{start} \hlstd{=} \hlnum{0}\hlstd{,}
+           \hlkwc{labels}\hlstd{=data}\hlopt{$}\hlstd{velocidad.Var1,} \hlkwc{label.pos} \hlstd{= pos)}
 \end{alltt}
 \end{kframe}
 
@@ -1436,7 +1460,8 @@ Para luego usar las dos funciones, estas son capaces de usar los mismos par\'ame
 
 \begin{kframe}\begin{alltt}
 \hlkwd{radial.plot}\hlstd{(long, pos,}\hlkwc{main}\hlstd{=}\hlstr{"Radial Plot"}\hlstd{,}\hlkwc{lwd}\hlstd{=}\hlnum{3}\hlstd{,}\hlkwc{line.col}\hlstd{=}\hlnum{2}\hlstd{,}
-           \hlkwc{rad.col}\hlstd{=} \hlstr{"lightblue"}\hlstd{,} \hlkwc{grid.col}\hlstd{=} \hlstr{"lightblue"}\hlstd{,} \hlkwc{start} \hlstd{=} \hlnum{0}\hlstd{)}
+           \hlkwc{rad.col}\hlstd{=} \hlstr{"lightblue"}\hlstd{,} \hlkwc{grid.col}\hlstd{=} \hlstr{"lightblue"}\hlstd{,} \hlkwc{start} \hlstd{=} \hlnum{0}\hlstd{,}
+           \hlkwc{labels}\hlstd{=data}\hlopt{$}\hlstd{velocidad.Var1,} \hlkwc{label.pos} \hlstd{= pos)}
 \end{alltt}
 \end{kframe}
 
@@ -1450,7 +1475,7 @@ Para luego usar las dos funciones, estas son capaces de usar los mismos par\'ame
 C\'omo se ve, los gr\'aficos no han salido iguales y es debido a que \texttt{polar plot} transforma la posici\'on de los grados a radianes mediante la funci\'on \texttt{radial plot}, pero con \texttt{radial plot} la variable \texttt{pos} se interpreta como radianes y no grados.
 \clearpage
 \subsubsection{Paquete cplots}
-Este paquete, tal y como dice su documentaci\'on \cite{docu_cplot}
+Este paquete, tal y como dice su documentaci\'on %\cite{docu_cplot}
 , proporciona algunos diagramas circulares provenientes de datos circulares, incluyendo diagramas de barras, de densidad, puntos apilados, etc.~\\
 Para reproducir este diagrama con este paquete se debe preparar los datos.
 \begin{knitrout}
@@ -1500,7 +1525,7 @@ Y si \texttt{nlabels} se iguala a 0 visualiza los radianes en el circulo.
 \end{center}
 \subsubsection{Paquete circlize}
 
-De nuevo se utiliza este paquete\cite{docu_circlize}
+De nuevo se utiliza este paquete%\cite{docu_circlize}
 de la misma forma que se utilizaba ggplot2, cambiando los ejes para representar columnas en vez de barras. Para los datos y capacidad de comparaci\'on de paquetes se eligen los mismos datos que en el primer ejemplo del paquete ggplot2.~\\
 Lo primera funci\'on es opcional, ya que declara argumentos que son est\'eticos, como, en este caso, en que \'angulo comienza el diagrama, o tambi\'en, por ejemplo, se puede establecer donde est\'a en centro del diagrama.
 \begin{knitrout}
@@ -1511,31 +1536,41 @@ Lo primera funci\'on es opcional, ya que declara argumentos que son est\'eticos,
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Lo que si que se necesita hacer es inicializar la plantilla del gr\'afico fijando en cuantos sectores se divide cada anillo del diagrama, en este caso solo uno para crear todas las columnas en el mismo sector. Y se fijan los l\'imites del eje X desde 0 a 20.
+Lo que si que se necesita hacer es inicializar la plantilla del gr\'afico fijando en cuantos sectores se divide cada anillo del diagrama, en este caso solo uno para crear todas las columnas en el mismo sector. Y se fijan los l\'imites del eje X con el n\'umero de columnas.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{circos.initialize}\hlstd{(}\hlstr{"a"}\hlstd{,} \hlkwc{xlim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0.5}\hlstd{,} \hlkwd{length}\hlstd{(data}\hlopt{$}\hlstd{id)}\hlopt{+}\hlnum{0.5}\hlstd{))}
+\hlkwd{circos.initialize}\hlstd{(}\hlstr{"a"}\hlstd{,} \hlkwc{xlim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{25.5}\hlstd{,}\hlnum{50.5}\hlstd{))}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-\clearpage
 Ahora se establece el anillo fijando el l\'imite del eje Y y la altura del anillo en porcentaje, en este caso un 80\% dejando un hueco del 20\%. Para este ejemplo se elimina el borde del anillo y la funci\'on para implementar las barras dentro del anillo.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{circos.track}(ylim = \hlkwd{c}(0, 50), track.height = 0.8, 
+\hlkwd{circos.track}(ylim = \hlkwd{c}(0,600), track.height = 0.8, 
              bg.border = NA, panel.fun = \hlkwd{function}(x, y) \{
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+\clearpage
 La funci\'on \texttt{circos.rect} realiza ret\'angulos igual que se us\'o en el diagrama de Barras Radiales, pero cambiando los ejes, poniendo esta vez en el eje X la cantidad de barras y en el eje Y los valores. Para implementarlas se pasan como argumentos xInicial, yInicial, xFinal y yFinal; con un color agradable y borde blanco para facil separaci\'on de las barras.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-               xlim = CELL_META$xlim
-               \hlkwd{circos.rect}( 1:\hlkwd{length}(data$id) - 0.45,\hlkwd{rep}(0, \hlkwd{length}(data$id)), 
-                 1:\hlkwd{length}(data$id) + 0.45, data$value,col = \hlstr{"skyblue"}, border = \hlstr{"white"})\})
+               \hlstd{xlim} \hlkwb{=} \hlstd{CELL_META}\hlopt{$}\hlstd{xlim}
+               \hlkwd{circos.rect}\hlstd{(} \hlnum{26}\hlopt{:}\hlnum{50} \hlopt{-} \hlnum{0.45}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{25}\hlstd{),}
+                 \hlnum{26}\hlopt{:}\hlnum{50} \hlopt{+} \hlnum{0.45}\hlstd{, data}\hlopt{$}\hlstd{velocidad.Freq ,}\hlkwc{col} \hlstd{=} \hlstr{"skyblue"}\hlstd{,} \hlkwc{border} \hlstd{=} \hlstr{"white"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Se crean las escalas de los ejes para ver las medidas de los valores.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+               \hlkwd{circos.axis}(h=\hlstr{"top"},direction = \hlstr{"outside"}, 
+                           labels.facing= \hlstr{"clockwise"}, labels.cex = 0.5)
+               \hlkwd{circos.yaxis}(labels.cex = 0.5)\})
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1573,11 +1608,11 @@ En conclusi\'on, de los cuatro paquetes presentados los que resultan m\'as utile
 \subsection{Diagrama de Sectores}\label{ssec:sectores}
 Para crear este tipo de diagramas, casi siempre se necesita de la misma estructura de datos, unas veces son simplemente unos valores represent\'andolos como un porcentaje del total de la suma de todos los valores, o pueden estar acompa\~nados de las categor\'ias correspondientes.
 \subsubsection{R B\'asico}
-Una de las formar m\'as sencillas para representar los diagramas de sectores es la funci\'on \texttt{pie}. Esta funci\'on necesita de los propios valores dichos antes y se pueden a\~nadir m\'as par\'ametros para su personalizaci\'on, como las etiquetas, colores y bordes.
+Una de las formar m\'as sencillas para representar los diagramas de sectores es la funci\'on \texttt{pie}. Esta funci\'on necesita de los propios valores dichos antes y se pueden a\~nadir m\'as par\'ametros para su personalizaci\'on, como las etiquetas, colores y bordes. En este caso se elige la cantidad de veh\'iculos con cierta cantidad de carburadores.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{Porcentaje} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{3}\hlstd{,}\hlnum{7}\hlstd{,}\hlnum{9}\hlstd{,}\hlnum{1}\hlstd{,}\hlnum{2}\hlstd{)}
+\hlstd{Porcentaje} \hlkwb{<-} \hlkwd{table}\hlstd{(mtcars}\hlopt{$}\hlstd{carb)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1594,27 +1629,33 @@ Para la funci\'on principal se usa: (dando como par\'ametros los datos, las etiq
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{pie}\hlstd{(Porcentaje,} \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"A"}\hlstd{,}\hlstr{"B"}\hlstd{,}\hlstr{"C"}\hlstd{,}\hlstr{"D"}\hlstd{,}\hlstr{"E"}\hlstd{),} \hlkwc{border} \hlstd{=} \hlstr{"white"}\hlstd{,} \hlkwc{col} \hlstd{= miPaleta)}
+\hlkwd{pie}\hlstd{(Porcentaje,} \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"1"}\hlstd{,}\hlstr{"2"}\hlstd{,}\hlstr{"3"}\hlstd{,}\hlstr{"4"}\hlstd{,}\hlstr{"6"}\hlstd{,}\hlstr{"8"}\hlstd{),} \hlkwc{border} \hlstd{=} \hlstr{"white"}\hlstd{,} \hlkwc{col} \hlstd{= miPaleta)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Y por \'ultimo, se crea la leyenda con otra funci\'on de R b\'asico.
+Y por \'ultimo, se crea la leyenda con otra funci\'on de R b\'asico y t\'itulo.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{legend}\hlstd{(}\hlstr{"topright"}\hlstd{,} \hlkwd{c}\hlstd{(}\hlstr{"A"}\hlstd{,}\hlstr{"B"}\hlstd{,}\hlstr{"C"}\hlstd{,}\hlstr{"D"}\hlstd{,} \hlstr{"E"}\hlstd{),} \hlkwc{cex} \hlstd{=} \hlnum{0.9}\hlstd{,}
-   \hlkwc{fill} \hlstd{= miPaleta)}
+\hlkwd{legend}\hlstd{(}\hlstr{"bottomleft"}\hlstd{,} \hlkwd{c}\hlstd{(}\hlstr{"1"}\hlstd{,}\hlstr{"2"}\hlstd{,}\hlstr{"3"}\hlstd{,}\hlstr{"4"}\hlstd{,}\hlstr{"6"}\hlstd{,}\hlstr{"8"}\hlstd{),} \hlkwc{cex} \hlstd{=} \hlnum{0.7}\hlstd{,}
+   \hlkwc{fill} \hlstd{= miPaleta,} \hlkwc{title} \hlstd{=} \hlstr{"N Carburadores"}\hlstd{,}\hlkwc{horiz}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\hlkwd{title}\hlstd{(}\hlkwc{main} \hlstd{=} \hlstr{"Coches por carburadores"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-\includegraphics[width=\maxwidth]{figure/plot_pie_basic-1} 
+
+{\centering \includegraphics[width=\maxwidth]{figure/plot_pie_basic-1} 
+
+}
+
+
 
 \end{knitrout}
 \clearpage
 \subsubsection{Paquete ggplot2}
-Una vez m\'as, se encuentra en el proyecto este paquete \cite{docu_ggplot2}
+Una vez m\'as, se encuentra en el proyecto este paquete %\cite{docu_ggplot2}
 . Como se ha comprobado antes este paquete es muy vers\'atil para crear los diagramas ofreciendo muy buena personalizaci\'on.~\\
 Para la realizaci\'on de estos diagramas circulares la funci\'on \texttt{coord polar} ha resultado ser muy \'util y esta vez, al igual que en el diagrama de barras radiales, se va a transformar la Y de forma lineal a radial, pero la diferencia con aquel diagrama es que al dejar el eje X sin asignar cambia del diagrama de barras radiales al de sectores.~\\
 Para ello se vuelven a preparar los datos necesarios.
@@ -1623,8 +1664,7 @@ Para ello se vuelven a preparar los datos necesarios.
 \begin{alltt}
 \hlkwd{library}\hlstd{(ggplot2)}
 \hlstd{data} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}
-  \hlkwc{group}\hlstd{=LETTERS[}\hlnum{1}\hlopt{:}\hlnum{5}\hlstd{],}
-  \hlkwc{value}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{13}\hlstd{,}\hlnum{7}\hlstd{,}\hlnum{9}\hlstd{,}\hlnum{21}\hlstd{,}\hlnum{2}\hlstd{)}
+  \hlkwd{table}\hlstd{(mtcars}\hlopt{$}\hlstd{carb)}
 \hlstd{)}
 \end{alltt}
 \end{kframe}
@@ -1635,8 +1675,8 @@ El problema de este diagrama con respecto a otros que usan \texttt{ggplot2} es l
 \begin{alltt}
 \hlkwd{library}\hlstd{(tidyverse)}
 \hlstd{data} \hlkwb{<-} \hlstd{data} \hlopt{%>%}
-  \hlkwd{arrange}\hlstd{(}\hlkwd{desc}\hlstd{(group))} \hlopt{%>%}
-  \hlkwd{mutate}\hlstd{(}\hlkwc{Porcentaje} \hlstd{= value} \hlopt{/} \hlkwd{sum}\hlstd{(data}\hlopt{$}\hlstd{value)} \hlopt{*}\hlnum{100}\hlstd{)} \hlopt{%>%}
+  \hlkwd{arrange}\hlstd{(}\hlkwd{desc}\hlstd{(Var1))} \hlopt{%>%}
+  \hlkwd{mutate}\hlstd{(}\hlkwc{Porcentaje} \hlstd{= Freq} \hlopt{/} \hlkwd{sum}\hlstd{(Freq)} \hlopt{*}\hlnum{100}\hlstd{)} \hlopt{%>%}
   \hlkwd{mutate}\hlstd{(}\hlkwc{ypos} \hlstd{=} \hlkwd{cumsum}\hlstd{(Porcentaje)}\hlopt{-} \hlnum{0.5}\hlopt{*}\hlstd{Porcentaje )}
 \end{alltt}
 \end{kframe}
@@ -1646,10 +1686,10 @@ Y ahora se procede a la representaci\'on del gr\'afico, pasando como par\'ametro
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggplot}(data, \hlkwd{aes}(x=\hlstr{""}, y=Porcentaje, fill=group)) +
+\hlkwd{ggplot}(data, \hlkwd{aes}(x=\hlstr{""}, y=Porcentaje, fill=Var1)) +
   \hlkwd{geom_bar}(stat=\hlstr{"identity"}, width=1, color=\hlstr{"white"}) +
   \hlkwd{coord_polar}(\hlstr{"y"}, start=0) +
-  \hlkwd{theme_void}() + 
+  \hlkwd{theme_void}() + \hlkwd{labs}(title=\hlstr{"Coches por Carburadores"}) +
   \hlkwd{theme}(legend.position=\hlstr{"none"}) +
 \end{alltt}
 \end{kframe}
@@ -1658,7 +1698,7 @@ Se coloca el texto en la posici\'on anteriormente calculada y se ajusta la palet
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-  \hlkwd{geom_text}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{y} \hlstd{= ypos,} \hlkwc{label} \hlstd{= group),} \hlkwc{color} \hlstd{=} \hlstr{"white"}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{5}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_text}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{y} \hlstd{= ypos,} \hlkwc{label} \hlstd{= Var1),} \hlkwc{color} \hlstd{=} \hlstr{"black"}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{5}\hlstd{)} \hlopt{+}
   \hlkwd{scale_fill_brewer}\hlstd{(}\hlkwc{palette}\hlstd{=}\hlstr{"Set1"}\hlstd{)}
 \end{alltt}
 \end{kframe}
@@ -1679,17 +1719,17 @@ Y as\'i resulta el gr\'afico.
 \textbf{. . .}
 \end{center}
 ~\\
-Al igual que muchos de los gr\'aficos que usan ggplot2, se puede crear con el paquete ggiraph \cite{docu_ggiraph}
+Al igual que muchos de los gr\'aficos que usan ggplot2, se puede crear con el paquete ggiraph %\cite{docu_ggiraph}
 los gr\'aficos de ggplot2 interactivos, con la sustituci\'on de la funci\'on que implemente los sectores por sus variante interactiva, en este caso \texttt{geom-col-interactive}.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(ggiraph)}
-\hlstd{p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(data,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=}\hlstr{""}\hlstd{,} \hlkwc{y}\hlstd{=value,} \hlkwc{fill}\hlstd{=group,} \hlkwc{tooltip} \hlstd{= group,} \hlkwc{data_id} \hlstd{= group))} \hlopt{+}
+\hlstd{p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(data,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=}\hlstr{""}\hlstd{,} \hlkwc{y}\hlstd{=Freq,} \hlkwc{fill}\hlstd{=Var1,} \hlkwc{tooltip} \hlstd{= Freq,} \hlkwc{data_id} \hlstd{= Var1))} \hlopt{+}
   \hlkwd{geom_col_interactive}\hlstd{()} \hlopt{+}
   \hlkwd{coord_polar}\hlstd{(}\hlstr{"y"}\hlstd{,} \hlkwc{start}\hlstd{=}\hlnum{0}\hlstd{)} \hlopt{+}
-  \hlkwd{theme_void}\hlstd{()} \hlopt{+}
-  \hlkwd{theme}\hlstd{(}\hlkwc{legend.position} \hlstd{=} \hlstr{"none"}\hlstd{)}
+  \hlkwd{theme_void}\hlstd{()} \hlopt{+} \hlkwd{labs}\hlstd{(}\hlkwc{fill}\hlstd{=}\hlstr{"Carburadores"}\hlstd{)}\hlopt{+}\hlkwd{labs}\hlstd{(}\hlkwc{title}\hlstd{=}\hlstr{"Coches por Carburadores"}\hlstd{)}\hlopt{+}
+  \hlkwd{theme}\hlstd{(}\hlkwc{legend.position} \hlstd{=} \hlstr{"bottom"}\hlstd{)}
 \hlkwd{girafe}\hlstd{(}\hlkwc{ggobj} \hlstd{= p)}
 \end{alltt}
 \end{kframe}
@@ -1700,7 +1740,7 @@ los gr\'aficos de ggplot2 interactivos, con la sustituci\'on de la funci\'on que
 }
 \clearpage
 \subsubsection{Paquete plotrix}
-Este paquete \cite{docu_plotrix} 
+Este paquete %\cite{docu_plotrix} 
 tiene dos posibles formas de representar los diagramas de sectores, una en 2D y otra en 3D. Esto no lo tiene ning\'un otro paquete que se haya investigado en este proyecto.~\\~\\
 Primero se ver\'a la forma de representar el gr\'afico en 2D. Para ello se usa la funci\'on \texttt{floating.pie} y \texttt{pie.labels} para las etiquetas. Se obtienen los datos de los valores anteriores al igual que las etiquetas pero, para que el gr\'afico resulte algo distinto, tambi\'en se va a usar el par\'ametro \texttt{explode}.
 
@@ -1717,7 +1757,7 @@ Luego para las etiquetas se calculan las posiciones y \'angulos donde deben esta
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{angulos} \hlkwb{<-} \hlkwd{floating.pie}\hlstd{(}\hlnum{3.25}\hlstd{,} \hlnum{3}\hlstd{, data}\hlopt{$}\hlstd{value,} \hlkwc{radius} \hlstd{=} \hlnum{1.5}\hlstd{,}
+\hlstd{angulos} \hlkwb{<-} \hlkwd{floating.pie}\hlstd{(}\hlnum{3.25}\hlstd{,} \hlnum{3}\hlstd{, data}\hlopt{$}\hlstd{Freq,} \hlkwc{radius} \hlstd{=} \hlnum{1.5}\hlstd{,}
                         \hlkwc{col} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"#ff0000"}\hlstd{,}\hlstr{"#80ff00"}\hlstd{,}\hlstr{"#00ffff"}\hlstd{,}\hlstr{"#44bbff"}\hlstd{,}\hlstr{"#8000ff"}\hlstd{))}
 \end{alltt}
 \end{kframe}
@@ -1726,7 +1766,7 @@ Y para las etiquetas \texttt{pie.labels} necesita dichos angulos, la posici\'on 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{pie.labels}\hlstd{(}\hlnum{3.25}\hlstd{,} \hlnum{3}\hlstd{, angulos, data}\hlopt{$}\hlstd{group,} \hlkwc{minangle} \hlstd{=} \hlnum{0.2}\hlstd{,} \hlkwc{radius} \hlstd{=} \hlnum{1.6}\hlstd{)}
+\hlkwd{pie.labels}\hlstd{(}\hlnum{3.25}\hlstd{,} \hlnum{3}\hlstd{, angulos, data}\hlopt{$}\hlstd{Var1,} \hlkwc{minangle} \hlstd{=} \hlnum{0.2}\hlstd{,} \hlkwc{radius} \hlstd{=} \hlnum{1.6}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1734,12 +1774,12 @@ Despu\'es se realiza el mismo trabajo para el par\'ametro \texttt{explode}, pero
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{pie.labels}\hlstd{(}\hlnum{3.25}\hlstd{,} \hlnum{3}\hlstd{, angulos, data}\hlopt{$}\hlstd{group,} \hlkwc{minangle} \hlstd{=} \hlnum{0.2}\hlstd{,} \hlkwc{radius} \hlstd{=} \hlnum{1.6}\hlstd{)}
+\hlkwd{pie.labels}\hlstd{(}\hlnum{3.25}\hlstd{,} \hlnum{3}\hlstd{, angulos, data}\hlopt{$}\hlstd{Var1,} \hlkwc{minangle} \hlstd{=} \hlnum{0.2}\hlstd{,} \hlkwc{radius} \hlstd{=} \hlnum{1.6}\hlstd{)}
 \hlkwd{plot}\hlstd{(}\hlnum{0}\hlstd{,}\hlkwc{xlim}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{1.5}\hlstd{,}\hlnum{5}\hlstd{),}\hlkwc{ylim}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{5}\hlstd{),}\hlkwc{type}\hlstd{=}\hlstr{"n"}\hlstd{,}\hlkwc{axes}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{xlab}\hlstd{=}\hlstr{""}\hlstd{,}\hlkwc{ylab}\hlstd{=}\hlstr{""}\hlstd{,} \hlkwc{main} \hlstd{=} \hlstr{"2D Explode"}\hlstd{)}
-\hlstd{angulos} \hlkwb{<-} \hlkwd{floating.pie}\hlstd{(}\hlnum{3.25}\hlstd{,} \hlnum{3}\hlstd{, data}\hlopt{$}\hlstd{value,} \hlkwc{radius} \hlstd{=} \hlnum{1.5}\hlstd{,}
+\hlstd{angulos} \hlkwb{<-} \hlkwd{floating.pie}\hlstd{(}\hlnum{3.25}\hlstd{,} \hlnum{3}\hlstd{, data}\hlopt{$}\hlstd{Freq,} \hlkwc{radius} \hlstd{=} \hlnum{1.5}\hlstd{,}
                         \hlkwc{col} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"#ff0000"}\hlstd{,}\hlstr{"#80ff00"}\hlstd{,}\hlstr{"#00ffff"}\hlstd{,}\hlstr{"#44bbff"}\hlstd{,}\hlstr{"#8000ff"}\hlstd{),}
                         \hlkwc{explode} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0.2}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{0.1}\hlstd{,}\hlnum{0.2}\hlstd{,}\hlnum{0}\hlstd{))}
-\hlkwd{pie.labels}\hlstd{(}\hlnum{3.25}\hlstd{,} \hlnum{3}\hlstd{, angulos, data}\hlopt{$}\hlstd{group,} \hlkwc{minangle} \hlstd{=} \hlnum{0.2}\hlstd{,} \hlkwc{radius} \hlstd{=} \hlnum{1.6}\hlstd{,}
+\hlkwd{pie.labels}\hlstd{(}\hlnum{3.25}\hlstd{,} \hlnum{3}\hlstd{, angulos, data}\hlopt{$}\hlstd{Var1,} \hlkwc{minangle} \hlstd{=} \hlnum{0.2}\hlstd{,} \hlkwc{radius} \hlstd{=} \hlnum{1.6}\hlstd{,}
            \hlkwc{explode} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0.2}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{0.1}\hlstd{,}\hlnum{0.2}\hlstd{,}\hlnum{0}\hlstd{))}
 \end{alltt}
 \end{kframe}
@@ -1768,7 +1808,7 @@ Y crear el gr\'afico con los valores iguales que antes.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{pie3D}\hlstd{(data}\hlopt{$}\hlstd{value,} \hlkwc{labels} \hlstd{= data}\hlopt{$}\hlstd{group,} \hlkwc{explode} \hlstd{=} \hlnum{0.1}\hlstd{,} \hlkwc{main} \hlstd{=} \hlstr{"Sectores 3D"}\hlstd{,}
+\hlkwd{pie3D}\hlstd{(data}\hlopt{$}\hlstd{Freq,} \hlkwc{labels} \hlstd{= data}\hlopt{$}\hlstd{Var1,} \hlkwc{explode} \hlstd{=} \hlnum{0.1}\hlstd{,} \hlkwc{main} \hlstd{=} \hlstr{"Coches por Carburadores 3D"}\hlstd{,}
       \hlkwc{col}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"#ff0000"}\hlstd{,}\hlstr{"#80ff00"}\hlstd{,}\hlstr{"#00ffff"}\hlstd{,}\hlstr{"#44bbff"}\hlstd{,}\hlstr{"#8000ff"}\hlstd{))}
 \end{alltt}
 \end{kframe}
@@ -1791,13 +1831,13 @@ Y crear el gr\'afico con los valores iguales que antes.
 \end{center}
 \subsubsection{Paquete rCharts}
 Tanto en este paquete como en el siguiente se van a traer unos diagramas de sectores interactivos. Al optar por el formato del papel y no p\'agina web en este trabajo, se procede al final de cada paquete a mostrar la forma de guardar los gr\'aficos en html para su posterior visualizaci\'on.~\\
-Este paquete \cite{docu_rcharts} 
+Este paquete %\cite{docu_rcharts} 
 sirve para crear y personalizar gr\'aficos interactivos en javascript transformandolos a partir de R. Para representar este gr\'afico se va a reutilizar los mismos valores que antes e implementarlos con la funci\'on \texttt{nPlot}.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(rCharts)}
-\hlstd{p} \hlkwb{<-} \hlkwd{nPlot}\hlstd{(value}\hlopt{~}\hlstd{group,} \hlkwc{data} \hlstd{= data,} \hlkwc{type} \hlstd{=} \hlstr{'pieChart'}\hlstd{)}
+\hlstd{p} \hlkwb{<-} \hlkwd{nPlot}\hlstd{(Freq}\hlopt{~}\hlstd{Var1,} \hlkwc{data} \hlstd{= data,} \hlkwc{type} \hlstd{=} \hlstr{'pieChart'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1818,15 +1858,15 @@ Dando como resultado la siguiente imagen como p\'agina web.~\\
 \textbf{. . .}
 \end{center}
 \subsubsection{Paquete plotly}
-Este paquete \cite{docu_plotly} 
+Este paquete %\cite{docu_plotly} 
 se dedica principalmente a crear gr\'aficos interactivos, de los gr\'aficos m\'as comunes y otros m\'as espec\'ificos que se ver\'an mas adelante. Por ello  no se visualiza el gr\'afico resultante sino una foto de \'el.~\\
 Para realizarlo plotly ofrece la funci\'on \texttt{plot-ly}, b\'asica para cualquier plot con este paquete, si se le da el tipo pie reproduce el diagrama deseado. Como hasta ahora se va a seguir utilizando los mismos datos.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(plotly)}
-\hlstd{p} \hlkwb{<-} \hlkwd{plot_ly}\hlstd{(data,} \hlkwc{labels} \hlstd{= data}\hlopt{$}\hlstd{group,} \hlkwc{values} \hlstd{= data}\hlopt{$}\hlstd{value,} \hlkwc{type} \hlstd{=} \hlstr{'pie'}\hlstd{)} \hlopt{%>%}
-  \hlkwd{layout}\hlstd{(}\hlkwc{title} \hlstd{=} \hlstr{'Plotly'}\hlstd{,}
+\hlstd{p} \hlkwb{<-} \hlkwd{plot_ly}\hlstd{(data,} \hlkwc{labels} \hlstd{= data}\hlopt{$}\hlstd{Var1,} \hlkwc{values} \hlstd{= data}\hlopt{$}\hlstd{Freq,} \hlkwc{type} \hlstd{=} \hlstr{'pie'}\hlstd{)} \hlopt{%>%}
+  \hlkwd{layout}\hlstd{(}\hlkwc{title} \hlstd{=} \hlstr{'Coches por Carburadores'}\hlstd{,}
          \hlkwc{xaxis} \hlstd{=} \hlkwd{list}\hlstd{(}\hlkwc{showgrid} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{zeroline} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{showticklabels} \hlstd{=} \hlnum{FALSE}\hlstd{),}
          \hlkwc{yaxis} \hlstd{=} \hlkwd{list}\hlstd{(}\hlkwc{showgrid} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{zeroline} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{showticklabels} \hlstd{=} \hlnum{FALSE}\hlstd{))}
 \end{alltt}
@@ -1846,15 +1886,16 @@ Resultando en el siguiente grafo (no interactivo salvo en el html).~\\
     \centering
     \includegraphics[width=0.4\textwidth]{imag/plotly_pie}
 }
+\clearpage
 \subsubsection{Paquete ggiraphExtra}
-Este paquete \cite{docu_ggiraphExtra} 
+Este paquete %\cite{docu_ggiraphExtra} 
 es una extensi\'on del paquete \texttt{ggiraph}, creando sus propias funciones al haber sustituido las variantes interactivas de las funciones de \texttt{ggplot2} con las funciones de \texttt{ggiraph}. Por lo que otra forma de crear un diagrama de sectores interactivo es mediante este paquete. Si se requiere el uso de funciones de ggplot2, el gr\'afico pierde interactividad y pasa a ser un paquete ayudante de ggplot2.~\\
 Para la comparaci\'on entre paquetes se opta por el uso de los datos ya usados anteriormente. 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(ggiraphExtra)}
-\hlkwd{ggPie}\hlstd{(data,} \hlkwd{aes}\hlstd{(} \hlkwc{pies}\hlstd{=group,} \hlkwc{count}\hlstd{=value),} \hlkwc{interactive} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{ggPie}\hlstd{(data,} \hlkwd{aes}\hlstd{(} \hlkwc{pies}\hlstd{=Var1,} \hlkwc{count}\hlstd{=Freq),} \hlkwc{interactive} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{title} \hlstd{=} \hlstr{"Coches por Carburadores"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1875,47 +1916,33 @@ En conclusi\'on, todos los paquetes encontrados para implementar el diagrama de 
 \subsection{Diagrama de Rose of Nightingale}\label{ssec:rose}
 Al recopilar las formas para realizar este diagrama se descubre que es la misma que si el diagrama constara de gr\'aficos de columnas apiladas, pero dando el formato de uni\'on entre barras que aporta el diagrama de sectores.
 \subsubsection{Paquete ggplot2}
-Otra vez en el proyecto se cruza este paquete \cite{docu_ggplot2} 
+Otra vez en el proyecto se cruza este paquete %\cite{docu_ggplot2} 
 aportando su versatilidad. El gr\'afico consistir\'a de nuevo en crear un diagrama normal (lineal) y transformarlo con la ayuda de \texttt{coord polar}. Esta vez se realiza un gr\'afico de barras apiladas y transformar el eje X.~\\
-Primero necesita los datos para crear las barras apiladas.
+Primero necesita los datos para crear las barras apiladas. En este caso los datos son el porcentaje de muertes accidentales y suicidio, por ciudad y mundo rural, agrupados por meses.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{data}\hlkwb{=}\hlkwd{read.csv}\hlstd{(}\hlstr{"rose.csv"}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{";"}\hlstd{)}
+\hlstd{data}\hlkwb{=}\hlkwd{read.csv}\hlstd{(}\hlstr{"rosa.csv"}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{";"}\hlstd{)}
 \hlkwd{head}\hlstd{(data)}
 \end{alltt}
 \begin{verbatim}
-##        MES  A   B C   D E   F G
-## 1  January 10   9 8   7 6   5 4
-## 2 February  5 4,5 4 3,5 3 2,5 2
-## 3    March  7   6 5   4 3   2 2
-## 4    April  9   7 8   7 6   5 4
-## 5      May 11   8 4 3,5 3 2,5 2
-## 6     June 13   9 5   4 3   2 2
+##     ï..MES Suici..Ciudad Suici..Rural Acc..Ciudad Acc..Rural
+## 1  January           0.9          0.7         5.3        5.4
+## 2 February           0.7          0.6         5.3        5.3
+## 3    March           0.8          0.8         5.2        5.7
+## 4    April           1.1          0.9         5.6        5.6
+## 5      May           1.1          1.0         5.4        5.8
+## 6     June           0.8          0.7         7.9        6.6
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-Consiste de unos valores aleatorios ordenados por grupo y mes, pero necesita datos agrupados por solo una variable que en esta vez se usan los meses. Gracias a \texttt{reshape2} se consigue el agrupamiento por mes.
+Se necesitan datos agrupados por solo una variable que en esta vez se usan las causas. Gracias a \texttt{tidyverse} se consigue el agrupamiento por causa.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{library}\hlstd{(reshape2)}
-\hlstd{data1}\hlkwb{=}\hlkwd{data.frame}\hlstd{(}\hlkwd{t}\hlstd{(data))}
-\hlstd{data2}\hlkwb{=}\hlstd{data1[}\hlnum{2}\hlopt{:}\hlnum{8}\hlstd{,]}
-\hlkwd{colnames}\hlstd{(data2)}\hlkwb{=}\hlstd{month.name}
-\hlstd{data2}\hlopt{$}\hlstd{group}\hlkwb{=}\hlkwd{row.names}\hlstd{(data2)}
-\hlstd{data3}\hlkwb{=}\hlkwd{melt}\hlstd{(data2,}\hlkwc{id}\hlstd{=}\hlstr{"group"}\hlstd{)}
-\hlkwd{head}\hlstd{(data3)}
+\hlkwd{library}\hlstd{(tidyverse)}
+\hlstd{data} \hlkwb{<-} \hlstd{data} \hlopt{%>%} \hlkwd{gather}\hlstd{(}\hlkwc{key} \hlstd{=} \hlstr{"observation"}\hlstd{,} \hlkwc{value}\hlstd{=}\hlstr{"value"}\hlstd{,} \hlopt{-}\hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{))}
 \end{alltt}
-\begin{verbatim}
-##   group variable value
-## 1     A  January    10
-## 2     B  January     9
-## 3     C  January     8
-## 4     D  January     7
-## 5     E  January     6
-## 6     F  January     5
-\end{verbatim}
 \end{kframe}
 \end{knitrout}
 Y ahora, para crear el gr\'afico, lo \'unico que hay que hacer es crear el diagrama de barras apiladas y aplicarle la transformaci\'on, adem\'as de la est\'etica deseada.
@@ -1925,27 +1952,27 @@ Para ello se llama a la funci\'on \texttt{ggplot} con los datos de data3 y asign
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}(ggplot2)
-\hlkwd{ggplot}(data3,\hlkwd{aes}(x=variable,y=value,fill=group))+
+\hlkwd{ggplot}(data,\hlkwd{aes}(x=ï..MES,y=value,fill=observation))+
   \hlkwd{geom_bar}(stat=\hlstr{"identity"},width=1,colour=\hlstr{"white"},size=0.1)+
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Ahora se transforma la coordenada X y se aplica la escala de colores deseada.
+Ahora se transforma la coordenada X y, se establece el t\'itulo y nombre de la leyenda.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
   \hlkwd{coord_polar}(\hlstr{'x'})+
-  \hlkwd{scale_fill_brewer}(palette=\hlstr{"Blues"})+
+  \hlkwd{labs}(fill=\hlstr{'Causas'}) + \hlkwd{labs}(title = \hlstr{"Procentaje de Muertes"}) +
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Y por \'ultimo la est\'etica del grafo deseada (sin leyenda, ejes, fondo blanco, etc).
+Y por \'ultimo la est\'etica del grafo deseada (sin ejes, fondo blanco, etc. y leyenda debajo).
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
   \hlkwd{xlab}\hlstd{(}\hlstr{""}\hlstd{)}\hlopt{+}\hlkwd{ylab}\hlstd{(}\hlstr{""}\hlstd{)} \hlopt{+}
   \hlkwd{theme_minimal}\hlstd{()} \hlopt{+}
-  \hlkwd{theme}\hlstd{(}\hlkwc{legend.position} \hlstd{=} \hlstr{"none"}\hlstd{,}
+  \hlkwd{theme}\hlstd{(}\hlkwc{legend.position} \hlstd{=} \hlstr{"bottom"}\hlstd{,}
         \hlkwc{axis.line} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
         \hlkwc{axis.text.y} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
         \hlkwc{axis.ticks} \hlstd{=} \hlkwd{element_blank}\hlstd{())}
@@ -1976,7 +2003,7 @@ Ahora, para ver el gr\'afico que le da nombre al diagrama, se van a obtener los 
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Como en este gr\'afico solo se muestra la fecha, las muertes y su causa, se va a tener que transformar estos datos para que se puedan mostrar al igual que el gr\'afico que se muestra en \cite[p\'ag 113]{Circle}
+Como en este gr\'afico solo se muestra la fecha, las muertes y su causa, se va a tener que transformar estos datos para que se puedan mostrar al igual que el gr\'afico que se muestra en %\cite[p\'ag 113]{Circle}
 
 Primero solo se necesita la fecha y las muertes por enfermedad, heridas y otras causas y ordenarlas por la causa de la muerte al igual que en el ejemplo anterior.
 \begin{knitrout}
@@ -2056,7 +2083,7 @@ Para realizar los diagramas se emplea el siguiente c\'odigo que no se explica po
 
 \end{knitrout}
 \clearpage
-Una forma de poder usar la interactividad con diagrama de ggplot2 es con ggiraph \cite{docu_ggiraph}
+Una forma de poder usar la interactividad con diagrama de ggplot2 es con ggiraph %\cite{docu_ggiraph}
 y en este caso la funci\'on \texttt{geom-col-interactive} en vez de \texttt{geom-bar}.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -2086,17 +2113,18 @@ y en este caso la funci\'on \texttt{geom-col-interactive} en vez de \texttt{geom
 }
 \clearpage
 \subsubsection{Paquete ggiraphExtra}
-Este paquete \cite{docu_ggiraphExtra}
-permite crear gr\'aficos interactivos a partir de los gr\'aficos de ggplot2. El propio paquete tiene un dataframe llamado Rose con datos para este diagrama.~\\
+Este paquete %\cite{docu_ggiraphExtra}
+permite crear gr\'aficos interactivos a partir de los gr\'aficos de ggplot2. El propio paquete tiene un dataframe llamado Rose con datos para este diagrama, pero se usar\'an los mismos datos de procentaje de muertes en cuidad y pueblos.~\\
 Una de las dos funciones que permite realizar esto es \texttt{ggRose} y necesita de los datos, la est\'etica, la paleta de color, etc.~\\
 Primero se va a representar sin interartividad, para el formato de papel, pero, a continuaci\'on, se muestra la forma de pasarlo a html para la interactividad.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(ggiraphExtra)}
-\hlkwd{ggRose}\hlstd{(rose,}\hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=Month,}\hlkwc{fill}\hlstd{=group,}\hlkwc{y}\hlstd{=value),}\hlkwc{stat}\hlstd{=}\hlstr{"identity"}\hlstd{,}\hlkwc{interactive}\hlstd{=}\hlnum{FALSE}
+\hlkwd{ggRose}\hlstd{(data,}\hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=ï..MES,}\hlkwc{fill}\hlstd{=observation,}\hlkwc{y}\hlstd{=value),}\hlkwc{stat}\hlstd{=}\hlstr{"identity"}\hlstd{,}\hlkwc{interactive}\hlstd{=}\hlnum{FALSE}
        \hlstd{,} \hlkwc{palette} \hlstd{=} \hlstr{"Blues"}\hlstd{)} \hlopt{+}
    \hlkwd{xlab}\hlstd{(}\hlstr{""}\hlstd{)} \hlopt{+}  \hlkwd{ylab}\hlstd{(}\hlstr{""}\hlstd{)} \hlopt{+}
+  \hlkwd{labs}\hlstd{(}\hlkwc{fill}\hlstd{=}\hlstr{'Causas'}\hlstd{)} \hlopt{+} \hlkwd{labs}\hlstd{(}\hlkwc{title} \hlstd{=} \hlstr{"Procentaje de Muertes"}\hlstd{)} \hlopt{+}
   \hlkwd{scale_y_sqrt}\hlstd{()} \hlopt{+}
   \hlkwd{theme_minimal}\hlstd{()} \hlopt{+}
   \hlkwd{theme}\hlstd{(}\hlkwc{panel.grid.major} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
@@ -2117,7 +2145,7 @@ Primero se va a representar sin interartividad, para el formato de papel, pero, 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{p} \hlkwb{<-} \hlkwd{ggRose}\hlstd{(rose,}\hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=Month,}\hlkwc{fill}\hlstd{=group,}\hlkwc{y}\hlstd{=value),}\hlkwc{stat}\hlstd{=}\hlstr{"identity"}\hlstd{,}\hlkwc{interactive}\hlstd{=}\hlnum{TRUE}
+\hlstd{p} \hlkwb{<-} \hlkwd{ggRose}\hlstd{(data,}\hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=ï..MES,}\hlkwc{fill}\hlstd{=observation,}\hlkwc{y}\hlstd{=value),}\hlkwc{stat}\hlstd{=}\hlstr{"identity"}\hlstd{,}\hlkwc{interactive}\hlstd{=}\hlnum{TRUE}
        \hlstd{,} \hlkwc{palette} \hlstd{=} \hlstr{"Blues"}\hlstd{)}
 \hlkwd{library}\hlstd{(htmlwidgets)}
 \hlkwd{saveWidget}\hlstd{(p,} \hlkwc{file} \hlstd{=} \hlstr{"rose_interactive.html"}\hlstd{)}
@@ -2129,9 +2157,10 @@ Otro m\'etodo para realizar el mismo diagrama es \texttt{ggBar}. Como con el paq
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggBar}\hlstd{(rose,}\hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=Month,}\hlkwc{fill}\hlstd{=group,}\hlkwc{y}\hlstd{=value),}\hlkwc{stat}\hlstd{=}\hlstr{"identity"}\hlstd{,}\hlkwc{polar}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{palette}\hlstd{=}\hlstr{"Blues"}
+\hlkwd{ggBar}\hlstd{(data,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=ï..MES,}\hlkwc{fill}\hlstd{=observation,}\hlkwc{y}\hlstd{=value),}\hlkwc{stat}\hlstd{=}\hlstr{"identity"}\hlstd{,}\hlkwc{polar}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{palette}\hlstd{=}\hlstr{"Blues"}
       \hlstd{,}\hlkwc{width}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{0.1}\hlstd{,}\hlkwc{reverse}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{interactive}\hlstd{=}\hlnum{FALSE}\hlstd{)}\hlopt{+}
     \hlkwd{xlab}\hlstd{(}\hlstr{""}\hlstd{)} \hlopt{+}  \hlkwd{ylab}\hlstd{(}\hlstr{""}\hlstd{)} \hlopt{+}
+  \hlkwd{labs}\hlstd{(}\hlkwc{fill}\hlstd{=}\hlstr{'Causas'}\hlstd{)} \hlopt{+} \hlkwd{labs}\hlstd{(}\hlkwc{title} \hlstd{=} \hlstr{"Procentaje de Muertes"}\hlstd{)} \hlopt{+}
     \hlkwd{scale_y_sqrt}\hlstd{()} \hlopt{+}
     \hlkwd{theme_minimal}\hlstd{()} \hlopt{+}
     \hlkwd{theme}\hlstd{(}\hlkwc{panel.grid.major} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
@@ -2148,7 +2177,7 @@ Otro m\'etodo para realizar el mismo diagrama es \texttt{ggBar}. Como con el paq
 
 
 \begin{kframe}\begin{alltt}
-\hlstd{p} \hlkwb{<-} \hlkwd{ggBar}\hlstd{(rose,}\hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=Month,}\hlkwc{fill}\hlstd{=group,}\hlkwc{y}\hlstd{=value),}\hlkwc{stat}\hlstd{=}\hlstr{"identity"}\hlstd{,}\hlkwc{polar}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{palette}\hlstd{=}\hlstr{"Blues"}
+\hlstd{p} \hlkwb{<-} \hlkwd{ggBar}\hlstd{(data,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=ï..MES,}\hlkwc{fill}\hlstd{=observation,}\hlkwc{y}\hlstd{=value),}\hlkwc{stat}\hlstd{=}\hlstr{"identity"}\hlstd{,}\hlkwc{polar}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{palette}\hlstd{=}\hlstr{"Blues"}
       \hlstd{,}\hlkwc{width}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{0.1}\hlstd{,}\hlkwc{reverse}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{interactive}\hlstd{=}\hlnum{TRUE}\hlstd{)}
 \hlkwd{library}\hlstd{(htmlwidgets)}
 \hlkwd{saveWidget}\hlstd{(p,} \hlkwc{file} \hlstd{=} \hlstr{"rose2_interactive.html"}\hlstd{)}
@@ -2166,7 +2195,7 @@ Para este diagrama se han encontrados dos paquetes, pero que en realidad es solo
 \subsection{Diagrama de Cuadr\'icula Circular Ordenada}\label{ssec:ord}
 Para este diagrama, al consistir en crear una cuadr\'icula ordenada, es necesario buscar un paquete que permita crear ese tipos de diagramas y pueda incluir en cada celda alg\'un tipo de gr\'afico, imagenes, texto, etc. El \'unico paquete que permite hacer eso es \texttt{circlize}.
 \subsubsection{Paquete circlize}
-Se vuelve a ver este paquete \cite{docu_circlize}
+Se vuelve a ver este paquete %\cite{docu_circlize}
 en el trabajo y, como se ha visto en otras ocasiones, dentro de este paquete existe una funci\'on que permite crear las celdas y, dentro de ellas implementar distintos gr\'aficos, con cada una de las funciones que permiten crearlos.~\\
 Lo primero es crear dichas celdas con la funci\'on \texttt{circos.track}. Esta funci\'on crea las celdas divididas por anillos empezando de exterior a interior y, para dividir cada anillo en diferentes celdas (para este paquete se llaman sectores), se utiliza la variable factors. Para poder usar dicha funci\'on se necesita crear la plantilla.~\\
 
@@ -2297,9 +2326,9 @@ Este conjunto de funciones da como resultado:
 En este apartado se encuentra una de las formas de representar un diagrama de \'arbol con formato circular. Este diagrama se organiza en niveles donde, el nivel interior es la ra\'iz del \'arbol y, a medida que se escala hacia el exterior del c\'irculo, se encuentran los hijos hasta llegar a los nodos hoja.~\\
 Este diagrama, como es una de las formas de representar un \'arbol con formato circular, necesita una estrutura de datos jer\'arquica para poder implementarse (ra\'iz y hojas \'o padres e hijos).
 \subsubsection{Paquete ggraph}
-Este paquete \cite{docu_ggraph}
+Este paquete %\cite{docu_ggraph}
 surge de la necesidad de crear mejores gr\'aficos de redes que los que ofrece ggplot2, por lo que, se cre\'o este paquete como una ampliacion de la API de ggplot2, para que ofrezca una mejor visualizaci\'on de gr\'aficos de capa por capa.~\\
-Para el ejemplo se va a necesitar unos datos jerarquicos, los cuales se obtienen de la base de datos flare siendo apoyada por la libreria \texttt{igraph} \cite{docu_igraph}
+Para el ejemplo se va a necesitar unos datos jerarquicos, los cuales se obtienen de la base de datos flare siendo apoyada por la libreria \texttt{igraph} %\cite{docu_igraph}
 para transformarla en datos que entienda ggraph.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -2381,7 +2410,7 @@ El nuevo gr\'afico s\'olo es distinto al anterior en 2 l\'ineas. (las etiquetas 
 \end{knitrout}
 \clearpage
 \subsubsection{Paquete plotly}
-Gracias a este paquete \cite{docu_plotly}
+Gracias a este paquete %\cite{docu_plotly}
 y sus gr\'aficos espec\'ificos, se puede realizar un gr\'afico parecido al del paquete anterior, pero con una interactividad muy bien implementada, ya que, cuando se pulsa en un nodo se recrea el gr\'afico como si el nodo seleccionado fuera la ra\'iz, y asi con los dem\'as nodos. Para volver se pulsa en el nodo ra\'iz y se vuelve al gr\'afico d\'onde el nodo, antes ra\'iz, pasa a hijo, y su padre a ra\'iz; asi hasta la ra\'iz real del gr\'afico.~\\
 Se escogen los sets de datos de un repositorio de github sobre los sabores de caf\'e, con esta estructura jerarquica.
 \begin{knitrout}
@@ -2483,7 +2512,7 @@ Y para que se pueda usar su interactividad la libreria \texttt{htmlwidgets} tran
 }
 \clearpage
 \subsubsection{Paquete webr}
-Este paquete \cite{docu_webr}
+Este paquete %\cite{docu_webr}
 consiste en una serie de funciones que implementan las del libro "Web-based Analysis without R in Your Computer". Dentro del paquete se encuentra la funci\'on que se va a usar: \texttt{pieDonut}, que consiste en un digrama de sectores unido a un diagrama de donut. Para poder implementarlo los datos se suelen poner como un data frame con los padres y los hijos.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -2514,9 +2543,9 @@ Usando pieDonut se puede elegir que datos seran los padres (pies) y cuales los h
 \end{knitrout}
 \clearpage
 \subsubsection{Paquete ggiraphExtra}
-Otra forma de crear estos pieDonuts es con este paquete \cite{docu_ggiraphExtra}
-, pero en este caso pueden ser interactivos. Este paquete es una extensi\'on del paquete ggplot2 \cite{docu_ggplot2}
-usando las funciones sustitutivas del paquete ggiraph \cite{docu_ggiraph}
+Otra forma de crear estos pieDonuts es con este paquete %\cite{docu_ggiraphExtra}
+, pero en este caso pueden ser interactivos. Este paquete es una extensi\'on del paquete ggplot2 %\cite{docu_ggplot2}
+usando las funciones sustitutivas del paquete ggiraph %\cite{docu_ggiraph}
 .
 Se usan datos de las bases de datos moonbook. Con pacientes con STEMI (S\'indrome coronario agudo con elevaci\'on del segmento ST), NSTEMI (S\'indrome coronario agudo sin elevaci\'on del segmento ST), Unstable Angina (Angina inestable); relacion\'andolos con los h\'abitos de fumar de dichos pacientes.
 \begin{knitrout}
@@ -2537,8 +2566,8 @@ Se usan datos de las bases de datos moonbook. Con pacientes con STEMI (S\'indrom
 \textbf{. . .}
 \end{center}
 \subsubsection{Paquete sunburstR}
-Este paquete \cite{docu_sunburstr}
-naci\'o en el proyecto para crear widgets interactivos con integraci\'on con htmlwidget \cite{docu_htmlwidget}
+Este paquete %\cite{docu_sunburstr}
+naci\'o en el proyecto para crear widgets interactivos con integraci\'on con htmlwidget %\cite{docu_htmlwidget}
  y solo est\'a destinado a crear este tipo de gr\'afico. Para tener un ejemplo de este gr\'afico se necesita, primero unos datos con estuctura jer\'arquica (\'arbol) y para ello se usa una base de datos con la poblaci\'on mundial para representar con porcentajes los continentes y paises dependiendo de su poblaci\'on.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -2558,7 +2587,7 @@ naci\'o en el proyecto para crear widgets interactivos con integraci\'on con htm
 \end{kframe}
 \end{knitrout}
 \clearpage
-Estos datos necesitan un paso intermedio de cambio de formato con la ayuda de tidyverse \cite{docu_tidyverse}
+Estos datos necesitan un paso intermedio de cambio de formato con la ayuda de tidyverse %\cite{docu_tidyverse}
 , para que la funci\'on principal los pueda usar.
 Creando la ruta de cada pa\'is (continente-regi\'on-pa\'is).
 \begin{knitrout}
@@ -2610,9 +2639,9 @@ En conclusi\'on, todos los paquetes, menos webr y ggiraphExtra, implementan una 
 En este diagrama, al usarse para realizar comparaciones cuantitativas entre difrerentes variables, se requiere de una estructura de datos donde se proporcionan, el nombre de la variable y su valor num\'erico. 
 Para realizar estos diagramas se han encontrado cuatro paquetes, algunos ofrecen interactividad, otros varios pol\'igonos si las variables son las mismas y otros las dos caracteristicas juntas.
 \subsubsection{Paquete fmsb}
-El nombre de este paquete \cite{docu_fmsb}
+El nombre de este paquete %\cite{docu_fmsb}
 viene de Functions for Medical Statistics Book with some Demographic Data. Las funciones que tiene el paquete son implementaciones del libro Practices of Medical and Health Data Analysis using R. Y, para recrear este diagrama, el paquete cuenta con la funci\'on \texttt{radarchart}.
-Para realizarlo se necesitan los datos adecuados, basados en los nombres de las entidades y sus valores, por lo que se va a optar por representar uno de los gr\'aficos del libro de Manuel Lima \cite[p\'ag 151]{Circle}, el ratio de muertes por accidentes por mes.
+Para realizarlo se necesitan los datos adecuados, basados en los nombres de las entidades y sus valores, por lo que se va a optar por representar uno de los gr\'aficos del libro de Manuel Lima %\cite[p\'ag 151]{Circle}, el ratio de muertes por accidentes por mes.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -2668,8 +2697,8 @@ Resultando en el gr\'afico.
 \textbf{. . .}
 \end{center}
 \subsubsection{Paquete plotly}
-Se vuelve a usar este paquete \cite{docu_plotly}
-por lo que se sabe que usa la funci\'on \texttt{plot-ly} como principal para crear el diagrama requerido, solo le hacen falta los datos y el tipo de gr\'afico que se desea generar. En esta ocasi\'on, el paquete es capaz de representar dos o m\'as pol\'igonos dentro de un mismo gr\'afico, por lo que se procede a la creaci\'on de los nuevos datos del gr\'afico de \cite[p\'ag 151]{Circle}
+Se vuelve a usar este paquete %\cite{docu_plotly}
+por lo que se sabe que usa la funci\'on \texttt{plot-ly} como principal para crear el diagrama requerido, solo le hacen falta los datos y el tipo de gr\'afico que se desea generar. En esta ocasi\'on, el paquete es capaz de representar dos o m\'as pol\'igonos dentro de un mismo gr\'afico, por lo que se procede a la creaci\'on de los nuevos datos del gr\'afico de %\cite[p\'ag 151]{Circle}
 .
 
 \begin{knitrout}
@@ -2722,7 +2751,7 @@ Y, para terminar, se le a\~nade el dise\~no apropiado, como el rango de los valo
 \end{kframe}
 \end{knitrout}
 
-Debido a que es un diagrama interactivo, se usa \texttt{htmlwidgets} \cite{docu_htmlwidget}
+Debido a que es un diagrama interactivo, se usa \texttt{htmlwidgets} %\cite{docu_htmlwidget}
 para usar dicha interactividad, por lo que aqui solo se muestra una foto, no el gr\'afico interactivo.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -2740,7 +2769,7 @@ para usar dicha interactividad, por lo que aqui solo se muestra una foto, no el 
 \textbf{. . .}
 \end{center}
 \subsubsection{Paquete plotrix}
-Con este paquete \cite{docu_plotrix}
+Con este paquete %\cite{docu_plotrix}
 tambi\'en es muy f\'acil crear estos diagramas radar gracias a la funci\'on \texttt{radial.plot}. Aparte de poder realizar el diagrama al igual que el anterior, se pueden comparar en un mismo gr\'afico dos radares y esta vez con el poder de que el gr\'afico empiece donde se requiera y en el sentido deseado.~\\
 Primero se realiza el mas b\'asico de los radares con los valores anteriores.
 
@@ -2799,7 +2828,7 @@ Y para mejor visualizaci\'on se usa el m\'etodo \texttt{legendg} del propio paqu
 
 \end{knitrout}
 \subsubsection{Paquete ggiraphExtra}
-Se vuelve a ver este paquete \cite{docu_ggiraphExtra}
+Se vuelve a ver este paquete %\cite{docu_ggiraphExtra}
 para dar interactividad a partir de funciones de los paquetes con ggplot2 y ggiraph.
 Con este paquete se usa la funci\'on \texttt{ggRadar}, la cual se ayuda de \texttt{ggplot2} para mejorar su aspecto.~\\
 Con las dos librerias cargadas.
@@ -2880,56 +2909,71 @@ Para implementar este gr\'afico se han conseguido 4 paquetes que ofrecen un diag
 Este diagrama es muy similar al de las Columnas Radiales. Como se desea imitar el iris de un ojo, es necesario que los paquetes sean capaces de controlar el espacio que se establece en medio del diagrama. Se reducen los paquetes del diagrama de columnas a cuatro, pero en realidad son dos paquetes diferentes y los otros dos son ampliaciones de uno de ellos.~\\
 Para ejemplificar este diagrama se va a optar por un diagrama de columnas apiladas ya que en el Diagrama de Columnas radiales ya se ejemplific\'o con diagramas de columnas con solo un valor.
 \subsubsection{Paquete ggplot2}
-Este paquete \cite{docu_ggplot2}
+Este paquete %\cite{docu_ggplot2}
 vuelve a salir con las mismas funciones que se expusieron en el Diagrama de Columnas Radiales \autoref{ssec:columnasRadiales}
 con \texttt{geom-bar} y para poder personalizar el espacio que se deja en medio, se utiliza la funci\'on \texttt{ylim} que delimita qu\'e valores representa el valor del eje Y del gr\'afico, estableciendo el l\'imete inferior por debajo de los valores que se representen en dicho eje.~\\
-Para empezar se cargan las librerias b\'asicas para crear el diagrama: \texttt{ggplot2} para implementar, \texttt{tidyverse} \cite{docu_tidyverse}
- para modificar los datos y \texttt{viridis} \cite{docu_viridis}
- para mejor escala de colores.
+Para empezar se cargan las librerias b\'asicas para crear el diagrama: \texttt{ggplot2} para implementar y \texttt{dplyr} para modificar los datos.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{library}\hlstd{(tidyverse)}
-\hlkwd{library}\hlstd{(viridis)}
+\hlkwd{library}\hlstd{(dplyr)}
 \hlkwd{library}\hlstd{(ggplot2)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Despu\'es, para crear los datos de las columnas apiladas en este caso, se usan tres valores generados con aleatoriedad, con un total de 60 columnas con tres valores cada una. Agrupando tres categor\'ias por medio de una cuarta.
+Para datos del diagrama de columnas con formato iris, y el formato de columnas apiladas se eligen los fallecidos del COVID-19 por fecha y por Comunidad Aut\'onoma.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{data} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}
-  \hlkwc{individual}\hlstd{=}\hlkwd{seq}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{60}\hlstd{),}
-  \hlkwc{value1}\hlstd{=}\hlkwd{sample}\hlstd{(} \hlkwd{seq}\hlstd{(}\hlnum{10}\hlstd{,}\hlnum{100}\hlstd{),} \hlnum{60}\hlstd{,} \hlkwc{replace}\hlstd{=T),}
-  \hlkwc{value2}\hlstd{=}\hlkwd{sample}\hlstd{(} \hlkwd{seq}\hlstd{(}\hlnum{10}\hlstd{,}\hlnum{100}\hlstd{),} \hlnum{60}\hlstd{,} \hlkwc{replace}\hlstd{=T),}
-  \hlkwc{value3}\hlstd{=}\hlkwd{sample}\hlstd{(} \hlkwd{seq}\hlstd{(}\hlnum{10}\hlstd{,}\hlnum{100}\hlstd{),} \hlnum{60}\hlstd{,} \hlkwc{replace}\hlstd{=T)}
-\hlstd{)}
+\hlstd{data} \hlkwb{<-} \hlkwd{read.csv}\hlstd{(}\hlstr{"agregados.csv"}\hlstd{,} \hlkwc{header} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Ahora se va a modificar el data frame agrupando los valores, dejando que se lean primero todas las columnas con un valor, para despu\'es leer el siguiente.
+Ahora se va a modificar el data frame agrupando los valores por CCAA y, realizando la modificaci\'on de pasar de datos acumulados de fallecidos a datos d\'ia a d\'ia.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{datatrans} \hlkwb{<-} \hlstd{data} \hlopt{%>%} \hlkwd{gather}\hlstd{(}\hlkwc{key} \hlstd{=} \hlstr{"observation"}\hlstd{,} \hlkwc{value}\hlstd{=}\hlstr{"value"}\hlstd{,} \hlopt{-}\hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{))}
+\hlstd{data} \hlkwb{<-} \hlstd{data} \hlopt{%>%}
+  \hlkwd{group_by}\hlstd{(CCAA)} \hlopt{%>%}
+  \hlkwd{mutate}\hlstd{(}\hlkwc{newcases} \hlstd{= Fallecidos} \hlopt{-} \hlkwd{lag}\hlstd{(Fallecidos))}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Para proceder a implementar el diagrama se dan a la plantilla los datos y qu\'e valor se representa en qu\'e eje, coloreando seg\'un el grupo de valor.
+Otra modificaci\'on a tener en cuenta es el formato de la fecha, para ser le\'ida por R.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{data}\hlopt{$}\hlstd{date} \hlkwb{<-} \hlkwd{strptime}\hlstd{(}\hlkwd{as.character}\hlstd{(data}\hlopt{$}\hlstd{FECHA),} \hlstr{"%d/%m/%Y"}\hlstd{)}
+\hlstd{data}\hlopt{$}\hlstd{date} \hlkwb{<-} \hlkwd{format}\hlstd{(data}\hlopt{$}\hlstd{date,} \hlstr{"%Y-%m-%d"}\hlstd{)}
+\hlstd{data}\hlopt{$}\hlstd{date} \hlkwb{<-} \hlkwd{as.Date}\hlstd{(data}\hlopt{$}\hlstd{date)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Debido a la gran cantidad de CCAA no se ha encontrado una paleta que soporte, con colores distintivos, esta cantidad. Por ello se procede a la creaci\'on de una propia gracias a \texttt{RColorBrewer}. Resultando en un vector de colores distintos.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(RColorBrewer)}
+\hlstd{n} \hlkwb{<-} \hlnum{60}
+\hlstd{qual_col_pals} \hlkwb{=} \hlstd{brewer.pal.info[brewer.pal.info}\hlopt{$}\hlstd{category} \hlopt{==} \hlstr{'qual'}\hlstd{,]}
+\hlstd{col_vector} \hlkwb{=} \hlkwd{unlist}\hlstd{(}\hlkwd{mapply}\hlstd{(brewer.pal, qual_col_pals}\hlopt{$}\hlstd{maxcolors,} \hlkwd{rownames}\hlstd{(qual_col_pals)))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Para proceder a implementar el diagrama se dan a la plantilla los datos y qu\'e valor se representa en qu\'e eje, coloreando seg\'un la CCAA.
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggplot}(datatrans, \hlkwd{aes}(x=\hlkwd{as.factor}(individual), y=value, fill=observation)) +      
+\hlkwd{ggplot}(data, \hlkwd{aes}(x=date, y= newcases, fill = CCAA)) +
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Se utiliza la funci\'on \texttt{geom-bar} para crear las barras apiladas, fijando cada barra a los valores y no a la suma de ellos con \texttt{identity}.
+Se utiliza la funci\'on \texttt{geom-bar} para crear las barras apiladas, fijando cada barra a los valores y no a la suma de ellos con \texttt{identity} y \texttt{position stack}.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-  \hlkwd{geom_bar}(stat=\hlstr{"identity"}, alpha=0.5) +
+  \hlkwd{geom_bar}(stat = \hlstr{"identity"}, position = \hlstr{"stack"}) +
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -2937,16 +2981,15 @@ Se transforma el sistema de coordenadas del eje X a sistema polares con \texttt{
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-  \hlkwd{coord_polar}() +
+  \hlkwd{coord_polar}(start = pi/2) +
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-\clearpage
-Ahora se usa la funci\'on principal para establecer la est\'etica del formato de iris de un ojo. Se fija el l\'imite inferior en un valor lo suficientemente bajo para ajustarse a la est\'etica, y el l\'imite superior como el posible m\'aximo de una barra (100 + 100 + 100).
+Ahora se usa la funci\'on principal para establecer la est\'etica del formato de iris de un ojo. Se fija el l\'imite inferior en un valor lo suficientemente bajo para ajustarse a la est\'etica, y el l\'imite superior.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-  \hlkwd{ylim}(-150,300) +
+  \hlkwd{ylim}(-1000,1000) +
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -2954,12 +2997,12 @@ Las \'ultimas funciones ayudan a cambiar el tema y colores del gr\'afico, ofreci
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-  \hlkwd{scale_fill_viridis}\hlstd{(}\hlkwc{discrete}\hlstd{=}\hlnum{TRUE}\hlstd{)} \hlopt{+}
-  \hlkwd{theme_minimal}\hlstd{()} \hlopt{+}
-  \hlkwd{theme}\hlstd{(}
-    \hlkwc{legend.position} \hlstd{=} \hlstr{"none"}\hlstd{,}
-    \hlkwc{axis.text} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-    \hlkwc{axis.title} \hlstd{=} \hlkwd{element_blank}\hlstd{())}
+  \hlkwd{scale_fill_manual}\hlstd{(}\hlkwc{values} \hlstd{=} \hlkwd{sample}\hlstd{(col_vector,} \hlnum{19}\hlstd{))} \hlopt{+}
+  \hlkwd{theme_minimal}\hlstd{()} \hlopt{+} \hlkwd{labs}\hlstd{(}\hlkwc{title} \hlstd{=} \hlstr{"Fallecidos por CCAA"}\hlstd{)} \hlopt{+}
+  \hlkwd{scale_x_date}\hlstd{(}\hlkwc{minor_breaks} \hlstd{=} \hlstr{"1 week"}\hlstd{)} \hlopt{+}
+  \hlkwd{xlab}\hlstd{(}\hlstr{"Fecha"}\hlstd{)}\hlopt{+}\hlkwd{ylab}\hlstd{(}\hlstr{"Nuevos Fallecidos"}\hlstd{)}\hlopt{+}
+  \hlkwd{theme}\hlstd{(}\hlkwc{legend.position} \hlstd{=} \hlstr{'bottom'}\hlstd{)}
+\hlnum{NA}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -2974,12 +3017,9 @@ Dando el siguente resultado:
 
 
 \end{knitrout}
-\begin{center}
-\textbf{. . .}
-\end{center}
-~\\
+\clearpage
 Debido a que los dos siguientes paquetes no pueden implementar el diagrama sin recurrir a la funci\'on principal contenida en \texttt{ggplot2}, se van a explicar como ampliaci\'on de este paquete.~\\
-El paquete ggiraph \cite{docu_ggiraph}
+El paquete ggiraph %\cite{docu_ggiraph}
 ofrece la posibilidad de crear barras interactivas dentro de las funciones de ggplot2. Para ello se proporcionan funciones que las sustituyen para realizar en la plantilla. En este caso, se va a sustituir la funci\'on \texttt{geom-bar} por \texttt{geom-bar-interactive}.~\\
 Lo primero es llamar a la libreria y cargar la plantilla.
 
@@ -2987,8 +3027,8 @@ Lo primero es llamar a la libreria y cargar la plantilla.
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}(ggiraph)
-p <- \hlkwd{ggplot}(datatrans, \hlkwd{aes}(x=\hlkwd{as.factor}(individual), y=value, fill=observation, 
-        tooltip= \hlkwd{as.factor}(value), data_id =\hlkwd{as.factor}(individual))) +
+p <- \hlkwd{ggplot}(data, \hlkwd{aes}(x=date, y= newcases, fill = CCAA, 
+        tooltip= \hlkwd{as.factor}(newcases), data_id =\hlkwd{as.factor}(date))) +
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -3005,14 +3045,12 @@ Se utilizan las mismas funciones que en el ejemplo anterior con solo ggplot2 par
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-        \hlkwd{ylim}\hlstd{(}\hlopt{-}\hlnum{150}\hlstd{,}\hlnum{300}\hlstd{)} \hlopt{+}
+        \hlkwd{ylim}\hlstd{(}\hlopt{-}\hlnum{1000}\hlstd{,}\hlnum{1000}\hlstd{)} \hlopt{+}
         \hlkwd{coord_polar}\hlstd{()} \hlopt{+}
-        \hlkwd{theme_minimal}\hlstd{()} \hlopt{+}
-        \hlkwd{theme}\hlstd{(}
-          \hlkwc{axis.text} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-          \hlkwc{axis.title} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-          \hlkwc{panel.grid} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-          \hlkwc{legend.position} \hlstd{=} \hlstr{"none"}\hlstd{)}
+        \hlkwd{scale_fill_manual}\hlstd{(}\hlkwc{values} \hlstd{=} \hlkwd{sample}\hlstd{(col_vector,} \hlnum{19}\hlstd{))} \hlopt{+}
+        \hlkwd{theme_minimal}\hlstd{()}\hlopt{+}\hlkwd{labs}\hlstd{(}\hlkwc{title} \hlstd{=} \hlstr{"Fallecidos por CCAA"}\hlstd{)} \hlopt{+}
+        \hlkwd{xlab}\hlstd{(}\hlstr{"Fecha"}\hlstd{)}\hlopt{+}\hlkwd{ylab}\hlstd{(}\hlstr{"Nuevos Fallecidos"}\hlstd{)}\hlopt{+}
+        \hlkwd{theme}\hlstd{(}\hlkwc{legend.position} \hlstd{=} \hlstr{'bottom'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -3024,13 +3062,16 @@ Por \'ultimo, para crear un gr\'afico interactivo, se necesita crear dicho objet
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+\clearpage
 Resultando en el siguiente gr\'afico:~\\
 \vbox{
     \centering
-    \includegraphics[width=0.6\textwidth]{imag/ggiraph_inte}
+    \includegraphics[width=0.7\textwidth]{imag/ggiraph_inte}
 }
-\clearpage
-El otro paquete que depende de \texttt{ggplot2} es \texttt{ggiraphExtra} \cite{docu_ggiraphExtra}
+\begin{center}
+\textbf{. . .}
+\end{center}~\\
+El otro paquete que depende de \texttt{ggplot2} es \texttt{ggiraphExtra} %\cite{docu_ggiraphExtra}
 . No es como su paquete ggiraph que sustituye una funci\'on, sino que tiene una propia para crear el diagrama de columnas radiales sin necesidad de apoyo de ggplot2. Para obtener la est\'etica del diagrama que se est\'a implementando es necesario hacer uso de la funci\'on \texttt{ylim} y, ya que se hace uso de esa funci\'on, se utilizan las dem\'as para mejorar est\'etica.~\\
 Este paquete ofrece un par\'ametro para convertir el gr\'afico a interractivo, pero si se usan las funciones de otro paquete para la ayuda a la implementaci\'on se vuelve incompatible.
 Dentro de la funci\'on tiene el argumento de decidir si aplicar la funci\'on \texttt{coord-polar} por defecto.
@@ -3038,15 +3079,13 @@ Dentro de la funci\'on tiene el argumento de decidir si aplicar la funci\'on \te
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(ggiraphExtra)}
-\hlkwd{ggBar}\hlstd{(datatrans,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=individual,} \hlkwc{y}\hlstd{=value,} \hlkwc{fill}\hlstd{=observation),} \hlkwc{stat}\hlstd{=}\hlstr{"identity"}\hlstd{,}
+\hlkwd{ggBar}\hlstd{(data,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=date,} \hlkwc{y}\hlstd{= newcases,} \hlkwc{fill} \hlstd{= CCAA),} \hlkwc{stat}\hlstd{=}\hlstr{"identity"}\hlstd{,}
       \hlkwc{alpha}\hlstd{=}\hlnum{0.5}\hlstd{,} \hlkwc{polar}\hlstd{=}\hlnum{TRUE}\hlstd{)} \hlopt{+}
-  \hlkwd{scale_fill_viridis}\hlstd{(}\hlkwc{discrete}\hlstd{=}\hlnum{TRUE}\hlstd{)} \hlopt{+}
-  \hlkwd{ylim}\hlstd{(}\hlopt{-}\hlnum{150}\hlstd{,}\hlnum{300}\hlstd{)} \hlopt{+}
-  \hlkwd{theme_void}\hlstd{()} \hlopt{+}
-  \hlkwd{theme}\hlstd{(}
-    \hlkwc{legend.position} \hlstd{=} \hlstr{"none"}\hlstd{,}
-    \hlkwc{axis.text} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-    \hlkwc{axis.title} \hlstd{=} \hlkwd{element_blank}\hlstd{())}
+  \hlkwd{scale_fill_manual}\hlstd{(}\hlkwc{values} \hlstd{=} \hlkwd{sample}\hlstd{(col_vector,} \hlnum{19}\hlstd{))} \hlopt{+}
+  \hlkwd{ylim}\hlstd{(}\hlopt{-}\hlnum{1000}\hlstd{,}\hlnum{1000}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_minimal}\hlstd{()}\hlopt{+}\hlkwd{labs}\hlstd{(}\hlkwc{title} \hlstd{=} \hlstr{"Fallecidos por CCAA"}\hlstd{)} \hlopt{+}
+        \hlkwd{xlab}\hlstd{(}\hlstr{"Fecha"}\hlstd{)}\hlopt{+}\hlkwd{ylab}\hlstd{(}\hlstr{"Nuevos Fallecidos"}\hlstd{)}\hlopt{+}
+        \hlkwd{theme}\hlstd{(}\hlkwc{legend.position} \hlstd{=} \hlstr{'bottom'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 
@@ -3057,26 +3096,39 @@ Dentro de la funci\'on tiene el argumento de decidir si aplicar la funci\'on \te
 
 
 \end{knitrout}
-\clearpage
+\begin{center}
+\textbf{. . .}
+\end{center}~\\
 \subsubsection{Paquete circlize}
-Para realizar el diagrama con este paquete \cite{docu_circlize}
+Para realizar el diagrama con este paquete %\cite{docu_circlize}
 se va a optar por la misma funci\'on que se utiliz\'o en el Diagrama de Columnas Radiales \autoref{ssec:columnasRadiales}
 , solo que esta vez se van a implementar la variante de columnas apiladas y con una funci\'on similar a ylim de ggplot2.~\\
-Se vuelven a usar los mismos datos que en el paquete anterior para mejorar la comparaci\'on entre ellos. Lo primero que se puede hacer es fijar par\'ametros, como el de en qu\'e \'angulo del c\'irculo empieza el diagrama. Esta parte es opcional, solo aumenta la personalizaci\'on. 
+Se vuelven a usar los mismos datos que en el paquete anterior para mejorar la comparaci\'on entre ellos, pero debido a la gran cantidad de CCAA, y que cada barra necesita de dos l\'ineas de c\'odigo, se opta por seleccionar las tres provincias con mayores valores. 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{dataMD} \hlkwb{<-} \hlstd{data[data}\hlopt{$}\hlstd{CCAA} \hlopt{==} \hlstd{(}\hlstr{"MD"}\hlstd{),]}
+\hlstd{dataCT} \hlkwb{<-} \hlstd{data[data}\hlopt{$}\hlstd{CCAA} \hlopt{==} \hlstd{(}\hlstr{"CT"}\hlstd{),]}
+\hlstd{dataCM} \hlkwb{<-} \hlstd{data[data}\hlopt{$}\hlstd{CCAA} \hlopt{==} \hlstd{(}\hlstr{"CM"}\hlstd{),]}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Lo primero que se puede hacer es fijar par\'ametros, como el de en qu\'e \'angulo del c\'irculo empieza el diagrama. Esta parte es opcional, solo aumenta la personalizaci\'on. 
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(circlize)}
-\hlkwd{circos.par}\hlstd{(}\hlstr{"start.degree"} \hlstd{=} \hlnum{90}\hlstd{)}
+\hlkwd{circos.par}\hlstd{(}\hlstr{"start.degree"} \hlstd{=} \hlnum{90}\hlstd{,} \hlkwc{cell.padding} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{0}\hlstd{,} \hlnum{0}\hlstd{,} \hlnum{0}\hlstd{))}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Lo que si se necesita para implementar el diagrama, es inicializar el gr\'afico fijando de cuantos sectores se compone cada anillo del gr\'afico de circlize y cuales son los l\'imites del eje X, estableciendo como se construye cada anillo.
+\clearpage
+Lo que s\'i se necesita para implementar el diagrama, es inicializar el gr\'afico fijando de cuantos sectores se compone cada anillo del gr\'afico de circlize y cuales son los l\'imites del eje X, estableciendo como se construye cada anillo.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{circos.initialize}\hlstd{(}\hlstr{"a"}\hlstd{,} \hlkwc{xlim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0.5}\hlstd{,} \hlkwd{length}\hlstd{(data}\hlopt{$}\hlstd{individual)}\hlopt{+}\hlnum{0.5}\hlstd{))}
+\hlkwd{circos.initialize}\hlstd{(}\hlstr{"a"}\hlstd{,} \hlkwc{xlim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0.5}\hlstd{,} \hlnum{91}\hlopt{+}\hlnum{0.5}\hlstd{))} \hlcom{# 'a` just means there is one sector}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -3084,7 +3136,7 @@ Ahora se procede a crear solo el anillo para implementar las columnas, donde la 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{circos.track}(ylim = \hlkwd{c}(0, 300), track.height = 0.6, 
+\hlkwd{circos.track}(ylim = \hlkwd{c}(0, 1000), track.height = 0.6, 
              bg.border = NA, panel.fun = \hlkwd{function}(x, y) \{
 \end{alltt}
 \end{kframe}
@@ -3095,7 +3147,7 @@ Y para implementar las columnas, al igual que en el Diagrama de Columnas Radiale
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
                \hlstd{xlim} \hlkwb{=} \hlstd{CELL_META}\hlopt{$}\hlstd{xlim}
-               \hlkwd{circos.rect}\hlstd{(} \hlnum{1}\hlopt{:}\hlnum{60} \hlopt{-} \hlnum{0.45}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{60}\hlstd{),} \hlnum{1}\hlopt{:}\hlnum{60} \hlopt{+} \hlnum{0.45}\hlstd{, data}\hlopt{$}\hlstd{value1,}
+               \hlkwd{circos.rect}\hlstd{(} \hlnum{1}\hlopt{:}\hlnum{91} \hlopt{-} \hlnum{0.45}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{91}\hlstd{),} \hlnum{1}\hlopt{:}\hlnum{91} \hlopt{+} \hlnum{0.45}\hlstd{, dataMD}\hlopt{$}\hlstd{newcases,}
                             \hlkwc{col} \hlstd{=} \hlstr{"burlywood"}\hlstd{,} \hlkwc{border} \hlstd{=} \hlstr{"white"}\hlstd{)}
 \end{alltt}
 \end{kframe}
@@ -3104,10 +3156,10 @@ Para los dos siguientes grupos es necesario poner esos valores empezando en el f
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-               \hlkwd{circos.rect}\hlstd{(} \hlnum{1}\hlopt{:}\hlnum{60} \hlopt{-} \hlnum{0.45}\hlstd{,data}\hlopt{$}\hlstd{value1}\hlopt{+}\hlnum{0.001}\hlstd{,} \hlnum{1}\hlopt{:}\hlnum{60} \hlopt{+} \hlnum{0.45}\hlstd{,}
-                            \hlstd{data}\hlopt{$}\hlstd{value2}\hlopt{+}\hlstd{data}\hlopt{$}\hlstd{value1,} \hlkwc{col} \hlstd{=} \hlstr{"coral"}\hlstd{,} \hlkwc{border} \hlstd{=} \hlstr{"white"}\hlstd{)}
-               \hlkwd{circos.rect}\hlstd{(} \hlnum{1}\hlopt{:}\hlnum{60} \hlopt{-} \hlnum{0.45}\hlstd{,data}\hlopt{$}\hlstd{value2}\hlopt{+}\hlstd{data}\hlopt{$}\hlstd{value1}\hlopt{+}\hlnum{0.001}\hlstd{,} \hlnum{1}\hlopt{:}\hlnum{60} \hlopt{+} \hlnum{0.45}\hlstd{,}
-                            \hlstd{data}\hlopt{$}\hlstd{value3}\hlopt{+}\hlstd{data}\hlopt{$}\hlstd{value2}\hlopt{+}\hlstd{data}\hlopt{$}\hlstd{value1,}
+               \hlkwd{circos.rect}\hlstd{(} \hlnum{1}\hlopt{:}\hlnum{91} \hlopt{-} \hlnum{0.45}\hlstd{,dataMD}\hlopt{$}\hlstd{newcases}\hlopt{+}\hlnum{0.001}\hlstd{,} \hlnum{1}\hlopt{:}\hlnum{91} \hlopt{+} \hlnum{0.45}\hlstd{,}
+                            \hlstd{dataCT}\hlopt{$}\hlstd{newcases}\hlopt{+}\hlstd{dataMD}\hlopt{$}\hlstd{newcases,}\hlkwc{col} \hlstd{=} \hlstr{"coral"}\hlstd{,} \hlkwc{border} \hlstd{=} \hlstr{"white"}\hlstd{)}
+               \hlkwd{circos.rect}\hlstd{(} \hlnum{1}\hlopt{:}\hlnum{91} \hlopt{-} \hlnum{0.45}\hlstd{,dataCT}\hlopt{$}\hlstd{newcases}\hlopt{+}\hlstd{dataMD}\hlopt{$}\hlstd{newcases}\hlopt{+}\hlnum{0.001}\hlstd{,} \hlnum{1}\hlopt{:}\hlnum{91} \hlopt{+} \hlnum{0.45}\hlstd{,}
+                            \hlstd{dataCM}\hlopt{$}\hlstd{newcases}\hlopt{+}\hlstd{dataCT}\hlopt{$}\hlstd{newcases}\hlopt{+}\hlstd{dataMD}\hlopt{$}\hlstd{newcases,}
                             \hlkwc{col} \hlstd{=} \hlstr{"blueviolet"}\hlstd{,} \hlkwc{border} \hlstd{=} \hlstr{"white"}\hlstd{)}
 \end{alltt}
 \end{kframe}
@@ -3116,8 +3168,9 @@ Para tener una mejor est\'etica se escogen colores agradables y que el borde de 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-               \hlkwd{circos.axis}(h=\hlstr{"bottom"},direction = \hlstr{"inside"}, 
-                           labels.facing= \hlstr{"clockwise"}, labels.cex = 0.5)\})
+               \hlkwd{circos.axis}(h=\hlstr{"top"},direction = \hlstr{"inside"}, labels.facing= \hlstr{"clockwise"}, labels.cex = 0.5, 
+                           labels = dataMD$FECHA)\})
+\hlkwd{circos.yaxis}(labels.cex = 0.4)
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -3126,6 +3179,22 @@ Y, por \'ultimo, para volver a realizar un gr\'afico con este paquete es necesar
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{circos.clear}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Para la leyenda del diagrama se opta por legend, una funci\'on b\'asica de R para este proposito.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{legend}(\hlstr{"topright"}, inset=.02, title=\hlstr{"CCAA"},
+\hlkwd{circos.clear}()
+\hlkwd{circos.yaxis}(labels.cex = 0.4)
+                           labels = dataMD$FECHA)\})
+               \hlkwd{circos.axis}(h=\hlstr{"top"},direction = \hlstr{"inside"}, labels.facing= \hlstr{"clockwise"}, labels.cex = 0.5, 
+                            col = \hlstr{"blueviolet"}, border = \hlstr{"white"}) 
+                            dataCM$newcases+dataCT$newcases+dataMD$newcases, 
+               \hlkwd{circos.rect}( 1:91 - 0.45,dataCT$newcases+dataMD$newcases+0.001, 1:91 + 0.45, 
+                            dataCT$newcases+dataMD$newcases,col = \hlstr{"coral"}, border = \hlstr{"white"})
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -3154,7 +3223,7 @@ Estos dos paquetes son los m\'as completos; ya se han visto en otros diagramas, 
 En este diagrama, al implementar un gr\'afico de l\'ineas multivariable, queda descartado el paquete circlize y cualquier otro que ofrezca gr\'aficos de l\'ineas radial que no puedan crear diagramas donde se muestren varias l\'ineas y no solo un grupo de datos.~\\
 Para realizar los posibles diagramas se van a intentar implementar dos tipos de gr\'aficos, uno donde se representan solamente las multiples l\'ineas y el otro tipo consiste en el gr\'afico de \'area donde se escogen las \'areas de las multiples l\'ineas representadas.
 \subsubsection{Paquete ggplot2}
-Este paquete \cite{docu_ggplot2}
+Este paquete %\cite{docu_ggplot2}
 ofrece las dos posibles opciones, uno solo con las l\'ineas y el otro con las \'areas que crean dichas l\'ineas, gracias a los m\'etodos de \texttt{geom-line} y \texttt{geom-area}.~\\
 Para los dos m\'etodos se recurren a los mismos datos para poder realizar una comparativa visual. Estos datos se escogen de la base de datos \texttt{babynames}, la cual ofrece los nombres m\'as populares de los bebes en cada a\~no, por lo que resulta en unos diagramas temporales donde el eje X ser\'an los a\~nos y el eje Y la probabilidad, ofreciendo una l\'inea por cada nombre.
 
@@ -3286,9 +3355,9 @@ Resultando en un gr\'afico de \'areas circulares multiseries~\\
 \subsection{Diagrama de Burbujas Circular}\label{ssec:burbujas}
 Para poder representar este tipo de diagramas se requiere de una serie de datos como son: la posici\'on de los c\'irculos (posici\'on X e Y) y el radio de estos. Para poder implementar este diagrama se ha conseguido encontrar dos paquetes que lo permiten; los dos usan una f\'ormula similar para crear los diagramas, utilizando una funci\'on para crear el layout que dice donde est\'an los circulos para luego juntarlo con los datos de los radios.
 \subsubsection{Paquete ggraph-ggforce}
-En este apartado se va a necesitar del uso de la combinaci\'on de dos paquetes, \texttt{ggraph} \cite{docu_ggraph}
-siendo este una ampliaci\'on del paquete ggplot2 \cite{docu_ggplot2}
-,para ayudar a este a poder realizar diagramas de redes mas complejos y completos, y \texttt{ggforce} \cite{docu_ggforce} 
+En este apartado se va a necesitar del uso de la combinaci\'on de dos paquetes, \texttt{ggraph} %\cite{docu_ggraph}
+siendo este una ampliaci\'on del paquete ggplot2 %\cite{docu_ggplot2}
+,para ayudar a este a poder realizar diagramas de redes mas complejos y completos, y \texttt{ggforce} %\cite{docu_ggforce} 
 ,siendo otra ampliaci\'on de ggplot2, pero dedicado a mejor uso de datos para paquetes compatibles con ggplot2 (como ggraph).
 Lo primero de todo ser\'a llamar a las librerias para luego poder trabajar con ellas.
 \begin{knitrout}
@@ -3368,10 +3437,10 @@ Resultando en:
 \textbf{. . .}
 \end{center}
 \subsubsection{Paquete packcircles-ggplot2}
-Este paquete, \cite{docu_packcircles} 
+Este paquete, %\cite{docu_packcircles} 
 destinado a funciones de agrupamiento no solapado de c\'irculos, ofrece una forma facil de empaquetar c\'irculos dentro de otro para resultar en un diagrama de burbujas circular.
 Para poder crear las burbujas se necesita un \'area, para ello se puede utilizar una funci\'on del propio paquete para realizar el ejemplo.~\\
-Este paquete solo ofrece los datos, para poder realizarlos es necesario el paquete ggplot2 \cite{docu_ggplot2}
+Este paquete solo ofrece los datos, para poder realizarlos es necesario el paquete ggplot2 %\cite{docu_ggplot2}
 , y este se ofrece una gran capacidad de personalizaci\'on de todo el gr\'afico.
 Se establecen las variables necesarias:
 \begin{knitrout}
@@ -3444,7 +3513,7 @@ se utilizaba una cuadr\'icula para representar los nodos y esta vez se usan c\'i
 Para crear este diagrama, primero hay que conseguir unos datos con una estructura jerarquica que indique: como esta constituido el \'arbol, su ra\'iz, las ramas, sus hojas, y para este grafo tambi\'en es util un valor que estime el tama\~no de los c\'irculos (como la poblaci\'on de un pais).~\\
 Para implementar este gr\'afico se pueden usar dos paquetes, los dos faciles de usar, ya que lo dificil es crear esas bases de datos.
 \subsubsection{Paquete ggraph}
-En este paquete \cite{docu_ggraph}, 
+En este paquete %\cite{docu_ggraph}, 
 como se ha visto en el diagrama de Grid \'Arbol (\ref{ssec:rayosSol}
 ), se va a recurrir a la misma funci\'on y misma base de datos, con estructura de datos jer\'arquicos, donde las ramas son como se unen los nodos (from-to) y los vertices los propios nodos, con su nombre, tama\~no y ruta. S\'olo que ahora cambia el layout de \texttt{partition} a \texttt{circlepack}, pero por lo dem\'as, consiste en lo mismo.~\\
 Se escogen los datos del propio paquete (\texttt{flare}) y gracias al paquete \texttt{igraph} se tranforman en unos datos con los que poder trabajar.
@@ -3536,8 +3605,8 @@ Y ahora, gracias a este acortamiento de los datos, se pueden poner la etiquetas 
 \end{knitrout}
 \clearpage
 \subsubsection{Paquete ciclepackeR}
-Este paquete \cite{docu_circlepacker} 
-est\'a dentro de un proyecto para crear nuevos diagramas con el paquete \texttt{htmlwidget} \cite{docu_htmlwidget},
+Este paquete %\cite{docu_circlepacker} 
+est\'a dentro de un proyecto para crear nuevos diagramas con el paquete \texttt{htmlwidget} %\cite{docu_htmlwidget},
  por lo que ofrece un diagrama interactivo de un mapa de \'arbol circular. Tambi\'en necesita una estrutura de datos parecida para poder utilizarse pero, aparte de esta complejidad, este gr\'afico genera mapas de arboles circulares interactivos. Al igual que con los diagramas de sectores se mostrar\'a el gr\'afico, pero tambi\'en una forma de guardarlo en html para usar la interactividad.~\\
 Primero se necesita descargar el paquete del \href{https://github.com/jeromefroe/circlepackeR}{creador}.
 \begin{knitrout}
@@ -3661,7 +3730,7 @@ El paquete \texttt{circlepackeR} utiliza s\'olo una funci\'on para crear el gr\'
 \subsection{Diagrama Mapa de \'Arbol Voronoi}\label{ssec:arbolpoligonos}
 Para realizar este tipo de mapa de \'arbol solo se ha conseguido encontrar un paquete que realize este diagrama. De forma normal el diagrama voronoi tiene varios paquetes, pero para que tenga un formato de \'arbol circular solo se ha encontrado este paquete m\'as espec\'ifico.
 \subsubsection{Paquete voronoiTreemap}
-Este paquete \cite{docu_voronoitreemap}
+Este paquete %\cite{docu_voronoitreemap}
 est\'a destinado para este diagrama, ya que solo tiene una funci\'on para crear  gr\'aficos, unos datos de ejemplo (la economia seg\'un continente y pais) y otra base de datos simulando el precio de los productos en Canada.
 Primero se obtienen los datos necesarios, se cogen del propio paquete, consisten en una variable con los paises, para dividir el grafo seg\'un su peso en la econom\'ia, y los continentes a los que pertenecen para agruparlos.
 \begin{knitrout}
@@ -3715,7 +3784,7 @@ Debido a que cuenta con interactividad solo se muestra una foto del diagrama obt
 \textbf{. . .}
 \end{center}
 ~\\
-Para poder realizar los datos que se necesiten existen dos posibilidades: una, seguir la estructura de ExampleGDP, y dos crear la estructura de nodos gracias a \texttt{vt-create-node} y \texttt{vt-add-nodes} como en el siguiente ejemplo recreando el gr\'afico de \cite[p\'ag 194]{Circle}. Representando la cantidad de prote\'inas de diferentes tejidos de un rat\'on, agrup\'andolas por su funci\'on.
+Para poder realizar los datos que se necesiten existen dos posibilidades: una, seguir la estructura de ExampleGDP, y dos crear la estructura de nodos gracias a \texttt{vt-create-node} y \texttt{vt-add-nodes} como en el siguiente ejemplo recreando el gr\'afico de %\cite[p\'ag 194]{Circle}. Representando la cantidad de prote\'inas de diferentes tejidos de un rat\'on, agrup\'andolas por su funci\'on.
 
 Se ve como se pueden contruir los nodos mediante las dos funciones.
 \begin{knitrout}
@@ -3760,8 +3829,8 @@ Y ofreciendo el siguiente gr\'afico.
 \subsection{Diagrama de Mapa Cirular}\label{ssec:carretera}
 Para este diagrama, al consistir en establecer un punto en el mapa y crear un c\'irculo en torno a \'el, se necesita de un mapa que se pueda modificar. El mapa que se ha encontrado que se pueda retocar de la forma deseada es uno de carreteras, por eso no hay diferentes tipos de mapas.
 \subsubsection{Paquete ggplot2}
-Para representar este tipo de diagrama hay que poder manipular datos de un mapa de carreteras. Para poder exponer se ha encontrado una funci\'on \texttt{geom-sf} para el paquete ggplot2 \cite{docu_ggplot2}
-que utiliza objetos del paquete sf para modificar datos geogr\'aficos extraidos del paquete tigris \cite{docu_tigris}
+Para representar este tipo de diagrama hay que poder manipular datos de un mapa de carreteras. Para poder exponer se ha encontrado una funci\'on \texttt{geom-sf} para el paquete ggplot2 %\cite{docu_ggplot2}
+que utiliza objetos del paquete sf para modificar datos geogr\'aficos extraidos del paquete tigris %\cite{docu_tigris}
 , que ofrece datos sobre carreteras del censo de EEUU.  
 
 Se cargan las librerias y se pone sf como la clase por defecto para datos geogr\'aficos.
@@ -3853,7 +3922,7 @@ Primero se obtienen los datos para poder trabajar con ellos, creando unos datos 
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Ahora con la ayuda de ape \cite{docu_ape}
+Ahora con la ayuda de ape %\cite{docu_ape}
 se transforman los datos y se realiza el gr\'afico.
 
 \begin{knitrout}
@@ -3887,7 +3956,7 @@ Resultando en:~\\
     \includegraphics[width=0.6\textwidth]{imag/ape}
 }
 \subsubsection{Paquete ggraph}
-Este paquete \cite{docu_ggraph}
+Este paquete %\cite{docu_ggraph}
 ofrece una gran cantidad de gr\'aficos de redes y, debido a que es una ampliaci\'on de ggplot2, tiene mucha capacidad de personalizaci\'on para la creaci\'on de estos diagramas. 
 Para poder realizar con este paquete un dendograma se necesita crear los datos jer\'arquicos y, con este proposito entra el paquete \texttt{igraph} con la funci\'on \texttt{graph-form-data-frame}.~\\
 Primero se deben crear los data frame de la estructura de \'arbol con la ra\'iz a sus hijos y los hijos a los suyos propios.
@@ -3994,7 +4063,7 @@ Al final resultando en:
 \end{knitrout}
 \clearpage
 \subsubsection{Paquete ggplot2}
-Para recrear un dendograma con este paquete  \cite{docu_ggplot2}
+Para recrear un dendograma con este paquete  %\cite{docu_ggplot2}
 se tiene que obtener una estructura especial proporcionada por \texttt{dendextend}. Para crear el dendograma se obtienen datos num\'ericos de la base de datos \texttt{iris}, como ejemplo, y se crean grupos con \texttt{hclust} mediante las distancias entre los valores num\'ericos, se establecen los colores de las ramas y nodos hoja.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -4035,7 +4104,7 @@ Por \'ultimo, se usa la tranformaci\'on, al igual que en el \nameref{ssec:column
 \end{knitrout}
 \clearpage
 \subsubsection{Paquete circlize}
-En este paquete  \cite{docu_circlize}
+En este paquete  %\cite{docu_circlize}
 se observan dos maneras de crear un dendograma: una de ellos es gracias a la funci\'on \texttt{circlize-dendrogram}, la forma m\'as sencilla, y la otra creando el texto y las ramas manualmente, m\'as dificil.
 Para las dos formas se necesita otra vez la ayuda de \texttt{dendextend} para preparar los datos.~\\ En la primera se va a usar los datos de \texttt{mtcars} para crear el \'arbol agrupando (clusters) los datos seg\'un su distancias.
 \begin{knitrout}
@@ -4183,7 +4252,7 @@ En conclusi\'on, los paquetes \texttt{ggraph} y \texttt{circlize} son los m\'as 
 La estructura de datos necesaria para crear este diagrama es muy parecida al digrama de \'arbol circular, ya que se requiere alg\'un tipo de estructura de origen y destino entre los nodos que componen el diagrama. Se puede aplicar a matrices de adyacencia por lo que se va a optar por ellas para realizar las estructuras.
 Para realizar este digrama se han encontrado dos paquetes que ofrecen el diagrama de cuerdas, uno de ellos interactivo.
 \subsubsection{Paquete Circlize}
-Se vuelve a ver este paquete \cite{docu_circlize}
+Se vuelve a ver este paquete %\cite{docu_circlize}
 , pero esta vez en vez de usar las funciones \texttt{circos.track, circos.trackPlotRegion} como las principales, solo son una ayuda para la funci\'on \texttt{chorDiagram}.
 Primero se preparan los datos con la estructura de origen y destino. Se ha optado por un set de datos que expone la migraci\'on entre paises.
 \begin{knitrout}
@@ -4289,7 +4358,7 @@ Resultando al siguiente gr\'afico de la migraci\'on.
 
 \end{knitrout}
 \subsubsection{Paquete chorddiag}
-Este paquete \cite{docu_chorddiag}
+Este paquete %\cite{docu_chorddiag}
 sirve para crear los diagramas de cuerdas usando \href{https://d3js.org/}{la libreria D3 de visualizaci\'on JavaScript}, y utilizando el paquete \texttt{htmlwidgets} para guardar los diagramas interactivos.~\\
 Como con el anterior paquete se necesita la matriz de adyacencia.
 \begin{knitrout}
@@ -4369,11 +4438,11 @@ El segundo paquete, al haberse realizado para este tipo de diagramas, est\'a m\'
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Diagrama de Redes Circulares}\label{ssec:redes}
-Para esta secci\'on se va a hacer uso de un TFG \cite{tfg}
+Para esta secci\'on se va a hacer uso de un TFG %\cite{tfg}
  similar a este, pero dirigido a redes dentro de R. Se estudia el trabajo para identificar qu\'e redes son potenciales de ser circulares y qu\'e paquetes hacen los gr\'aficos de dichas redes para generar ejemplos diferentes a los que ya estan expuestos.
 \subsubsection{Explosi\'on Centralizada}
 La primera red que es posible realizar con dise\~no circular es una red que consiste en una organizaci\'on ca\'otica y desordenada de sus nodos.~\\
-Tal y como escoge su autor, se exploran 2 paquetes para realizar este diagrama; en el primero, \texttt{ggraph} \cite{docu_ggraph}
+Tal y como escoge su autor, se exploran 2 paquetes para realizar este diagrama; en el primero, \texttt{ggraph} %\cite{docu_ggraph}
 , se van a usar los mismos datos, ya que para su ejemplo solo se utiliza el algoritmo aleatorio para la colocaci\'on de los nodos y no se han explorado otros m\'etodos.~\\
 Lo primero es la carga de librer\'ias y datos.
 \begin{knitrout}
@@ -4384,7 +4453,7 @@ Lo primero es la carga de librer\'ias y datos.
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Se carga la libreria \texttt{igraph} \cite{docu_igraph}
+Se carga la libreria \texttt{igraph} %\cite{docu_igraph}
 para la manipulacion de los datos y transformarlos en una red que R entienda y la librer\'ia \texttt{ggraph} para el gr\'afico de la red.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -4445,7 +4514,7 @@ Y resultando es:
 \textbf{. . .}
 \end{center}
 \subsubsection{Implosi\'on El\'iptica}
-Para este diagrama, el autor usa el paquete \texttt{qgraph} \cite{docu_qgraph}
+Para este diagrama, el autor usa el paquete \texttt{qgraph} %\cite{docu_qgraph}
 para realizar estas redes ponderadas y, el ejemplo que usa para mostrar el diagrama, es el \'unico con la funci\'on usada ya que no existe otro layout que trace un c\'irculo. Pero si existe otra funci\'on que implementa este tipo de gr\'afico solo que es de forma din\'amica.~\\
 Para usar la funci\'on se crean los datos de la red ponderada.
 
@@ -4539,7 +4608,7 @@ Los diagramas que no se han podido realizar son:
 \item \textbf{Diagrama de Mapa de Esfera}
 \end{itemize}
  - Para el caso del diagrama de cuadr\'icula desordenada no se ha podido encontrar ning\'un paquete que realize este diagrama con una funci\'on, debido a que los paquetes que usan la cuadr\'icula como estructura se basa en sectores (\nameref{ssec:ord})
- y el otro tipo se basa en estructuras de datos con forma de \'arbol por lo que no hay paquete que cree las celdas desordenadas. Solo se pueden crear ejemplos como los de \cite[p\'ag 136]{Circle}
+ y el otro tipo se basa en estructuras de datos con forma de \'arbol por lo que no hay paquete que cree las celdas desordenadas. Solo se pueden crear ejemplos como los de %\cite[p\'ag 136]{Circle}
  mediante los paquetes que realizan el \nameref{ssec:barrasRadiales} \ref{ssec:barrasRadiales}
  , pero no se crear\'iran las celdas sino que se realizar\'ia un diagrama de barras radiales con barras apiladas, perdiendo su significado de cudr\'icula.~\\~\\
  - Para el caso del diagrama de planos circulares s\'i que se encuentran algunos paquetes que podri\'an representarlo, como ggplot2 en \nameref{ssec:carretera} \ref{ssec:carretera}, pero no se han encontrado datos que puedan implementar dichos paquetes resultando en el diagrama de planos.~\\~\\
@@ -4738,8 +4807,8 @@ Para los otros tres paquetes que directamente no est\'an en el repositorio de R 
 \end{kframe}
 \end{knitrout}
 Lo bueno que tienen estos tres paquetes es que en el README.md de sus repositorios de gihub ya est\'a expuesta la orden para poder instalarlos.~\\
-Una vez que ya se han instalado los paquetes, es hora de revisar lo estables que son seg\'un la cantidad de versiones y las fechas de publicaci\'on de dichas versiones. Para ello se recogen los datos de la documentaci\'on de R \cite{docu_r}
-. Esta informaci\'on solo est\'a disponible para los paquetes que tienen versiones publicadas en el repositorio de R, por lo que los tres paquetes de R restantes se va a preceder a buscar dicha informaci\'on en sus repositorios de github o con la herramienta \href{https://cauldron.io/}{Cauldron.io} \cite{cauldron}
+Una vez que ya se han instalado los paquetes, es hora de revisar lo estables que son seg\'un la cantidad de versiones y las fechas de publicaci\'on de dichas versiones. Para ello se recogen los datos de la documentaci\'on de R %\cite{docu_r}
+. Esta informaci\'on solo est\'a disponible para los paquetes que tienen versiones publicadas en el repositorio de R, por lo que los tres paquetes de R restantes se va a preceder a buscar dicha informaci\'on en sus repositorios de github o con la herramienta \href{https://cauldron.io/}{Cauldron.io} %\cite{cauldron}
 , la cual ofrece datos de la actividad de los repositorios de distintas empresas como github, gitlab, etc.~\\
 Con los datos ya reunidos se procede a la creaci\'on del cuadro \ref{table:tabla3}, que muestra todas las versiones que ha tenido el paquete; su versi\'on actual, cantidad de versiones, la fecha de publicaci\'on de la versi\'on actual, la fecha de publicaci\'on de la primera versi\'on y si el paquete es estable seg\'un los par\'ametros anteriores.~\\
 Para concretar la variable de estabilidad, se va a seguir la actividad que tiene el paquete en su repositorio en desarrollo, en la mayor\'ia se situa en github, y, para visualizar la cantidad de commits que se realizan, se hace uso de la herramienta Cauldron.io con el gr\'afico de barras que genera con las fechas de los commits viendo su periodicidad. Por ejemplo, en el cuadro \ref{table:tabla3} algunos paquetes tienen la estabilidad en -2 significando que solo se ha realizado commits para realizar la versi\'on del paquete, pero no se ha seguido actualizando el repositorio; para los paquetes con -1 se suele deber a que se ve desarrollo con espacio de meses entre ellos y no se ha vuelto a actualizar mas all\'a de la versi\'on actual. Otros paquetes tienen la estabilidad 0 a eliminar la variable de no actualizarse despu\'es de la \'ultima versi\'on, pero se crean espacios de meses entre desarrollos; la estabilidad a +1 equivale a las mismas variables que con la estabilidad a 0 pero con los desarrollos menos espaciados en el tiempo. Y por \'ultimo, para la estabilidad +2 es necesario que el paquete se suela desarrolar con regularidad y con varias versiones lanzadas.
@@ -4866,7 +4935,7 @@ webr & -1 & +1\\%poco complejo solo 1 funcion pero muchas variables y bastante p
 \end{table}
 \clearpage
 \section{Conclusiones}
-Durante todo el trabajo se han explicado e implementado los diagramas circulares que expone Manuel Lima en su libro \cite{Circle}
+Durante todo el trabajo se han explicado e implementado los diagramas circulares que expone Manuel Lima en su libro %\cite{Circle}
 , explicando en cada caso unos sencillos pasos a realizar para crear el gr\'afico con los datos necesarios y forma deseada, en el lenguaje de programaci\'on R. Para ello se han usado agrupamientos de funciones, llamados paquetes, que representan graficamente los datos obtenidos con estas funciones.
 Se han conseguido realizar, de 21 diagramas totales, 18 (85\%) lo que es un gran porcentaje de implementaci\'on. Gran cantidad de los realizados, consisten en recrear un gr\'afico, conocido en su variante horizontal (barras, l\'ineas, burbujas, etc.), con formato circular, pero para algunos de los m\'as espec\'ificos, solo existe la variante circular. ~\\~\\
 Como se ha visto en las secciones anteriores, hay varios paquetes con gran versatilidad a la hora de implementar los gr\'aficos circulares. \texttt{Ggplot2} y \texttt{circlize} utilizan dos formas diferentes de crear los diagramas, ggplot2 cambiando el sistema de coordenadas, y circlize ya con formato circular. Los otros paquetes se dividen igualmente en estas dos maneras de implementar los gr\'aficos. La mayor\'ia de los que empieza, su nombre, por gg , al ser ampliaciones de ggplot2, se reutiliza su manera pero, en todos los dem\'as paquetes se sigue la variante de circlize, siendo gr\'aficos circulares sin necesidad de transformarlos, unos m\'as dificiles que otros.~\\~\\
@@ -4874,7 +4943,7 @@ Se ha comprobado la utilidad de R a la hora de usarlo con Big Data, por su gran 
 Por \'ultimo, se ha visualizado como en algunos de los diagramas, debido a su formato circular, no se pueden representar gran cantidad de variables pero si, gran cantidad de datos con ellas. Y en otros, este formato de c\'irculos, ayuda en diferentes aspectos como: rapidez de comprensi\'on, ayuda a la estructura de los datos, eficacia en visualizar los datos en algunos de ellos, etc. Debido a que en algunos de los diagramas existen diferentes problemas como la malinterpretaci\'on de valores, estos se vuelven gr\'aficos m\'as est\'eticos que pr\'acticos.
 \clearpage
 \addcontentsline{toc}{section}{Referencias}
-\bibliographystyle{ieeetran}
-\bibliography{References}
+%\bibliographystyle{ieeetran}
+%\bibliography{References}
 
 \end{document}

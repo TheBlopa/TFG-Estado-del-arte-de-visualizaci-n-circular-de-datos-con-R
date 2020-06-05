@@ -71,39 +71,39 @@
 \contentsline {subsection}{\numberline {3.10}Diagrama de Columnas Con Formato Iris}{77}{subsection.3.10}%
 \contentsline {subsubsection}{\numberline {3.10.1}Paquete ggplot2}{77}{subsubsection.3.10.1}%
 \contentsline {subsubsection}{\numberline {3.10.2}Paquete circlize}{81}{subsubsection.3.10.2}%
-\contentsline {subsubsection}{\numberline {3.10.3}Comparaciones}{82}{subsubsection.3.10.3}%
-\contentsline {subsection}{\numberline {3.11}Diagrama de L\'ineas Circulares Multiseries}{83}{subsection.3.11}%
-\contentsline {subsubsection}{\numberline {3.11.1}Paquete ggplot2}{83}{subsubsection.3.11.1}%
-\contentsline {subsection}{\numberline {3.12}Diagrama de Burbujas Circular}{86}{subsection.3.12}%
-\contentsline {subsubsection}{\numberline {3.12.1}Paquete ggraph-ggforce}{86}{subsubsection.3.12.1}%
-\contentsline {subsubsection}{\numberline {3.12.2}Paquete packcircles-ggplot2}{87}{subsubsection.3.12.2}%
-\contentsline {subsubsection}{\numberline {3.12.3}Comparaciones}{88}{subsubsection.3.12.3}%
-\contentsline {subsection}{\numberline {3.13}Diagrama de Mapa de \'Arbol Circular}{89}{subsection.3.13}%
-\contentsline {subsubsection}{\numberline {3.13.1}Paquete ggraph}{89}{subsubsection.3.13.1}%
-\contentsline {subsubsection}{\numberline {3.13.2}Paquete ciclepackeR}{91}{subsubsection.3.13.2}%
-\contentsline {subsubsection}{\numberline {3.13.3}Comparaciones}{93}{subsubsection.3.13.3}%
-\contentsline {subsection}{\numberline {3.14}Diagrama Mapa de \'Arbol Voronoi}{94}{subsection.3.14}%
-\contentsline {subsubsection}{\numberline {3.14.1}Paquete voronoiTreemap}{94}{subsubsection.3.14.1}%
-\contentsline {subsection}{\numberline {3.15}Diagrama de Mapa Cirular}{97}{subsection.3.15}%
-\contentsline {subsubsection}{\numberline {3.15.1}Paquete ggplot2}{97}{subsubsection.3.15.1}%
-\contentsline {subsection}{\numberline {3.16}Dendograma Circular}{99}{subsection.3.16}%
-\contentsline {subsubsection}{\numberline {3.16.1}R B\'asico y ape}{99}{subsubsection.3.16.1}%
-\contentsline {subsubsection}{\numberline {3.16.2}Paquete ggraph}{100}{subsubsection.3.16.2}%
-\contentsline {subsubsection}{\numberline {3.16.3}Paquete ggplot2}{102}{subsubsection.3.16.3}%
-\contentsline {subsubsection}{\numberline {3.16.4}Paquete circlize}{103}{subsubsection.3.16.4}%
-\contentsline {subsubsection}{\numberline {3.16.5}Comparaciones}{105}{subsubsection.3.16.5}%
-\contentsline {subsection}{\numberline {3.17}Diagrama de Cuerdas}{106}{subsection.3.17}%
-\contentsline {subsubsection}{\numberline {3.17.1}Paquete Circlize}{106}{subsubsection.3.17.1}%
-\contentsline {subsubsection}{\numberline {3.17.2}Paquete chorddiag}{108}{subsubsection.3.17.2}%
-\contentsline {subsubsection}{\numberline {3.17.3}Comparaciones}{110}{subsubsection.3.17.3}%
-\contentsline {subsection}{\numberline {3.18}Diagrama de Redes Circulares}{111}{subsection.3.18}%
-\contentsline {subsubsection}{\numberline {3.18.1}Explosi\'on Centralizada}{111}{subsubsection.3.18.1}%
-\contentsline {subsubsection}{\numberline {3.18.2}Implosi\'on El\'iptica}{112}{subsubsection.3.18.2}%
-\contentsline {subsubsection}{\numberline {3.18.3}Anillo Centralizado, Convergencia Radial y C\'irculos de Escala}{114}{subsubsection.3.18.3}%
-\contentsline {subsubsection}{\numberline {3.18.4}Comparaciones}{114}{subsubsection.3.18.4}%
-\contentsline {section}{\numberline {4}Diagramas no Realizables}{115}{section.4}%
-\contentsline {section}{\numberline {5}Comparativa}{116}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Versatilidad}{117}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Desarrollo}{117}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Usabilidad}{119}{subsection.5.3}%
-\contentsline {section}{\numberline {6}Conclusiones}{120}{section.6}%
+\contentsline {subsubsection}{\numberline {3.10.3}Comparaciones}{83}{subsubsection.3.10.3}%
+\contentsline {subsection}{\numberline {3.11}Diagrama de L\'ineas Circulares Multiseries}{84}{subsection.3.11}%
+\contentsline {subsubsection}{\numberline {3.11.1}Paquete ggplot2}{84}{subsubsection.3.11.1}%
+\contentsline {subsection}{\numberline {3.12}Diagrama de Burbujas Circular}{87}{subsection.3.12}%
+\contentsline {subsubsection}{\numberline {3.12.1}Paquete ggraph-ggforce}{87}{subsubsection.3.12.1}%
+\contentsline {subsubsection}{\numberline {3.12.2}Paquete packcircles-ggplot2}{88}{subsubsection.3.12.2}%
+\contentsline {subsubsection}{\numberline {3.12.3}Comparaciones}{89}{subsubsection.3.12.3}%
+\contentsline {subsection}{\numberline {3.13}Diagrama de Mapa de \'Arbol Circular}{90}{subsection.3.13}%
+\contentsline {subsubsection}{\numberline {3.13.1}Paquete ggraph}{90}{subsubsection.3.13.1}%
+\contentsline {subsubsection}{\numberline {3.13.2}Paquete ciclepackeR}{92}{subsubsection.3.13.2}%
+\contentsline {subsubsection}{\numberline {3.13.3}Comparaciones}{94}{subsubsection.3.13.3}%
+\contentsline {subsection}{\numberline {3.14}Diagrama Mapa de \'Arbol Voronoi}{95}{subsection.3.14}%
+\contentsline {subsubsection}{\numberline {3.14.1}Paquete voronoiTreemap}{95}{subsubsection.3.14.1}%
+\contentsline {subsection}{\numberline {3.15}Diagrama de Mapa Cirular}{98}{subsection.3.15}%
+\contentsline {subsubsection}{\numberline {3.15.1}Paquete ggplot2}{98}{subsubsection.3.15.1}%
+\contentsline {subsection}{\numberline {3.16}Dendograma Circular}{100}{subsection.3.16}%
+\contentsline {subsubsection}{\numberline {3.16.1}R B\'asico y ape}{100}{subsubsection.3.16.1}%
+\contentsline {subsubsection}{\numberline {3.16.2}Paquete ggraph}{101}{subsubsection.3.16.2}%
+\contentsline {subsubsection}{\numberline {3.16.3}Paquete ggplot2}{103}{subsubsection.3.16.3}%
+\contentsline {subsubsection}{\numberline {3.16.4}Paquete circlize}{104}{subsubsection.3.16.4}%
+\contentsline {subsubsection}{\numberline {3.16.5}Comparaciones}{106}{subsubsection.3.16.5}%
+\contentsline {subsection}{\numberline {3.17}Diagrama de Cuerdas}{107}{subsection.3.17}%
+\contentsline {subsubsection}{\numberline {3.17.1}Paquete Circlize}{107}{subsubsection.3.17.1}%
+\contentsline {subsubsection}{\numberline {3.17.2}Paquete chorddiag}{109}{subsubsection.3.17.2}%
+\contentsline {subsubsection}{\numberline {3.17.3}Comparaciones}{111}{subsubsection.3.17.3}%
+\contentsline {subsection}{\numberline {3.18}Diagrama de Redes Circulares}{112}{subsection.3.18}%
+\contentsline {subsubsection}{\numberline {3.18.1}Explosi\'on Centralizada}{112}{subsubsection.3.18.1}%
+\contentsline {subsubsection}{\numberline {3.18.2}Implosi\'on El\'iptica}{113}{subsubsection.3.18.2}%
+\contentsline {subsubsection}{\numberline {3.18.3}Anillo Centralizado, Convergencia Radial y C\'irculos de Escala}{115}{subsubsection.3.18.3}%
+\contentsline {subsubsection}{\numberline {3.18.4}Comparaciones}{115}{subsubsection.3.18.4}%
+\contentsline {section}{\numberline {4}Diagramas no Realizables}{116}{section.4}%
+\contentsline {section}{\numberline {5}Comparativa}{117}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Versatilidad}{118}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Desarrollo}{118}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Usabilidad}{120}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Conclusiones}{121}{section.6}%

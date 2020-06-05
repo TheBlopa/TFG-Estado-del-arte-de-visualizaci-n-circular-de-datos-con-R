@@ -294,7 +294,7 @@ library(ggplot2)
 ggplot(datos, aes(x="", y=ancho.Freq, fill=ancho.Var1)) +
   geom_bar(stat="identity", width=1, colour="grey90") +
   coord_polar() +
-  theme_void() + 
+  theme_void() + labs(title = "Coches por Carburadores")
   labs(fill='N Carburadores') +
   theme(legend.position = 'bottom')
 @
@@ -329,7 +329,7 @@ datos <- data.frame(
 ggplot(datos, aes(x=anillos, y=ancho)) +
   geom_tile(aes(fill = anillos)) + 
   coord_polar('y') +
-  theme_void() +
+  theme_void() + labs(title = "Coches por Carburadores")
   labs(fill='N Carburadores') +
   theme(legend.position = 'bottom') 
 @
@@ -377,10 +377,10 @@ Por \'ultimo, el tercer m\'etodo consiste en crear la plantilla con \texttt{trac
 <<plot_ring_cir, echo=9:11, eval=FALSE>>=
 @
 Todas las funciones usadas se pueden realizar con los tres m\'etodos, ya que existe la funci\'on para usar sin la funci\'on \texttt{track} y la que se usa dentro de ella.~\\
+\clearpage
 Al final se vuelve a representar el eje X para mejor visualizaci\'on. Y se emplea \texttt{circos.clear} para limpiar las variables, para que al volver a crear con circlize todas sus variables no esten modificadas.
 <<plot_ring_cir, echo=12:13, eval=FALSE>>=
 @
-\clearpage
 Resultando en el siguiente gr\'afico:~\\~\\
 <<plot_ring_cir, echo=FALSE, fig.align='center', fig.height=4.5, fig.width=4.5, message=FALSE>>=
 @
@@ -912,17 +912,17 @@ Quedando el gr\'afico de la siguiente forma.
 Como se ha observado con anterioridad, este paquete deja mucho espacio para la personalizaci\'on de estos gr\'aficos, por lo que se va a implementar el mismo gr\'afico que antes con grupos con espacios diferenciados y etiquetas.~\\
  Para crear los espacios entre los grupos, se va a a\~nadir al igual que en el diagrama de barras radiales, barras con datos vac\'ios para que dejen el espacio al no ser representados. Se necesitan unos datos agrupados por alguna variable, para ello se escoge la base de datos de mtcars exponiendo cada coche con su velocidad, y agrupando los veh\'iculos por la cantidad de marchas que tienen.
 <<data_col_gru>>=
-data<- mtcars
-data$name <- rownames(data)
+datos<- mtcars
+datos$name <- rownames(datos)
 @
 Se suman varias barras que act\'uen de espaciadores. Creando una matriz vacia con 8 barras por cada grupo y juntarlo a los datos.
 <<espacios, echo=FALSE, message=FALSE>>=
 empty_bar <- 8
-to_add <- data.frame( matrix(NA, empty_bar*nrow(table(mtcars$gear)), ncol(data)) )
-colnames(to_add) <- colnames(data)
-to_add$gear <- rep(rownames(table(data$gear)), each=empty_bar)
+to_add <- data.frame( matrix(NA, empty_bar*nrow(table(mtcars$gear)), ncol(datos)) )
+colnames(to_add) <- colnames(datos)
+to_add$gear <- rep(rownames(table(datos$gear)), each=empty_bar)
 to_add$name <- rep("", each=empty_bar)
-datatrans <- rbind(data, to_add)
+datatrans <- rbind(datos, to_add)
 library(tidyverse)
 datatrans <- datatrans %>% arrange(gear)
 datatrans$id <- seq(1, nrow(datatrans))
@@ -936,13 +936,14 @@ Para la parte de las etiquetas habr\'a que poner el datos que se quiera visualiz
 <<labels>>=
 library(ggrepel)
 @
+\clearpage
 Para ahora crear el gr\'afico usamos las siguentes funciones.
 <<plot_ggplot_final_cr, echo=FALSE, eval=FALSE>>=
-ggplot(datatrans , aes(x=id, y=mpg, fill= gear, label=name))+
+ggplot(datatrans , aes(x=id, y=mpg, fill= gear, label=mpg))+
   geom_bar(stat = "identity") +
-  geom_text_repel() +
+  geom_label_repel() +
   coord_polar() +
-  ylim(-10,40) +
+  ylim(-10,40) + labs(title = "Coches por Marchas") +
   xlab("Coches") + labs(fill='N Marchas') +
   theme_minimal() +
   theme(axis.text.x = element_blank(), legend.position = 'bottom')
@@ -950,17 +951,13 @@ ggplot(datatrans , aes(x=id, y=mpg, fill= gear, label=name))+
 Lo primero que es distinto es el hecho de que pinta las columnas dependiendo del grupo (marchas), y el uso de ggrepel para el texto de las barras.
 <<plot_ggplot_final_cr, echo=1:3, eval=FALSE>>=
 @
-\clearpage
 Por lo dem\'as, todo es igual con el ajuste del sistema coordenadas, l\'imite del eje Y, nombre de ejes y legenda, junto al tema.
 <<plot_ggplot_final_cr, echo=4:8, eval=FALSE>>=
 @
 Resultando en este \'ultimo gr\'afico
-<<plot_ggplot_final_cr, echo=FALSE, warning=FALSE, fig.align='center', fig.height=4, fig.width=3.5>>==
+<<plot_ggplot_final_cr, echo=FALSE, warning=FALSE, fig.align='center', fig.height=5, fig.width=5>>==
 @
-\begin{center}
-\textbf{. . .}
-\end{center}
-~\\
+\clearpage
 Existe una forma de realizar este mismo gr\'afico con interactividad con la ayuda de ggplot2 y ggiraph. Ya se ha explicado en otros diagramas com\'o, asi que, en este solo se ense\~na el resultado.
 <<plot_inte_cr, eval=FALSE>>=
 library(ggiraph)
@@ -993,13 +990,16 @@ Luego la posici\'on de cada columna en el c\'irculo, siempre en grados. Dividien
 <<data_pos>>=
 pos <- seq(0,345.6,by=14.4)
 @
+\clearpage
 Para luego usar las dos funciones, estas son capaces de usar los mismos par\'ametros.
 <<plot_plotrix_cr, fig.align='center', fig.height=3, fig.width=3.7>>=
 library(plotrix)
 polar.plot(long, pos,main="Polar Plot",lwd=3,line.col=2,
-           rad.col= "lightblue", grid.col= "lightblue",start = 0, labels=datos$velocidad.Var1, label.pos = pos)
+           rad.col= "lightblue", grid.col= "lightblue",start = 0, 
+           labels=data$velocidad.Var1, label.pos = pos)
 radial.plot(long, pos,main="Radial Plot",lwd=3,line.col=2,
-           rad.col= "lightblue", grid.col= "lightblue", start = 0, labels=datos$velocidad.Var1, label.pos = pos)
+           rad.col= "lightblue", grid.col= "lightblue", start = 0, 
+           labels=data$velocidad.Var1, label.pos = pos)
 @
 C\'omo se ve, los gr\'aficos no han salido iguales y es debido a que \texttt{polar plot} transforma la posici\'on de los grados a radianes mediante la funci\'on \texttt{radial plot}, pero con \texttt{radial plot} la variable \texttt{pos} se interpreta como radianes y no grados.
 \clearpage
@@ -1049,10 +1049,10 @@ Lo primera funci\'on es opcional, ya que declara argumentos que son est\'eticos,
 Lo que si que se necesita hacer es inicializar la plantilla del gr\'afico fijando en cuantos sectores se divide cada anillo del diagrama, en este caso solo uno para crear todas las columnas en el mismo sector. Y se fijan los l\'imites del eje X con el n\'umero de columnas.
 <<circlize_colum, echo=3, eval=FALSE>>=
 @
-\clearpage
 Ahora se establece el anillo fijando el l\'imite del eje Y y la altura del anillo en porcentaje, en este caso un 80\% dejando un hueco del 20\%. Para este ejemplo se elimina el borde del anillo y la funci\'on para implementar las barras dentro del anillo.
 <<circlize_colum, echo=4:5, eval=FALSE>>=
 @
+\clearpage
 La funci\'on \texttt{circos.rect} realiza ret\'angulos igual que se us\'o en el diagrama de Barras Radiales, pero cambiando los ejes, poniendo esta vez en el eje X la cantidad de barras y en el eje Y los valores. Para implementarlas se pasan como argumentos xInicial, yInicial, xFinal y yFinal; con un color agradable y borde blanco para facil separaci\'on de las barras.
 <<circlize_colum, echo=6:8, eval=FALSE>>=
 @
@@ -1099,7 +1099,7 @@ Para la funci\'on principal se usa: (dando como par\'ametros los datos, las etiq
 Y por \'ultimo, se crea la leyenda con otra funci\'on de R b\'asico y t\'itulo.
 <<plot_pie_basic, echo=4:6, eval=FALSE>>=
 @
-<<plot_pie_basic, echo=FALSE, fig.height=5, fig.width=5>>=
+<<plot_pie_basic, echo=FALSE, fig.height=4.5, fig.width=4.5, fig.align='center'>>=
 @
 \clearpage
 \subsubsection{Paquete ggplot2}
@@ -1190,7 +1190,7 @@ Y para las etiquetas \texttt{pie.labels} necesita dichos angulos, la posici\'on 
 Despu\'es se realiza el mismo trabajo para el par\'ametro \texttt{explode}, pero incluyendo el vector con las distancias al centro (tanto en el gr\'afico como en las etiquetas).
 <<plot_plotrix_2D, echo=6:12, eval=FALSE>>=
 @
-<<plot_plotrix_2D, echo=FALSE, fig.align='center', fig.height=4>>=
+<<plot_plotrix_2D, echo=FALSE, fig.align='center', fig.height=4, warning=FALSE>>=
 @
 Y, por \'ultimo, se realiza el mismo gr\'afico pero en 3D, gracias a la funci\'on \texttt{pie3D}. Esta forma requiere guardar el resultado en, por ejemplo, png.~\\
 <<plot_plotrix_3D, echo=FALSE, eval=FALSE>>=
@@ -1257,6 +1257,7 @@ Resultando en el siguiente grafo (no interactivo salvo en el html).~\\
     \centering
     \includegraphics[width=0.4\textwidth]{imag/plotly_pie}
 }
+\clearpage
 \subsubsection{Paquete ggiraphExtra}
 Este paquete %\cite{docu_ggiraphExtra} 
 es una extensi\'on del paquete \texttt{ggiraph}, creando sus propias funciones al haber sustituido las variantes interactivas de las funciones de \texttt{ggplot2} con las funciones de \texttt{ggiraph}. Por lo que otra forma de crear un diagrama de sectores interactivo es mediante este paquete. Si se requiere el uso de funciones de ggplot2, el gr\'afico pierde interactividad y pasa a ser un paquete ayudante de ggplot2.~\\
@@ -1981,7 +1982,6 @@ Se utiliza la funci\'on \texttt{geom-bar} para crear las barras apiladas, fijand
 Se transforma el sistema de coordenadas del eje X a sistema polares con \texttt{coord-polar} que, por defecto, transforma el eje X.
 <<plot_col_sep_gg, echo=3, eval=FALSE>>=
 @
-\clearpage
 Ahora se usa la funci\'on principal para establecer la est\'etica del formato de iris de un ojo. Se fija el l\'imite inferior en un valor lo suficientemente bajo para ajustarse a la est\'etica, y el l\'imite superior.
 <<plot_col_sep_gg, echo=4, eval=FALSE>>=
 @
@@ -1989,12 +1989,9 @@ Las \'ultimas funciones ayudan a cambiar el tema y colores del gr\'afico, ofreci
 <<plot_col_sep_gg, echo=5:10, eval=FALSE>>=
 @
 Dando el siguente resultado:
-<<plot_col_sep_gg, echo=FALSE, fig.align='center', fig.height=4, fig.width=4, warning=FALSE>>=
+<<plot_col_sep_gg, echo=FALSE, fig.align='center', fig.height=5, fig.width=5, warning=FALSE>>=
 @
-\begin{center}
-\textbf{. . .}
-\end{center}
-~\\
+\clearpage
 Debido a que los dos siguientes paquetes no pueden implementar el diagrama sin recurrir a la funci\'on principal contenida en \texttt{ggplot2}, se van a explicar como ampliaci\'on de este paquete.~\\
 El paquete ggiraph %\cite{docu_ggiraph}
 ofrece la posibilidad de crear barras interactivas dentro de las funciones de ggplot2. Para ello se proporcionan funciones que las sustituyen para realizar en la plantilla. En este caso, se va a sustituir la funci\'on \texttt{geom-bar} por \texttt{geom-bar-interactive}.~\\
@@ -2024,17 +2021,20 @@ Se utilizan las mismas funciones que en el ejemplo anterior con solo ggplot2 par
 Por \'ultimo, para crear un gr\'afico interactivo, se necesita crear dicho objeto con una funci\'on propia del paquete ggiraph, \texttt{girafe}.
 <<ggiraph_col_sep, echo=11, eval=FALSE>>=
 @
+\clearpage
 Resultando en el siguiente gr\'afico:~\\
 \vbox{
     \centering
-    \includegraphics[width=0.6\textwidth]{imag/ggiraph_inte}
+    \includegraphics[width=0.7\textwidth]{imag/ggiraph_inte}
 }
-\clearpage
+\begin{center}
+\textbf{. . .}
+\end{center}~\\
 El otro paquete que depende de \texttt{ggplot2} es \texttt{ggiraphExtra} %\cite{docu_ggiraphExtra}
 . No es como su paquete ggiraph que sustituye una funci\'on, sino que tiene una propia para crear el diagrama de columnas radiales sin necesidad de apoyo de ggplot2. Para obtener la est\'etica del diagrama que se est\'a implementando es necesario hacer uso de la funci\'on \texttt{ylim} y, ya que se hace uso de esa funci\'on, se utilizan las dem\'as para mejorar est\'etica.~\\
 Este paquete ofrece un par\'ametro para convertir el gr\'afico a interractivo, pero si se usan las funciones de otro paquete para la ayuda a la implementaci\'on se vuelve incompatible.
 Dentro de la funci\'on tiene el argumento de decidir si aplicar la funci\'on \texttt{coord-polar} por defecto.
-<<ggiraphExtra, fig.align='center', fig.height=5, fig.width=5>>=
+<<ggiraphExtra, fig.align='center', fig.height=5, fig.width=5, warning=FALSE>>=
 library(ggiraphExtra)
 ggBar(data, aes(x=date, y= newcases, fill = CCAA), stat="identity", 
       alpha=0.5, polar=TRUE) +
@@ -2044,7 +2044,9 @@ ggBar(data, aes(x=date, y= newcases, fill = CCAA), stat="identity",
         xlab("Fecha")+ylab("Nuevos Fallecidos")+
         theme(legend.position = 'bottom')
 @
-\clearpage
+\begin{center}
+\textbf{. . .}
+\end{center}~\\
 \subsubsection{Paquete circlize}
 Para realizar el diagrama con este paquete %\cite{docu_circlize}
 se va a optar por la misma funci\'on que se utiliz\'o en el Diagrama de Columnas Radiales \autoref{ssec:columnasRadiales}
@@ -2074,12 +2076,13 @@ circos.track(ylim = c(0, 1000), track.height = 0.6,
                            labels = dataMD$FECHA)})
 circos.yaxis(labels.cex = 0.4)
 circos.clear()
-legend("bottomright", inset=.02, title="CCAA",
-       c("Madrid","Cataluña","Castilla-LaMancha"), fill=c("burlywood","coral","blueviolet"), horiz=TRUE, cex=0.6)
+legend("topright", inset=.02, title="CCAA",
+       c("Madrid","Cataluña","Castilla-LaMancha"), fill=c("burlywood","coral","blueviolet"), cex=0.6)
 @
 <<circlize_col_sep, echo=1:2, eval=FALSE>>=
 @
-Lo que si se necesita para implementar el diagrama, es inicializar el gr\'afico fijando de cuantos sectores se compone cada anillo del gr\'afico de circlize y cuales son los l\'imites del eje X, estableciendo como se construye cada anillo.
+\clearpage
+Lo que s\'i se necesita para implementar el diagrama, es inicializar el gr\'afico fijando de cuantos sectores se compone cada anillo del gr\'afico de circlize y cuales son los l\'imites del eje X, estableciendo como se construye cada anillo.
 <<circlize_col_sep, echo=3, eval=FALSE>>=
 @
 Ahora se procede a crear solo el anillo para implementar las columnas, donde la variable \texttt{track.height} es con la que hay que jugar para tener la est\'etica de un iris de un ojo. Y fijar los l\'imites del eje Y que se representan en el anillo.
