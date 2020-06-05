@@ -282,21 +282,21 @@ Se empieza con uno de los paquetes que m\'as ser\'a usado a lo largo del trabajo
 , debido a que es uno de los m\'as vers\'atiles y personalizables, pues se puede retocar y ajustar cada uno de los componentes del gr\'afico que resulte de este; como la escala, el sistema de coordenadas, la etiquetas, etc.
 Tambi\'en, una de las mejores caracteristicas de este paquete, es su compatibilidad con otros paquetes de modificaci\'on de datos o de realizaci\'on de gr\'aficos.~\\
 Lo primero que se va a necesitar en todas las demostraciones de este trabajo es la obtenci\'on y manipulaci\'on de los datos. En este caso se necesitan 2 variables, indicando cuantos anillos componen el diagrama y el ancho de cada uno de ellos.~\\
-La primera forma de crear los anillos usa la funci\'on \texttt{geom-bar}, la cual reproduce el diagramas de barras cl\'asico, obteniendo su magnitud de la varible que se asigne para indicar su ancho.~\\Los datos que se van a usar son: una serie de entidades y sus valores porcentuales. En este caso se generan aleatoriamente, pero se pueden obtener como la frecuencia de los datos en una columna, de cualquier base de datos, proporcionando un valor porcentual a la frecuencia.
+La primera forma de crear los anillos usa la funci\'on \texttt{geom-bar}, la cual reproduce el diagramas de barras cl\'asico, obteniendo su magnitud de la varible que se asigne para indicar su ancho.~\\Los datos que se van a usar son: una serie de entidades y sus valores porcentuales. En este caso obtiene la frecuencia de los veh\'iculos en la columna de carb, exponiendo en el ancho de cada anillo, la cantidad de coches por el n\'umero de carburadores .
 <<data_ring_gg1>>==
 datos <- data.frame(
-  anillos=LETTERS[1:10],
-  ancho=c(10,8,10,9,5,12,20,6,10,10)
+  ancho=table(mtcars$carb)
 )
 @
-En esta prueba se establecen 10 anillos designados por letras, como el nombre de entidades, y el ancho de cada uno es el valor porcentual.
+En esta prueba se establecen 6 anillos designados el n\'umero de carburadores, como el nombre de entidades, y el ancho de cada uno es la cantidad de coches con esa caracter\'istica.
 <<plot_ring_gg1, echo=FALSE, eval=FALSE>>=
 library(ggplot2)
-ggplot(datos, aes(x="", y=ancho, fill=anillos)) +
+ggplot(datos, aes(x="", y=ancho.Freq, fill=ancho.Var1)) +
   geom_bar(stat="identity", width=1, colour="grey90") +
   coord_polar() +
   theme_void() + 
-  theme(legend.position="none")
+  labs(fill='N Carburadores') +
+  theme(legend.position = 'bottom')
 @
 Lo primero ser\'a cargar la librer\'ia ggplot2 para poder usar sus funciones.
 <<plot_ring_gg1, echo=1, eval=FALSE>>=
@@ -308,11 +308,11 @@ Una vez establecidos los par\'ametros iniciales se procede a usar la funci\'on p
 <<plot_ring_gg1, echo=3, eval=FALSE>>=
 @
 \clearpage
-Ahora no es mas que un diagrama de barras tradicional, donde las barras tienen la misma longitud, asi que, para hacer que las barras se conviertan en anillos, es necesario cambiar su sistema de coordenadas de cartesianas a polares, con la funci\'on \texttt{coord-polar}. Por defecto se establece que la primera variable con datos sea la que se cambia de sistema de coordenadas, en este caso el eje Y.
+Ahora no es mas que un diagrama de barras tradicional, donde las barras tienen la longitud deseada, asi que, para hacer que las barras se conviertan en anillos, es necesario cambiar su sistema de coordenadas de cartesianas a polares, con la funci\'on \texttt{coord-polar}. Por defecto se establece que la primera variable con datos sea la que se cambia de sistema de coordenadas, en este caso el eje Y.
 <<plot_ring_gg1, echo=4, eval=FALSE>>=
 @
-Por \'ultimo, se usan unas funciones para alterar el tema del gr\'afico como el fondo, la cuadr\'icula, la leyenda, etc. Pero, para este ejemplo, se prefiere carecer de todo ello para una mejor est\'etica.
-<<plot_ring_gg1, echo=5:6, eval=FALSE>>=
+Por \'ultimo, se usan unas funciones para alterar el tema del gr\'afico como el fondo, la cuadr\'icula, la leyenda, etc. Pero, para este ejemplo, se prefiere una est\'etica vac\'ia y la leyenda de los colores.
+<<plot_ring_gg1, echo=5:7, eval=FALSE>>=
 @
 Resultando en:
 <<plot_ring_gg1, echo=FALSE, warning=FALSE, fig.align='center', fig.height=4, fig.width=4>>=
@@ -323,13 +323,15 @@ Otras de las funciones que pueden imitar al \texttt{geom-bar} son: \texttt{geom-
 La funci\'on \texttt{geom-tile} sirve para crear rect\'angulos y, para delimitarlos, no sirven los mismos datos que antes, ya que esto solo se pueden crear anillos con mismo valor, por ejemplo 1. Con esta funci\'on se puede representar la variedad de entidades que existen, por ejemplo, los diferentes valores en una columna de cualquier base de datos. Esta vez se utiliza el eje X para los anillos y, como antes, el eje Y para el ancho. Esta vez hay que especificar qu\'e variable se transforma a coordenadas polares aunque, por lo dem\'as, es lo mismo salvo que se experimenta a no colorear los bordes de los rect\'angulos.
 <<plot_ring_gg2, fig.align='center', fig.height=4, fig.width=4>>=
 datos <- data.frame(
-  anillos=LETTERS[1:10],
-  ancho=c(rep(1,10))
+  anillos=datos$ancho.Var1,
+  ancho=c(rep(1,nrow(datos)))
 )
 ggplot(datos, aes(x=anillos, y=ancho)) +
   geom_tile(aes(fill = anillos)) + 
   coord_polar('y') +
-  theme_void() 
+  theme_void() +
+  labs(fill='N Carburadores') +
+  theme(legend.position = 'bottom') 
 @
 \clearpage
 \subsubsection{Paquete circlize}
@@ -338,9 +340,9 @@ Este es otro de los paquetes m\'as versatiles para los gr\'aficos con dise\~no c
 Lo primero que se necesita hacer es establecer que no se divida cada anillo, ya que circlize permite la posibilidad de dividirlos generando una cuadr\'icula circular.
 <<data_ring_cir>>=
 datos <- data.frame(
-  division = sample(letters[1], 1000, replace = TRUE),
-  x = runif(1000)*10,
-  y = runif(1000)
+  division = sample(letters[1], 150, replace = TRUE),
+  x = iris$Sepal.Length,
+  y = iris$Sepal.Width
 )
 @
 <<plot_ring_cir, echo=FALSE, eval=FALSE>>=
@@ -349,16 +351,16 @@ circos.par("track.height" = 0.22)
 circos.initialize( factors=datos$division, x=datos$x)
 circos.trackPlotRegion(factors = datos$division, y = datos$y, panel.fun = function(x, y) {
   circos.axis()})
-circos.trackLines(datos$division, datos$x[order(datos$x)], datos$y[order(datos$x)], 
+circos.trackLines(datos$division, datos$x[order(datos$x)], datos$y, 
                   col = rgb(0.1,0.5,0.8,0.3), lwd=2)
 circos.trackHist(datos$division, datos$x[order(datos$x)], col = rgb(0.1,0.5,0.8,0.3), lwd=2)
-circos.track(datos$division, x = datos$x[order(datos$x)], y = datos$y[order(datos$x)], 
+circos.track(datos$division, x = datos$x[order(datos$x)], y = datos$y, 
              panel.fun = function(x, y) {
                circos.points(x, y, pch = 16, cex = 0.5)})
 circos.axis(h="bottom",direction = "inside", labels.facing= "clockwise", labels.cex = 0.5)
 circos.clear()
 @
-La variable divisi\'on establece que cada anillo solo tendr\'a un vector con 1000 datos y las otras dos variables se van a usar en los diferentes diagramas de cada anillo. Representando la variable X e Y de los gr\'aficos l\'ineas y puntos. Para la parte del histograma s\'olo se requiere de una variable de los datos, mostrando la frecuencia de los valores de la variable entre intervalos. ~\\~\\
+La variable divisi\'on establece que cada anillo solo tendr\'a un vector con 150 datos y las otras dos variables se van a usar en los diferentes diagramas de cada anillo, correlacionando las variables de longitud y ancho de los s\'epalos, recogidos de la base de datos de plantas iris. Representando la variable X e Y de los gr\'aficos l\'ineas y puntos. Para la parte del histograma s\'olo se requiere de una variable de los datos, mostrando la frecuencia de los valores de la variable entre intervalos. ~\\~\\
 Se necesita crear una plantilla para cada diagrama. Esta se genera primero al inicializar el gr\'afico y luego con las funciones \texttt{trackPlotRegion} o \texttt{track} para realizar las plantillas de cada anillo.
 <<plot_ring_cir, echo=1:3, eval=FALSE>>=
 @
@@ -870,28 +872,22 @@ Para realizar este tipo de diagramas, la gran mayoria de paquetes lo afrontan cr
 Con este paquete %\cite{docu_ggplot2}
 se procede a copiar la manera de crear el diagrama de Barras Radiales \autoref{ssec:barrasRadiales}
  pero, en esta ocasi\'on, la coordenada a transformar esta vez se la X.~\\
-Primero se va a crear los datos de ejemplo para representar en este gr\'afico, estableciendo las entidades (barras), sus valores y el grupo al que pertenecen las barras, junto con la llamada de la libreria.
+Primero se va a crear los datos de ejemplo para representar en este gr\'afico, estableciendo las entidades (barras) y sus valores, junto con la llamada de la libreria. Se escoge una base de datos de multas por velocidad, siendo el eje X la velocidad y el eje Y la cantidad de multas que hay de dicha velocidad.
 <<datos_ggplot_cr>>=
+data <- read.csv("amis.csv", header = TRUE)
 data <- data.frame(
-  id=seq(1,20),
-  individual=paste( "Colum. ", seq(1,20), sep=""),
-  group=c( rep('A', 5), rep('B', 8), rep('C', 5), rep('D', 2)) ,
-  value=sample( seq(10,50), 20, replace=T)
+  velocidad=table(data$speed)
 )
 library(ggplot2)
+head(data,5)
 @
 <<plot_ggplot_cr, echo=FALSE, eval=FALSE>>=
-ggplot(data, aes(x=as.factor(id), y=value)) +
-  geom_bar(stat="identity", fill=alpha("blue",0.2)) +
-  ylim(-10,60) +
-  coord_polar(start = 0) +
+ggplot(data, aes(x=velocidad.Var1, y=velocidad.Freq)) +
+  geom_bar(stat="identity", fill=alpha("lightblue")) +
+  ylim(-10,600) +
+  coord_polar(start = 90) +
   theme_minimal() +
-  theme(
-    axis.text = element_blank(),
-    axis.title = element_blank(),
-    panel.grid = element_blank(),
-    plot.margin = unit(rep(-2,4), "cm")
-  ) 
+  xlab("Velocidad (mph)") + ylab("Cantidad de multas")
 @
 Para implementar este gr\'afico se escogen los datos, asignando los ejes correspondientes y la figura geom\'etricas de la barra.
 <<plot_ggplot_cr, echo=1:2, eval=FALSE>>=
@@ -902,8 +898,8 @@ Esta vez se puede controlar el espacio del centro mediante la variable \texttt{y
 Se transforma el eje x de lineal a radial y se hace coincidir el principio del gr\'afico con el principio del c\'irculo (0 grados).
 <<plot_ggplot_cr, echo=4, eval=FALSE>>=
 @
-Y, por \'ultimo, se ajusta la est\'etica deseada ajustando el fondo y elementos como la leyenda y el texto de los ejes.
-<<plot_ggplot_cr, echo=5:11, eval=FALSE>>=
+Y, por \'ultimo, se ajusta la est\'etica deseada ajustando el fondo y elementos como el texto de los ejes.
+<<plot_ggplot_cr, echo=5:6, eval=FALSE>>=
 @
 \clearpage
 Quedando el gr\'afico de la siguiente forma.
@@ -914,49 +910,49 @@ Quedando el gr\'afico de la siguiente forma.
 \end{center}
 ~\\
 Como se ha observado con anterioridad, este paquete deja mucho espacio para la personalizaci\'on de estos gr\'aficos, por lo que se va a implementar el mismo gr\'afico que antes con grupos con espacios diferenciados y etiquetas.~\\
- Para crear los espacios entre los grupos, se va a a\~nadir al igual que en el diagrama de barras radiales, barras con datos vac\'ios para que dejen el espacio al no ser representados.
-<<espacios, message=FALSE>>=
-library(tidyverse)
-empty_bar <- 4
-to_add <- data.frame( matrix(NA, empty_bar*nlevels(data$group), ncol(data)) )
+ Para crear los espacios entre los grupos, se va a a\~nadir al igual que en el diagrama de barras radiales, barras con datos vac\'ios para que dejen el espacio al no ser representados. Se necesitan unos datos agrupados por alguna variable, para ello se escoge la base de datos de mtcars exponiendo cada coche con su velocidad, y agrupando los veh\'iculos por la cantidad de marchas que tienen.
+<<data_col_gru>>=
+data<- mtcars
+data$name <- rownames(data)
+@
+Se suman varias barras que act\'uen de espaciadores. Creando una matriz vacia con 8 barras por cada grupo y juntarlo a los datos.
+<<espacios, echo=FALSE, message=FALSE>>=
+empty_bar <- 8
+to_add <- data.frame( matrix(NA, empty_bar*nrow(table(mtcars$gear)), ncol(data)) )
 colnames(to_add) <- colnames(data)
-to_add$group <- rep(levels(data$group), each=empty_bar)
+to_add$gear <- rep(rownames(table(data$gear)), each=empty_bar)
+to_add$name <- rep("", each=empty_bar)
 datatrans <- rbind(data, to_add)
-datatrans <- datatrans %>% arrange(group)
+library(tidyverse)
+datatrans <- datatrans %>% arrange(gear)
 datatrans$id <- seq(1, nrow(datatrans))
 @
-Para la parte de las etiquetas habr\'a que poner el datos que se quiera visualizar en todas las columnas y ajustar su altura y \'angulo
+<<espacios, echo=1:6, eval=FALSE, message=FALSE>>=
+@
+Ahora se reordenan los datos por sus marchas y se establece una variable para representar todas las filas.
+<<espacios, echo=7:9, eval=FALSE, message=FALSE>>=
+@
+Para la parte de las etiquetas habr\'a que poner el datos que se quiera visualizar en todas las columnas y ajustar que no se solapen entre s\'i. Esto se puede conseguir gracias a la librer\'ia ggrepel.
 <<labels>>=
-label_data <- datatrans
-number_of_bar <- nrow(label_data)
-angle <- 90 - 360 * (label_data$id-0.5) /number_of_bar
-label_data$hjust <- ifelse( angle < -90, 1, 0)
-label_data$angle <- ifelse(angle < -90, angle+180, angle)
+library(ggrepel)
 @
 Para ahora crear el gr\'afico usamos las siguentes funciones.
 <<plot_ggplot_final_cr, echo=FALSE, eval=FALSE>>=
-ggplot(datatrans, aes(x=as.factor(id), y=value, fill=group)) +
-  geom_bar(stat="identity", alpha=0.5) +
-  ylim(-10,60) +
-  theme_minimal() +
-  theme(
-    legend.position = "none",
-    axis.text = element_blank(),
-    axis.title = element_blank(),
-    panel.grid = element_blank(),
-    plot.margin = unit(rep(-1,4), "cm") 
-  ) +
+ggplot(datatrans , aes(x=id, y=mpg, fill= gear, label=name))+
+  geom_bar(stat = "identity") +
+  geom_text_repel() +
   coord_polar() +
-  geom_text(data=label_data, aes(x=id, y=value+10, label=individual, hjust=hjust),
-      color="black", fontface="bold",alpha=0.6, size=2.5, angle= label_data$angle,
-      inherit.aes = FALSE )
+  ylim(-10,40) +
+  xlab("Coches") + labs(fill='N Marchas') +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(), legend.position = 'bottom')
 @
-Lo primero que es distinto es el hecho de que pinta las columnas dependiendo del grupo.
-<<plot_ggplot_final_cr, echo=1:2, eval=FALSE>>=
+Lo primero que es distinto es el hecho de que pinta las columnas dependiendo del grupo (marchas), y el uso de ggrepel para el texto de las barras.
+<<plot_ggplot_final_cr, echo=1:3, eval=FALSE>>=
 @
 \clearpage
-Por lo dem\'as, todo es igual hasta que se a\~nade la \'ultima funci\'on, la cual genera las etiquetas del gr\'afico ajustadas a la altura y el \'angulo.
-<<plot_ggplot_final_cr, echo=13:15, eval=FALSE>>=
+Por lo dem\'as, todo es igual con el ajuste del sistema coordenadas, l\'imite del eje Y, nombre de ejes y legenda, junto al tema.
+<<plot_ggplot_final_cr, echo=4:8, eval=FALSE>>=
 @
 Resultando en este \'ultimo gr\'afico
 <<plot_ggplot_final_cr, echo=FALSE, warning=FALSE, fig.align='center', fig.height=4, fig.width=3.5>>==
@@ -968,18 +964,14 @@ Resultando en este \'ultimo gr\'afico
 Existe una forma de realizar este mismo gr\'afico con interactividad con la ayuda de ggplot2 y ggiraph. Ya se ha explicado en otros diagramas com\'o, asi que, en este solo se ense\~na el resultado.
 <<plot_inte_cr, eval=FALSE>>=
 library(ggiraph)
-p <- ggplot(data, aes(x=as.factor(id), y=value, tooltip=as.factor(id), 
-                      data_id = as.factor(id), fill = group)) +
+p <- ggplot(datatrans, aes(x=as.factor(id), y=mpg, tooltip=as.factor(name), 
+                      data_id = as.factor(id), fill = gear)) +
   geom_col_interactive() +
-  ylim(-10,60) +
+  ylim(-10,40) +
   coord_polar(start = 0) +
+  xlab("Coches") + labs(fill='N Marchas') +
   theme_minimal() +
-  theme(
-    axis.text = element_blank(),
-    axis.title = element_blank(),
-    panel.grid = element_blank(),
-    plot.margin = unit(rep(-2,4), "cm")
-  ) 
+  theme(axis.text.x = element_blank(), legend.position = 'bottom')
 girafe(ggobj = p)
 @
 \vbox{
@@ -993,21 +985,21 @@ girafe(ggobj = p)
 Como se dijo, \autoref{ssec:barrasRadiales}
 , este paquete ser\'ia usado para otros gr\'aficos m\'as adelante por sus plots espec\'ificos. Y gracias a las funciones \texttt{polar plot} y \texttt{radial plot} se pude contar con \'el en este apartado. 
 Para ello se establecen los datos usados.~\\
-Primero la longitud de las columnas con n\'umeros aleatorios.
+Primero la longitud de las columnas con las cantidad de multas segun la velocidad.
 <<data_long>>=
-long <- c(rnorm(36)*2+5)
+long <- data$velocidad.Freq
 @
-Luego la posici\'on de cada columna en el c\'irculo, siempre en grados.
+Luego la posici\'on de cada columna en el c\'irculo, siempre en grados. Dividiendo los grados por la cantidad de columnas a representar.
 <<data_pos>>=
-pos <- seq(0,350,by=10)
+pos <- seq(0,345.6,by=14.4)
 @
 Para luego usar las dos funciones, estas son capaces de usar los mismos par\'ametros.
 <<plot_plotrix_cr, fig.align='center', fig.height=3, fig.width=3.7>>=
 library(plotrix)
 polar.plot(long, pos,main="Polar Plot",lwd=3,line.col=2,
-           rad.col= "lightblue", grid.col= "lightblue",start = 0)
+           rad.col= "lightblue", grid.col= "lightblue",start = 0, labels=datos$velocidad.Var1, label.pos = pos)
 radial.plot(long, pos,main="Radial Plot",lwd=3,line.col=2,
-           rad.col= "lightblue", grid.col= "lightblue", start = 0)
+           rad.col= "lightblue", grid.col= "lightblue", start = 0, labels=datos$velocidad.Var1, label.pos = pos)
 @
 C\'omo se ve, los gr\'aficos no han salido iguales y es debido a que \texttt{polar plot} transforma la posici\'on de los grados a radianes mediante la funci\'on \texttt{radial plot}, pero con \texttt{radial plot} la variable \texttt{pos} se interpreta como radianes y no grados.
 \clearpage
@@ -1038,12 +1030,15 @@ cbarplot(x, radius=0.5, nlabels=0, col="lightblue")
 <<circlize_colum, echo=FALSE, eval=FALSE>>=
 library(circlize)
 circos.par("start.degree" = 90)
-circos.initialize("a", xlim = c(0.5, length(data$id)+0.5))
-circos.track(ylim = c(0, 50), track.height = 0.8, 
+circos.initialize("a", xlim = c(25.5,50.5))
+circos.track(ylim = c(0,600), track.height = 0.8, 
              bg.border = NA, panel.fun = function(x, y) {
                xlim = CELL_META$xlim
-               circos.rect( 1:length(data$id) - 0.45,rep(0, length(data$id)), 
-                 1:length(data$id) + 0.45, data$value,col = "skyblue", border = "white")})
+               circos.rect( 26:50 - 0.45,rep(0, 25), 
+                 26:50 + 0.45, data$velocidad.Freq ,col = "skyblue", border = "white")
+               circos.axis(h="top",direction = "outside", 
+                           labels.facing= "clockwise", labels.cex = 0.5)
+               circos.yaxis(labels.cex = 0.5)})
 circos.clear()
 @
 De nuevo se utiliza este paquete%\cite{docu_circlize}
@@ -1051,7 +1046,7 @@ de la misma forma que se utilizaba ggplot2, cambiando los ejes para representar 
 Lo primera funci\'on es opcional, ya que declara argumentos que son est\'eticos, como, en este caso, en que \'angulo comienza el diagrama, o tambi\'en, por ejemplo, se puede establecer donde est\'a en centro del diagrama.
 <<circlize_colum, echo=1:2, eval=FALSE>>=
 @
-Lo que si que se necesita hacer es inicializar la plantilla del gr\'afico fijando en cuantos sectores se divide cada anillo del diagrama, en este caso solo uno para crear todas las columnas en el mismo sector. Y se fijan los l\'imites del eje X desde 0 a 20.
+Lo que si que se necesita hacer es inicializar la plantilla del gr\'afico fijando en cuantos sectores se divide cada anillo del diagrama, en este caso solo uno para crear todas las columnas en el mismo sector. Y se fijan los l\'imites del eje X con el n\'umero de columnas.
 <<circlize_colum, echo=3, eval=FALSE>>=
 @
 \clearpage
@@ -1061,8 +1056,11 @@ Ahora se establece el anillo fijando el l\'imite del eje Y y la altura del anill
 La funci\'on \texttt{circos.rect} realiza ret\'angulos igual que se us\'o en el diagrama de Barras Radiales, pero cambiando los ejes, poniendo esta vez en el eje X la cantidad de barras y en el eje Y los valores. Para implementarlas se pasan como argumentos xInicial, yInicial, xFinal y yFinal; con un color agradable y borde blanco para facil separaci\'on de las barras.
 <<circlize_colum, echo=6:8, eval=FALSE>>=
 @
+Se crean las escalas de los ejes para ver las medidas de los valores.
+<<circlize_colum, echo=9:11, eval=FALSE>>=
+@
 Y para que se pueda implementar otro ejemplo hay que limpiar las variables que est\'an en circos.
-<<circlize_colum, echo=9, eval=FALSE>>=
+<<circlize_colum, echo=12, eval=FALSE>>=
 @
 Resultando en:
 <<circlize_colum, echo=FALSE, fig.align='center', fig.height=2.7, fig.width=3, message=FALSE>>=
@@ -1082,23 +1080,24 @@ En conclusi\'on, de los cuatro paquetes presentados los que resultan m\'as utile
 \subsection{Diagrama de Sectores}\label{ssec:sectores}
 Para crear este tipo de diagramas, casi siempre se necesita de la misma estructura de datos, unas veces son simplemente unos valores represent\'andolos como un porcentaje del total de la suma de todos los valores, o pueden estar acompa\~nados de las categor\'ias correspondientes.
 \subsubsection{R B\'asico}
-Una de las formar m\'as sencillas para representar los diagramas de sectores es la funci\'on \texttt{pie}. Esta funci\'on necesita de los propios valores dichos antes y se pueden a\~nadir m\'as par\'ametros para su personalizaci\'on, como las etiquetas, colores y bordes.
+Una de las formar m\'as sencillas para representar los diagramas de sectores es la funci\'on \texttt{pie}. Esta funci\'on necesita de los propios valores dichos antes y se pueden a\~nadir m\'as par\'ametros para su personalizaci\'on, como las etiquetas, colores y bordes. En este caso se elige la cantidad de veh\'iculos con cierta cantidad de carburadores.
 <<datos_pie_basic>>=
-Porcentaje <- c(3,7,9,1,2)
+Porcentaje <- table(mtcars$carb)
 @
 Para mejores colores y una paleta uniforme se opta por el paquete \texttt{RColorBrewer}.
 <<plot_pie_basic, echo=1:2, eval=FALSE>>=
 library(RColorBrewer)
 miPaleta <- brewer.pal(5, "Set2")
-pie(Porcentaje, labels = c("A","B","C","D","E"), border = "white", col = miPaleta)
-legend("topright", c("A","B","C","D", "E"), cex = 0.9,
-   fill = miPaleta)
+pie(Porcentaje, labels = c("1","2","3","4","6","8"), border = "white", col = miPaleta)
+legend("bottomleft", c("1","2","3","4","6","8"), cex = 0.7,
+   fill = miPaleta, title = "N Carburadores",horiz=TRUE)
+title(main = "Coches por carburadores")
 @
 Para la funci\'on principal se usa: (dando como par\'ametros los datos, las etiquetas y la paleta de colores)
 <<plot_pie_basic, echo=3, eval=FALSE>>=
 @
-Y por \'ultimo, se crea la leyenda con otra funci\'on de R b\'asico.
-<<plot_pie_basic, echo=4:5, eval=FALSE>>=
+Y por \'ultimo, se crea la leyenda con otra funci\'on de R b\'asico y t\'itulo.
+<<plot_pie_basic, echo=4:6, eval=FALSE>>=
 @
 <<plot_pie_basic, echo=FALSE, fig.height=5, fig.width=5>>=
 @
@@ -1111,26 +1110,25 @@ Para ello se vuelven a preparar los datos necesarios.
 <<data_ggplot_pie>>=
 library(ggplot2)
 data <- data.frame(
-  group=LETTERS[1:5],
-  value=c(13,7,9,21,2)
+  table(mtcars$carb)
 )
 @
 El problema de este diagrama con respecto a otros que usan \texttt{ggplot2} es la posicion de las etiquetas ya que solo con la funci\'on \texttt{geom label} no situa las etiquetas en su correcto lugar, por lo que hay que preparar el texto para ello.
 <<text_ggplot_pie, message=FALSE>>=
 library(tidyverse)
 data <- data %>% 
-  arrange(desc(group)) %>%
-  mutate(Porcentaje = value / sum(data$value) *100) %>%
+  arrange(desc(Var1)) %>%
+  mutate(Porcentaje = Freq / sum(Freq) *100) %>%
   mutate(ypos = cumsum(Porcentaje)- 0.5*Porcentaje )
 @
 <<plot_ggplot_pie, echo=FALSE, eval=FALSE>>=
-ggplot(data, aes(x="", y=Porcentaje, fill=group)) +
+ggplot(data, aes(x="", y=Porcentaje, fill=Var1)) +
   geom_bar(stat="identity", width=1, color="white") +
   coord_polar("y", start=0) +
-  theme_void() + 
+  theme_void() + labs(title="Coches por Carburadores") +
   theme(legend.position="none") +
-  geom_text(aes(y = ypos, label = group), color = "white", size=5) +
-  scale_fill_brewer(palette="Set1")
+  geom_text(aes(y = ypos, label = Var1), color = "black", size=5) +
+  scale_fill_brewer(palette="Set1") 
 @
 Y ahora se procede a la representaci\'on del gr\'afico, pasando como par\'ametros los datos a usar y asignando al eje X nada (como se dijo antes), al eje Y el procentaje. Los colores se obtienen en funci\'on del grupo. Se usa la figura geom\'etrica de la barra para representar los datos y se convierte el eje Y de lineal a radial.
 <<plot_ggplot_pie, echo=1:5, eval=FALSE>>=
@@ -1150,11 +1148,11 @@ Al igual que muchos de los gr\'aficos que usan ggplot2, se puede crear con el pa
 los gr\'aficos de ggplot2 interactivos, con la sustituci\'on de la funci\'on que implemente los sectores por sus variante interactiva, en este caso \texttt{geom-col-interactive}.
 <<plot_inte_pie, eval=FALSE>>=
 library(ggiraph)
-p <- ggplot(data, aes(x="", y=value, fill=group, tooltip = group, data_id = group)) +
+p <- ggplot(data, aes(x="", y=Freq, fill=Var1, tooltip = Freq, data_id = Var1)) +
   geom_col_interactive() +
   coord_polar("y", start=0) +
-  theme_void() +
-  theme(legend.position = "none")
+  theme_void() + labs(fill="Carburadores")+labs(title="Coches por Carburadores")+
+  theme(legend.position = "bottom")
 girafe(ggobj = p)
 @
 \vbox{
@@ -1170,14 +1168,14 @@ Primero se ver\'a la forma de representar el gr\'afico en 2D. Para ello se usa l
 par(mfrow=c(1,2))
 library(plotrix)
 plot(0,xlim=c(1.5,5),ylim=c(1,5),type="n",axes=FALSE,xlab="",ylab="", main = "2D")
-angulos <- floating.pie(3.25, 3, data$value, radius = 1.5, 
+angulos <- floating.pie(3.25, 3, data$Freq, radius = 1.5, 
                         col = c("#ff0000","#80ff00","#00ffff","#44bbff","#8000ff"))
-pie.labels(3.25, 3, angulos, data$group, minangle = 0.2, radius = 1.6)
+pie.labels(3.25, 3, angulos, data$Var1, minangle = 0.2, radius = 1.6)
 plot(0,xlim=c(1.5,5),ylim=c(1,5),type="n",axes=FALSE,xlab="",ylab="", main = "2D Explode")
-angulos <- floating.pie(3.25, 3, data$value, radius = 1.5,
+angulos <- floating.pie(3.25, 3, data$Freq, radius = 1.5,
                         col = c("#ff0000","#80ff00","#00ffff","#44bbff","#8000ff"),
                         explode = c(0.2,0,0.1,0.2,0))
-pie.labels(3.25, 3, angulos, data$group, minangle = 0.2, radius = 1.6, 
+pie.labels(3.25, 3, angulos, data$Var1, minangle = 0.2, radius = 1.6, 
            explode = c(0.2,0,0.1,0.2,0))
 @
 Para ello se necesita la libreria y crear un espacio para luego realizar los sectores.
@@ -1197,7 +1195,7 @@ Despu\'es se realiza el mismo trabajo para el par\'ametro \texttt{explode}, pero
 Y, por \'ultimo, se realiza el mismo gr\'afico pero en 3D, gracias a la funci\'on \texttt{pie3D}. Esta forma requiere guardar el resultado en, por ejemplo, png.~\\
 <<plot_plotrix_3D, echo=FALSE, eval=FALSE>>=
 png(file = "3d_sectores.png")
-pie3D(data$value, labels = data$group, explode = 0.1, main = "Sectores 3D",
+pie3D(data$Freq, labels = data$Var1, explode = 0.1, main = "Coches por Carburadores 3D",
       col=c("#ff0000","#80ff00","#00ffff","#44bbff","#8000ff"))
 dev.off()
 @
@@ -1224,7 +1222,7 @@ Este paquete %\cite{docu_rcharts}
 sirve para crear y personalizar gr\'aficos interactivos en javascript transformandolos a partir de R. Para representar este gr\'afico se va a reutilizar los mismos valores que antes e implementarlos con la funci\'on \texttt{nPlot}.
 <<plot_rcharts, message=FALSE, eval=FALSE>>=
 library(rCharts)
-p <- nPlot(value~group, data = data, type = 'pieChart')
+p <- nPlot(Freq~Var1, data = data, type = 'pieChart')
 @
 El problema viene a la hora de mostrarlo ya que p es una script de javascripts, por lo que para mostrarse con interactividad se necesita incluir en una pagina html. Para ello, este gr\'afico solo necesita de la etiqueta \texttt{<html>} al principio y \texttt{</html>} al final, copiando el script del resultado de la siguiente orden.
 <<orden_print, eval=FALSE>>=
@@ -1244,8 +1242,8 @@ se dedica principalmente a crear gr\'aficos interactivos, de los gr\'aficos m\'a
 Para realizarlo plotly ofrece la funci\'on \texttt{plot-ly}, b\'asica para cualquier plot con este paquete, si se le da el tipo pie reproduce el diagrama deseado. Como hasta ahora se va a seguir utilizando los mismos datos.
 <<plto_plotly_pie, message=FALSE>>=
 library(plotly)
-p <- plot_ly(data, labels = data$group, values = data$value, type = 'pie') %>%
-  layout(title = 'Plotly',
+p <- plot_ly(data, labels = data$Var1, values = data$Freq, type = 'pie') %>%
+  layout(title = 'Coches por Carburadores',
          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 @
@@ -1265,7 +1263,7 @@ es una extensi\'on del paquete \texttt{ggiraph}, creando sus propias funciones a
 Para la comparaci\'on entre paquetes se opta por el uso de los datos ya usados anteriormente. 
 <<plot_pie, warning=FALSE, eval=FALSE>>=
 library(ggiraphExtra)
-ggPie(data, aes( pies=group, count=value), interactive = TRUE)
+ggPie(data, aes( pies=Var1, count=Freq), interactive = TRUE, title = "Coches por Carburadores")
 @
 \vbox{
     \centering
@@ -1286,31 +1284,26 @@ Al recopilar las formas para realizar este diagrama se descubre que es la misma 
 \subsubsection{Paquete ggplot2}
 Otra vez en el proyecto se cruza este paquete %\cite{docu_ggplot2} 
 aportando su versatilidad. El gr\'afico consistir\'a de nuevo en crear un diagrama normal (lineal) y transformarlo con la ayuda de \texttt{coord polar}. Esta vez se realiza un gr\'afico de barras apiladas y transformar el eje X.~\\
-Primero necesita los datos para crear las barras apiladas.
+Primero necesita los datos para crear las barras apiladas. En este caso los datos son el porcentaje de muertes accidentales y suicidio, por ciudad y mundo rural, agrupados por meses.
 <<data_rose_1>>=
-data=read.csv("rose.csv", sep = ";")
+data=read.csv("rosa.csv", sep = ";")
 head(data)
 @
-Consiste de unos valores aleatorios ordenados por grupo y mes, pero necesita datos agrupados por solo una variable que en esta vez se usan los meses. Gracias a \texttt{reshape2} se consigue el agrupamiento por mes.
+Se necesitan datos agrupados por solo una variable que en esta vez se usan las causas. Gracias a \texttt{tidyverse} se consigue el agrupamiento por causa.
 <<trans_data, warning=FALSE, message=FALSE>>=
-library(reshape2)
-data1=data.frame(t(data))
-data2=data1[2:8,]
-colnames(data2)=month.name
-data2$group=row.names(data2)
-data3=melt(data2,id="group")
-head(data3)
+library(tidyverse)
+data <- data %>% gather(key = "observation", value="value", -c(1))
 @
 Y ahora, para crear el gr\'afico, lo \'unico que hay que hacer es crear el diagrama de barras apiladas y aplicarle la transformaci\'on, adem\'as de la est\'etica deseada.
 <<plot_rose_1, echo=FALSE, eval=FALSE>>=
 library(ggplot2)
-ggplot(data3,aes(x=variable,y=value,fill=group))+
+ggplot(data,aes(x=ï..MES,y=value,fill=observation))+
   geom_bar(stat="identity",width=1,colour="white",size=0.1)+
   coord_polar('x')+
-  scale_fill_brewer(palette="Blues")+
+  labs(fill='Causas') + labs(title = "Procentaje de Muertes") +
   xlab("")+ylab("") +
   theme_minimal() +
-  theme(legend.position = "none",
+  theme(legend.position = "bottom",
         axis.line = element_blank(),
         axis.text.y = element_blank(),
         axis.ticks = element_blank())
@@ -1318,10 +1311,10 @@ ggplot(data3,aes(x=variable,y=value,fill=group))+
 Para ello se llama a la funci\'on \texttt{ggplot} con los datos de data3 y asignando el eje X a los meses, el Y, a los valores y los colores en funci\'on del grupo. Y se crea el diagrama de barras tradicional con \texttt{geom-bar(stat="identity")}.
 <<plot_rose_1, echo=1:3, eval=FALSE>>=
 @
-Ahora se transforma la coordenada X y se aplica la escala de colores deseada.
+Ahora se transforma la coordenada X y, se establece el t\'itulo y nombre de la leyenda.
 <<plot_rose_1, echo=4:5, eval=FALSE>>=
 @
-Y por \'ultimo la est\'etica del grafo deseada (sin leyenda, ejes, fondo blanco, etc).
+Y por \'ultimo la est\'etica del grafo deseada (sin ejes, fondo blanco, etc. y leyenda debajo).
 <<plot_rose_1, echo=6:11, eval=FALSE>>=
 @
 Dando como resultado el gr\'afico.
@@ -1414,14 +1407,15 @@ girafe(ggobj = p)
 \clearpage
 \subsubsection{Paquete ggiraphExtra}
 Este paquete %\cite{docu_ggiraphExtra}
-permite crear gr\'aficos interactivos a partir de los gr\'aficos de ggplot2. El propio paquete tiene un dataframe llamado Rose con datos para este diagrama.~\\
+permite crear gr\'aficos interactivos a partir de los gr\'aficos de ggplot2. El propio paquete tiene un dataframe llamado Rose con datos para este diagrama, pero se usar\'an los mismos datos de procentaje de muertes en cuidad y pueblos.~\\
 Una de las dos funciones que permite realizar esto es \texttt{ggRose} y necesita de los datos, la est\'etica, la paleta de color, etc.~\\
 Primero se va a representar sin interartividad, para el formato de papel, pero, a continuaci\'on, se muestra la forma de pasarlo a html para la interactividad.
 <<plot_rose_ggiraph, fig.align='center', fig.height= 4>>=
 library(ggiraphExtra)
-ggRose(rose,aes(x=Month,fill=group,y=value),stat="identity",interactive=FALSE
+ggRose(data,aes(x=ï..MES,fill=observation,y=value),stat="identity",interactive=FALSE
        , palette = "Blues") +
-   xlab("") +  ylab("") +   
+   xlab("") +  ylab("") +  
+  labs(fill='Causas') + labs(title = "Procentaje de Muertes") +
   scale_y_sqrt() +
   theme_minimal() +
   theme(panel.grid.major = element_blank(),
@@ -1431,7 +1425,7 @@ ggRose(rose,aes(x=Month,fill=group,y=value),stat="identity",interactive=FALSE
         axis.ticks = element_blank())
 @
 <<plot_rose_inte_gg, eval=FALSE>>=
-p <- ggRose(rose,aes(x=Month,fill=group,y=value),stat="identity",interactive=TRUE
+p <- ggRose(data,aes(x=ï..MES,fill=observation,y=value),stat="identity",interactive=TRUE
        , palette = "Blues")
 library(htmlwidgets)
 saveWidget(p, file = "rose_interactive.html")
@@ -1439,9 +1433,10 @@ saveWidget(p, file = "rose_interactive.html")
 \clearpage
 Otro m\'etodo para realizar el mismo diagrama es \texttt{ggBar}. Como con el paquete ggplot2 lo que se realiza es un diagrama de columnas apiladas tradicional transformando la coordenada X de lineal a radial. Como antes con la interactividad desactivada pero con la forma de verlo en html.
 <<plot_bar_rose, fig.align='center', fig.height=4>>=
-ggBar(rose,aes(x=Month,fill=group,y=value),stat="identity",polar=TRUE,palette="Blues"
+ggBar(data, aes(x=ï..MES,fill=observation,y=value),stat="identity",polar=TRUE,palette="Blues"
       ,width=1, color="black",size=0.1,reverse=TRUE,interactive=FALSE)+
-    xlab("") +  ylab("") +   
+    xlab("") +  ylab("") + 
+  labs(fill='Causas') + labs(title = "Procentaje de Muertes") +
     scale_y_sqrt() +
     theme_minimal() +
     theme(panel.grid.major = element_blank(),
@@ -1449,7 +1444,7 @@ ggBar(rose,aes(x=Month,fill=group,y=value),stat="identity",polar=TRUE,palette="B
           axis.line = element_blank(),
           axis.text.y = element_blank(),
           axis.ticks = element_blank())
-p <- ggBar(rose,aes(x=Month,fill=group,y=value),stat="identity",polar=TRUE,palette="Blues"
+p <- ggBar(data, aes(x=ï..MES,fill=observation,y=value),stat="identity",polar=TRUE,palette="Blues"
       ,width=1, color="black",size=0.1,reverse=TRUE,interactive=TRUE)
 library(htmlwidgets)
 saveWidget(p, file = "rose2_interactive.html")
@@ -1938,57 +1933,63 @@ Para ejemplificar este diagrama se va a optar por un diagrama de columnas apilad
 Este paquete %\cite{docu_ggplot2}
 vuelve a salir con las mismas funciones que se expusieron en el Diagrama de Columnas Radiales \autoref{ssec:columnasRadiales}
 con \texttt{geom-bar} y para poder personalizar el espacio que se deja en medio, se utiliza la funci\'on \texttt{ylim} que delimita qu\'e valores representa el valor del eje Y del gr\'afico, estableciendo el l\'imete inferior por debajo de los valores que se representen en dicho eje.~\\
-Para empezar se cargan las librerias b\'asicas para crear el diagrama: \texttt{ggplot2} para implementar, \texttt{tidyverse} %\cite{docu_tidyverse}
- para modificar los datos y \texttt{viridis} %\cite{docu_viridis}
- para mejor escala de colores.
+Para empezar se cargan las librerias b\'asicas para crear el diagrama: \texttt{ggplot2} para implementar y \texttt{dplyr} para modificar los datos.
 <<librerias_col_sep, message=FALSE>>=
-library(tidyverse)
-library(viridis)
+library(dplyr)
 library(ggplot2)
 @
-Despu\'es, para crear los datos de las columnas apiladas en este caso, se usan tres valores generados con aleatoriedad, con un total de 60 columnas con tres valores cada una. Agrupando tres categor\'ias por medio de una cuarta.
+Para datos del diagrama de columnas con formato iris, y el formato de columnas apiladas se eligen los fallecidos del COVID-19 por fecha y por Comunidad Aut\'onoma.
 <<data_col_sep_ggplo>>=
-data <- data.frame(
-  individual=seq(1,60),
-  value1=sample( seq(10,100), 60, replace=T),
-  value2=sample( seq(10,100), 60, replace=T),
-  value3=sample( seq(10,100), 60, replace=T)
-)
+data <- read.csv("agregados.csv", header = TRUE)
 @
-Ahora se va a modificar el data frame agrupando los valores, dejando que se lean primero todas las columnas con un valor, para despu\'es leer el siguiente.
+Ahora se va a modificar el data frame agrupando los valores por CCAA y, realizando la modificaci\'on de pasar de datos acumulados de fallecidos a datos d\'ia a d\'ia.
 <<trans_col_sep_gg>>=
-datatrans <- data %>% gather(key = "observation", value="value", -c(1))
+data <- data %>%
+  group_by(CCAA) %>%
+  mutate(newcases = Fallecidos - lag(Fallecidos))
 @
-Para proceder a implementar el diagrama se dan a la plantilla los datos y qu\'e valor se representa en qu\'e eje, coloreando seg\'un el grupo de valor.
+Otra modificaci\'on a tener en cuenta es el formato de la fecha, para ser le\'ida por R.
+<<col_sep_coro_mod>>=
+data$date <- strptime(as.character(data$FECHA), "%d/%m/%Y")
+data$date <- format(data$date, "%Y-%m-%d")
+data$date <- as.Date(data$date)
+@
+Debido a la gran cantidad de CCAA no se ha encontrado una paleta que soporte, con colores distintivos, esta cantidad. Por ello se procede a la creaci\'on de una propia gracias a \texttt{RColorBrewer}. Resultando en un vector de colores distintos.
+<<colores_col_sep>>=
+library(RColorBrewer)
+n <- 60
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector = unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
+@
+Para proceder a implementar el diagrama se dan a la plantilla los datos y qu\'e valor se representa en qu\'e eje, coloreando seg\'un la CCAA.
 <<plot_col_sep_gg, echo=FALSE, eval=FALSE>>=
-ggplot(datatrans, aes(x=as.factor(individual), y=value, fill=observation)) +      
-  geom_bar(stat="identity", alpha=0.5) +
-  coord_polar() +
-  ylim(-150,300) +
-  scale_fill_viridis(discrete=TRUE) +
-  theme_minimal() +
-  theme(
-    legend.position = "none",
-    axis.text = element_blank(),
-    axis.title = element_blank())
+ggplot(data, aes(x=date, y= newcases, fill = CCAA)) +
+  geom_bar(stat = "identity", position = "stack") +
+  coord_polar(start = pi/2) +
+  ylim(-1000,1000) +
+  scale_fill_manual(values = sample(col_vector, 19)) +
+  theme_minimal() + labs(title = "Fallecidos por CCAA") +
+  scale_x_date(minor_breaks = "1 week") +
+  xlab("Fecha")+ylab("Nuevos Fallecidos")+
+  theme(legend.position = 'bottom')
 @
 <<plot_col_sep_gg, echo=1, eval=FALSE>>=
 @
-Se utiliza la funci\'on \texttt{geom-bar} para crear las barras apiladas, fijando cada barra a los valores y no a la suma de ellos con \texttt{identity}.
+Se utiliza la funci\'on \texttt{geom-bar} para crear las barras apiladas, fijando cada barra a los valores y no a la suma de ellos con \texttt{identity} y \texttt{position stack}.
 <<plot_col_sep_gg, echo=2, eval=FALSE>>=
 @
 Se transforma el sistema de coordenadas del eje X a sistema polares con \texttt{coord-polar} que, por defecto, transforma el eje X.
 <<plot_col_sep_gg, echo=3, eval=FALSE>>=
 @
 \clearpage
-Ahora se usa la funci\'on principal para establecer la est\'etica del formato de iris de un ojo. Se fija el l\'imite inferior en un valor lo suficientemente bajo para ajustarse a la est\'etica, y el l\'imite superior como el posible m\'aximo de una barra (100 + 100 + 100).
+Ahora se usa la funci\'on principal para establecer la est\'etica del formato de iris de un ojo. Se fija el l\'imite inferior en un valor lo suficientemente bajo para ajustarse a la est\'etica, y el l\'imite superior.
 <<plot_col_sep_gg, echo=4, eval=FALSE>>=
 @
 Las \'ultimas funciones ayudan a cambiar el tema y colores del gr\'afico, ofreciendo un tema m\'inimo sin fondo y con colores agradables a la vista. Tambi\'en se procede a quitar la leyenda y texto de los ejes porque en este ejemplo no son necesarios.
 <<plot_col_sep_gg, echo=5:10, eval=FALSE>>=
 @
 Dando el siguente resultado:
-<<plot_col_sep_gg, echo=FALSE, fig.align='center', fig.height=4, fig.width=4>>=
+<<plot_col_sep_gg, echo=FALSE, fig.align='center', fig.height=4, fig.width=4, warning=FALSE>>=
 @
 \begin{center}
 \textbf{. . .}
@@ -2000,17 +2001,15 @@ ofrece la posibilidad de crear barras interactivas dentro de las funciones de gg
 Lo primero es llamar a la libreria y cargar la plantilla.
 <<ggiraph_col_sep, echo=FALSE, eval=FALSE>>=
 library(ggiraph)
-p <- ggplot(datatrans, aes(x=as.factor(individual), y=value, fill=observation, 
-        tooltip= as.factor(value), data_id =as.factor(individual))) +
+p <- ggplot(data, aes(x=date, y= newcases, fill = CCAA, 
+        tooltip= as.factor(newcases), data_id =as.factor(date))) +
         geom_bar_interactive(stat="identity") +
-        ylim(-150,300) +
+        ylim(-1000,1000) +
         coord_polar() +
-        theme_minimal() +
-        theme(
-          axis.text = element_blank(),
-          axis.title = element_blank(),
-          panel.grid = element_blank(),
-          legend.position = "none") 
+        scale_fill_manual(values = sample(col_vector, 19)) +
+        theme_minimal()+labs(title = "Fallecidos por CCAA") +
+        xlab("Fecha")+ylab("Nuevos Fallecidos")+
+        theme(legend.position = 'bottom') 
 girafe(ggobj = p)
 @
 <<ggiraph_col_sep, echo=1:3, eval=FALSE>>=
@@ -2020,10 +2019,10 @@ Ahora se procede al uso de la funci\'on sustituta con los mismos argumentos que 
 <<ggiraph_col_sep, echo=4, eval=FALSE>>=
 @
 Se utilizan las mismas funciones que en el ejemplo anterior con solo ggplot2 para crear el diagrama de iris de un ojo donde, entre ellas, figura la funci\'on principal para esta est\'etica, \texttt{ylim}.
-<<ggiraph_col_sep, echo=5:12, eval=FALSE>>=
+<<ggiraph_col_sep, echo=5:10, eval=FALSE>>=
 @
 Por \'ultimo, para crear un gr\'afico interactivo, se necesita crear dicho objeto con una funci\'on propia del paquete ggiraph, \texttt{girafe}.
-<<ggiraph_col_sep, echo=13, eval=FALSE>>=
+<<ggiraph_col_sep, echo=11, eval=FALSE>>=
 @
 Resultando en el siguiente gr\'afico:~\\
 \vbox{
@@ -2037,39 +2036,46 @@ Este paquete ofrece un par\'ametro para convertir el gr\'afico a interractivo, p
 Dentro de la funci\'on tiene el argumento de decidir si aplicar la funci\'on \texttt{coord-polar} por defecto.
 <<ggiraphExtra, fig.align='center', fig.height=5, fig.width=5>>=
 library(ggiraphExtra)
-ggBar(datatrans, aes(x=individual, y=value, fill=observation), stat="identity", 
+ggBar(data, aes(x=date, y= newcases, fill = CCAA), stat="identity", 
       alpha=0.5, polar=TRUE) +
-  scale_fill_viridis(discrete=TRUE) +
-  ylim(-150,300) +
-  theme_void() +
-  theme(
-    legend.position = "none",
-    axis.text = element_blank(),
-    axis.title = element_blank())
+  scale_fill_manual(values = sample(col_vector, 19)) +
+  ylim(-1000,1000) +
+  theme_minimal()+labs(title = "Fallecidos por CCAA") +
+        xlab("Fecha")+ylab("Nuevos Fallecidos")+
+        theme(legend.position = 'bottom')
 @
 \clearpage
 \subsubsection{Paquete circlize}
 Para realizar el diagrama con este paquete %\cite{docu_circlize}
 se va a optar por la misma funci\'on que se utiliz\'o en el Diagrama de Columnas Radiales \autoref{ssec:columnasRadiales}
 , solo que esta vez se van a implementar la variante de columnas apiladas y con una funci\'on similar a ylim de ggplot2.~\\
-Se vuelven a usar los mismos datos que en el paquete anterior para mejorar la comparaci\'on entre ellos. Lo primero que se puede hacer es fijar par\'ametros, como el de en qu\'e \'angulo del c\'irculo empieza el diagrama. Esta parte es opcional, solo aumenta la personalizaci\'on. 
+Se vuelven a usar los mismos datos que en el paquete anterior para mejorar la comparaci\'on entre ellos, pero debido a la gran cantidad de CCAA, y que cada barra necesita de dos l\'ineas de c\'odigo, se opta por seleccionar las tres provincias con mayores valores. 
+<<data_col_sep_cir>>=
+dataMD <- data[data$CCAA == ("MD"),]
+dataCT <- data[data$CCAA == ("CT"),]
+dataCM <- data[data$CCAA == ("CM"),]
+@
+Lo primero que se puede hacer es fijar par\'ametros, como el de en qu\'e \'angulo del c\'irculo empieza el diagrama. Esta parte es opcional, solo aumenta la personalizaci\'on. 
 <<circlize_col_sep, echo=FALSE, eval=FALSE>>=
 library(circlize)
-circos.par("start.degree" = 90)
-circos.initialize("a", xlim = c(0.5, length(data$individual)+0.5))
-circos.track(ylim = c(0, 300), track.height = 0.6, 
+circos.par("start.degree" = 90, cell.padding = c(0, 0, 0, 0))
+circos.initialize("a", xlim = c(0.5, 91+0.5)) # 'a` just means there is one sector
+circos.track(ylim = c(0, 1000), track.height = 0.6, 
              bg.border = NA, panel.fun = function(x, y) {
                xlim = CELL_META$xlim
-               circos.rect( 1:60 - 0.45,rep(0, 60), 1:60 + 0.45, data$value1, 
-                            col = "burlywood", border = "white") 
-               circos.rect( 1:60 - 0.45,data$value1+0.001, 1:60 + 0.45, 
-                            data$value2+data$value1, col = "coral", border = "white") 
-               circos.rect( 1:60 - 0.45,data$value2+data$value1+0.001, 1:60 + 0.45, 
-                            data$value3+data$value2+data$value1, 
+               circos.rect( 1:91 - 0.45,rep(0, 91), 1:91 + 0.45, dataMD$newcases, 
+                            col = "burlywood", border = "white")
+               circos.rect( 1:91 - 0.45,dataMD$newcases+0.001, 1:91 + 0.45, 
+                            dataCT$newcases+dataMD$newcases,col = "coral", border = "white")
+               circos.rect( 1:91 - 0.45,dataCT$newcases+dataMD$newcases+0.001, 1:91 + 0.45, 
+                            dataCM$newcases+dataCT$newcases+dataMD$newcases, 
                             col = "blueviolet", border = "white") 
-               circos.axis(h="bottom",direction = "inside", 
-                           labels.facing= "clockwise", labels.cex = 0.5)})
+               circos.axis(h="top",direction = "inside", labels.facing= "clockwise", labels.cex = 0.5, 
+                           labels = dataMD$FECHA)})
+circos.yaxis(labels.cex = 0.4)
 circos.clear()
+legend("bottomright", inset=.02, title="CCAA",
+       c("Madrid","Cataluña","Castilla-LaMancha"), fill=c("burlywood","coral","blueviolet"), horiz=TRUE, cex=0.6)
 @
 <<circlize_col_sep, echo=1:2, eval=FALSE>>=
 @
@@ -2087,10 +2093,13 @@ Para los dos siguientes grupos es necesario poner esos valores empezando en el f
 <<circlize_col_sep, echo=9:13, eval=FALSE>>=
 @
 Para tener una mejor est\'etica se escogen colores agradables y que el borde de los rect\'angulos sea blanco para una mejor diferenciaci\'on. Para mejor comprensi\'on se recrea el eje con posici\'on debajo del anillo y las etiquetas apuntando fuera del anillo.
-<<circlize_col_sep, echo=14:15, eval=FALSE>>=
+<<circlize_col_sep, echo=14:16, eval=FALSE>>=
 @
 Y, por \'ultimo, para volver a realizar un gr\'afico con este paquete es necesario limpiar los parametros guardados en circos.
-<<circlize_col_sep, echo=16, eval=FALSE>>=
+<<circlize_col_sep, echo=17, eval=FALSE>>=
+@
+Para la leyenda del diagrama se opta por legend, una funci\'on b\'asica de R para este proposito.
+<<circlize_col_sep, echo=18:10, eval=FALSE>>=
 @
 \clearpage
 Resultando en el siguiente gr\'afico:
