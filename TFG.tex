@@ -3368,11 +3368,29 @@ Lo primero de todo ser\'a llamar a las librerias para luego poder trabajar con e
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Despu\'es se crean las \'areas de las burbujas de forma aleatoria.
+Se utiliza una base de datos de poblaci\'on mundial, que consiste en continente, regi\'on, pa\'is y poblaci\'on.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{areas} \hlkwb{<-} \hlkwd{sample}\hlstd{(}\hlnum{10}\hlstd{,} \hlnum{100}\hlstd{,} \hlnum{TRUE}\hlstd{)}
+\hlstd{github} \hlkwb{=}\hlstr{"https://raw.githubusercontent.com/holtzy/data_to_viz/master"}
+\hlstd{dataset} \hlkwb{=} \hlstr{"/Example_dataset/11_SevCatOneNumNestedOneObsPerGroup.csv"}
+\hlstd{url} \hlkwb{=} \hlkwd{paste0}\hlstd{(github, dataset)}
+\hlstd{data} \hlkwb{<-} \hlkwd{read.table}\hlstd{(url,} \hlkwc{header}\hlstd{=T,} \hlkwc{sep}\hlstd{=}\hlstr{";"}\hlstd{)}
+\hlstd{data[} \hlkwd{which}\hlstd{(data}\hlopt{$}\hlstd{value}\hlopt{==-}\hlnum{1}\hlstd{),}\hlstr{"value"}\hlstd{]} \hlkwb{<-} \hlnum{1}
+\hlkwd{colnames}\hlstd{(data)} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Continent"}\hlstd{,} \hlstr{"Region"}\hlstd{,} \hlstr{"Country"}\hlstd{,} \hlstr{"Pop"}\hlstd{)}
+\hlkwd{head}\hlstd{(data,} \hlnum{1}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+##   Continent        Region     Country      Pop
+## 1      Asia Southern Asia Afghanistan 25500100
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Despu\'es se crean las \'areas de las burbujas para representar la poblaci\'on de cada pa\'is.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{areas} \hlkwb{<-} \hlstd{data}\hlopt{$}\hlstd{Pop}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -3384,25 +3402,27 @@ Ahora, gracias a la funci\'on \texttt{pack-circles} del paquete ggraph, se obtie
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Por \'ultimo, a la hora de confeccionar los datos se crea la tabla con X, Y y el radio de las burbujas a partir de sus \'areas.
+Por \'ultimo, a la hora de confeccionar los datos se crea la tabla con X, Y, el radio de las burbujas a partir de sus \'areas, el continente para diferenciaci\'on de color y, nombre de cada burbuja.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{datos} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= posicion[,} \hlnum{1}\hlstd{],} \hlkwc{y} \hlstd{= posicion[,} \hlnum{2}\hlstd{],} \hlkwc{r} \hlstd{=} \hlkwd{sqrt}\hlstd{(areas} \hlopt{/} \hlstd{pi))}
+\hlstd{datos} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= posicion[,} \hlnum{1}\hlstd{],} \hlkwc{y} \hlstd{= posicion[,} \hlnum{2}\hlstd{],} \hlkwc{r} \hlstd{=} \hlkwd{sqrt}\hlstd{(areas} \hlopt{/} \hlstd{pi),}
+                    \hlkwc{group} \hlstd{= data}\hlopt{$}\hlstd{Continent,} \hlkwc{name}\hlstd{= data}\hlopt{$}\hlstd{Country)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 A la hora de implementar el g\'afico se hace uso de ggplot y la funci\'on de ggforce \texttt{geom-circle}
 
-Para ello se necesita establecer el espacio para implementar las burbujas (ggplot), y establecerlas usando las posiciones, y colorear en funci\'on del radio.
+Para ello se necesita establecer el espacio para implementar las burbujas (ggplot), y establecerlas usando las posiciones, y colorear en funci\'on del continente.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{ggplot}() +
-  \hlkwd{geom_circle}(\hlkwd{aes}(x0 = x, y0 = y, r = r, fill = r), data = datos) +
+  \hlkwd{geom_circle}(data=datos, \hlkwd{aes}(x0 = x, y0 = y, r = r, fill = group)) +
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+\clearpage
 Luego para descatar el gr\'afico se crea un c\'irculo que encapsule a las burbujas.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -3411,17 +3431,17 @@ Luego para descatar el gr\'afico se crea un c\'irculo que encapsule a las burbuj
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Y para la est\'etica se opta por la escala de colores viridis y dejar el gr\'afico limpio de texto.
+Y para la est\'etica se opta por la escala de colores Set2, del propio paquete, y dejar el gr\'afico limpio de texto, salvo la leyenda y el nombre de las burbujas que tengan mayor radio.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-  \hlkwd{scale_fill_viridis}\hlstd{()} \hlopt{+}
+  \hlkwd{scale_fill_brewer}\hlstd{(}\hlkwc{palette} \hlstd{=} \hlstr{"Set2"}\hlstd{)} \hlopt{+}
   \hlkwd{theme_void}\hlstd{()} \hlopt{+}
-  \hlkwd{theme}\hlstd{(}\hlkwc{legend.position} \hlstd{=} \hlstr{'none'}\hlstd{)}
+  \hlkwd{theme}\hlstd{(}\hlkwc{legend.position} \hlstd{=} \hlstr{'bottom'}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_text}\hlstd{(}\hlkwc{data} \hlstd{=} \hlkwd{subset}\hlstd{(datos, r} \hlopt{>} \hlnum{5000}\hlstd{),} \hlkwd{aes}\hlstd{(x,y,}\hlkwc{label}\hlstd{=name),} \hlkwc{color} \hlstd{=} \hlstr{"black"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-\clearpage
 Resultando en: 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
@@ -3442,52 +3462,46 @@ destinado a funciones de agrupamiento no solapado de c\'irculos, ofrece una form
 Para poder crear las burbujas se necesita un \'area, para ello se puede utilizar una funci\'on del propio paquete para realizar el ejemplo.~\\
 Este paquete solo ofrece los datos, para poder realizarlos es necesario el paquete ggplot2 %\cite{docu_ggplot2}
 , y este se ofrece una gran capacidad de personalizaci\'on de todo el gr\'afico.
-Se establecen las variables necesarias:
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlstd{ncirculos} \hlkwb{<-} \hlnum{200}
-\hlstd{limites} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlopt{-}\hlnum{40} \hlstd{,} \hlnum{40}\hlstd{)}
-\hlstd{maxarea} \hlkwb{<-} \hlnum{40}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-Luego se crean las \'areas con una distribuci\'on beta con la funci\'on \texttt{rbeta}.
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlstd{areas} \hlkwb{<-} \hlkwd{rbeta}\hlstd{(ncirculos,} \hlnum{1}\hlstd{,} \hlnum{5}\hlstd{)} \hlopt{*} \hlstd{maxarea}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-Despu\'es se necesita crear un layout, donde las burbujas no se solapen, para que cada burbuja ocupe espacio propio, por lo que ahora se empieza a utilizar la libreria packcircles.
+Se establecen los mismos datos que en el anterior gr\'afico, con la poblaci\'on mundial. Se crea el layout, con las burbujas no solapadas, gracias a \texttt{circleProgressiveLayout}, resultando en un data.frame con la posici\'on en el eje X, Y y el radio de las burbujas (seg\'un poblaci\'on).
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(packcircles)}
-\hlstd{res} \hlkwb{<-} \hlkwd{circleRepelLayout}\hlstd{(areas,} \hlkwc{xlim} \hlstd{= limites,} \hlkwc{ylim} \hlstd{= limites)}
+\hlstd{pack} \hlkwb{<-} \hlkwd{circleProgressiveLayout}\hlstd{(data}\hlopt{$}\hlstd{Pop,} \hlkwc{sizetype} \hlstd{=} \hlstr{'area'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Por \'ultimo, se crea el layout donde se situa a cada burbuja en su lugar, indicando con la variable id (que resulta del siguiente c\'odigo) en la fila de la matriz qu\'e sit\'ua las burbujas.
+Se unen los dos data.frames para luego agruparlo seg\'un el n\'umero de puntos que se desean (Cantidad de paises).
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{datos.gg} \hlkwb{<-} \hlkwd{circleLayoutVertices}\hlstd{(res}\hlopt{$}\hlstd{layout,} \hlkwc{sizetype} \hlstd{=} \hlstr{"radius"}\hlstd{)}
+\hlstd{dat} \hlkwb{<-} \hlkwd{cbind}\hlstd{(data, pack)}
+\hlstd{dat.gg} \hlkwb{<-} \hlkwd{circleLayoutVertices}\hlstd{(pack,} \hlkwc{npoints} \hlstd{=} \hlkwd{nrow}\hlstd{(data))}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-\clearpage
-Y gracias a la librer\'ia \texttt{ggplot2}, se va a proceder a recrear el resultado con el uso de \texttt{geom-poligon} para establecer los c\'irculos que encierran los datos pasados como argumento.
+Para poder diferenciar las burbujas por continentes, es necesario que en estos nuevos datos incluyan el continente.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{dat.gg}\hlopt{$}\hlstd{Continent} \hlkwb{<-} \hlkwd{rep}\hlstd{(data}\hlopt{$}\hlstd{Continent,} \hlkwc{each}\hlstd{=}\hlnum{251}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Y gracias a la librer\'ia \texttt{ggplot2}, se va a proceder a recrear el resultado con el uso de \texttt{geom-poligon} para establecer los c\'irculos que encierran los datos pasados como argumento. Y como en el anterior gr\'afico, se pone la etiqueta de los paises que superen un cierto radio (Mayores Poblaciones).
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(ggplot2)}
-
-\hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= datos.gg,} \hlkwd{aes}\hlstd{(x, y,} \hlkwc{group} \hlstd{= id))} \hlopt{+}
-  \hlkwd{geom_polygon}\hlstd{(}\hlkwc{colour}\hlstd{=}\hlstr{"green4"}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"lightgreen"}\hlstd{,} \hlkwc{alpha}\hlstd{=}\hlnum{0.3}\hlstd{)} \hlopt{+}
-  \hlkwd{coord_equal}\hlstd{(}\hlkwc{xlim}\hlstd{=limites,} \hlkwc{ylim}\hlstd{=limites)} \hlopt{+}
-  \hlkwd{theme_void}\hlstd{()}
+\hlkwd{ggplot}\hlstd{()} \hlopt{+}
+  \hlkwd{geom_polygon}\hlstd{(}\hlkwc{data} \hlstd{= dat.gg,} \hlkwd{aes}\hlstd{(x, y,} \hlkwc{group} \hlstd{= id,} \hlkwc{fill}\hlstd{=}\hlkwd{as.factor}\hlstd{(Continent)),}
+               \hlkwc{colour} \hlstd{=} \hlstr{"black"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.6}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_text}\hlstd{(}\hlkwc{data} \hlstd{=} \hlkwd{subset}\hlstd{(dat, radius} \hlopt{>} \hlnum{5000}\hlstd{),} \hlkwd{aes}\hlstd{(x, y,} \hlkwc{size}\hlstd{=Pop,} \hlkwc{label} \hlstd{= Country),}
+            \hlkwc{color} \hlstd{=} \hlstr{'black'}\hlstd{)} \hlopt{+}
+  \hlkwd{scale_fill_brewer}\hlstd{(}\hlkwc{palette} \hlstd{=} \hlstr{"Set2"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_void}\hlstd{()} \hlopt{+} \hlkwd{labs}\hlstd{(}\hlkwc{fill} \hlstd{=} \hlstr{"Continente"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme}\hlstd{(}\hlkwc{legend.position}\hlstd{=}\hlstr{'bottom'}\hlstd{)} \hlopt{+}
+  \hlkwd{coord_equal}\hlstd{()}
 \end{alltt}
 \end{kframe}
 
@@ -3932,7 +3946,7 @@ se transforman los datos y se realiza el gr\'afico.
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Se diferencian 4 grupos para una mejor visualizaci\'on.
+Se diferencian 4 grupos usando la clusterizaci\'on, agrupandose seg\'un similarirad de los valores de las columnas, para una mejor visualizaci\'on.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -3950,48 +3964,53 @@ Y al final se usan la funci\'on de r b\'asico plot, dando formato a los datos co
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+\clearpage
 Resultando en:~\\
 \vbox{
     \centering
     \includegraphics[width=0.6\textwidth]{imag/ape}
 }
+\begin{center}
+\textbf{. . .}
+\end{center}
 \subsubsection{Paquete ggraph}
 Este paquete %\cite{docu_ggraph}
 ofrece una gran cantidad de gr\'aficos de redes y, debido a que es una ampliaci\'on de ggplot2, tiene mucha capacidad de personalizaci\'on para la creaci\'on de estos diagramas. 
 Para poder realizar con este paquete un dendograma se necesita crear los datos jer\'arquicos y, con este proposito entra el paquete \texttt{igraph} con la funci\'on \texttt{graph-form-data-frame}.~\\
-Primero se deben crear los data frame de la estructura de \'arbol con la ra\'iz a sus hijos y los hijos a los suyos propios.
+Primero se deben crear los data frame de la estructura de \'arbol con la ra\'iz a sus hijos y los hijos a los suyos propios. Para este ejemplo se usar\'a la base de datos flare ya usada en \nameref{ssec:rayosSol}.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{raiz} \hlkwb{=} \hlkwd{data.frame}\hlstd{(}\hlkwc{from} \hlstd{=} \hlstr{"origen"}\hlstd{,} \hlkwc{to} \hlstd{=} \hlkwd{paste}\hlstd{(}\hlstr{"padre"}\hlstd{,} \hlkwd{seq}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{10}\hlstd{),} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{))}
-\hlstd{padres} \hlkwb{=} \hlkwd{data.frame}\hlstd{(} \hlkwc{from}\hlstd{=}\hlkwd{rep}\hlstd{(raiz}\hlopt{$}\hlstd{to,} \hlkwc{each}\hlstd{=}\hlnum{10}\hlstd{),} \hlkwc{to}\hlstd{=}\hlkwd{paste}\hlstd{(}\hlstr{"hijo"}\hlstd{,} \hlkwd{seq}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{100}\hlstd{),} \hlkwc{sep}\hlstd{=}\hlstr{"_"}\hlstd{))}
-\hlstd{arbol} \hlkwb{=} \hlkwd{rbind}\hlstd{(raiz,padres)}
+\hlkwd{library}\hlstd{(ggraph)}
+\hlstd{ramas} \hlkwb{<-} \hlstd{flare}\hlopt{$}\hlstd{edges}
+\hlstd{vertices} \hlkwb{<-} \hlstd{flare}\hlopt{$}\hlstd{vertices}
+\hlstd{vertices}\hlopt{$}\hlstd{group} \hlkwb{=} \hlstd{ramas}\hlopt{$}\hlstd{from[}\hlkwd{match}\hlstd{( vertices}\hlopt{$}\hlstd{name, ramas}\hlopt{$}\hlstd{to)]}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Se realiza la matriz vertices para decir qu\'e nodos son los hijos de qu\'e padre.
+Al igual que la otra vez, se procede a reducir los niveles de profundidad, quitando el \'ultimo.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{vertices} \hlkwb{=} \hlkwd{data.frame}\hlstd{(}
-    \hlkwc{nombre} \hlstd{=} \hlkwd{unique}\hlstd{(}\hlkwd{c}\hlstd{(}\hlkwd{as.character}\hlstd{(arbol}\hlopt{$}\hlstd{from),} \hlkwd{as.character}\hlstd{(arbol}\hlopt{$}\hlstd{to))))}
+\hlkwd{library}\hlstd{(tidyverse)}
+\hlstd{ramas} \hlkwb{<-} \hlstd{flare}\hlopt{$}\hlstd{edges} \hlopt{%>%}
+  \hlkwd{filter}\hlstd{(to} \hlopt{%in%} \hlstd{from)} \hlopt{%>%}
+  \hlkwd{droplevels}\hlstd{()}
+\hlstd{vertices} \hlkwb{<-} \hlstd{flare}\hlopt{$}\hlstd{vertices} \hlopt{%>%}
+  \hlkwd{filter}\hlstd{(name} \hlopt{%in%} \hlkwd{c}\hlstd{(ramas}\hlopt{$}\hlstd{from, ramas}\hlopt{$}\hlstd{to))} \hlopt{%>%}
+  \hlkwd{droplevels}\hlstd{()}
+\hlstd{vertices}\hlopt{$}\hlstd{size} \hlkwb{<-} \hlkwd{runif}\hlstd{(}\hlkwd{nrow}\hlstd{(vertices))}
+\hlstd{vertices}\hlopt{$}\hlstd{group} \hlkwb{=} \hlstd{ramas}\hlopt{$}\hlstd{from[} \hlkwd{match}\hlstd{( vertices}\hlopt{$}\hlstd{name, ramas}\hlopt{$}\hlstd{to ) ]}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Se a\~nade la columna donde se muestra el padre de cada nodo.
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlstd{vertices}\hlopt{$}\hlstd{padre} \hlkwb{=} \hlstd{arbol}\hlopt{$}\hlstd{from[} \hlkwd{match}\hlstd{(vertices}\hlopt{$}\hlstd{nombre, arbol}\hlopt{$}\hlstd{to)]}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-Ahora gracias a \texttt{igraph} se crea las estructuras jer\'arquicas para que \texttt{ggrpah} las pueda leer y usar para el gr\'afico.
+\clearpage
+Ahora gracias a \texttt{igraph} se crea la estructuras jer\'arquica para que \texttt{ggrpah} las pueda leer y usar para el gr\'afico.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(igraph)}
-\hlstd{grafico} \hlkwb{<-} \hlkwd{graph_from_data_frame}\hlstd{(arbol,} \hlkwc{vertices} \hlstd{= vertices)}
+\hlstd{mygraph} \hlkwb{<-} \hlkwd{graph_from_data_frame}\hlstd{( ramas,} \hlkwc{vertices}\hlstd{=vertices)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -4000,9 +4019,7 @@ Para poder crear el diagrama se necesita la funci\'on principal de \texttt{ggrpa
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{library}(ggraph)
-\hlkwd{library}(RColorBrewer)
-\hlkwd{ggraph}( grafico, layout = \hlstr{'dendrogram'}, circular = TRUE) +
+\hlkwd{ggraph}(mygraph, layout = \hlstr{'dendrogram'}, circular = TRUE) + 
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -4010,46 +4027,37 @@ Para crear las ramas del \'arbol se hace uso de la siguiente funci\'on.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-    \hlkwd{geom_edge_diagonal}(colour=\hlstr{"grey"}) +
+  \hlkwd{geom_edge_diagonal}(colour=\hlstr{"grey"}) +
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Ahora se va a a\~nadir el texto de los nodos junto con estos dando color seg\'un el padre al que pertenezcan.
+Ahora se va a a\~nadir el texto de los nodos junto con estos, representados por puntos, dando color seg\'un el grupo al que pertenezcan.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-    \hlkwd{geom_node_text}(\hlkwd{aes}(x = x*1.15, y=y*1.15, filter = leaf, label=name, 
-                       colour=padre), size=2.7, alpha=1) +
-    \hlkwd{geom_node_point}(\hlkwd{aes}(filter = leaf, x = x*1.07, y=y*1.07, colour=padre, alpha=0.2)) +
+  \hlkwd{geom_node_label}(\hlkwd{aes}(x = x*1.15, y=y*1.15, label = shortName, colour=group)) +
+  \hlkwd{geom_node_point}(\hlkwd{aes}(size = size, colour=group, filter = (!\hlkwd{is.na}(group)))) +
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Se realiza un cambio de paleta de color con \texttt{RColorBrewer}, para una mejor est\'etica.
+Se realiza un cambio de paleta de color con \texttt{RdPu}, para una mejor est\'etica.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
   \hlkwd{scale_edge_colour_distiller}(palette = \hlstr{"RdPu"}) +
-  \hlkwd{scale_colour_manual}(values= \hlkwd{rep}( \hlkwd{brewer.pal}(9,\hlstr{"Paired"}) , 30)) +
-  \hlkwd{scale_size_continuous}( range = \hlkwd{c}(0.1,10) ) +
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-\clearpage
 Y para quitar la leyenda y dejar un fondo blanco, para mejor visualizaci\'on del gr\'afico, se usa:
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
   \hlkwd{theme_void}\hlstd{()} \hlopt{+}
-  \hlkwd{theme}\hlstd{(}\hlkwc{legend.position} \hlstd{=} \hlstr{"none"}\hlstd{,}
-        \hlkwc{panel.grid.major} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-        \hlkwc{panel.grid.minor} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-        \hlkwc{axis.line} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-        \hlkwc{axis.text.y} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-        \hlkwc{axis.text.x} \hlstd{=} \hlkwd{element_blank}\hlstd{(),}
-        \hlkwc{axis.ticks} \hlstd{=} \hlkwd{element_blank}\hlstd{())}
+  \hlkwd{theme}\hlstd{(}\hlkwc{legend.position} \hlstd{=} \hlstr{'none'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+\clearpage
 Al final resultando en:
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
@@ -4061,29 +4069,29 @@ Al final resultando en:
 
 
 \end{knitrout}
-\clearpage
+\begin{center}
+\textbf{. . .}
+\end{center}
 \subsubsection{Paquete ggplot2}
 Para recrear un dendograma con este paquete  %\cite{docu_ggplot2}
-se tiene que obtener una estructura especial proporcionada por \texttt{dendextend}. Para crear el dendograma se obtienen datos num\'ericos de la base de datos \texttt{iris}, como ejemplo, y se crean grupos con \texttt{hclust} mediante las distancias entre los valores num\'ericos, se establecen los colores de las ramas y nodos hoja.
+se tiene que obtener una estructura especial proporcionada por \texttt{dendextend}. Para crear el dendograma se obtienen datos num\'ericos de la base de datos \texttt{mtcars}, como ejemplo, y se crean grupos con \texttt{hclust} mediante las distancias entre los valores num\'ericos, agrupando los veh\'iculos por disp y cyl, se establecen los colores de las ramas y nodos hoja.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
+\hlkwd{library}\hlstd{(tidyverse)}
+\hlstd{mtcars} \hlopt{%>%}
+  \hlkwd{select}\hlstd{(mpg, cyl, disp)} \hlopt{%>%}
+  \hlkwd{dist}\hlstd{()} \hlopt{%>%}
+  \hlkwd{hclust}\hlstd{()} \hlopt{%>%}
+  \hlkwd{as.dendrogram}\hlstd{()} \hlkwb{->} \hlstd{dend}
 \hlkwd{library}\hlstd{(dendextend)}
-\hlstd{dendograma} \hlkwb{<-} \hlstd{iris[}\hlnum{1}\hlopt{:}\hlnum{40}\hlstd{,}\hlopt{-}\hlnum{5}\hlstd{]} \hlopt{%>%} \hlstd{scale} \hlopt{%>%} \hlstd{dist} \hlopt{%>%} \hlstd{hclust} \hlopt{%>%} \hlstd{as.dendrogram}\hlopt{%>%}
-    \hlkwd{set}\hlstd{(}\hlstr{"branches_k_color"}\hlstd{,} \hlkwc{k}\hlstd{=}\hlnum{3}\hlstd{)} \hlopt{%>%} \hlkwd{set}\hlstd{(}\hlstr{"branches_lwd"}\hlstd{,} \hlnum{1.2}\hlstd{)} \hlopt{%>%}
-    \hlkwd{set}\hlstd{(}\hlstr{"labels_colors"}\hlstd{)} \hlopt{%>%} \hlkwd{set}\hlstd{(}\hlstr{"labels_cex"}\hlstd{,} \hlkwd{c}\hlstd{(}\hlnum{.9}\hlstd{,}\hlnum{1.2}\hlstd{))} \hlopt{%>%}
-    \hlkwd{set}\hlstd{(}\hlstr{"leaves_pch"}\hlstd{,} \hlnum{19}\hlstd{)} \hlopt{%>%} \hlkwd{set}\hlstd{(}\hlstr{"leaves_col"}\hlstd{,} \hlkwd{c}\hlstd{(}\hlstr{"blue"}\hlstd{,} \hlstr{"red"}\hlstd{))}
+\hlstd{datos} \hlkwb{<-} \hlstd{dend} \hlopt{%>%}
+  \hlkwd{set}\hlstd{(}\hlstr{"labels_col"}\hlstd{,} \hlkwc{value} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"skyblue"}\hlstd{,} \hlstr{"orange"}\hlstd{,} \hlstr{"grey"}\hlstd{),} \hlkwc{k}\hlstd{=}\hlnum{3}\hlstd{)} \hlopt{%>%}
+  \hlkwd{set}\hlstd{(}\hlstr{"branches_k_color"}\hlstd{,} \hlkwc{value} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"skyblue"}\hlstd{,} \hlstr{"orange"}\hlstd{,} \hlstr{"grey"}\hlstd{),} \hlkwc{k} \hlstd{=} \hlnum{3}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Despu\'es, gracias a \texttt{ggdend}, se crean los datos necesarios para que se pueda implementar con \texttt{ggplo2}.
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlstd{datos} \hlkwb{<-} \hlkwd{as.ggdend}\hlstd{(dendograma)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
+\clearpage
 Por \'ultimo, se usa la tranformaci\'on, al igual que en el \nameref{ssec:columnasRadiales}; se tranforma el eje X a formato radial. Pero se necesita revertir los datos por como los expone \texttt{ggplo2}.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -4102,35 +4110,18 @@ Por \'ultimo, se usa la tranformaci\'on, al igual que en el \nameref{ssec:column
 
 
 \end{knitrout}
-\clearpage
+\begin{center}
+\textbf{. . .}
+\end{center}
 \subsubsection{Paquete circlize}
 En este paquete  %\cite{docu_circlize}
 se observan dos maneras de crear un dendograma: una de ellos es gracias a la funci\'on \texttt{circlize-dendrogram}, la forma m\'as sencilla, y la otra creando el texto y las ramas manualmente, m\'as dificil.
-Para las dos formas se necesita otra vez la ayuda de \texttt{dendextend} para preparar los datos.~\\ En la primera se va a usar los datos de \texttt{mtcars} para crear el \'arbol agrupando (clusters) los datos seg\'un su distancias.
+Para las dos formas se necesita otra vez la ayuda de \texttt{dendextend} para preparar los datos.~\\ En la primera se va a usar los datos de \texttt{mtcars} para crear el \'arbol agrupando (clusters) los datos seg\'un su distancias entre mpg, cyl y disp como en el ejemplo de ggplot2.~\\
+Para realizar el dendograma es tan sencillo como llamar a la funci\'on, y para personificarlo basta con jugar con sus par\'ametros.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{library}\hlstd{(circlize)}
-\hlkwd{library}\hlstd{(dendextend)}
-\hlstd{hc} \hlkwb{<-} \hlkwd{hclust}\hlstd{(}\hlkwd{dist}\hlstd{(datasets}\hlopt{::}\hlstd{mtcars))}
-\hlstd{dendo} \hlkwb{<-} \hlkwd{as.dendrogram}\hlstd{(hc)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-Se modifica el dendograma para que los colores de las ramas y del texto coincidan.
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlstd{dendo} \hlkwb{<-} \hlstd{dendo} \hlopt{%>%} \hlkwd{color_branches}\hlstd{(}\hlkwc{k}\hlstd{=}\hlnum{8}\hlstd{)} \hlopt{%>%} \hlkwd{color_labels}\hlstd{(}\hlkwc{k}\hlstd{=}\hlnum{8}\hlstd{)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-Para realizar el dendograma tan sencillo como llamar a la funci\'on, y para personificarlo basta con jugar con sus par\'ametros.
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{par}\hlstd{(}\hlkwc{mar} \hlstd{=} \hlkwd{rep}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{4}\hlstd{))}
-\hlkwd{circlize_dendrogram}\hlstd{(dendo,} \hlkwc{dend_track_height} \hlstd{=} \hlnum{0.8}\hlstd{)}
+\hlkwd{circlize_dendrogram}\hlstd{(datos,} \hlkwc{dend_track_height} \hlstd{=} \hlnum{0.8}\hlstd{)}
 \end{alltt}
 \end{kframe}
 
@@ -4141,7 +4132,10 @@ Para realizar el dendograma tan sencillo como llamar a la funci\'on, y para pers
 
 
 \end{knitrout}
-\clearpage
+\begin{center}
+\textbf{. . .}
+\end{center}
+~\\
 Para realizar la segunda forma del dendograma se van a usar los datos de una base de datos de ejemplo de circlize, \texttt{bird}. Y para la personalizaci\'on se obtienen los nombres, el \'arbol cortado para mejor manejo, y la cantidad de pajaros que hay en el \'arbol.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -4172,6 +4166,7 @@ Y se inicia el gr\'afico dejando claro que se va a usar solo un sector, es decir
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+\clearpage
 Ahora para representar las etiquetas del dendograma se realiza con la funci\'on \texttt{trackPlotRegion}.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -4236,9 +4231,6 @@ Para dejar espacio a nuevos diagramas, con este paquete siempre se usa \texttt{c
 
 
 \end{knitrout}
-\begin{center}
-\textbf{. . .}
-\end{center}
 \subsubsection{Comparaciones}
 Como se hizo en el \nameref{ssec:sectores}, 
 este diagrama tambi\'en se puede realizar con las funciones que prove\'e el lenguaje R sin paquetes adicionales, pero para crear los datos, s\'i que hace falta \texttt{ape}, por lo que se vuelve sencillo de usar con este m\'etodo, aunque no con tanta personalizaci\'on como con otros paquetes. El segundo paquete hallado, \texttt{ggraph}, es un gran conocido entre los diagramas de redes; para el dise\~no circular solo hace falta concretar un argumento. Este paquete es un poco m\'as complejo de usar debido a que se necesitan varias funciones para crear el diagrama y personalizarlo.~\\
@@ -4267,6 +4259,25 @@ Primero se preparan los datos con la estructura de origen y destino. Se ha optad
                     \hlstr{"Oceania"}\hlstd{,} \hlstr{"Sur Asia"}\hlstd{,} \hlstr{"Sureste Asia"}\hlstd{,} \hlstr{"Union Sovietica"}\hlstd{,}
                     \hlstr{"Oeste Asia"}\hlstd{)}
 \hlkwd{rownames}\hlstd{(data)} \hlkwb{<-} \hlkwd{colnames}\hlstd{(data)}
+\hlkwd{head}\hlstd{(data)}
+\end{alltt}
+\begin{verbatim}
+##               Africa Este Asia   Europa Ame. Latina Norte Ame.  Oceania
+## Africa      3.142471  0.000000 2.107883    0.000000   0.540887 0.155988
+## Este Asia   0.000000  1.630997 0.601265    0.000000   0.973060 0.333608
+## Europa      0.000000  0.000000 2.401476    0.000000   0.000000 0.000000
+## Ame. Latina 0.000000  0.000000 1.762587    0.879198   3.627847 0.000000
+## Norte Ame.  0.000000  0.000000 1.215929    0.276908   0.000000 0.000000
+## Oceania     0.000000  0.000000 0.170370    0.000000   0.000000 0.190706
+##             Sur Asia Sureste Asia Union Sovietica Oeste Asia
+## Africa             0     0.000000               0   0.673004
+## Este Asia          0     0.380388               0   0.869311
+## Europa             0     0.000000               0   0.000000
+## Ame. Latina        0     0.000000               0   0.000000
+## Norte Ame.         0     0.000000               0   0.000000
+## Oceania            0     0.000000               0   0.000000
+\end{verbatim}
+\begin{alltt}
 \hlkwd{library}\hlstd{(tidyverse)}
 \hlstd{data_long} \hlkwb{<-} \hlstd{data} \hlopt{%>%}
   \hlstd{rownames_to_column} \hlopt{%>%}
@@ -4346,6 +4357,7 @@ Luego, para personalizar el texto del diagrama, se puede usar la funci\'on \text
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+\clearpage
 Resultando al siguiente gr\'afico de la migraci\'on.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
@@ -4357,22 +4369,72 @@ Resultando al siguiente gr\'afico de la migraci\'on.
 
 
 \end{knitrout}
+\begin{center}
+\textbf{. . .}
+\end{center}
 \subsubsection{Paquete chorddiag}
 Este paquete %\cite{docu_chorddiag}
 sirve para crear los diagramas de cuerdas usando \href{https://d3js.org/}{la libreria D3 de visualizaci\'on JavaScript}, y utilizando el paquete \texttt{htmlwidgets} para guardar los diagramas interactivos.~\\
-Como con el anterior paquete se necesita la matriz de adyacencia.
+Para el ejemplo se procede a realizar una representaci\'on de los supervivientes del Titanic, agrupados por sus clases.~\\
+
+Lo primero es obtener una lista que tiene los valores: clase, sexo, edad, si ha muerto y, la cantidad de personas con esas carater\'isticas.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{m} \hlkwb{<-} \hlkwd{matrix}\hlstd{(}\hlkwd{c}\hlstd{(}\hlnum{11975}\hlstd{,}  \hlnum{5871}\hlstd{,} \hlnum{8916}\hlstd{,} \hlnum{2868}\hlstd{,}
-              \hlnum{1951}\hlstd{,} \hlnum{10048}\hlstd{,} \hlnum{2060}\hlstd{,} \hlnum{6171}\hlstd{,}
-              \hlnum{8010}\hlstd{,} \hlnum{16145}\hlstd{,} \hlnum{8090}\hlstd{,} \hlnum{8045}\hlstd{,}
-              \hlnum{1013}\hlstd{,}   \hlnum{990}\hlstd{,}  \hlnum{940}\hlstd{,} \hlnum{6907}\hlstd{),}
-            \hlkwc{byrow} \hlstd{=} \hlnum{TRUE}\hlstd{,}
-            \hlkwc{nrow} \hlstd{=} \hlnum{4}\hlstd{,} \hlkwc{ncol} \hlstd{=} \hlnum{4}\hlstd{)}
-\hlstd{groupNames} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"negro"}\hlstd{,} \hlstr{"rubio"}\hlstd{,} \hlstr{"casta~no"}\hlstd{,} \hlstr{"pelirrojo"}\hlstd{)}
-\hlkwd{row.names}\hlstd{(m)} \hlkwb{<-} \hlstd{groupNames}
-\hlkwd{colnames}\hlstd{(m)} \hlkwb{<-} \hlstd{groupNames}
+\hlkwd{library}\hlstd{(tidyverse)}
+\hlstd{titanic_tbl} \hlkwb{<-} \hlstd{dplyr}\hlopt{::}\hlkwd{tbl_df}\hlstd{(Titanic)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Ahora se ordena la lista por clase y si ha muerto.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{titanic_tbl} \hlkwb{<-} \hlstd{titanic_tbl} \hlopt{%>%}
+  \hlkwd{mutate_at}\hlstd{(}\hlkwd{vars}\hlstd{(Class}\hlopt{:}\hlstd{Survived),} \hlkwd{funs}\hlstd{(factor))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Se eliminan los datos de edad y sexo, que no se necesitan.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{by_class_survival} \hlkwb{<-} \hlstd{titanic_tbl} \hlopt{%>%}
+  \hlkwd{group_by}\hlstd{(Class, Survived)} \hlopt{%>%}
+  \hlkwd{summarize}\hlstd{(}\hlkwc{Count} \hlstd{=} \hlkwd{sum}\hlstd{(n))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\clearpage
+Se crea una matriz ponderada con los datos de la lista.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{titanic.mat} \hlkwb{<-} \hlkwd{matrix}\hlstd{(by_class_survival}\hlopt{$}\hlstd{Count,} \hlkwc{nrow} \hlstd{=} \hlnum{4}\hlstd{,} \hlkwc{ncol} \hlstd{=} \hlnum{2}\hlstd{)}
+\hlkwd{dimnames}\hlstd{(titanic.mat )} \hlkwb{<-} \hlkwd{list}\hlstd{(}\hlkwc{Class} \hlstd{=} \hlkwd{levels}\hlstd{(titanic_tbl}\hlopt{$}\hlstd{Class),}
+                               \hlkwc{Deceased} \hlstd{=} \hlkwd{levels}\hlstd{(titanic_tbl}\hlopt{$}\hlstd{Survived))}
+\hlkwd{head}\hlstd{(titanic.mat)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##       Deceased
+## Class   No Yes
+##   1st  122 528
+##   2nd  203 178
+##   3rd  167 673
+##   Crew 118 212
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Y se seleccionan los colores para los grupos.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{groupColors} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"#2171b5"}\hlstd{,} \hlstr{"#6baed6"}\hlstd{,} \hlstr{"#bdd7e7"}\hlstd{,} \hlstr{"#bababa"}\hlstd{,}
+                 \hlstr{"#1a9641"}\hlstd{,} \hlstr{"#d7191c"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -4381,7 +4443,9 @@ Y usando la funci\'on \texttt{chorddiag} para realizar el digrama.
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(chorddiag)}
-\hlstd{p} \hlkwb{<-} \hlkwd{chorddiag}\hlstd{(m,} \hlkwc{showGroupnames} \hlstd{= T)}
+\hlstd{p} \hlkwb{<-} \hlkwd{chorddiag}\hlstd{(titanic.mat,} \hlkwc{type} \hlstd{=} \hlstr{"bipartite"}\hlstd{,}
+          \hlkwc{groupColors} \hlstd{= groupColors,}
+          \hlkwc{tickInterval} \hlstd{=} \hlnum{50}\hlstd{)}
 \hlkwd{library}\hlstd{(htmlwidgets)}
 \hlkwd{saveWidget}\hlstd{(p,} \hlkwc{file} \hlstd{=} \hlstr{"cuerdas_inte.html"}\hlstd{)}
 \end{alltt}

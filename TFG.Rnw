@@ -2220,39 +2220,51 @@ Lo primero de todo ser\'a llamar a las librerias para luego poder trabajar con e
 library(ggraph)
 library(ggforce)
 @
-Despu\'es se crean las \'areas de las burbujas de forma aleatoria.
+Se utiliza una base de datos de poblaci\'on mundial, que consiste en continente, regi\'on, pa\'is y poblaci\'on.
+<<data_buble_ggforce>>=
+github ="https://raw.githubusercontent.com/holtzy/data_to_viz/master"
+dataset = "/Example_dataset/11_SevCatOneNumNestedOneObsPerGroup.csv"
+url = paste0(github, dataset)
+data <- read.table(url, header=T, sep=";")
+data[ which(data$value==-1),"value"] <- 1
+colnames(data) <- c("Continent", "Region", "Country", "Pop")
+head(data, 1)
+@
+Despu\'es se crean las \'areas de las burbujas para representar la poblaci\'on de cada pa\'is.
 <<data_bubblesgg>>=
-areas <- sample(10, 100, TRUE)
+areas <- data$Pop
 @
 Ahora, gracias a la funci\'on \texttt{pack-circles} del paquete ggraph, se obtienen las posiciones de las burbujas dependiendo del vector de \'areas
 <<data_positiongg>>=
 posicion <- pack_circles(areas)
 @
-Por \'ultimo, a la hora de confeccionar los datos se crea la tabla con X, Y y el radio de las burbujas a partir de sus \'areas.
+Por \'ultimo, a la hora de confeccionar los datos se crea la tabla con X, Y, el radio de las burbujas a partir de sus \'areas, el continente para diferenciaci\'on de color y, nombre de cada burbuja.
 <<dataframe>>=
-datos <- data.frame(x = posicion[, 1], y = posicion[, 2], r = sqrt(areas / pi))
+datos <- data.frame(x = posicion[, 1], y = posicion[, 2], r = sqrt(areas / pi), 
+                    group = data$Continent, name= data$Country)
 @
 A la hora de implementar el g\'afico se hace uso de ggplot y la funci\'on de ggforce \texttt{geom-circle}
 <<plotgg_bu, echo=FALSE, eval=FALSE>>=
 ggplot() +
-  geom_circle(aes(x0 = x, y0 = y, r = r, fill = r), data = datos) +
+  geom_circle(data=datos, aes(x0 = x, y0 = y, r = r, fill = group)) +
   geom_circle(aes(x0 = 0, y0 = 0, r = attr(posicion, 'enclosing_radius'))) +
-  scale_fill_viridis() +
+  scale_fill_brewer(palette = "Set2") +
   theme_void() +
-  theme(legend.position = 'none')
+  theme(legend.position = 'bottom')+
+  geom_text(data = subset(datos, r > 5000), aes(x,y,label=name), color = "black")
 @
-Para ello se necesita establecer el espacio para implementar las burbujas (ggplot), y establecerlas usando las posiciones, y colorear en funci\'on del radio.
+Para ello se necesita establecer el espacio para implementar las burbujas (ggplot), y establecerlas usando las posiciones, y colorear en funci\'on del continente.
 <<plotgg_bu, echo=1:2, eval=FALSE>>=
 @
+\clearpage
 Luego para descatar el gr\'afico se crea un c\'irculo que encapsule a las burbujas.
 <<plotgg_bu, echo=3, eval=FALSE>>=
 @
-Y para la est\'etica se opta por la escala de colores viridis y dejar el gr\'afico limpio de texto.
-<<plotgg_bu, echo=4:6, eval=FALSE>>=
+Y para la est\'etica se opta por la escala de colores Set2, del propio paquete, y dejar el gr\'afico limpio de texto, salvo la leyenda y el nombre de las burbujas que tengan mayor radio.
+<<plotgg_bu, echo=4:7, eval=FALSE>>=
 @
-\clearpage
 Resultando en: 
-<<plotgg_bu, echo=FALSE, fig.align='center', fig.height=4, fig.width=4>>=
+<<plotgg_bu, echo=FALSE, fig.align='center'>>=
 @
 \begin{center}
 \textbf{. . .}
@@ -2263,34 +2275,32 @@ destinado a funciones de agrupamiento no solapado de c\'irculos, ofrece una form
 Para poder crear las burbujas se necesita un \'area, para ello se puede utilizar una funci\'on del propio paquete para realizar el ejemplo.~\\
 Este paquete solo ofrece los datos, para poder realizarlos es necesario el paquete ggplot2 %\cite{docu_ggplot2}
 , y este se ofrece una gran capacidad de personalizaci\'on de todo el gr\'afico.
-Se establecen las variables necesarias:
-<<variables>>=
-ncirculos <- 200
-limites <- c(-40 , 40)
-maxarea <- 40
-@
-Luego se crean las \'areas con una distribuci\'on beta con la funci\'on \texttt{rbeta}.
+Se establecen los mismos datos que en el anterior gr\'afico, con la poblaci\'on mundial. Se crea el layout, con las burbujas no solapadas, gracias a \texttt{circleProgressiveLayout}, resultando en un data.frame con la posici\'on en el eje X, Y y el radio de las burbujas (seg\'un poblaci\'on).
 <<area>>=
-areas <- rbeta(ncirculos, 1, 5) * maxarea
-@
-Despu\'es se necesita crear un layout, donde las burbujas no se solapen, para que cada burbuja ocupe espacio propio, por lo que ahora se empieza a utilizar la libreria packcircles.
-<<Repel>>=
 library(packcircles)
-res <- circleRepelLayout(areas, xlim = limites, ylim = limites)
+pack <- circleProgressiveLayout(data$Pop, sizetype = 'area')
 @
-Por \'ultimo, se crea el layout donde se situa a cada burbuja en su lugar, indicando con la variable id (que resulta del siguiente c\'odigo) en la fila de la matriz qu\'e sit\'ua las burbujas.
-<<layout>>=
-datos.gg <- circleLayoutVertices(res$layout, sizetype = "radius")
+Se unen los dos data.frames para luego agruparlo seg\'un el n\'umero de puntos que se desean (Cantidad de paises).
+<<pre_bu_pac>>=
+dat <- cbind(data, pack)
+dat.gg <- circleLayoutVertices(pack, npoints = nrow(data))
 @
-\clearpage
-Y gracias a la librer\'ia \texttt{ggplot2}, se va a proceder a recrear el resultado con el uso de \texttt{geom-poligon} para establecer los c\'irculos que encierran los datos pasados como argumento.
-<<plot_bu, fig.align='center', fig.height=4, fig.width=4>>=
+Para poder diferenciar las burbujas por continentes, es necesario que en estos nuevos datos incluyan el continente.
+<<con_bu_pac>>=
+dat.gg$Continent <- rep(data$Continent, each=251)
+@
+Y gracias a la librer\'ia \texttt{ggplot2}, se va a proceder a recrear el resultado con el uso de \texttt{geom-poligon} para establecer los c\'irculos que encierran los datos pasados como argumento. Y como en el anterior gr\'afico, se pone la etiqueta de los paises que superen un cierto radio (Mayores Poblaciones).
+<<plot_bu, fig.align='center', fig.height=6, fig.width=6>>=
 library(ggplot2)
-
-ggplot(data = datos.gg, aes(x, y, group = id)) +
-  geom_polygon(colour="green4", fill="lightgreen", alpha=0.3) +
-  coord_equal(xlim=limites, ylim=limites) +
-  theme_void()
+ggplot() + 
+  geom_polygon(data = dat.gg, aes(x, y, group = id, fill=as.factor(Continent)), 
+               colour = "black", alpha = 0.6) +
+  geom_text(data = subset(dat, radius > 5000), aes(x, y, size=Pop, label = Country), 
+            color = 'black') +
+  scale_fill_brewer(palette = "Set2") +
+  theme_void() + labs(fill = "Continente") +
+  theme(legend.position='bottom') +
+  coord_equal()   
 @
 \begin{center}
 \textbf{. . .}
@@ -2601,95 +2611,97 @@ plot(as.phylo(hc), type = "fan", tip.color = colors[clus4],
 @
 <<plot_dendo, echo=1, eval=FALSE>>=
 @
-Se diferencian 4 grupos para una mejor visualizaci\'on.
+Se diferencian 4 grupos usando la clusterizaci\'on, agrupandose seg\'un similarirad de los valores de las columnas, para una mejor visualizaci\'on.
 <<plot_dendo, echo=2:3, eval=FALSE>>=
 @
 Y al final se usan la funci\'on de r b\'asico plot, dando formato a los datos con \texttt{as.phylo} y con el tipo \texttt{fan} para darle el formato circular.
 <<plot_dendo, echo=4:5, eval=FALSE>>=
 @
+\clearpage
 Resultando en:~\\
 \vbox{
     \centering
     \includegraphics[width=0.6\textwidth]{imag/ape}
 }
+\begin{center}
+\textbf{. . .}
+\end{center}
 \subsubsection{Paquete ggraph}
 Este paquete %\cite{docu_ggraph}
 ofrece una gran cantidad de gr\'aficos de redes y, debido a que es una ampliaci\'on de ggplot2, tiene mucha capacidad de personalizaci\'on para la creaci\'on de estos diagramas. 
 Para poder realizar con este paquete un dendograma se necesita crear los datos jer\'arquicos y, con este proposito entra el paquete \texttt{igraph} con la funci\'on \texttt{graph-form-data-frame}.~\\
-Primero se deben crear los data frame de la estructura de \'arbol con la ra\'iz a sus hijos y los hijos a los suyos propios.
+Primero se deben crear los data frame de la estructura de \'arbol con la ra\'iz a sus hijos y los hijos a los suyos propios. Para este ejemplo se usar\'a la base de datos flare ya usada en \nameref{ssec:rayosSol}.
 <<data_ggraph>>=
-raiz = data.frame(from = "origen", to = paste("padre", seq(1,10), sep = ""))
-padres = data.frame( from=rep(raiz$to, each=10), to=paste("hijo", seq(1,100), sep="_"))
-arbol = rbind(raiz,padres)
+library(ggraph)
+ramas <- flare$edges
+vertices <- flare$vertices
+vertices$group = ramas$from[match( vertices$name, ramas$to)]
 @
-Se realiza la matriz vertices para decir qu\'e nodos son los hijos de qu\'e padre.
+Al igual que la otra vez, se procede a reducir los niveles de profundidad, quitando el \'ultimo.
 <<data_ggraph_1>>==
-vertices = data.frame(
-    nombre = unique(c(as.character(arbol$from), as.character(arbol$to))))
+library(tidyverse)
+ramas <- flare$edges %>% 
+  filter(to %in% from) %>% 
+  droplevels()
+vertices <- flare$vertices %>% 
+  filter(name %in% c(ramas$from, ramas$to)) %>% 
+  droplevels()
+vertices$size <- runif(nrow(vertices))
+vertices$group = ramas$from[ match( vertices$name, ramas$to ) ]
 @
-Se a\~nade la columna donde se muestra el padre de cada nodo.
-<<data_padre>>=
-vertices$padre = arbol$from[ match(vertices$nombre, arbol$to)]
-@
-Ahora gracias a \texttt{igraph} se crea las estructuras jer\'arquicas para que \texttt{ggrpah} las pueda leer y usar para el gr\'afico.
+\clearpage
+Ahora gracias a \texttt{igraph} se crea la estructuras jer\'arquica para que \texttt{ggrpah} las pueda leer y usar para el gr\'afico.
 <<igraph, message=FALSE>>=
 library(igraph)
-grafico <- graph_from_data_frame(arbol, vertices = vertices)
+mygraph <- graph_from_data_frame( ramas, vertices=vertices)
 @
 Para poder crear el diagrama se necesita la funci\'on principal de \texttt{ggrpah} aplicando el layout del dendograma y el formato circular.
 <<grafo_ggrpah, echo=FALSE, eval=FALSE>>=
-library(ggraph)
-library(RColorBrewer)
-ggraph( grafico, layout = 'dendrogram', circular = TRUE) +
-    geom_edge_diagonal(colour="grey") +
-    geom_node_text(aes(x = x*1.15, y=y*1.15, filter = leaf, label=name, 
-                       colour=padre), size=2.7, alpha=1) +
-    geom_node_point(aes(filter = leaf, x = x*1.07, y=y*1.07, colour=padre, alpha=0.2)) +
+ggraph(mygraph, layout = 'dendrogram', circular = TRUE) + 
+  geom_edge_diagonal(colour="grey") +
+  geom_node_label(aes(x = x*1.15, y=y*1.15, label = shortName, colour=group)) +
+  geom_node_point(aes(size = size, colour=group, filter = (!is.na(group)))) +
   scale_edge_colour_distiller(palette = "RdPu") +
-  scale_colour_manual(values= rep( brewer.pal(9,"Paired") , 30)) +
-  scale_size_continuous( range = c(0.1,10) ) +
   theme_void() +
-  theme(legend.position = "none",
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        axis.line = element_blank(),
-        axis.text.y = element_blank(),
-        axis.text.x = element_blank(),
-        axis.ticks = element_blank())
+  theme(legend.position = 'none')
 @
-<<grafo_ggrpah, echo=1:3, eval=FALSE>>=
+<<grafo_ggrpah, echo=1, eval=FALSE>>=
 @
 Para crear las ramas del \'arbol se hace uso de la siguiente funci\'on.
-<<grafo_ggrpah, echo=4, eval=FALSE>>=
+<<grafo_ggrpah, echo=2, eval=FALSE>>=
 @
-Ahora se va a a\~nadir el texto de los nodos junto con estos dando color seg\'un el padre al que pertenezcan.
-<<grafo_ggrpah, echo=5:7, eval=FALSE>>=
+Ahora se va a a\~nadir el texto de los nodos junto con estos, representados por puntos, dando color seg\'un el grupo al que pertenezcan.
+<<grafo_ggrpah, echo=3:4, eval=FALSE>>=
 @
-Se realiza un cambio de paleta de color con \texttt{RColorBrewer}, para una mejor est\'etica.
-<<grafo_ggrpah, echo=8:10, eval=FALSE>>=
+Se realiza un cambio de paleta de color con \texttt{RdPu}, para una mejor est\'etica.
+<<grafo_ggrpah, echo=5, eval=FALSE>>=
+@
+Y para quitar la leyenda y dejar un fondo blanco, para mejor visualizaci\'on del gr\'afico, se usa:
+<<grafo_ggrpah, echo=6:7, eval=FALSE>>=
 @
 \clearpage
-Y para quitar la leyenda y dejar un fondo blanco, para mejor visualizaci\'on del gr\'afico, se usa:
-<<grafo_ggrpah, echo=11:18, eval=FALSE>>=
-@
 Al final resultando en:
 <<grafo_ggrpah, echo=FALSE, message=FALSE, fig.align='center', fig.height=5, fig.width=5>>=
 @
-\clearpage
+\begin{center}
+\textbf{. . .}
+\end{center}
 \subsubsection{Paquete ggplot2}
 Para recrear un dendograma con este paquete  %\cite{docu_ggplot2}
-se tiene que obtener una estructura especial proporcionada por \texttt{dendextend}. Para crear el dendograma se obtienen datos num\'ericos de la base de datos \texttt{iris}, como ejemplo, y se crean grupos con \texttt{hclust} mediante las distancias entre los valores num\'ericos, se establecen los colores de las ramas y nodos hoja.
+se tiene que obtener una estructura especial proporcionada por \texttt{dendextend}. Para crear el dendograma se obtienen datos num\'ericos de la base de datos \texttt{mtcars}, como ejemplo, y se crean grupos con \texttt{hclust} mediante las distancias entre los valores num\'ericos, agrupando los veh\'iculos por disp y cyl, se establecen los colores de las ramas y nodos hoja.
 <<dendo_ggplot_data, message=FALSE>>=
+library(tidyverse)
+mtcars %>% 
+  select(mpg, cyl, disp) %>% 
+  dist() %>% 
+  hclust() %>% 
+  as.dendrogram() -> dend
 library(dendextend)
-dendograma <- iris[1:40,-5] %>% scale %>% dist %>% hclust %>% as.dendrogram%>%
-    set("branches_k_color", k=3) %>% set("branches_lwd", 1.2) %>%
-    set("labels_colors") %>% set("labels_cex", c(.9,1.2)) %>% 
-    set("leaves_pch", 19) %>% set("leaves_col", c("blue", "red"))
+datos <- dend %>%
+  set("labels_col", value = c("skyblue", "orange", "grey"), k=3) %>%
+  set("branches_k_color", value = c("skyblue", "orange", "grey"), k = 3)
 @
-Despu\'es, gracias a \texttt{ggdend}, se crean los datos necesarios para que se pueda implementar con \texttt{ggplo2}.
-<<dendo_ggplot_prep>>=
-datos <- as.ggdend(dendograma)
-@
+\clearpage
 Por \'ultimo, se usa la tranformaci\'on, al igual que en el \nameref{ssec:columnasRadiales}; se tranforma el eje X a formato radial. Pero se necesita revertir los datos por como los expone \texttt{ggplo2}.
 <<plot_dendo_ggplot2, fig.align='center', fig.height=4, fig.width=4>>=
 library(ggplot2)
@@ -2697,27 +2709,21 @@ ggplot(datos) +
     scale_y_reverse() +
     coord_polar(theta = "x")
 @
-\clearpage
+\begin{center}
+\textbf{. . .}
+\end{center}
 \subsubsection{Paquete circlize}
 En este paquete  %\cite{docu_circlize}
 se observan dos maneras de crear un dendograma: una de ellos es gracias a la funci\'on \texttt{circlize-dendrogram}, la forma m\'as sencilla, y la otra creando el texto y las ramas manualmente, m\'as dificil.
-Para las dos formas se necesita otra vez la ayuda de \texttt{dendextend} para preparar los datos.~\\ En la primera se va a usar los datos de \texttt{mtcars} para crear el \'arbol agrupando (clusters) los datos seg\'un su distancias.
-<<dendo_circlize_data1, message=FALSE>>=
-library(circlize)
-library(dendextend)
-hc <- hclust(dist(datasets::mtcars))
-dendo <- as.dendrogram(hc)
-@
-Se modifica el dendograma para que los colores de las ramas y del texto coincidan.
-<<dendo_circlize_prep1>>=
-dendo <- dendo %>% color_branches(k=8) %>% color_labels(k=8)
-@
-Para realizar el dendograma tan sencillo como llamar a la funci\'on, y para personificarlo basta con jugar con sus par\'ametros.
+Para las dos formas se necesita otra vez la ayuda de \texttt{dendextend} para preparar los datos.~\\ En la primera se va a usar los datos de \texttt{mtcars} para crear el \'arbol agrupando (clusters) los datos seg\'un su distancias entre mpg, cyl y disp como en el ejemplo de ggplot2.~\\
+Para realizar el dendograma es tan sencillo como llamar a la funci\'on, y para personificarlo basta con jugar con sus par\'ametros.
 <<plot_circlize_dendo_1, fig.align='center', fig.height=5, fig.width=5>>=
-par(mar = rep(0,4))
-circlize_dendrogram(dendo, dend_track_height = 0.8)
+circlize_dendrogram(datos, dend_track_height = 0.8)
 @
-\clearpage
+\begin{center}
+\textbf{. . .}
+\end{center}
+~\\
 Para realizar la segunda forma del dendograma se van a usar los datos de una base de datos de ejemplo de circlize, \texttt{bird}. Y para la personalizaci\'on se obtienen los nombres, el \'arbol cortado para mejor manejo, y la cantidad de pajaros que hay en el \'arbol.
 <<dendo_circlize_data2>>=
 load(system.file(package = "circlize", "extdata", "bird.orders.RData"))
@@ -2750,6 +2756,7 @@ Para realizar se establece el centro donde se va exponer el dendograma.
 Y se inicia el gr\'afico dejando claro que se va a usar solo un sector, es decir, sin dividir el anillo y se fija los l\'imites del eje x.
 <<plot_circlize_dendo_2,echo=2, eval=FALSE>>=
 @
+\clearpage
 Ahora para representar las etiquetas del dendograma se realiza con la funci\'on \texttt{trackPlotRegion}.
 <<plot_circlize_dendo_2,echo=4:5, eval=FALSE>>=
 @
@@ -2769,9 +2776,6 @@ Para dejar espacio a nuevos diagramas, con este paquete siempre se usa \texttt{c
 @
 <<plot_circlize_dendo_2,echo=FALSE, fig.align='center', fig.height=4, fig.width=4>>=
 @
-\begin{center}
-\textbf{. . .}
-\end{center}
 \subsubsection{Comparaciones}
 Como se hizo en el \nameref{ssec:sectores}, 
 este diagrama tambi\'en se puede realizar con las funciones que prove\'e el lenguaje R sin paquetes adicionales, pero para crear los datos, s\'i que hace falta \texttt{ape}, por lo que se vuelve sencillo de usar con este m\'etodo, aunque no con tanta personalizaci\'on como con otros paquetes. El segundo paquete hallado, \texttt{ggraph}, es un gran conocido entre los diagramas de redes; para el dise\~no circular solo hace falta concretar un argumento. Este paquete es un poco m\'as complejo de usar debido a que se necesitan varias funciones para crear el diagrama y personalizarlo.~\\
@@ -2798,6 +2802,7 @@ colnames(data) <- c("Africa", "Este Asia", "Europa", "Ame. Latina",   "Norte Ame
                     "Oceania", "Sur Asia", "Sureste Asia", "Union Sovietica", 
                     "Oeste Asia")
 rownames(data) <- colnames(data)
+head(data)
 library(tidyverse)
 data_long <- data %>%
   rownames_to_column %>%
@@ -2860,28 +2865,56 @@ Primero se le pasa la matriz de adyacencia, los colores, qu\'e tipo de grafo se 
 Luego, para personalizar el texto del diagrama, se puede usar la funci\'on \texttt{circos.trackPlotRegion} y dentro de ella \texttt{circos.text} y \texttt{circos.axis}.
 <<plot, echo=13:34, eval=FALSE>>=
 @
+\clearpage
 Resultando al siguiente gr\'afico de la migraci\'on.
 <<plot, echo=FALSE, fig.align='center', fig.height=4.95, fig.width=4.95>>=
 @
+\begin{center}
+\textbf{. . .}
+\end{center}
 \subsubsection{Paquete chorddiag}
 Este paquete %\cite{docu_chorddiag}
 sirve para crear los diagramas de cuerdas usando \href{https://d3js.org/}{la libreria D3 de visualizaci\'on JavaScript}, y utilizando el paquete \texttt{htmlwidgets} para guardar los diagramas interactivos.~\\
-Como con el anterior paquete se necesita la matriz de adyacencia.
-<<data>>=
-m <- matrix(c(11975,  5871, 8916, 2868,
-              1951, 10048, 2060, 6171,
-              8010, 16145, 8090, 8045,
-              1013,   990,  940, 6907),
-            byrow = TRUE,
-            nrow = 4, ncol = 4)
-groupNames <- c("negro", "rubio", "casta~no", "pelirrojo")
-row.names(m) <- groupNames
-colnames(m) <- groupNames
+Para el ejemplo se procede a realizar una representaci\'on de los supervivientes del Titanic, agrupados por sus clases.~\\
+<<data, echo=FALSE, eval=FALSE>>=
+library(tidyverse)
+titanic_tbl <- dplyr::tbl_df(Titanic)
+titanic_tbl <- titanic_tbl %>%
+  mutate_at(vars(Class:Survived), funs(factor))
+by_class_survival <- titanic_tbl %>%
+  group_by(Class, Survived) %>%
+  summarize(Count = sum(n))
+titanic.mat <- matrix(by_class_survival$Count, nrow = 4, ncol = 2)
+dimnames(titanic.mat ) <- list(Class = levels(titanic_tbl$Class),
+                               Deceased = levels(titanic_tbl$Survived))
+head(titanic.mat)
+groupColors <- c("#2171b5", "#6baed6", "#bdd7e7", "#bababa",
+                 "#1a9641", "#d7191c")
+@
+Lo primero es obtener una lista que tiene los valores: clase, sexo, edad, si ha muerto y, la cantidad de personas con esas carater\'isticas.
+<<data, echo=1:2, eval=FALSE>>=
+@
+Ahora se ordena la lista por clase y si ha muerto.
+<<data, echo=3:4, eval=FALSE>>=
+@
+Se eliminan los datos de edad y sexo, que no se necesitan.
+<<data, echo=5:7, eval=FALSE>>=
+@
+\clearpage
+Se crea una matriz ponderada con los datos de la lista.
+<<data, echo=8:11, eval=FALSE>>=
+@
+<<data, echo=FALSE, warning=FALSE>>=
+@
+Y se seleccionan los colores para los grupos.
+<<data, echo=12:13, eval=FALSE>>=
 @
 Y usando la funci\'on \texttt{chorddiag} para realizar el digrama.
 <<plot_in>>=
 library(chorddiag)
-p <- chorddiag(m, showGroupnames = T)
+p <- chorddiag(titanic.mat, type = "bipartite",
+          groupColors = groupColors,
+          tickInterval = 50)
 library(htmlwidgets)
 saveWidget(p, file = "cuerdas_inte.html")
 @
