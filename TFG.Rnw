@@ -47,21 +47,86 @@
     \maketitle %this typesets the contents of \title, \author and \date
 }
 \tableofcontents
+~\\~\\~\\~\\~\\~\\~\\
+\section*{Resumen}
+Este trabajo realiza una estudio de que tipos de diagramas con formato circular existen, y como realizarlos con el lenguaje de programaci\'on destinado a estad\'istica R%\cite{R}. Para ello se necesita explorar los tipos de diagramas circulares gracias a  libros, como "The Book of Circles, Visualizing Spheres of Knowledge" de Manuel Lima\cite{Circle}, "Information Graphics, A Comprehensive Ilustrated Reference" de Robert L. Harris\cite{Info}.
+Y saber qu\'e paquetes de R se pueden utilizar para representar dichos gr\'aficos. Para una correcta representaci\'on de los diagramas en c\'odigo, es muy recomendable la lectura de "Data Visualization, A Practical Introduction"de Kieran Healy%\cite{Data}.
+\markboth{RESUMEN}{RESUMEN} 
 \clearpage
 \section{Introducci\'on}
 El mundo est\'a repleto de datos obtenidos de la observaci\'on, experimentos, etc. Pero, estos por si solos, no aportan el conocimiento necesario para que sus receptores saquen informaci\'on v\'alida.~\\
 Dicha informaci\'on ayuda a la capacidad de entender el entorno que nos rodea (f\'isica, biolog\'ia, geolog\'ia, etc) y para ser capaces de realizar una mejor toma de decisiones (pandemias, econom\'ia, etc).
 Pero, para transformar estos datos en informaci\'on v\'alida, hay que condensarlos en una representaci\'on gr\'afica que ayude a, la interpretaci\'on y construcci\'on de signaificado de los datos, y a la comunicaci\'on de la informaci\'on obtenida.~\\
 Por ejemplo, si se tienen muchos datos con los sueldos de los habitantes de un pa\'is y se transforman siguiendo la estad\'istica, se puede obtener el sueldo medio de \'este junto con la moda del sueldo, etc; para que el pa\'is tome la decisiones pertinentes con dicha informaci\'on.~\\
-Para cada situaci\'on existe un tipo de visualizaci\'on de datos: para n\'umeros las tablas; para comparar informaci\'on de diferentes entidades en un instante de tiempo las barras; para visualizar cambios a lo largo del tiempo u otra variable, las l\'ineas; etc.~\\~\\
-Todas estas variedades de visualizaciones se pueden, como  es objetivo de este trabajo, realizar con un formato de c\'irculos. Estos son una de las figuras geom\'etricas que m\'as fascinan a la humanidad, debido a que se vislumbraban con mucha facilidad en la naturaleza, como astros celestiales, lagos, ondas generadas en el agua, frutas, etc.~\\
-Los c\'irculos empezaron a usarse en arquitectura, por ejemplo, en b\'ovedas; en ciudades, como las aldeas de nativos americanos; en fortificaciones, como la muralla de \'Avila (Espa\~na); met\'aforas universales, como de la perfecci\'on (God the Architect, William de Bailes), la unidad (Fra Mauro map, Fra Mauro), el movimiento (Yama holding the wheel of life), la infinidad (Miracles of Each Moment); en mucha de la simbolog\'ia como , la representaci\'on del tiempo, el ciclo de la vida, en los logos de empresas como, Vodafone, Bayer, Motorola, Mercedes; y en simbolog\'ia antigua como los petroglifos prehistoricos de Argyll.~\\~\\
-Los humanos est\'an constantemente buscando patrones, orden, pautas, instruciones, debido a ello consiguen compreder mejor lo que les rodea, como los seres vivos (biolog\'ia), seres inertes, lo terrenal, lo espacial y en general, los patrones que gobiernan el universo. Y gracias al formato circular de los diagramas, que se representar\'an a lo largo de este trabajo, se pueden identificar dichas pautas, normalmente c\'iclicas, en los diferentes datos que recreen los distintos diagramas.~\\~\\
+Para cada situaci\'on existe un tipo de visualizaci\'on de datos: para n\'umeros las tablas; para comparar informaci\'on de diferentes entidades en un instante de tiempo las barras; para visualizar cambios a lo largo del tiempo u otra variable, las l\'ineas; etc.~\\~\par
+Todas estas variedades de visualizaciones se pueden, como  es objetivo de este trabajo, realizar con un formato de c\'irculos. Estos son una de las figuras geom\'etricas que m\'as fascinan a la humanidad, debido a que se vislumbraban con mucha facilidad en la naturaleza, como astros celestiales, lagos, ondas generadas en el agua, frutas, etc.~\\~\par
+Los c\'irculos empezaron a usarse en arquitectura, por ejemplo, en b\'ovedas; en ciudades, como las aldeas de nativos americanos; en fortificaciones, como la muralla de \'Avila (Espa\~na); met\'aforas universales, como de la perfecci\'on (God the Architect, William de Bailes), la unidad (Fra Mauro map, Fra Mauro), el movimiento (Yama holding the wheel of life), la infinidad (Miracles of Each Moment); en mucha de la simbolog\'ia como , la representaci\'on del tiempo, el ciclo de la vida, en los logos de empresas como, Vodafone, Bayer, Motorola, Mercedes; y en simbolog\'ia antigua como los petroglifos prehistoricos de Argyll %\cite[p\'ag 15-54]{Circle}.~\\~\par
+Los humanos est\'an constantemente buscando patrones, orden, pautas, instruciones, debido a ello consiguen compreder mejor lo que les rodea, como los seres vivos (biolog\'ia), seres inertes, lo terrenal, lo espacial y en general, los patrones que gobiernan el universo. Y gracias al formato circular de los diagramas, que se representar\'an a lo largo de este trabajo, se pueden identificar dichas pautas, normalmente c\'iclicas, en los diferentes datos que recreen los distintos diagramas.~\\~\par
 Para este trabajo se ha optado por R%\cite{R}
 , lenguaje de programaci\'on con enfoque estad\'istico basado en software libre, donde cada persona pueda contribuir a su crecimiento mediante un conjunto de funciones agrupadas en paquetes. Este lenguaje es uno de los m\'as usados para Big Data, miner\'ia de datos, matem\'aticas financieras, aprendizaje autom\'atico, etc. En este caso, se trabaja en el \'area de Big Data con la visualizaci\'on de datos, por lo que estos diferentes diagramas ayudan a la observacion y comprensi\'on de grandes cantidades de datos.
 \clearpage
+\subsection{Visualizaci\'on de Datos}
+Visualizar: Representar mediante im\'agenes \'opticas fen\'omenos de otro car\'acter%\cite{rae}, por consiguiente, la visualizaci\'on de datos es la representaci\'on gr\'afica de datos. Lo que implica producir im\'agenes que comunican relaciones entre los datos representados a los observadores. Refiri\'endose a las t\'ecnicas usadas para comunicar datos o informaci\'on mediante su codificaci\'on como objetos visuales (puntos, barras, l\'ineas, etc.) contenidos en un gr\'afico.~\\
+"La meta principal de la visualizaci\'on de datos es comunicar informaci\'on clara y efectivamente gracias a medios gr\'aficos. Esto no significa que la visualizaci\'on de datos necesite parecer aburrida para ser pr\'actica o extremadamente sofisticada para parecer bonita. Para transmitir ideas de forma eficiente, tanto la est\'etica como la funcionalidad necesitan ir de la mano, proporcionando informaci\'on sobre un conjunto de datos escasos y complejos mediante la comunicaci\'on de sus aspectos clave de una manera m\'as intuitiva. Todav\'ia los dise\~nadores suelen fallar a alcanzar un balance entre la forma y la funci\'on, creando bellas visualizaciones de datos que erran el prop\'osito general de comunicar informaci\'on"%\cite[Vitaly Friedman]{vitaly}. "Hechas bien, las visualizaciones explicar complejas ideas de manera simple"%\cite[Thomas Powell, CEO de ZingChart]{zingchart}.~\\~\par
+Una visualizaci\'on ideal no solo debe comunicar de forma clara, sino que se necesita estimular compromiso y atenci\'on al espectador%\cite{sexy}. Por ello se considera a la visualizaci\'on de datos arte aparte de ciencia\cite{moma}\cite{art}.~\\
+Durante su historia, este campo y sus profesionales han abordado distintos tipos de retos tanto \'eticos como anal\'iticos%\cite{history}, debido a esto se ha vuelto un \'area activa en la investigaci\'on, el desarrollo y la ense\~nanza\cite{articulos}.~\\~\par
+Los gr\'aficos (de barras, l\'ineas, puntos, etc.) usados en la visualizaci\'on m\'as tradicional (horizontal) suelen estar construidos con un sistema de coordenadas cartesianas%\cite{coord_carte}.~\\
+<<examples_carte, echo=FALSE, fig.align='center', fig.height=2, message=FALSE>>=
+datos_ejemplos = tail(mtcars,10)
+library(ggplot2)
+p1<-ggplot(datos_ejemplos, aes(row.names(datos_ejemplos), mpg)) +
+  geom_bar(stat = 'identity')+
+  xlab("Coches") + ylab("Consumo") +
+  theme_minimal() + labs(title = "Coches por consumo") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+library(dplyr)
+data <- read.table("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered.csv", header=T)
+data$date <- as.Date(data$date)
+p2<-data %>%
+  tail(10) %>%
+  ggplot( aes(x=date, y=value)) +
+    geom_line() + xlab("Fecha")+ ylab("Valor($)") + labs(title = "Valor del bitcoin") +
+    geom_point() + theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+library(gridExtra)
+grid.arrange(p1, p2, nrow = 1)
+@
+Pero para este trabajo se interesa en los gr\'aficos que se pueden construir con un formato circular mediante el cambio del sistema de coordenadas a las polares%\cite{coord_polar}. Este formato ayuda a la comprensi\'on en algunos conjuntos de datos, su estructura, comparaciones y relaciones. Este sistema en ocasiones ayuda a la atenci\'on del espectador, pero en algunas, como se dijo antes, lleva a cometer el fallo de crear gr\'aficos m\'as est\'eticos que funcionales, olvidando la meta de comunicar informaci\'on de forma clara y eficaz.~\\
+Para ello es necesario presentar el c\'irculo y sus partes para entender c\'omo se construyen.
+\clearpage
+\subsubsection{C\'irculos}
+El c\'irculo es un \'area o superficie plana contenida dentro de una circunferencia%\cite{rae}, o tambi\'en se puede definir como un conjunto de puntos en un plano equidistantes de un punto dado, llamado centro\cite{circulo}.~\\
+Los elementos esenciales para comprender los diagramas y explicaciones del trabajo son:
+\begin{itemize}
+\item \textbf{Centro}: punto fijo interior, equidistante de su per\'imetro a una distancia igual al radio. C, fig. 1.
+\item \textbf{Radio}: segmento que une el centro del c\'irculo con cualquier punto del per\'imetro de este. r, fig. 1.
+\item \textbf{Cuerda}: segmento que une dos puntos del per\'imetro del c\'irculo sin pasar por el centro. K, fig. 1.
+\item \textbf{Arco}: es la parte del per\'imetro del c\'irculo que resulta entre dos extremos de una cuerda. a, fig. 1.
+\item \textbf{Sector circular}: parte del c\'irculo comprendida entre dos radios y el arco que delimitan. fig. 2.
+\item \textbf{C\'iculos conc\'entricos}: dos o m\'as c\'irculos con mismo centro y distinto radio. fig. 3.
+\item \textbf{Corona circular}: superficie del c\'irculo comprendida entre dos c\'irculos conc\'entricos. fig. 3.
+\end{itemize}
+\begin{figure}[h]
+ \centering
+ \begin{subfigure}{0.25\textwidth}
+ \centering
+ \includegraphics[width=0.9\linewidth]{imag/partes_circulo_1}
+ \caption{fig. 1}
+ \end{subfigure}
+ \begin{subfigure}{0.25\textwidth}
+ \centering
+ \includegraphics[width=0.9\linewidth]{imag/partes_circulo_2}
+ \caption{fig. 2}
+ \end{subfigure}
+ \begin{subfigure}{0.25\textwidth}
+ \centering
+ \includegraphics[width=0.9\linewidth]{imag/partes_circulo}
+ \caption{fig. 3}
+ \end{subfigure}
+ \end{figure}
+\clearpage
 \section{A\'nalisis de los Diagramas}\label{sec:Analisis}
-Para poder usar cada uno de los diagramas, es necesario comprender sus virtudes, sus defectos y como se estructuran los datos para depu\'es elegir el mas adecuado.~\\
+Para poder usar cada uno de los diagramas, es necesario comprender sus virtudes, sus defectos y como se estructuran los datos para depu\'es elegir el m\'as adecuado.~\\
 En esta secci\'on se estudia la definici\'on de los diagramas, c\'omo y de qu\'e se componen , para poder identificar despu\'es qu\'e paquetes de R pueden implementar dichos diagramas sus ventajas e inconvenientes a la hora de visualizar los datos requeridos respecto a otros formatos.~\\
 Esta selecci\'on de diagramas circulares se han escogido siguiendo el libro de Manuel de Lima %\cite{Circle}
 , donde se presenta una clasificaci\'on diferenciada en familias seg\'un la similaridad de construcci\'on.~\\ Estos se agrupan en siete familias:
@@ -223,7 +288,7 @@ En este diagrama solo se representan los planos sin modificarlos para que encaje
     \includegraphics[width=0.2\textwidth]{imag/planos}
 }
 \subsection{Diagrama de Mapa Cirular}
-El diagrama de mapa, o buffer map, consiste en un c\'irculo plantilla donde se expone un mapa, ya sea de relieve, carreteras, etc.~\\
+El diagrama de mapa, o buffer map%\cite{Info}, consiste en un c\'irculo plantilla donde se expone un mapa, ya sea de relieve, carreteras, etc.~\\
 Este diagrama sirve para crear un mapa con la informaci\'on de los alrededores de un punto, que se establece en el centro de \'el.
 Se utiliza en diferentes aplicaciones como: venta/alquiler de viviendas, localizaci\'on de lugares para saber como llegar, etc.
 ~\\~\\~\\
@@ -282,7 +347,7 @@ Se empieza con uno de los paquetes que m\'as ser\'a usado a lo largo del trabajo
 , debido a que es uno de los m\'as vers\'atiles y personalizables, pues se puede retocar y ajustar cada uno de los componentes del gr\'afico que resulte de este; como la escala, el sistema de coordenadas, la etiquetas, etc.
 Tambi\'en, una de las mejores caracteristicas de este paquete, es su compatibilidad con otros paquetes de modificaci\'on de datos o de realizaci\'on de gr\'aficos.~\\
 Lo primero que se va a necesitar en todas las demostraciones de este trabajo es la obtenci\'on y manipulaci\'on de los datos. En este caso se necesitan 2 variables, indicando cuantos anillos componen el diagrama y el ancho de cada uno de ellos.~\\
-La primera forma de crear los anillos usa la funci\'on \texttt{geom-bar}, la cual reproduce el diagramas de barras cl\'asico, obteniendo su magnitud de la varible que se asigne para indicar su ancho.~\\Los datos que se van a usar son: una serie de entidades y sus valores porcentuales. En este caso obtiene la frecuencia de los veh\'iculos en la columna de carb, exponiendo en el ancho de cada anillo, la cantidad de coches por el n\'umero de carburadores .
+La primera forma de crear los anillos usa la funci\'on \texttt{geom-bar}, la cual reproduce el diagramas de barras cl\'asico, obteniendo su magnitud de la varible que se asigne para indicar su ancho.~\\Los datos que se van a usar son: una serie de entidades y sus valores porcentuales. Los datos elegidos para representar en este diagrama es \texttt{mtcars}, que incluye 32 veh\'iculos junto con su cosumo, los carburadores que tienen, los caballos de fuerza, el n\'umero de marchas, etc. En este caso obtiene la frecuencia de los veh\'iculos en la columna de carb, exponiendo en el ancho de cada anillo, la cantidad de coches por el n\'umero de carburadores .
 <<data_ring_gg1>>==
 datos <- data.frame(
   ancho=table(mtcars$carb)
@@ -294,9 +359,9 @@ library(ggplot2)
 ggplot(datos, aes(x="", y=ancho.Freq, fill=ancho.Var1)) +
   geom_bar(stat="identity", width=1, colour="grey90") +
   coord_polar() +
-  theme_void() + labs(title = "Coches por Carburadores")
+  theme_void() + labs(title = "Coches por Carburadores") +
   labs(fill='N Carburadores') +
-  theme(legend.position = 'bottom')
+  theme(legend.position = 'bottom', plot.title=element_text(hjust = 0.5))
 @
 Lo primero ser\'a cargar la librer\'ia ggplot2 para poder usar sus funciones.
 <<plot_ring_gg1, echo=1, eval=FALSE>>=
@@ -312,7 +377,7 @@ Ahora no es mas que un diagrama de barras tradicional, donde las barras tienen l
 <<plot_ring_gg1, echo=4, eval=FALSE>>=
 @
 Por \'ultimo, se usan unas funciones para alterar el tema del gr\'afico como el fondo, la cuadr\'icula, la leyenda, etc. Pero, para este ejemplo, se prefiere una est\'etica vac\'ia y la leyenda de los colores.
-<<plot_ring_gg1, echo=5:7, eval=FALSE>>=
+<<plot_ring_gg1, echo=5:6, eval=FALSE>>=
 @
 Resultando en:
 <<plot_ring_gg1, echo=FALSE, warning=FALSE, fig.align='center', fig.height=4, fig.width=4>>=
@@ -329,9 +394,9 @@ datos <- data.frame(
 ggplot(datos, aes(x=anillos, y=ancho)) +
   geom_tile(aes(fill = anillos)) + 
   coord_polar('y') +
-  theme_void() + labs(title = "Coches por Carburadores")
+  theme_void() + labs(title = "Coches por Carburadores") +
   labs(fill='N Carburadores') +
-  theme(legend.position = 'bottom') 
+  theme(legend.position = 'bottom', plot.title=element_text(hjust = 0.5)) 
 @
 \clearpage
 \subsubsection{Paquete circlize}
@@ -360,7 +425,7 @@ circos.track(datos$division, x = datos$x[order(datos$x)], y = datos$y,
 circos.axis(h="bottom",direction = "inside", labels.facing= "clockwise", labels.cex = 0.5)
 circos.clear()
 @
-La variable divisi\'on establece que cada anillo solo tendr\'a un vector con 150 datos y las otras dos variables se van a usar en los diferentes diagramas de cada anillo, correlacionando las variables de longitud y ancho de los s\'epalos, recogidos de la base de datos de plantas iris. Representando la variable X e Y de los gr\'aficos l\'ineas y puntos. Para la parte del histograma s\'olo se requiere de una variable de los datos, mostrando la frecuencia de los valores de la variable entre intervalos. ~\\~\\
+La variable divisi\'on establece que cada anillo solo tendr\'a un vector con 150 datos y las otras dos variables se van a usar en los diferentes diagramas de cada anillo, correlacionando las variables de longitud y ancho de los s\'epalos, recogidos de la base de datos de plantas iris. Representando la variable X e Y de los gr\'aficos l\'ineas y puntos. Para la parte del histograma s\'olo se requiere de una variable de los datos, mostrando la frecuencia de los valores de la variable entre intervalos. ~\\~\par
 Se necesita crear una plantilla para cada diagrama. Esta se genera primero al inicializar el gr\'afico y luego con las funciones \texttt{trackPlotRegion} o \texttt{track} para realizar las plantillas de cada anillo.
 <<plot_ring_cir, echo=1:3, eval=FALSE>>=
 @
@@ -537,25 +602,22 @@ ggplot(stockCheck, aes(x = Name, y = Value,
                        fill = Group, label = Value)) +
   geom_bar(width = 0.9, stat="identity") +
   coord_polar(theta = "y") +
-  xlab("") + ylab("") +
-  ylim(c(0,112)) +
+  xlab("") + ylab("") + labs (fill = "Grupos") +
+  ylim(c(0,112)) + labs(title = "Tiempo de Vida") +
   geom_text(data = stockCheck, hjust = 1, size = 3,
             aes(x = Name, y = 0, label = Label, colour = factor(Group), 
                 fontface = "bold")) +
   geom_label(aes(fill = factor(Group)), colour = "white") +
   scale_fill_manual(values = c("#edcf87", "#2c98db","#e83d31","#e83d31" )) +
   scale_color_manual(values = c("#edcf87", "#2c98db","#e83d31","#e83d31" )) +
-  theme_minimal() +
-  theme(legend.position = "none",
+  theme_minimal() + guides(size = FALSE, color = FALSE) +
+  theme(legend.position = "bottom", plot.title = element_text(hjust = 0.5),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         axis.line = element_blank(),
         axis.text.y = element_blank(),
         axis.text.x = element_blank(),
-        axis.ticks = element_blank()
-        #Ahora se eliminan las 5 lineas del centro por no tener valor,
-        #dejando un espacio en el centro
-        )
+        axis.ticks = element_blank())
 @
 Una de las diferencias con el anterior es la forma de crear el texto con el color seg\'un los grupos, y las etiquetas que se sit\'uan al final de las barras, siendo cuadrados rellenos con el color del grupo.
 <<plot_br_final, echo=7:10, eval=FALSE>>=
@@ -565,7 +627,7 @@ Y se cambian los valores del color para asemejarlo al gr\'afico que se intenta i
 @
 \clearpage
 Resultando en el siguiente gr\'afico.
-<<plot_br_final, echo=FALSE, fig.align='center', warning=FALSE, fig.height=6, fig.width=6>>=
+<<plot_br_final, echo=FALSE, fig.align='center', warning=FALSE, fig.height=6.5, fig.width=6.5>>=
 @
 \begin{center}
 \textbf{. . .}
@@ -573,27 +635,25 @@ Resultando en el siguiente gr\'afico.
 ~\\Existe un paquete que proporciona interactividad a los gr\'aficos del paquete ggplot2, y suele funcionar mejor cuando hay una gran cantidad de datos.~\\
 El paquete \texttt{ggiraph}%\cite{docu_ggiraph}
 ayuda a crear la interactividad con algunas funciones que se unen al gr\'afico de ggplot2, en este caso, se usa \texttt{geom-col-interactive}, para crear las barras interactivas. Para que se represente bien hay que dar los valores aduacuados a las nuevas variables interactivas \texttt{tooltip} y \texttt{data-id}.~\\
-Primero se necesita una gran cantidad de datos, aleatorios en este caso, creando los nombres de las entidades (barras) y sus valores.
+Primero se necesita una gran cantidad de datos, veh\'iculos en mtcars, creando los nombres de los veh\'iculos (barras) y su consumo.
 <<plot_interactive_datos_br>>=
-data <- data.frame(
-  id=seq(1,30),
-  value=sample( seq(70,100), 30, replace=T)
-)
-data$individual <- paste0( "Bar. ", data$id, "-", data$value,"%")
+data <- mtcars
+data$nombre <- paste0(rownames(data), " - ", data$mpg)
 @
 \clearpage
-Y ahora, asignar los par\'ametros adecuados al gr\'afico de ggplot2, con la funci\'on de columnas interactivas.
+Y ahora, asignar los par\'ametros adecuados al gr\'afico de ggplot2, con la funci\'on de columnas interactivas. Agrupando las barras por cantidad de marchas de cada coche.
 <<plot_interactive_br>>=
 library(ggiraph)
-p <- ggplot(data, aes( x = individual, y = value, tooltip = individual, label = value,
-                                     data_id = individual, fill = individual) ) +
+library(viridis)
+p <- ggplot(data, aes( x = nombre, y = mpg, tooltip = nombre,
+                       data_id = nombre, fill = gear) ) +
   geom_col_interactive() +
   coord_polar(theta = 'y') +
+  scale_fill_viridis() +
   xlab("") + ylab("") +
-  ylim(c(0,101)) +
+  ylim(c(0,36)) + labs(title = "Consumo de coches por cantidad de marchas")+
   theme_minimal() +
-  theme(legend.position = "none",
-        panel.grid.major = element_blank(),
+  theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         axis.line = element_blank(),
         axis.text.y = element_blank(),
@@ -607,7 +667,7 @@ girafe(ggobj = p)
 Dando como resultado el siguiente gr\'afico.~\\
 \vbox{
     \centering
-    \includegraphics[width=0.5\textwidth]{imag/bar_interactive}
+    \includegraphics[width=0.8\textwidth]{imag/bar_interactive}
 }
 \clearpage
 \subsubsection{Paquete Plotrix}
@@ -872,7 +932,7 @@ Para realizar este tipo de diagramas, la gran mayoria de paquetes lo afrontan cr
 Con este paquete %\cite{docu_ggplot2}
 se procede a copiar la manera de crear el diagrama de Barras Radiales \autoref{ssec:barrasRadiales}
  pero, en esta ocasi\'on, la coordenada a transformar esta vez se la X.~\\
-Primero se va a crear los datos de ejemplo para representar en este gr\'afico, estableciendo las entidades (barras) y sus valores, junto con la llamada de la libreria. Se escoge una base de datos de multas por velocidad, siendo el eje X la velocidad y el eje Y la cantidad de multas que hay de dicha velocidad.
+Primero se va a crear los datos de ejemplo para representar en este gr\'afico, estableciendo las entidades (barras) y sus valores, junto con la llamada de la libreria. Se escoge una base de datos de multas por velocidad (https://vincentarelbundock.github.io/Rdatasets/datasets.html) recogiendo la velocidad a la que iba el veh\'iculo multado, siendo el eje X la velocidad y el eje Y la cantidad de multas que hay de dicha velocidad.
 <<datos_ggplot_cr>>=
 data <- read.csv("amis.csv", header = TRUE)
 data <- data.frame(
@@ -910,7 +970,7 @@ Quedando el gr\'afico de la siguiente forma.
 \end{center}
 ~\\
 Como se ha observado con anterioridad, este paquete deja mucho espacio para la personalizaci\'on de estos gr\'aficos, por lo que se va a implementar el mismo gr\'afico que antes con grupos con espacios diferenciados y etiquetas.~\\
- Para crear los espacios entre los grupos, se va a a\~nadir al igual que en el diagrama de barras radiales, barras con datos vac\'ios para que dejen el espacio al no ser representados. Se necesitan unos datos agrupados por alguna variable, para ello se escoge la base de datos de mtcars exponiendo cada coche con su velocidad, y agrupando los veh\'iculos por la cantidad de marchas que tienen.
+ Para crear los espacios entre los grupos, se va a a\~nadir al igual que en el diagrama de barras radiales, barras con datos vac\'ios para que dejen el espacio al no ser representados. Se necesitan unos datos agrupados por alguna variable, para ello se escoge la base de datos de mtcars exponiendo el consumo de cada coche, y agrupandolos por la cantidad de marchas que tienen.
 <<data_col_gru>>=
 datos<- mtcars
 datos$name <- rownames(datos)
@@ -981,8 +1041,8 @@ girafe(ggobj = p)
 \subsubsection{Paquete plotrix}
 Como se dijo, \autoref{ssec:barrasRadiales}
 , este paquete ser\'ia usado para otros gr\'aficos m\'as adelante por sus plots espec\'ificos. Y gracias a las funciones \texttt{polar plot} y \texttt{radial plot} se pude contar con \'el en este apartado. 
-Para ello se establecen los datos usados.~\\
-Primero la longitud de las columnas con las cantidad de multas segun la velocidad.
+Para ello se establecen los datos usados, volviendo a usar la base de datos de multas de veh\'iculos por velocidad.~\\
+Primero la longitud de las columnas con las cantidad de multas seg\'un la velocidad.
 <<data_long>>=
 long <- data$velocidad.Freq
 @
@@ -1006,7 +1066,7 @@ C\'omo se ve, los gr\'aficos no han salido iguales y es debido a que \texttt{pol
 \subsubsection{Paquete cplots}
 Este paquete, tal y como dice su documentaci\'on %\cite{docu_cplot}
 , proporciona algunos diagramas circulares provenientes de datos circulares, incluyendo diagramas de barras, de densidad, puntos apilados, etc.~\\
-Para reproducir este diagrama con este paquete se debe preparar los datos.
+Para reproducir este diagrama con este paquete se debe preparar los datos. Al solo haber una versi\'on de este paquete, no hay una buena documentaci\'on para preparar datos diferentes a los dados por el paquete. (descatalogado a 08/05/2020)
 <<datos_cpl, message=FALSE>>=
 library(cplots)
 library(circular)
@@ -1042,7 +1102,7 @@ circos.track(ylim = c(0,600), track.height = 0.8,
 circos.clear()
 @
 De nuevo se utiliza este paquete%\cite{docu_circlize}
-de la misma forma que se utilizaba ggplot2, cambiando los ejes para representar columnas en vez de barras. Para los datos y capacidad de comparaci\'on de paquetes se eligen los mismos datos que en el primer ejemplo del paquete ggplot2.~\\
+de la misma forma que se utilizaba ggplot2, cambiando los ejes para representar columnas en vez de barras. Para los datos y capacidad de comparaci\'on de paquetes se eligen los mismos datos que en el primer ejemplo del paquete ggplot2, la cantidad de multas por cada velocidad.~\\
 Lo primera funci\'on es opcional, ya que declara argumentos que son est\'eticos, como, en este caso, en que \'angulo comienza el diagrama, o tambi\'en, por ejemplo, se puede establecer donde est\'a en centro del diagrama.
 <<circlize_colum, echo=1:2, eval=FALSE>>=
 @
@@ -1078,7 +1138,7 @@ En conclusi\'on, de los cuatro paquetes presentados los que resultan m\'as utile
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Diagrama de Sectores}\label{ssec:sectores}
-Para crear este tipo de diagramas, casi siempre se necesita de la misma estructura de datos, unas veces son simplemente unos valores represent\'andolos como un porcentaje del total de la suma de todos los valores, o pueden estar acompa\~nados de las categor\'ias correspondientes.
+Para crear este tipo de diagramas, casi siempre se necesita de la misma estructura de datos, unas veces son simplemente unos valores represent\'andolos como un porcentaje del total de la suma de todos los valores, o pueden estar acompa\~nados de las categor\'ias correspondientes.Para los ejemplos se elige la base de datos, antes usada, \texttt{mtcars}, con los datos de distintos veh\'iculos, como su consumo, caballos, marchas, carburadores, etc.
 \subsubsection{R B\'asico}
 Una de las formar m\'as sencillas para representar los diagramas de sectores es la funci\'on \texttt{pie}. Esta funci\'on necesita de los propios valores dichos antes y se pueden a\~nadir m\'as par\'ametros para su personalizaci\'on, como las etiquetas, colores y bordes. En este caso se elige la cantidad de veh\'iculos con cierta cantidad de carburadores.
 <<datos_pie_basic>>=
@@ -1087,8 +1147,8 @@ Porcentaje <- table(mtcars$carb)
 Para mejores colores y una paleta uniforme se opta por el paquete \texttt{RColorBrewer}.
 <<plot_pie_basic, echo=1:2, eval=FALSE>>=
 library(RColorBrewer)
-miPaleta <- brewer.pal(5, "Set2")
-pie(Porcentaje, labels = c("1","2","3","4","6","8"), border = "white", col = miPaleta)
+miPaleta <- brewer.pal(6, "Set2")
+pie(Porcentaje, labels = Porcentaje, border = "white", col = miPaleta)
 legend("bottomleft", c("1","2","3","4","6","8"), cex = 0.7,
    fill = miPaleta, title = "N Carburadores",horiz=TRUE)
 title(main = "Coches por carburadores")
@@ -1118,7 +1178,7 @@ El problema de este diagrama con respecto a otros que usan \texttt{ggplot2} es l
 library(tidyverse)
 data <- data %>% 
   arrange(desc(Var1)) %>%
-  mutate(Porcentaje = Freq / sum(Freq) *100) %>%
+  mutate(Porcentaje =round(Freq / sum(Freq) *100, digits = 0)) %>%
   mutate(ypos = cumsum(Porcentaje)- 0.5*Porcentaje )
 @
 <<plot_ggplot_pie, echo=FALSE, eval=FALSE>>=
@@ -1126,8 +1186,8 @@ ggplot(data, aes(x="", y=Porcentaje, fill=Var1)) +
   geom_bar(stat="identity", width=1, color="white") +
   coord_polar("y", start=0) +
   theme_void() + labs(title="Coches por Carburadores") +
-  theme(legend.position="none") +
-  geom_text(aes(y = ypos, label = Var1), color = "black", size=5) +
+  theme(legend.position="bottom") + labs(fill = "N Carburadores") +
+  geom_text(aes(y = ypos, label = Freq), color = "black", size=5) +
   scale_fill_brewer(palette="Set1") 
 @
 Y ahora se procede a la representaci\'on del gr\'afico, pasando como par\'ametros los datos a usar y asignando al eje X nada (como se dijo antes), al eje Y el procentaje. Los colores se obtienen en funci\'on del grupo. Se usa la figura geom\'etrica de la barra para representar los datos y se convierte el eje Y de lineal a radial.
@@ -1162,20 +1222,21 @@ girafe(ggobj = p)
 \clearpage
 \subsubsection{Paquete plotrix}
 Este paquete %\cite{docu_plotrix} 
-tiene dos posibles formas de representar los diagramas de sectores, una en 2D y otra en 3D. Esto no lo tiene ning\'un otro paquete que se haya investigado en este proyecto.~\\~\\
+tiene dos posibles formas de representar los diagramas de sectores, una en 2D y otra en 3D. Esto no lo tiene ning\'un otro paquete que se haya investigado en este proyecto.~\\~\par
 Primero se ver\'a la forma de representar el gr\'afico en 2D. Para ello se usa la funci\'on \texttt{floating.pie} y \texttt{pie.labels} para las etiquetas. Se obtienen los datos de los valores anteriores al igual que las etiquetas pero, para que el gr\'afico resulte algo distinto, tambi\'en se va a usar el par\'ametro \texttt{explode}.
 <<plot_plotrix_2D, echo=FALSE, eval=FALSE>>=
 par(mfrow=c(1,2))
 library(plotrix)
-plot(0,xlim=c(1.5,5),ylim=c(1,5),type="n",axes=FALSE,xlab="",ylab="", main = "2D")
+plot(0,xlim=c(1.5,5),ylim=c(1,5),type="n",axes=FALSE,xlab="",ylab="", main = "Coches por carburadores")
 angulos <- floating.pie(3.25, 3, data$Freq, radius = 1.5, 
                         col = c("#ff0000","#80ff00","#00ffff","#44bbff","#8000ff"))
-pie.labels(3.25, 3, angulos, data$Var1, minangle = 0.2, radius = 1.6)
-plot(0,xlim=c(1.5,5),ylim=c(1,5),type="n",axes=FALSE,xlab="",ylab="", main = "2D Explode")
+data$label <- paste0(data$Var1,"-",data$Porcentaje,"%")
+pie.labels(3.25, 3, angulos, data$label, minangle = 0.2, radius = 1.6)
+plot(0,xlim=c(1.5,5),ylim=c(1,5),type="n",axes=FALSE,xlab="",ylab="", main = "Coches por carburadores")
 angulos <- floating.pie(3.25, 3, data$Freq, radius = 1.5,
                         col = c("#ff0000","#80ff00","#00ffff","#44bbff","#8000ff"),
                         explode = c(0.2,0,0.1,0.2,0))
-pie.labels(3.25, 3, angulos, data$Var1, minangle = 0.2, radius = 1.6, 
+pie.labels(3.25, 3, angulos, data$label, minangle = 0.2, radius = 1.6, 
            explode = c(0.2,0,0.1,0.2,0))
 @
 Para ello se necesita la libreria y crear un espacio para luego realizar los sectores.
@@ -1185,17 +1246,17 @@ Luego para las etiquetas se calculan las posiciones y \'angulos donde deben esta
 <<plot_plotrix_2D, echo=4:5, eval=FALSE>>=
 @
 Y para las etiquetas \texttt{pie.labels} necesita dichos angulos, la posici\'on del centro del diagrama y las etiquetas.
-<<plot_plotrix_2D, echo=6, eval=FALSE>>=
+<<plot_plotrix_2D, echo=6:7, eval=FALSE>>=
 @
 Despu\'es se realiza el mismo trabajo para el par\'ametro \texttt{explode}, pero incluyendo el vector con las distancias al centro (tanto en el gr\'afico como en las etiquetas).
-<<plot_plotrix_2D, echo=6:12, eval=FALSE>>=
+<<plot_plotrix_2D, echo=8:13, eval=FALSE>>=
 @
 <<plot_plotrix_2D, echo=FALSE, fig.align='center', fig.height=4, warning=FALSE>>=
 @
 Y, por \'ultimo, se realiza el mismo gr\'afico pero en 3D, gracias a la funci\'on \texttt{pie3D}. Esta forma requiere guardar el resultado en, por ejemplo, png.~\\
 <<plot_plotrix_3D, echo=FALSE, eval=FALSE>>=
 png(file = "3d_sectores.png")
-pie3D(data$Freq, labels = data$Var1, explode = 0.1, main = "Coches por Carburadores 3D",
+pie3D(data$Freq, labels = data$label, explode = 0.1, main = "Coches por Carburadores 3D",
       col=c("#ff0000","#80ff00","#00ffff","#44bbff","#8000ff"))
 dev.off()
 @
@@ -1287,7 +1348,7 @@ Otra vez en el proyecto se cruza este paquete %\cite{docu_ggplot2}
 aportando su versatilidad. El gr\'afico consistir\'a de nuevo en crear un diagrama normal (lineal) y transformarlo con la ayuda de \texttt{coord polar}. Esta vez se realiza un gr\'afico de barras apiladas y transformar el eje X.~\\
 Primero necesita los datos para crear las barras apiladas. En este caso los datos son el porcentaje de muertes accidentales y suicidio, por ciudad y mundo rural, agrupados por meses.
 <<data_rose_1>>=
-data=read.csv("rosa.csv", sep = ";")
+data=read.csv("rosa.csv", sep = ";", header = TRUE, fileEncoding = 'UTF-8-BOM')
 head(data)
 @
 Se necesitan datos agrupados por solo una variable que en esta vez se usan las causas. Gracias a \texttt{tidyverse} se consigue el agrupamiento por causa.
@@ -1298,7 +1359,7 @@ data <- data %>% gather(key = "observation", value="value", -c(1))
 Y ahora, para crear el gr\'afico, lo \'unico que hay que hacer es crear el diagrama de barras apiladas y aplicarle la transformaci\'on, adem\'as de la est\'etica deseada.
 <<plot_rose_1, echo=FALSE, eval=FALSE>>=
 library(ggplot2)
-ggplot(data,aes(x=ï..MES,y=value,fill=observation))+
+ggplot(data,aes(x=mes,y=value,fill=observation))+
   geom_bar(stat="identity",width=1,colour="white",size=0.1)+
   coord_polar('x')+
   labs(fill='Causas') + labs(title = "Procentaje de Muertes") +
@@ -1306,7 +1367,6 @@ ggplot(data,aes(x=ï..MES,y=value,fill=observation))+
   theme_minimal() +
   theme(legend.position = "bottom",
         axis.line = element_blank(),
-        axis.text.y = element_blank(),
         axis.ticks = element_blank())
 @
 Para ello se llama a la funci\'on \texttt{ggplot} con los datos de data3 y asignando el eje X a los meses, el Y, a los valores y los colores en funci\'on del grupo. Y se crea el diagrama de barras tradicional con \texttt{geom-bar(stat="identity")}.
@@ -1316,10 +1376,10 @@ Ahora se transforma la coordenada X y, se establece el t\'itulo y nombre de la l
 <<plot_rose_1, echo=4:5, eval=FALSE>>=
 @
 Y por \'ultimo la est\'etica del grafo deseada (sin ejes, fondo blanco, etc. y leyenda debajo).
-<<plot_rose_1, echo=6:11, eval=FALSE>>=
+<<plot_rose_1, echo=6:10, eval=FALSE>>=
 @
 Dando como resultado el gr\'afico.
-<<plot_rose_1, echo=FALSE, fig.align='center', fig.height=4, fig.width=4>>=
+<<plot_rose_1, echo=FALSE, fig.align='center', fig.height=4>>=
 @
 \begin{center}
 \textbf{. . .}
@@ -1356,13 +1416,12 @@ ggplot(Night1, aes(x = factor(Fecha), y = Muertes, fill = Causa)) +
   geom_bar(width = 1, stat = "identity", color="black") +
   coord_polar(start = 3*pi/2) +
   xlab("") +  ylab("") +   
-  scale_y_sqrt() +
+  scale_y_sqrt() + labs(title = "Muertes por Causa") +
   scale_fill_manual(values = c("#9ac7d4", "#727374","#ea8888")) +
   theme_minimal() +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         axis.line = element_blank(),
-        axis.text.y = element_blank(),
         axis.ticks = element_blank())
 @
 \clearpage
@@ -1371,13 +1430,12 @@ ggplot(Night2, aes(x = factor(Fecha), y = Muertes, fill = Causa)) +
   geom_bar(width = 1, stat = "identity", color="black") +
   coord_polar(start = 3*pi/2) +
   xlab("") +  ylab("") +   
-  scale_y_sqrt() +
+  scale_y_sqrt() + labs(title = "Muertes por Causa") +
   scale_fill_manual(values = c("#9ac7d4", "#727374","#ea8888")) +
   theme_minimal() +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         axis.line = element_blank(),
-        axis.text.y = element_blank(),
         axis.ticks = element_blank())
 @
 \clearpage
@@ -1413,7 +1471,7 @@ Una de las dos funciones que permite realizar esto es \texttt{ggRose} y necesita
 Primero se va a representar sin interartividad, para el formato de papel, pero, a continuaci\'on, se muestra la forma de pasarlo a html para la interactividad.
 <<plot_rose_ggiraph, fig.align='center', fig.height= 4>>=
 library(ggiraphExtra)
-ggRose(data,aes(x=ï..MES,fill=observation,y=value),stat="identity",interactive=FALSE
+ggRose(data,aes(x=mes,fill=observation,y=value),stat="identity",interactive=FALSE
        , palette = "Blues") +
    xlab("") +  ylab("") +  
   labs(fill='Causas') + labs(title = "Procentaje de Muertes") +
@@ -1422,11 +1480,10 @@ ggRose(data,aes(x=ï..MES,fill=observation,y=value),stat="identity",interactive=
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         axis.line = element_blank(),
-        axis.text.y = element_blank(),
         axis.ticks = element_blank())
 @
 <<plot_rose_inte_gg, eval=FALSE>>=
-p <- ggRose(data,aes(x=ï..MES,fill=observation,y=value),stat="identity",interactive=TRUE
+p <- ggRose(data,aes(x=mes,fill=observation,y=value),stat="identity",interactive=TRUE
        , palette = "Blues")
 library(htmlwidgets)
 saveWidget(p, file = "rose_interactive.html")
@@ -1434,7 +1491,7 @@ saveWidget(p, file = "rose_interactive.html")
 \clearpage
 Otro m\'etodo para realizar el mismo diagrama es \texttt{ggBar}. Como con el paquete ggplot2 lo que se realiza es un diagrama de columnas apiladas tradicional transformando la coordenada X de lineal a radial. Como antes con la interactividad desactivada pero con la forma de verlo en html.
 <<plot_bar_rose, fig.align='center', fig.height=4>>=
-ggBar(data, aes(x=ï..MES,fill=observation,y=value),stat="identity",polar=TRUE,palette="Blues"
+ggBar(data, aes(x=mes,fill=observation,y=value),stat="identity",polar=TRUE,palette="Blues"
       ,width=1, color="black",size=0.1,reverse=TRUE,interactive=FALSE)+
     xlab("") +  ylab("") + 
   labs(fill='Causas') + labs(title = "Procentaje de Muertes") +
@@ -1443,9 +1500,8 @@ ggBar(data, aes(x=ï..MES,fill=observation,y=value),stat="identity",polar=TRUE,p
     theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank(),
           axis.line = element_blank(),
-          axis.text.y = element_blank(),
           axis.ticks = element_blank())
-p <- ggBar(data, aes(x=ï..MES,fill=observation,y=value),stat="identity",polar=TRUE,palette="Blues"
+p <- ggBar(data, aes(x=mes,fill=observation,y=value),stat="identity",polar=TRUE,palette="Blues"
       ,width=1, color="black",size=0.1,reverse=TRUE,interactive=TRUE)
 library(htmlwidgets)
 saveWidget(p, file = "rose2_interactive.html")
@@ -1556,7 +1612,9 @@ para transformarla en datos que entienda ggraph.
 <<datos_ggrawr, message=FALSE>>=
 library(ggraph)
 ramas <- flare$edges
+head(ramas,5)
 vertices <- flare$vertices
+head(vertices,5)
 library(igraph)
 mygraph <- graph_from_data_frame( ramas, vertices=vertices)
 @
@@ -1575,19 +1633,21 @@ La funci\'on elegida para crear el gr\'afico es \texttt{geom-node-arc-bar}, ya q
 @
 <<plot_ggraph_sol, echo=FALSE, fig.align='center', fig.height=3.4, fig.width=3.4>>=
 @
-\clearpage
 Como se ve en el resultado del gr\'afico, para que se puedan poner etiquetas y entenderse, se necesitara quitar alg\'un nivel de profundidad. Y al final reconstruir el gr\'afico de nuevo con la funci\'on de igraph.
 <<prep_data, message=FALSE>>=
 library(tidyverse)
 ramas <- flare$edges %>% 
   filter(to %in% from) %>% 
   droplevels()
+head(ramas,5)
 vertices <- flare$vertices %>% 
   filter(name %in% c(ramas$from, ramas$to)) %>% 
   droplevels()
 vertices$size <- runif(nrow(vertices))
+head(vertices,5)
 mygraph <- graph_from_data_frame( ramas, vertices=vertices)
 @
+\clearpage
 El nuevo gr\'afico s\'olo es distinto al anterior en 2 l\'ineas. (las etiquetas y la paleta de colores)
 <<plot_ggraph2, echo=FALSE, eval=FALSE>>=
 ggraph(mygraph, 'partition', circular = TRUE) +
@@ -1939,7 +1999,7 @@ Para empezar se cargan las librerias b\'asicas para crear el diagrama: \texttt{g
 library(dplyr)
 library(ggplot2)
 @
-Para datos del diagrama de columnas con formato iris, y el formato de columnas apiladas se eligen los fallecidos del COVID-19 por fecha y por Comunidad Aut\'onoma.
+Para datos del diagrama de columnas con formato iris, y el formato de columnas apiladas se eligen los fallecidos del COVID-19 por fecha y por Comunidad Aut\'onoma, actualizados a 20 de mayo por el Centro Nacional de Epidemiolog\'ia (https://cnecovid.isciii.es/covid19/).
 <<data_col_sep_ggplo>>=
 data <- read.csv("agregados.csv", header = TRUE)
 @
@@ -2076,8 +2136,8 @@ circos.track(ylim = c(0, 1000), track.height = 0.6,
                            labels = dataMD$FECHA)})
 circos.yaxis(labels.cex = 0.4)
 circos.clear()
-legend("topright", inset=.02, title="CCAA",
-       c("Madrid","Cataluña","Castilla-LaMancha"), fill=c("burlywood","coral","blueviolet"), cex=0.6)
+legend("bottomright", inset=.02, title="CCAA",
+       c("Madrid","Catalunya","Castilla-La Mancha"), fill=c("burlywood","coral","blueviolet"), cex=0.6)
 @
 <<circlize_col_sep, echo=1:2, eval=FALSE>>=
 @
@@ -2333,12 +2393,12 @@ ggraph(migrafo, layout = 'circlepack') +
   geom_node_circle(aes(fill = depth)) +
   scale_fill_viridis() +
   theme_void() + 
-  theme(legend.position = "none")
+  theme(legend.position = "bottom") + labs(fill = "Profundidad")
 @
 Para recrear el mapa de \'arbol circular se necesita llamar a la funci\'on principal de paquete, y para adjudicar la forma se establece que sean nodos circulares y que el color dependa de la profundidad (nivel de los nodos dentro del \'arbol).
 <<plot_ggraph, echo=1:2, eval=FALSE>>=
 @
-Y para obtener una estetica vistosa se usa la escala de viridis, el fondo blanco y sin leyenda.
+Y para obtener una estetica vistosa se usa la escala de viridis, el fondo blanco y con leyenda abajo.
 <<plot_ggraph, echo=3:5, eval=FALSE>>=
 @
 Resultando en el gr\'afico deseado.
@@ -2362,13 +2422,13 @@ Y se necesita volver a construir de nuevo los datos para el gr\'afico.
 <<prep_datos, echo=9, eval=FALSE>>=
 @
 Y ahora, gracias a este acortamiento de los datos, se pueden poner la etiquetas con el a\~nadido de la orden \texttt{geom-node-label}, resultando en la siguiente orden compleja y el gr\'afico resultante.
-<<plot_ggraph-1, fig.align='center', fig.height=4, fig.width=4>>=
+<<plot_ggraph-1, fig.align='center', fig.height=4.5, fig.width=4.5>>=
 ggraph(migrafo, layout = 'circlepack') +
   geom_node_circle(aes(fill = depth)) +
   geom_node_label(aes(label = shortName, filter = leaf, size = size)) +
   scale_fill_viridis() +
   theme_void() + 
-  theme(legend.position = "none")
+  theme(legend.position = "bottom") + labs(fill = "Profundidad")
 @
 \clearpage
 \subsubsection{Paquete ciclepackeR}
@@ -2597,6 +2657,7 @@ En esta parte se van a implementar los dendogramas circulares gracias al tratami
 Primero se obtienen los datos para poder trabajar con ellos, creando unos datos gracias al agrupamiento jer\'arquico (hierarchical clustering). Los datos constan de valores porcentuales de arrestos por asesinato, asalto, etc., agrup\'andolos por territorio.
 <<datos_den>>=
 data(USArrests)
+head(USArrests,5)
 dd <- dist(scale(USArrests), method = "euclidean")
 hc <- hclust(dd, method = "ward.D2")
 @
@@ -2688,7 +2749,7 @@ Al final resultando en:
 \end{center}
 \subsubsection{Paquete ggplot2}
 Para recrear un dendograma con este paquete  %\cite{docu_ggplot2}
-se tiene que obtener una estructura especial proporcionada por \texttt{dendextend}. Para crear el dendograma se obtienen datos num\'ericos de la base de datos \texttt{mtcars}, como ejemplo, y se crean grupos con \texttt{hclust} mediante las distancias entre los valores num\'ericos, agrupando los veh\'iculos por disp y cyl, se establecen los colores de las ramas y nodos hoja.
+se tiene que obtener una estructura especial proporcionada por \texttt{dendextend}. Para crear el dendograma se obtienen datos num\'ericos de la base de datos \texttt{mtcars} (datos de veh\'iculos como consumo, cilindros, marchas, carburadores, etc.), como ejemplo, y se crean grupos con \texttt{hclust} mediante las distancias entre los valores num\'ericos, agrupando los veh\'iculos por consumo, volumen de motor (disp) y cilindros (cyl), se establecen los colores de las ramas y nodos hoja.
 <<dendo_ggplot_data, message=FALSE>>=
 library(tidyverse)
 mtcars %>% 
@@ -3048,7 +3109,7 @@ Y resultando es:
 \subsubsection{Implosi\'on El\'iptica}
 Para este diagrama, el autor usa el paquete \texttt{qgraph} %\cite{docu_qgraph}
 para realizar estas redes ponderadas y, el ejemplo que usa para mostrar el diagrama, es el \'unico con la funci\'on usada ya que no existe otro layout que trace un c\'irculo. Pero si existe otra funci\'on que implementa este tipo de gr\'afico solo que es de forma din\'amica.~\\
-Para usar la funci\'on se crean los datos de la red ponderada.
+Para usar la funci\'on se crean los datos de la red ponderada. Creando una red con los valores de origen y destino.
 <<data2_redes, echo=FALSE>>=
 n = 100
 Grad <- rep(0, n)
@@ -3119,8 +3180,8 @@ Los diagramas que no se han podido realizar son:
  - Para el caso del diagrama de cuadr\'icula desordenada no se ha podido encontrar ning\'un paquete que realize este diagrama con una funci\'on, debido a que los paquetes que usan la cuadr\'icula como estructura se basa en sectores (\nameref{ssec:ord})
  y el otro tipo se basa en estructuras de datos con forma de \'arbol por lo que no hay paquete que cree las celdas desordenadas. Solo se pueden crear ejemplos como los de %\cite[p\'ag 136]{Circle}
  mediante los paquetes que realizan el \nameref{ssec:barrasRadiales} \ref{ssec:barrasRadiales}
- , pero no se crear\'iran las celdas sino que se realizar\'ia un diagrama de barras radiales con barras apiladas, perdiendo su significado de cudr\'icula.~\\~\\
- - Para el caso del diagrama de planos circulares s\'i que se encuentran algunos paquetes que podri\'an representarlo, como ggplot2 en \nameref{ssec:carretera} \ref{ssec:carretera}, pero no se han encontrado datos que puedan implementar dichos paquetes resultando en el diagrama de planos.~\\~\\
+ , pero no se crear\'iran las celdas sino que se realizar\'ia un diagrama de barras radiales con barras apiladas, perdiendo su significado de cudr\'icula.~\\~\par
+ - Para el caso del diagrama de planos circulares s\'i que se encuentran algunos paquetes que podri\'an representarlo, como ggplot2 en \nameref{ssec:carretera} \ref{ssec:carretera}, pero no se han encontrado datos que puedan implementar dichos paquetes resultando en el diagrama de planos.~\\~\par
  - Y, por \'ultimo, el diagrama de mapa de esfera tiene el problema antes mencionado; es imposible de implementar por ser m\'as un diagrama art\'istico que un diagrama que represente datos, por lo que no se ha encontrado ning\'un paquete que genere dichas esferas art\'isticas. Estos diagramas se pueden dibujar pixel a pixel con alg\'un paquete pero, estos perder\'ian el hecho de que una funci\'on represente un gr\'afico en funci\'on de los datos, no dibujarlos.~\\~\\~\\
  \begin{figure}[h]
  \centering
@@ -3363,18 +3424,12 @@ webr & 0.1.5 & 2 & 26/01/2020 & 07/05/2018 & -1\\ %desarrollo solo en las salida
 \end{table}
 \footnotetext[1]{Datos obtenidos de sus repositorios con cauldron. No desde la documentaci\'on de R.}
 \subsection{Usabilidad}
-En este apartado se procede a argumentar, seg\'un distintas variables, qu\'e paquetes son de mayor usabilidad. Las variables, para delimitar esta capacidad, son: la capacidad de personalizaci\'on y la complejidad a la hora de usar un paquete.
+Esta propiedad de los paquetes, es su capacidad de ser utilizado con mayor o menor facilidad para el cometido de representar los diagramas con formato circular, que se han expuesto a lo largo del trabajo. En este apartado se procede a argumentar, seg\'un distintas variables, qu\'e paquetes son de mayor usabilidad. Las variables, para delimitar esta propiedad, son: la capacidad de personalizaci\'on y la complejidad a la hora de usar el paquete.
+Para ponderar estas caracter\'isticas se opta por un sistema de clasificaci\'on entre -2, para muy poca o ninguna relaci\'on con la caracter\'istica, hasta +2, para la mayor relaci\'on.
 \begin{itemize}
-\item \textbf{Personalizaci\'on}. Esta capadidad es el poder de retocar cualquier aspecto de los diagramas que resultan del paquete empleado. Para ponderar la personalizaci\'on se opta por un sistema de clasificaci\'on entre -2, para muy poco o nada personalizable (paquetes que casi no permiten modificar las car\'acteristicas del gr\'afico), hasta +2, para la mayor capacidad de retocar cada par\'ametro del diagrama.
-\item \textbf{Complejidad}. Es la cantidad de conocimiento y funciones del paquete que son necesarias u opcionales, para la correcta representaci\'on y personalizaci\'on de los diagramas, que ofrecen los distintos paquetes. Tambi\'en se tiene en cuenta la cantidad de par\'ametros de las funciones.
+\item \textbf{Personalizaci\'on}. Esta capadidad es el poder de retocar cualquier aspecto de los diagramas que resultan del paquete empleado.
+\item \textbf{Complejidad}. Esta caracter\'istica es la medici\'on de la complejidad de las funciones que emplea el paquete para crear el gr\'afico. Y tambi\'en se refiere a la complejidad de la utilizaci\'on del paquete.
 \end{itemize}
-Para empezar se escogen los paquetes, del cuadro \ref{table:tabla2}, con m\'as cantidad de gr\'aficos representados, hasta los que son menos usados. El primero es \texttt{ggplot2}, que cuenta con la mejor capacidad de personalizaci\'on pero, para conseguirlo, se necesitan un gran cantidad de funciones, aunque son sencillas, por eso obtiene la calificaci\'on del cuadro \ref{table:tabla4}. \texttt{Circlize} tiene la misma personalizaci\'on que el anterior, solo que sus funciones, que necesitar\'ia muchas, son m\'as dificiles.
-\texttt{Plotrix} se encuentra entre los que tienen mucha complejidad a la hora de crear algunos diagramas pero, en otros se necesita solo una funci\'on. Otro paquete con la misma situaci\'on es \texttt{plotly}.~\\
-Los paquetes, \texttt{ggraph}, \texttt{ggiraph}, \texttt{ggiraphExtra}, \texttt{ggforce} y \texttt{packcircles}, son complejos por su necesidad de utilizar muchas funciones pero, dichas no son dificiles, por lo que obtienen la calificaci\'on de +1. Pero en cuanto a la personalizaci\'on, estos paquetes, por si solos sin la ayuda de ggplot2, no obtienen tanta puntuaci\'on como \'el. Aunque si utilizan sus funciones, los diagramas pasar\'ian a tener una gran personalizaci\'on, llegando a +2 en la escala.
-Hay algunos cuya complejidad es una suma de la capacidad de usar una funci\'on pero, con gran cantidad de variables que aumentan su personalizaci\'on en diferente medida; estos paquetes son: \texttt{chorddiag}, \texttt{CMplots}, \texttt{circlepackeR} y \texttt{webr}.~\\
-Otros paquetes son t\'an sencillos que a su vez provocan perdida de personalizaci\'on, como en \texttt{cplots} y \texttt{rCharts}.
-Hay dos paquetes, \texttt{sunburstR} y \texttt{voronioTreemap}, que son paquetes con una funci\'on sencilla pero, obtienen una puntuaci\'on m\'as alta por el tratamiento de los datos. Y con \texttt{sunburstR} sube la calificaci\'on, en complejidad y personalizaci\'on, debido a la gran cantidad de par\'ametros que se pueden emplear.
-Las funciones usadas de \texttt{R b\'asico}, en este trabajo, consisten en una funci\'on (poco compleja) y personalizaci\'on media.
 \begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|c|} 
@@ -3427,16 +3482,23 @@ voronoiTreemap & -1 & -1\\%poco complejo salvo datos y poco personalizable salvo
 webr & -1 & +1\\%poco complejo solo 1 funcion pero muchas variables y bastante personalizacion
 \hline
 \end{tabular}
-\caption{Complejidad y personalizaci\'on de los paquetes. Desde -2 (muy poco/a) hasta +2 (mucho/a)}
+\caption{Complejidad y personalizaci\'on de los paquetes.}
 \label{table:tabla4}
-\end{table}
+\end{table}\par
+Para empezar la explicaci\'on de la calificaci\'on de los paquetes, se escogen aquellos, del cuadro \ref{table:tabla2}, con m\'as cantidad de gr\'aficos representados, hasta los que son menos usados. El primero es \texttt{ggplot2}, que cuenta con la mejor capacidad de personalizaci\'on pero, para conseguirlo, se necesitan un gran cantidad de funciones, aunque son poco complejas, por eso obtiene la calificaci\'on del cuadro \ref{table:tabla4}. \texttt{Circlize} tiene la misma personalizaci\'on que el anterior, solo que sus funciones, que necesitar\'ia muchas, son m\'as complejas.
+\texttt{Plotrix} se encuentra entre los que tienen mucha complejidad a la hora de crear algunos diagramas pero, en otros se necesita solo una funci\'on. Otro paquete con la misma situaci\'on es \texttt{plotly}.\par
+Los paquetes, \texttt{ggraph}, \texttt{ggiraph}, \texttt{ggiraphExtra}, \texttt{ggforce} y \texttt{packcircles}, son complejos por su necesidad de utilizar muchas funciones pero, dichas no son dificiles, por lo que obtienen la calificaci\'on de +1. Pero en cuanto a la personalizaci\'on, estos paquetes, por si solos sin la ayuda de ggplot2, no obtienen tanta puntuaci\'on como \'el. Aunque si utilizan sus funciones, los diagramas pasar\'ian a tener una gran personalizaci\'on, llegando a +2 en la escala.
+Hay algunos cuya complejidad es una suma de usar una funci\'on poco compleja, con gran cantidad de variables que aumentan su personalizaci\'on en diferente medida; estos paquetes son: \texttt{chorddiag}, \texttt{CMplots}, \texttt{circlepackeR} y \texttt{webr}.~\\
+Otros paquetes son t\'an sencillos que a su vez provocan perdida de personalizaci\'on, como en \texttt{cplots} y \texttt{rCharts}.
+Hay dos paquetes, \texttt{sunburstR} y \texttt{voronioTreemap}, que son paquetes con una funci\'on sencilla (poco compleja) pero, obtienen una puntuaci\'on m\'as alta por la necesidad del tratamiento de los datos. Y con \texttt{sunburstR} sube la calificaci\'on, en complejidad y personalizaci\'on, debido a la gran cantidad de par\'ametros que se pueden emplear.
+Las funciones usadas de \texttt{R b\'asico}, en este trabajo, consisten en una funci\'on (poco compleja) y personalizaci\'on media.
 \clearpage
 \section{Conclusiones}
 Durante todo el trabajo se han explicado e implementado los diagramas circulares que expone Manuel Lima en su libro %\cite{Circle}
 , explicando en cada caso unos sencillos pasos a realizar para crear el gr\'afico con los datos necesarios y forma deseada, en el lenguaje de programaci\'on R. Para ello se han usado agrupamientos de funciones, llamados paquetes, que representan graficamente los datos obtenidos con estas funciones.
-Se han conseguido realizar, de 21 diagramas totales, 18 (85\%) lo que es un gran porcentaje de implementaci\'on. Gran cantidad de los realizados, consisten en recrear un gr\'afico, conocido en su variante horizontal (barras, l\'ineas, burbujas, etc.), con formato circular, pero para algunos de los m\'as espec\'ificos, solo existe la variante circular. ~\\~\\
-Como se ha visto en las secciones anteriores, hay varios paquetes con gran versatilidad a la hora de implementar los gr\'aficos circulares. \texttt{Ggplot2} y \texttt{circlize} utilizan dos formas diferentes de crear los diagramas, ggplot2 cambiando el sistema de coordenadas, y circlize ya con formato circular. Los otros paquetes se dividen igualmente en estas dos maneras de implementar los gr\'aficos. La mayor\'ia de los que empieza, su nombre, por gg , al ser ampliaciones de ggplot2, se reutiliza su manera pero, en todos los dem\'as paquetes se sigue la variante de circlize, siendo gr\'aficos circulares sin necesidad de transformarlos, unos m\'as dificiles que otros.~\\~\\
-Se ha comprobado la utilidad de R a la hora de usarlo con Big Data, por su gran capacidad de obtenci\'on y manipulaci\'on de datos, y su capacidad para representarlos graficamente, gracias a los diferentes paquetes que la comunidad ha a\~nadido al lenguaje.~\\ Debido al car\'acter colaborativo de R se ayuda a la creaci\'on de diferentes caminos para, en este caso, crear diferentes diagramas en un futuro, como los que no se han podido implementar (celdas desordenadas, planos circulares y mapa de esfera).~\\~\\
+Se han conseguido realizar, de 21 diagramas totales, 18 (85\%) lo que es un gran porcentaje de implementaci\'on. Gran cantidad de los realizados, consisten en recrear un gr\'afico, conocido en su variante horizontal (barras, l\'ineas, burbujas, etc.), con formato circular, pero para algunos de los m\'as espec\'ificos, solo existe la variante circular. ~\\~\par
+Como se ha visto en las secciones anteriores, hay varios paquetes con gran versatilidad a la hora de implementar los gr\'aficos circulares. \texttt{Ggplot2} y \texttt{circlize} utilizan dos formas diferentes de crear los diagramas, ggplot2 cambiando el sistema de coordenadas, y circlize ya con formato circular. Los otros paquetes se dividen igualmente en estas dos maneras de implementar los gr\'aficos. La mayor\'ia de los que empieza, su nombre, por gg , al ser ampliaciones de ggplot2, se reutiliza su manera pero, en todos los dem\'as paquetes se sigue la variante de circlize, siendo gr\'aficos circulares sin necesidad de transformarlos, unos m\'as dificiles que otros.~\\~\par
+Se ha comprobado la utilidad de R a la hora de usarlo con Big Data, por su gran capacidad de obtenci\'on y manipulaci\'on de datos, y su capacidad para representarlos graficamente, gracias a los diferentes paquetes que la comunidad ha a\~nadido al lenguaje.~\\ Debido al car\'acter colaborativo de R se ayuda a la creaci\'on de diferentes caminos para, en este caso, crear diferentes diagramas en un futuro, como los que no se han podido implementar (celdas desordenadas, planos circulares y mapa de esfera).~\\~\par
 Por \'ultimo, se ha visualizado como en algunos de los diagramas, debido a su formato circular, no se pueden representar gran cantidad de variables pero si, gran cantidad de datos con ellas. Y en otros, este formato de c\'irculos, ayuda en diferentes aspectos como: rapidez de comprensi\'on, ayuda a la estructura de los datos, eficacia en visualizar los datos en algunos de ellos, etc. Debido a que en algunos de los diagramas existen diferentes problemas como la malinterpretaci\'on de valores, estos se vuelven gr\'aficos m\'as est\'eticos que pr\'acticos.
 \clearpage
 \addcontentsline{toc}{section}{Referencias}
