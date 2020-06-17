@@ -1,7 +1,7 @@
 \babel@toc {spanish}{}
 \contentsline {section}{\numberline {1}Introducci\'on}{5}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Visualizaci\'on de Datos}{6}{subsection.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.1}C\'irculos}{7}{subsubsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.2}C\'irculos}{7}{subsection.1.2}%
 \contentsline {section}{\numberline {2}A\'nalisis de los Diagramas}{8}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Diagrama de Anillos}{8}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Diagrama de Barras Radiales}{9}{subsection.2.2}%

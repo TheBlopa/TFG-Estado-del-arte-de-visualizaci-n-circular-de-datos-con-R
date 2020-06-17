@@ -135,7 +135,7 @@ Los gr\'aficos (de barras, l\'ineas, puntos, etc.) usados en la visualizaci\'on 
 Pero para este trabajo se interesa en los gr\'aficos que se pueden construir con un formato circular mediante el cambio del sistema de coordenadas a las polares\cite{coord_polar}. Este formato ayuda a la comprensi\'on en algunos conjuntos de datos, su estructura, comparaciones y relaciones. Este sistema en ocasiones ayuda a la atenci\'on del espectador, pero en algunas, como se dijo antes, lleva a cometer el fallo de crear gr\'aficos m\'as est\'eticos que funcionales, olvidando la meta de comunicar informaci\'on de forma clara y eficaz.~\\
 Para ello es necesario presentar el c\'irculo y sus partes para entender c\'omo se construyen.
 \clearpage
-\subsubsection{C\'irculos}
+\subsection{C\'irculos}
 El c\'irculo es un \'area o superficie plana contenida dentro de una circunferencia\cite{rae}, o tambi\'en se puede definir como un conjunto de puntos en un plano equidistantes de un punto dado, llamado centro\cite{circulo}.~\\
 Los elementos esenciales para comprender los diagramas y explicaciones del trabajo son:
 \begin{itemize}
@@ -2239,106 +2239,109 @@ Para este diagrama se han encontrados dos paquetes, pero que en realidad es solo
 Para este diagrama, al consistir en crear una cuadr\'icula ordenada, es necesario buscar un paquete que permita crear ese tipos de diagramas y pueda incluir en cada celda alg\'un tipo de gr\'afico, imagenes, texto, etc. El \'unico paquete que permite hacer eso es \texttt{circlize}.
 \subsubsection{Paquete circlize}
 Se vuelve a ver este paquete \cite{docu_circlize}
-en el trabajo y, como se ha visto en otras ocasiones, dentro de este paquete existe una funci\'on que permite crear las celdas y, dentro de ellas implementar distintos gr\'aficos, con cada una de las funciones que permiten crearlos.~\\
+en el trabajo y, como se ha visto en otras ocasiones, dentro de este paquete existe una funci\'on que permite crear las celdas y, dentro de ellas implementar distintos gr\'aficos, con cada una de las funciones que permiten crearlos. Para realizar un gr\'afico con este formato se puede representar los veh\'iculos de la base de datos \texttt{mtcars}, junto con sus caracter\'isticas, como el consumo, potencia, etc.~\\
+Para los datos, como se divide el c\'irculo en 10 sectores radiales y cada sector en 4 anillos, se eligen los 10 \'ultimos veh\'iculos con su nombre, consumo, volumen del motor en centrimetros c\'ubicos y caballos de potencia. Junto con las letras que se asocian a cada sector radial.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{datos} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}
+  \hlkwc{division} \hlstd{= letters[}\hlnum{1}\hlopt{:}\hlnum{10}\hlstd{],}
+  \hlkwc{x} \hlstd{=} \hlkwd{row.names}\hlstd{(}\hlkwd{tail}\hlstd{(mtcars,} \hlnum{10}\hlstd{)),}
+  \hlkwc{consumo} \hlstd{=} \hlkwd{tail}\hlstd{(mtcars}\hlopt{$}\hlstd{mpg,} \hlnum{10}\hlstd{),}
+  \hlkwc{disp} \hlstd{=} \hlkwd{tail}\hlstd{(mtcars}\hlopt{$}\hlstd{disp,} \hlnum{10}\hlstd{),}
+  \hlkwc{caballos} \hlstd{=} \hlkwd{tail}\hlstd{(mtcars}\hlopt{$}\hlstd{hp,} \hlnum{10}\hlstd{)}
+\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Para los colores de las celdas, se opta por diferenciar entre el color verde para los valores que sean m\'as que la media de esos coches en esa caracter\'itica.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwa{for} \hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlnum{10}\hlstd{)\{}
+  \hlkwa{if} \hlstd{(datos}\hlopt{$}\hlstd{consumo[i]} \hlopt{>} \hlkwd{mean}\hlstd{(datos}\hlopt{$}\hlstd{consumo))\{}
+    \hlstd{datos}\hlopt{$}\hlstd{colC[i]} \hlkwb{<-} \hlstr{"#35ab15"}
+  \hlstd{\}}\hlkwa{else}\hlstd{\{}
+    \hlstd{datos}\hlopt{$}\hlstd{colC[i]} \hlkwb{<-} \hlstr{"#9e1f16"}
+  \hlstd{\}}
+  \hlkwa{if} \hlstd{(datos}\hlopt{$}\hlstd{disp[i]} \hlopt{>} \hlkwd{mean}\hlstd{(datos}\hlopt{$}\hlstd{disp))\{}
+    \hlstd{datos}\hlopt{$}\hlstd{colD[i]} \hlkwb{<-} \hlstr{"#35ab15"}
+  \hlstd{\}}\hlkwa{else}\hlstd{\{}
+    \hlstd{datos}\hlopt{$}\hlstd{colD[i]} \hlkwb{<-} \hlstr{"#9e1f16"}
+  \hlstd{\}}
+  \hlkwa{if} \hlstd{(datos}\hlopt{$}\hlstd{caballos[i]} \hlopt{>} \hlkwd{mean}\hlstd{(datos}\hlopt{$}\hlstd{caballos))\{}
+    \hlstd{datos}\hlopt{$}\hlstd{colCa[i]} \hlkwb{<-} \hlstr{"#35ab15"}
+  \hlstd{\}}\hlkwa{else}\hlstd{\{}
+    \hlstd{datos}\hlopt{$}\hlstd{colCa[i]} \hlkwb{<-} \hlstr{"#9e1f16"}
+  \hlstd{\}}
+\hlstd{\}}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Y para que los observadores comprendan mejor el diagrama, se opta por aumentar una celda con el nombre de cada caracter\'istica.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{datos} \hlkwb{=} \hlkwd{rbind}\hlstd{(datos,}\hlkwd{c}\hlstd{(}\hlnum{NA}\hlstd{,}\hlnum{NA}\hlstd{,}\hlstr{"Consumo"}\hlstd{,} \hlstr{"CC"}\hlstd{,} \hlstr{"Caballos"}\hlstd{,} \hlstr{"black"}\hlstd{,} \hlstr{"black"}\hlstd{,} \hlstr{"black"}\hlstd{))}
+\hlstd{datos}\hlopt{$}\hlstd{division} \hlkwb{<-} \hlstd{letters[}\hlnum{1}\hlopt{:}\hlnum{11}\hlstd{]}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 Lo primero es crear dichas celdas con la funci\'on \texttt{circos.track}. Esta funci\'on crea las celdas divididas por anillos empezando de exterior a interior y, para dividir cada anillo en diferentes celdas (para este paquete se llaman sectores), se utiliza la variable factors. Para poder usar dicha funci\'on se necesita crear la plantilla.~\\
 
-Al iniciar la plantilla hay que pasar como argumentos la cantidad de sectores (con este paquete se diferencian por letras) y los l\'imites del eje X de los sectores.
+\clearpage
+Al iniciar la plantilla hay que pasar como argumentos la cantidad de sectores (con este paquete se diferencian por letras) y los l\'imites del eje X de los sectores. Estableciendo con par el \'angulo deseado de donde empieza el c\'irculo.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(circlize)}
-\hlstd{factors} \hlkwb{=} \hlstd{letters[}\hlnum{1}\hlopt{:}\hlnum{8}\hlstd{]}
-\hlkwd{circos.initialize}\hlstd{(factors,} \hlkwc{xlim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{5}\hlstd{))}
+\hlkwd{circos.par}\hlstd{(}\hlkwc{start.degree} \hlstd{=} \hlnum{75}\hlstd{)}
+\hlkwd{circos.initialize}\hlstd{(} \hlkwc{factors}\hlstd{=datos}\hlopt{$}\hlstd{division,} \hlkwc{xlim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{5}\hlstd{))}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Para crear el primer anillo, en este ejemplo solo se usa este anillo como vacio para ense\~nar el estado vacio, se necesita saber los l\'imites del eje Y. Se pueden personalizar varios aspectos de los sectores, como bordes de ellos, altura en porcentaje, el color de fondo, qu\'e anillo se pretende realizar o actualizar, etc. Cada sector se representa mediante letras y los anillos mediante n\'umeros.
+Para crear el primer anillo se necesita establecer el l\'imete del eje y (en este caso a uno porque va a ser texto), la altura del anillo (porcentual respecto al total del c\'irculo), y para el primero se va a usar la variable del consumo, por lo que se establecen los colores del fondo de las celdas.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{circos.track}\hlstd{(}\hlkwc{ylim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),}  \hlkwc{bg.border} \hlstd{=} \hlstr{"black"}\hlstd{,} \hlkwc{track.height} \hlstd{=} \hlnum{0.15}\hlstd{)}
-\hlkwd{circos.info}\hlstd{(}\hlkwc{plot} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{circos.track}\hlstd{(}\hlkwc{ylim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{track.height} \hlstd{=} \hlnum{0.15}\hlstd{,} \hlkwc{bg.col} \hlstd{= datos}\hlopt{$}\hlstd{colC)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Para el segundo ejemplo se usan los colores del fondo de las celdas (sectores).
+El proceso se repite para las dos variables restantes (cc y hp), pero para los nombres se opta por una altura superior para que encajen los nombres y con los bordes de los sectores invisibles. 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{color}\hlkwb{=}\hlkwd{c}\hlstd{(}\hlstr{"black"}\hlstd{,} \hlstr{"grey"}\hlstd{,} \hlstr{"red"}\hlstd{,} \hlstr{"blue"}\hlstd{,} \hlstr{"green"}\hlstd{,} \hlstr{"orange"}\hlstd{,} \hlstr{"yellow"}\hlstd{,} \hlstr{"pink"}\hlstd{)}
-\hlkwd{circos.track}\hlstd{(}\hlkwc{ylim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{bg.col} \hlstd{=color,} \hlkwc{track.height} \hlstd{=} \hlnum{0.1}\hlstd{,} \hlkwc{bg.border} \hlstd{=} \hlstr{"white"}\hlstd{)}
+\hlkwd{circos.track}\hlstd{(}\hlkwc{ylim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{track.height} \hlstd{=} \hlnum{0.15}\hlstd{,} \hlkwc{bg.col} \hlstd{= datos}\hlopt{$}\hlstd{colD)}
+\hlkwd{circos.track}\hlstd{(}\hlkwc{ylim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{track.height} \hlstd{=} \hlnum{0.15}\hlstd{,} \hlkwc{bg.col} \hlstd{= datos}\hlopt{$}\hlstd{colCa)}
+\hlkwd{circos.track}\hlstd{(}\hlkwc{ylim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{track.height} \hlstd{=} \hlnum{0.4}\hlstd{,} \hlkwc{bg.border} \hlstd{=} \hlnum{NA}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Para poder insertar los distintos tipos de gr\'aficos que ofrece circlize dentro de cada celda, se deben elegir estos despu\'es de crear el anillo deseado y proporcionar como par\'ametro el sector donde se dese\'e dicho gr\'afico. En este anillo se exponen algunas posibles variantes de diagramas de l\'ineas y puntos, en cada celda.
+Para insertar los textos en cada una de las celdas y gracias a que son sim\'etricas, se utiliza, de forma iterativa, la funci\'on de circos.text para escribir en el centro de las celdas cada valor de las caracter\'isticas de cada veh\'iculo. Diciendo en qu\'e anillo se establece el texto con track.index y el sector radial con sector.index.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{circos.track}\hlstd{(}\hlkwc{ylim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{track.height} \hlstd{=} \hlnum{0.2}\hlstd{)}
-    \hlkwd{circos.lines}\hlstd{(}\hlkwd{sort}\hlstd{(}\hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{)}\hlopt{*}\hlnum{5}\hlstd{),} \hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{),} \hlkwc{col} \hlstd{=} \hlstr{"orange"}\hlstd{,} \hlkwc{lwd}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{sector.index} \hlstd{=} \hlstr{"a"}\hlstd{)}
-    \hlkwd{circos.lines}\hlstd{(}\hlkwd{sort}\hlstd{(}\hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{)}\hlopt{*}\hlnum{5}\hlstd{),} \hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{),} \hlkwc{col} \hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0.1}\hlstd{,}\hlnum{0.5}\hlstd{,}\hlnum{0.8}\hlstd{,}\hlnum{0.3}\hlstd{),} \hlkwc{lwd}\hlstd{=}\hlnum{2}\hlstd{,}
-                 \hlkwc{sector.index} \hlstd{=} \hlstr{"b"}\hlstd{,}\hlkwc{type} \hlstd{=} \hlstr{"o"}\hlstd{)}
-    \hlkwd{circos.lines}\hlstd{(}\hlkwd{sort}\hlstd{(}\hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{)}\hlopt{*}\hlnum{5}\hlstd{),} \hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{),} \hlkwc{col} \hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0.7}\hlstd{,}\hlnum{0.5}\hlstd{,}\hlnum{0.5}\hlstd{,}\hlnum{0.3}\hlstd{),} \hlkwc{lwd}\hlstd{=}\hlnum{3}\hlstd{,}
-                 \hlkwc{sector.index} \hlstd{=} \hlstr{"c"}\hlstd{,} \hlkwc{type} \hlstd{=} \hlstr{"s"}\hlstd{)}
-    \hlkwd{circos.lines}\hlstd{(}\hlkwd{sort}\hlstd{(}\hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{)}\hlopt{*}\hlnum{5}\hlstd{),} \hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{),} \hlkwc{col} \hlstd{=} \hlstr{"#4DAF4A"}\hlstd{,} \hlkwc{sector.index} \hlstd{=} \hlstr{"d"}\hlstd{,}
-                 \hlkwc{type} \hlstd{=} \hlstr{"s"}\hlstd{,} \hlkwc{area} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-    \hlkwd{circos.points}\hlstd{(}\hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{)}\hlopt{*}\hlnum{5}\hlstd{,} \hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{),} \hlkwc{sector.index} \hlstd{=} \hlstr{"e"}\hlstd{,} \hlkwc{pch} \hlstd{=} \hlnum{16}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{"chocolate"}\hlstd{)}
-    \hlkwd{circos.points}\hlstd{(}\hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{)}\hlopt{*}\hlnum{5}\hlstd{,} \hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{),} \hlkwc{sector.index} \hlstd{=} \hlstr{"f"}\hlstd{,} \hlkwc{pch} \hlstd{=} \hlnum{8}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{"steelblue"}\hlstd{)}
-    \hlkwd{circos.points}\hlstd{(}\hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{)}\hlopt{*}\hlnum{5}\hlstd{,} \hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{),} \hlkwc{sector.index} \hlstd{=} \hlstr{"g"}\hlstd{,} \hlkwc{pch} \hlstd{=} \hlnum{1}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{"salmon"}\hlstd{)}
-    \hlkwd{circos.points}\hlstd{(}\hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{)}\hlopt{*}\hlnum{5}\hlstd{,} \hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{),} \hlkwc{sector.index} \hlstd{=} \hlstr{"h"}\hlstd{,} \hlkwc{pch} \hlstd{=} \hlnum{20}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{"tomato"}\hlstd{)}
+\hlkwa{for} \hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlnum{11}\hlstd{) \{}
+  \hlkwd{circos.text}\hlstd{(}\hlnum{2.5}\hlstd{,} \hlnum{0.5}\hlstd{, datos}\hlopt{$}\hlstd{x[i],} \hlkwc{sector.index} \hlstd{= datos}\hlopt{$}\hlstd{division[i],} \hlkwc{track.index} \hlstd{=} \hlnum{4}\hlstd{,}
+              \hlkwc{facing} \hlstd{=} \hlstr{'clockwise'}\hlstd{,} \hlkwc{niceFacing} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{cex} \hlstd{=} \hlnum{0.7}\hlstd{)}
+  \hlkwd{circos.text}\hlstd{(}\hlnum{2.5}\hlstd{,} \hlnum{0.5}\hlstd{,} \hlkwd{paste0}\hlstd{(datos}\hlopt{$}\hlstd{consumo[i],} \hlstr{" (mpg)"}\hlstd{),} \hlkwc{sector.index} \hlstd{= datos}\hlopt{$}\hlstd{division[i]}
+              \hlstd{,} \hlkwc{track.index} \hlstd{=} \hlnum{1}\hlstd{,} \hlkwc{niceFacing} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{cex} \hlstd{=} \hlnum{0.7}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{"white"}\hlstd{,} \hlkwc{font} \hlstd{=} \hlnum{2}\hlstd{)}
+  \hlkwd{circos.text}\hlstd{(}\hlnum{2.5}\hlstd{,} \hlnum{0.5}\hlstd{,} \hlkwd{paste0}\hlstd{(datos}\hlopt{$}\hlstd{disp[i],} \hlstr{" (cc)"}\hlstd{) ,} \hlkwc{sector.index} \hlstd{= datos}\hlopt{$}\hlstd{division[i]}
+              \hlstd{,} \hlkwc{track.index} \hlstd{=} \hlnum{2}\hlstd{,} \hlkwc{niceFacing} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{cex} \hlstd{=} \hlnum{0.7}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{"white"}\hlstd{,} \hlkwc{font} \hlstd{=} \hlnum{2}\hlstd{)}
+  \hlkwd{circos.text}\hlstd{(}\hlnum{2.5}\hlstd{,} \hlnum{0.5}\hlstd{,} \hlkwd{paste0}\hlstd{(datos}\hlopt{$}\hlstd{caballos[i] ,}\hlstr{" (hp)"}\hlstd{),} \hlkwc{sector.index} \hlstd{= datos}\hlopt{$}\hlstd{division[i]}
+              \hlstd{,} \hlkwc{track.index} \hlstd{=} \hlnum{3}\hlstd{,} \hlkwc{niceFacing} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{cex} \hlstd{=} \hlnum{0.7}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{"white"}\hlstd{,} \hlkwc{font} \hlstd{=} \hlnum{2}\hlstd{)}
+\hlstd{\}}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-\clearpage
-Ahora tambi\'en se puede usar la funci\'on que especifica qu\'e ocurre dentro de la propia funci\'on track.
+Para el t\'itulo del gr\'afico y la leyenda hay que usar la funci\'on de r b\'asico, porque circlize no tiene una funci\'on para ello.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{value} \hlkwb{=} \hlstd{(}\hlkwd{sample}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{5}\hlstd{,} \hlnum{5}\hlstd{))}
-\hlkwd{circos.track}\hlstd{(}\hlkwc{ylim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{5}\hlstd{),} \hlkwc{panel.fun} \hlstd{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{,} \hlkwc{y}\hlstd{) \{}
-   \hlstd{xlim} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{5}\hlstd{)}
-   \hlkwd{circos.rect}\hlstd{(} \hlnum{0}\hlopt{:}\hlnum{4}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{5}\hlstd{),} \hlnum{1}\hlopt{:}\hlnum{5}\hlstd{, value,}
-                            \hlkwc{col} \hlstd{=} \hlstr{"orchid"}\hlstd{,} \hlkwc{border} \hlstd{=} \hlstr{"white"}\hlstd{,} \hlkwc{sector.index} \hlstd{=} \hlstr{"a"}\hlstd{)\})}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-Para poder seguir a\~nadiendo este tipo de gr\'aficos de barras y columnas radiales, hace falta implementarlos, como en el ejemplo de los diagramas de puntos y l\'ineas, fuera de la funci\'on track.
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{circos.rect}\hlstd{(}\hlkwd{rep}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{5}\hlstd{),} \hlnum{0}\hlopt{:}\hlnum{4}\hlstd{, value,} \hlnum{1}\hlopt{:}\hlnum{5}\hlstd{,}
-                            \hlkwc{col} \hlstd{=} \hlstr{"plum"}\hlstd{,} \hlkwc{border} \hlstd{=} \hlstr{"black"}\hlstd{,} \hlkwc{sector.index} \hlstd{=} \hlstr{"b"}\hlstd{)}
-\hlkwd{circos.rect}\hlstd{(} \hlnum{0}\hlopt{:}\hlnum{4}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{5}\hlstd{),} \hlnum{1}\hlopt{:}\hlnum{5}\hlstd{, value,}
-                            \hlkwc{col} \hlstd{=} \hlstr{"maroon"}\hlstd{,} \hlkwc{border} \hlstd{=} \hlstr{"white"}\hlstd{,} \hlkwc{sector.index} \hlstd{=} \hlstr{"c"}\hlstd{)}
-\hlkwd{circos.rect}\hlstd{(}\hlkwd{rep}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{5}\hlstd{),} \hlnum{0}\hlopt{:}\hlnum{4}\hlstd{, value,} \hlnum{1}\hlopt{:}\hlnum{5}\hlstd{,}
-                            \hlkwc{col} \hlstd{=} \hlstr{"skyblue"}\hlstd{,} \hlkwc{border} \hlstd{=} \hlstr{"black"}\hlstd{,} \hlkwc{sector.index} \hlstd{=} \hlstr{"d"}\hlstd{)}
-\hlkwd{circos.rect}\hlstd{(} \hlnum{0}\hlopt{:}\hlnum{4}\hlstd{,} \hlnum{5}\hlopt{-}\hlstd{value,} \hlnum{1}\hlopt{:}\hlnum{5}\hlstd{,} \hlkwd{rep}\hlstd{(}\hlnum{5}\hlstd{,} \hlnum{5}\hlstd{),}
-                            \hlkwc{col} \hlstd{=} \hlstr{"steelblue"}\hlstd{,} \hlkwc{border} \hlstd{=} \hlstr{"white"}\hlstd{,} \hlkwc{sector.index} \hlstd{=} \hlstr{"e"}\hlstd{)}
-\hlkwd{circos.rect}\hlstd{(}\hlnum{5}\hlopt{-}\hlstd{value,} \hlnum{0}\hlopt{:}\hlnum{4}\hlstd{,} \hlkwd{rep}\hlstd{(}\hlnum{5}\hlstd{,} \hlnum{5}\hlstd{),} \hlnum{1}\hlopt{:}\hlnum{5}\hlstd{,}
-                            \hlkwc{col} \hlstd{=} \hlstr{"sienna"}\hlstd{,} \hlkwc{border} \hlstd{=} \hlstr{"black"}\hlstd{,} \hlkwc{sector.index} \hlstd{=} \hlstr{"h"}\hlstd{)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-Otra funci\'on interesante es la de poder insertar imagenes en una celda de la cuadr\'icula con ayuda de la libreria \texttt{png}, para que R pueda leer los datos de la imagen y reproducirla dentro del sector seleccionado y, como parte opcional, tambi\'en se puede indicar el anillo deseado (con n\'umeros).
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{library}\hlstd{(png)}
-\hlstd{image} \hlkwb{=} \hlkwd{system.file}\hlstd{(}\hlstr{"extdata"}\hlstd{,} \hlstr{"Rlogo.png"}\hlstd{,} \hlkwc{package} \hlstd{=} \hlstr{"circlize"}\hlstd{)}
-\hlstd{image} \hlkwb{=} \hlkwd{as.raster}\hlstd{(}\hlkwd{readPNG}\hlstd{(image))}
-\hlkwd{circos.raster}\hlstd{(image, CELL_META}\hlopt{$}\hlstd{xcenter, CELL_META}\hlopt{$}\hlstd{ycenter,} \hlkwc{width} \hlstd{=} \hlstr{"8mm"}\hlstd{,}
-              \hlkwc{sector.index} \hlstd{=} \hlstr{"f"}\hlstd{,} \hlkwc{track.index} \hlstd{=} \hlnum{4}\hlstd{)}
-\hlkwd{circos.raster}\hlstd{(image, CELL_META}\hlopt{$}\hlstd{xcenter, CELL_META}\hlopt{$}\hlstd{ycenter,} \hlkwc{width} \hlstd{=} \hlstr{"8mm"}\hlstd{,}
-              \hlkwc{sector.index} \hlstd{=} \hlstr{"g"}\hlstd{,} \hlkwc{track.index} \hlstd{=} \hlnum{4}\hlstd{)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-Y, por \'ultimo, est\'a la funci\'on \texttt{trackPlotregion} de la que la funci\'on antes usada, \texttt{track}, es solo un atajo.
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{circos.trackPlotRegion}\hlstd{(}\hlkwc{ylim} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),}  \hlkwc{bg.border} \hlstd{=} \hlstr{"black"}\hlstd{, ,} \hlkwc{track.height} \hlstd{=} \hlnum{0.15}\hlstd{,}
-                       \hlkwc{bg.col} \hlstd{=color,} \hlkwc{bg.lwd} \hlstd{=} \hlnum{2}\hlstd{)}
+\hlkwd{title}\hlstd{(}\hlstr{"Coches por Consumo, CC y Caballos de potencia"}\hlstd{)}
+\hlkwd{legend}\hlstd{(}\hlstr{"center"}\hlstd{,} \hlkwc{inset}\hlstd{=}\hlnum{.02}\hlstd{,} \hlkwc{title}\hlstd{=}\hlstr{"Media"}\hlstd{,}
+       \hlkwd{c}\hlstd{(}\hlstr{"Mejor"}\hlstd{,} \hlstr{"Peor"}\hlstd{),} \hlkwc{fill}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"#35ab15"}\hlstd{,}\hlstr{"#9e1f16"}\hlstd{),} \hlkwc{cex}\hlstd{=}\hlnum{0.6}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -2351,7 +2354,7 @@ Y para que se pueda volver a crear otro diagrama con circlize siempre es necesar
 \end{kframe}
 \end{knitrout}
 \clearpage
-Este conjunto de funciones da como resultado: 
+Este conjunto de funciones da como resultado: ~\\~\\
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
 
@@ -2463,11 +2466,11 @@ Como se ve en el resultado del gr\'afico, para que se puedan poner etiquetas y e
 \end{alltt}
 \begin{verbatim}
 ##                           name      size    shortName
-## 1      flare.analytics.cluster 0.2653981      cluster
-## 2        flare.analytics.graph 0.9943222        graph
-## 3 flare.analytics.optimization 0.5703646 optimization
-## 4                flare.animate 0.5288665      animate
-## 5    flare.animate.interpolate 0.3277325  interpolate
+## 1      flare.analytics.cluster 0.9523455      cluster
+## 2        flare.analytics.graph 0.4855108        graph
+## 3 flare.analytics.optimization 0.2224938 optimization
+## 4                flare.animate 0.1245328      animate
+## 5    flare.animate.interpolate 0.4834816  interpolate
 \end{verbatim}
 \begin{alltt}
 \hlstd{mygraph} \hlkwb{<-} \hlkwd{graph_from_data_frame}\hlstd{( ramas,} \hlkwc{vertices}\hlstd{=vertices)}

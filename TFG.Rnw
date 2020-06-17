@@ -94,7 +94,7 @@ grid.arrange(p1, p2, nrow = 1)
 Pero para este trabajo se interesa en los gr\'aficos que se pueden construir con un formato circular mediante el cambio del sistema de coordenadas a las polares%\cite{coord_polar}. Este formato ayuda a la comprensi\'on en algunos conjuntos de datos, su estructura, comparaciones y relaciones. Este sistema en ocasiones ayuda a la atenci\'on del espectador, pero en algunas, como se dijo antes, lleva a cometer el fallo de crear gr\'aficos m\'as est\'eticos que funcionales, olvidando la meta de comunicar informaci\'on de forma clara y eficaz.~\\
 Para ello es necesario presentar el c\'irculo y sus partes para entender c\'omo se construyen.
 \clearpage
-\subsubsection{C\'irculos}
+\subsection{C\'irculos}
 El c\'irculo es un \'area o superficie plana contenida dentro de una circunferencia%\cite{rae}, o tambi\'en se puede definir como un conjunto de puntos en un plano equidistantes de un punto dado, llamado centro\cite{circulo}.~\\
 Los elementos esenciales para comprender los diagramas y explicaciones del trabajo son:
 \begin{itemize}
@@ -1518,85 +1518,88 @@ Para este diagrama se han encontrados dos paquetes, pero que en realidad es solo
 Para este diagrama, al consistir en crear una cuadr\'icula ordenada, es necesario buscar un paquete que permita crear ese tipos de diagramas y pueda incluir en cada celda alg\'un tipo de gr\'afico, imagenes, texto, etc. El \'unico paquete que permite hacer eso es \texttt{circlize}.
 \subsubsection{Paquete circlize}
 Se vuelve a ver este paquete %\cite{docu_circlize}
-en el trabajo y, como se ha visto en otras ocasiones, dentro de este paquete existe una funci\'on que permite crear las celdas y, dentro de ellas implementar distintos gr\'aficos, con cada una de las funciones que permiten crearlos.~\\
+en el trabajo y, como se ha visto en otras ocasiones, dentro de este paquete existe una funci\'on que permite crear las celdas y, dentro de ellas implementar distintos gr\'aficos, con cada una de las funciones que permiten crearlos. Para realizar un gr\'afico con este formato se puede representar los veh\'iculos de la base de datos \texttt{mtcars}, junto con sus caracter\'isticas, como el consumo, potencia, etc.~\\
+Para los datos, como se divide el c\'irculo en 10 sectores radiales y cada sector en 4 anillos, se eligen los 10 \'ultimos veh\'iculos con su nombre, consumo, volumen del motor en centrimetros c\'ubicos y caballos de potencia. Junto con las letras que se asocian a cada sector radial.
+<<cuadri_circle_data>>=
+datos <- data.frame(
+  division = letters[1:10],
+  x = row.names(tail(mtcars, 10)),
+  consumo = tail(mtcars$mpg, 10),
+  disp = tail(mtcars$disp, 10),
+  caballos = tail(mtcars$hp, 10)
+)
+@
+Para los colores de las celdas, se opta por diferenciar entre el color verde para los valores que sean m\'as que la media de esos coches en esa caracter\'itica.
+<<cuadri_circle_col>>=
+for (i in 1:10){
+  if (datos$consumo[i] > mean(datos$consumo)){
+    datos$colC[i] <- "#35ab15"
+  }else{
+    datos$colC[i] <- "#9e1f16"
+  }
+  if (datos$disp[i] > mean(datos$disp)){
+    datos$colD[i] <- "#35ab15"
+  }else{
+    datos$colD[i] <- "#9e1f16"
+  }
+  if (datos$caballos[i] > mean(datos$caballos)){
+    datos$colCa[i] <- "#35ab15"
+  }else{
+    datos$colCa[i] <- "#9e1f16"
+  }
+}
+@
+Y para que los observadores comprendan mejor el diagrama, se opta por aumentar una celda con el nombre de cada caracter\'istica.
+<<cuadri_circle_prep>>=
+datos = rbind(datos,c(NA,NA,"Consumo", "CC", "Caballos", "black", "black", "black"))
+datos$division <- letters[1:11]
+@
 Lo primero es crear dichas celdas con la funci\'on \texttt{circos.track}. Esta funci\'on crea las celdas divididas por anillos empezando de exterior a interior y, para dividir cada anillo en diferentes celdas (para este paquete se llaman sectores), se utiliza la variable factors. Para poder usar dicha funci\'on se necesita crear la plantilla.~\\
 <<cuadri_circle, echo=FALSE, eval=FALSE>>=
 library(circlize)
-factors = letters[1:8]
-circos.initialize(factors, xlim = c(0, 5))
-circos.track(ylim = c(0, 1),  bg.border = "black", track.height = 0.15)
-circos.info(plot = TRUE)
-color=c("black", "grey", "red", "blue", "green", "orange", "yellow", "pink")
-circos.track(ylim = c(0, 1), bg.col =color, track.height = 0.1, bg.border = "white")
-circos.track(ylim = c(0, 1), track.height = 0.2)
-    circos.lines(sort(runif(10)*5), runif(10), col = "orange", lwd=2, sector.index = "a")
-    circos.lines(sort(runif(10)*5), runif(10), col = rgb(0.1,0.5,0.8,0.3), lwd=2, 
-                 sector.index = "b",type = "o")
-    circos.lines(sort(runif(10)*5), runif(10), col = rgb(0.7,0.5,0.5,0.3), lwd=3, 
-                 sector.index = "c", type = "s")
-    circos.lines(sort(runif(10)*5), runif(10), col = "#4DAF4A", sector.index = "d", 
-                 type = "s", area = TRUE)
-    circos.points(runif(10)*5, runif(10), sector.index = "e", pch = 16, col = "chocolate")
-    circos.points(runif(10)*5, runif(10), sector.index = "f", pch = 8, col = "steelblue")
-    circos.points(runif(10)*5, runif(10), sector.index = "g", pch = 1, col = "salmon")
-    circos.points(runif(10)*5, runif(10), sector.index = "h", pch = 20, col = "tomato")
-value = (sample(1:5, 5))
-circos.track(ylim = c(0, 5), panel.fun = function(x, y) {
-   xlim = c(0,5) 
-   circos.rect( 0:4,rep(0, 5), 1:5, value, 
-                            col = "orchid", border = "white", sector.index = "a")})
-circos.rect(rep(0, 5), 0:4, value, 1:5,
-                            col = "plum", border = "black", sector.index = "b")
-circos.rect( 0:4,rep(0, 5), 1:5, value, 
-                            col = "maroon", border = "white", sector.index = "c")
-circos.rect(rep(0, 5), 0:4, value, 1:5,
-                            col = "skyblue", border = "black", sector.index = "d")
-circos.rect( 0:4, 5-value, 1:5, rep(5, 5), 
-                            col = "steelblue", border = "white", sector.index = "e")
-circos.rect(5-value, 0:4, rep(5, 5), 1:5,
-                            col = "sienna", border = "black", sector.index = "h")
-library(png)
-image = system.file("extdata", "Rlogo.png", package = "circlize")
-image = as.raster(readPNG(image))
-circos.raster(image, CELL_META$xcenter, CELL_META$ycenter, width = "8mm", 
-              sector.index = "f", track.index = 4)
-circos.raster(image, CELL_META$xcenter, CELL_META$ycenter, width = "8mm", 
-              sector.index = "g", track.index = 4)
-circos.trackPlotRegion(ylim = c(0, 1),  bg.border = "black", , track.height = 0.15,
-                       bg.col =color, bg.lwd = 2)
+circos.par(start.degree = 75)
+circos.initialize( factors=datos$division, xlim = c(0, 5))
+circos.track(ylim = c(0, 1), track.height = 0.15, bg.col = datos$colC)
+circos.track(ylim = c(0, 1), track.height = 0.15, bg.col = datos$colD)
+circos.track(ylim = c(0, 1), track.height = 0.15, bg.col = datos$colCa)
+circos.track(ylim = c(0, 1), track.height = 0.4, bg.border = NA)
+for (i in 1:11) {
+  circos.text(2.5, 0.5, datos$x[i], sector.index = datos$division[i], track.index = 4, 
+              facing = 'clockwise', niceFacing = TRUE, cex = 0.7)
+  circos.text(2.5, 0.5, paste0(datos$consumo[i], " (mpg)"), sector.index = datos$division[i]
+              , track.index = 1, niceFacing = TRUE, cex = 0.7, col = "white", font = 2)
+  circos.text(2.5, 0.5, paste0(datos$disp[i], " (cc)") , sector.index = datos$division[i]
+              , track.index = 2, niceFacing = TRUE, cex = 0.7, col = "white", font = 2)
+  circos.text(2.5, 0.5, paste0(datos$caballos[i] ," (hp)"), sector.index = datos$division[i]
+              , track.index = 3, niceFacing = TRUE, cex = 0.7, col = "white", font = 2)
+}
+title("Coches por Consumo, CC y Caballos de potencia")
+legend("center", inset=.02, title="Media",
+       c("Mejor", "Peor"), fill=c("#35ab15","#9e1f16"), cex=0.6)
 circos.clear()
 @
-Al iniciar la plantilla hay que pasar como argumentos la cantidad de sectores (con este paquete se diferencian por letras) y los l\'imites del eje X de los sectores.
+\clearpage
+Al iniciar la plantilla hay que pasar como argumentos la cantidad de sectores (con este paquete se diferencian por letras) y los l\'imites del eje X de los sectores. Estableciendo con par el \'angulo deseado de donde empieza el c\'irculo.
 <<cuadri_circle, echo=1:3, eval=FALSE>>=
 @
-Para crear el primer anillo, en este ejemplo solo se usa este anillo como vacio para ense\~nar el estado vacio, se necesita saber los l\'imites del eje Y. Se pueden personalizar varios aspectos de los sectores, como bordes de ellos, altura en porcentaje, el color de fondo, qu\'e anillo se pretende realizar o actualizar, etc. Cada sector se representa mediante letras y los anillos mediante n\'umeros.
-<<cuadri_circle, echo=4:5, eval=FALSE>>=
+Para crear el primer anillo se necesita establecer el l\'imete del eje y (en este caso a uno porque va a ser texto), la altura del anillo (porcentual respecto al total del c\'irculo), y para el primero se va a usar la variable del consumo, por lo que se establecen los colores del fondo de las celdas.
+<<cuadri_circle, echo=4, eval=FALSE>>=
 @
-Para el segundo ejemplo se usan los colores del fondo de las celdas (sectores).
-<<cuadri_circle, echo=6:7, eval=FALSE>>=
+El proceso se repite para las dos variables restantes (cc y hp), pero para los nombres se opta por una altura superior para que encajen los nombres y con los bordes de los sectores invisibles. 
+<<cuadri_circle, echo=5:7, eval=FALSE>>=
 @
-Para poder insertar los distintos tipos de gr\'aficos que ofrece circlize dentro de cada celda, se deben elegir estos despu\'es de crear el anillo deseado y proporcionar como par\'ametro el sector donde se dese\'e dicho gr\'afico. En este anillo se exponen algunas posibles variantes de diagramas de l\'ineas y puntos, en cada celda.
-<<cuadri_circle, echo=8:19, eval=FALSE>>=
+Para insertar los textos en cada una de las celdas y gracias a que son sim\'etricas, se utiliza, de forma iterativa, la funci\'on de circos.text para escribir en el centro de las celdas cada valor de las caracter\'isticas de cada veh\'iculo. Diciendo en qu\'e anillo se establece el texto con track.index y el sector radial con sector.index.
+<<cuadri_circle, echo=8:17, eval=FALSE>>=
 @
-\clearpage
-Ahora tambi\'en se puede usar la funci\'on que especifica qu\'e ocurre dentro de la propia funci\'on track.
-<<cuadri_circle, echo=20:24, eval=FALSE>>=
-@
-Para poder seguir a\~nadiendo este tipo de gr\'aficos de barras y columnas radiales, hace falta implementarlos, como en el ejemplo de los diagramas de puntos y l\'ineas, fuera de la funci\'on track.
-<<cuadri_circle, echo=25:34, eval=FALSE>>=
-@
-Otra funci\'on interesante es la de poder insertar imagenes en una celda de la cuadr\'icula con ayuda de la libreria \texttt{png}, para que R pueda leer los datos de la imagen y reproducirla dentro del sector seleccionado y, como parte opcional, tambi\'en se puede indicar el anillo deseado (con n\'umeros).
-<<cuadri_circle, echo=35:41, eval=FALSE>>=
-@
-Y, por \'ultimo, est\'a la funci\'on \texttt{trackPlotregion} de la que la funci\'on antes usada, \texttt{track}, es solo un atajo.
-<<cuadri_circle, echo=42:43, eval=FALSE>>=
+Para el t\'itulo del gr\'afico y la leyenda hay que usar la funci\'on de r b\'asico, porque circlize no tiene una funci\'on para ello.
+<<cuadri_circle, echo=18:20, eval=FALSE>>=
 @
 Y para que se pueda volver a crear otro diagrama con circlize siempre es necesario limpiar las variables de circos.
-<<cuadri_circle, echo=44, eval=FALSE>>=
+<<cuadri_circle, echo=21, eval=FALSE>>=
 @
 \clearpage
-Este conjunto de funciones da como resultado: 
-<<cuadri_circle, echo=FALSE, fig.align='center', fig.height=4, fig.width=4, message=FALSE>>=
+Este conjunto de funciones da como resultado: ~\\~\\
+<<cuadri_circle, echo=FALSE, fig.align='center', fig.height=6, fig.width=6, message=FALSE>>=
 @
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
