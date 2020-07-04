@@ -3,109 +3,113 @@
 \contentsline {subsection}{\numberline {1.1}Visualizaci\'on de Datos}{6}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}C\'irculos}{7}{subsection.1.2}%
 \contentsline {section}{\numberline {2}A\'nalisis de los Diagramas}{8}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Diagrama de Anillos}{8}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Diagrama de Barras Radiales}{9}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Diagrama en Espiral}{9}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Diagrama de Columnas Radiales}{10}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Diagrama de Sectores}{10}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Diagrama Rose of Nightingale}{11}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}Diagrama de Cuadr\'icula Circular Ordenada}{11}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}Diagrama de Cuadricula Circular Desordenada}{12}{subsection.2.8}%
-\contentsline {subsection}{\numberline {2.9}Diagrama Rayos de Sol}{12}{subsection.2.9}%
-\contentsline {subsection}{\numberline {2.10}Diagrama Radar}{13}{subsection.2.10}%
-\contentsline {subsection}{\numberline {2.11}Diagrama de Columnas Con Formato Iris}{13}{subsection.2.11}%
-\contentsline {subsection}{\numberline {2.12}Diagrama de L\'ineas Circulares Multiseries}{14}{subsection.2.12}%
-\contentsline {subsection}{\numberline {2.13}Diagrama de Burbujas}{14}{subsection.2.13}%
-\contentsline {subsection}{\numberline {2.14}Diagrama de Mapa de \'Arbol Circular}{15}{subsection.2.14}%
-\contentsline {subsection}{\numberline {2.15}Diagrama de Mapa de \'Arbol Voronoi}{15}{subsection.2.15}%
-\contentsline {subsection}{\numberline {2.16}Diagrama de Planos Circulares}{16}{subsection.2.16}%
-\contentsline {subsection}{\numberline {2.17}Diagrama de Mapa Cirular}{16}{subsection.2.17}%
-\contentsline {subsection}{\numberline {2.18}Diagrama de Mapa de Esfera}{16}{subsection.2.18}%
-\contentsline {subsection}{\numberline {2.19}Dendograma Circular}{17}{subsection.2.19}%
-\contentsline {subsection}{\numberline {2.20}Diagrama de Cuerdas}{17}{subsection.2.20}%
-\contentsline {subsection}{\numberline {2.21}Diagrama de Redes Circulares}{18}{subsection.2.21}%
-\contentsline {section}{\numberline {3}Visualizaci\'on en R}{19}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Diagrama de Anillos}{19}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Paquete ggplot2}{19}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Paquete circlize}{22}{subsubsection.3.1.2}%
-\contentsline {subsubsection}{\numberline {3.1.3}Paquete CMplot}{23}{subsubsection.3.1.3}%
-\contentsline {subsubsection}{\numberline {3.1.4}Comparaciones}{25}{subsubsection.3.1.4}%
-\contentsline {subsection}{\numberline {3.2}Diagrama de Barras Radiales}{26}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Paquete ggplot2}{26}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Paquete Plotrix}{31}{subsubsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.3}Paquete circlize}{32}{subsubsection.3.2.3}%
-\contentsline {subsubsection}{\numberline {3.2.4}Comparaciones}{34}{subsubsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.3}Diagrama Espiral}{35}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}Paquete ggplot2}{35}{subsubsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.4}Diagrama de Columnas Radiales}{40}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Paquete ggplot2}{40}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Paquete plotrix}{43}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}Paquete cplots}{45}{subsubsection.3.4.3}%
-\contentsline {subsubsection}{\numberline {3.4.4}Paquete circlize}{46}{subsubsection.3.4.4}%
-\contentsline {subsubsection}{\numberline {3.4.5}Comparaciones}{47}{subsubsection.3.4.5}%
-\contentsline {subsection}{\numberline {3.5}Diagrama de Sectores}{48}{subsection.3.5}%
-\contentsline {subsubsection}{\numberline {3.5.1}R B\'asico}{48}{subsubsection.3.5.1}%
-\contentsline {subsubsection}{\numberline {3.5.2}Paquete ggplot2}{49}{subsubsection.3.5.2}%
-\contentsline {subsubsection}{\numberline {3.5.3}Paquete plotrix}{51}{subsubsection.3.5.3}%
-\contentsline {subsubsection}{\numberline {3.5.4}Paquete rCharts}{52}{subsubsection.3.5.4}%
-\contentsline {subsubsection}{\numberline {3.5.5}Paquete plotly}{53}{subsubsection.3.5.5}%
-\contentsline {subsubsection}{\numberline {3.5.6}Paquete ggiraphExtra}{54}{subsubsection.3.5.6}%
-\contentsline {subsubsection}{\numberline {3.5.7}Comparaciones}{54}{subsubsection.3.5.7}%
-\contentsline {subsection}{\numberline {3.6}Diagrama de Rose of Nightingale}{55}{subsection.3.6}%
-\contentsline {subsubsection}{\numberline {3.6.1}Paquete ggplot2}{55}{subsubsection.3.6.1}%
-\contentsline {subsubsection}{\numberline {3.6.2}Paquete ggiraphExtra}{60}{subsubsection.3.6.2}%
-\contentsline {subsubsection}{\numberline {3.6.3}Comparaciones}{61}{subsubsection.3.6.3}%
-\contentsline {subsection}{\numberline {3.7}Diagrama de Cuadr\'icula Circular Ordenada}{62}{subsection.3.7}%
-\contentsline {subsubsection}{\numberline {3.7.1}Paquete circlize}{62}{subsubsection.3.7.1}%
-\contentsline {subsection}{\numberline {3.8}Diagrama Rayos de Sol}{65}{subsection.3.8}%
-\contentsline {subsubsection}{\numberline {3.8.1}Paquete ggraph}{65}{subsubsection.3.8.1}%
-\contentsline {subsubsection}{\numberline {3.8.2}Paquete plotly}{68}{subsubsection.3.8.2}%
-\contentsline {subsubsection}{\numberline {3.8.3}Paquete webr}{70}{subsubsection.3.8.3}%
-\contentsline {subsubsection}{\numberline {3.8.4}Paquete ggiraphExtra}{71}{subsubsection.3.8.4}%
-\contentsline {subsubsection}{\numberline {3.8.5}Paquete sunburstR}{71}{subsubsection.3.8.5}%
-\contentsline {subsubsection}{\numberline {3.8.6}Comparaciones}{73}{subsubsection.3.8.6}%
-\contentsline {subsection}{\numberline {3.9}Diagrama Radar}{74}{subsection.3.9}%
-\contentsline {subsubsection}{\numberline {3.9.1}Paquete fmsb}{74}{subsubsection.3.9.1}%
-\contentsline {subsubsection}{\numberline {3.9.2}Paquete plotly}{75}{subsubsection.3.9.2}%
-\contentsline {subsubsection}{\numberline {3.9.3}Paquete plotrix}{76}{subsubsection.3.9.3}%
-\contentsline {subsubsection}{\numberline {3.9.4}Paquete ggiraphExtra}{78}{subsubsection.3.9.4}%
-\contentsline {subsubsection}{\numberline {3.9.5}Comparaciones}{79}{subsubsection.3.9.5}%
-\contentsline {subsection}{\numberline {3.10}Diagrama de Columnas Con Formato Iris}{80}{subsection.3.10}%
-\contentsline {subsubsection}{\numberline {3.10.1}Paquete ggplot2}{80}{subsubsection.3.10.1}%
-\contentsline {subsubsection}{\numberline {3.10.2}Paquete circlize}{84}{subsubsection.3.10.2}%
-\contentsline {subsubsection}{\numberline {3.10.3}Comparaciones}{86}{subsubsection.3.10.3}%
-\contentsline {subsection}{\numberline {3.11}Diagrama de L\'ineas Circulares Multiseries}{87}{subsection.3.11}%
-\contentsline {subsubsection}{\numberline {3.11.1}Paquete ggplot2}{87}{subsubsection.3.11.1}%
-\contentsline {subsection}{\numberline {3.12}Diagrama de Burbujas Circular}{90}{subsection.3.12}%
-\contentsline {subsubsection}{\numberline {3.12.1}Paquete ggraph-ggforce}{90}{subsubsection.3.12.1}%
-\contentsline {subsubsection}{\numberline {3.12.2}Paquete packcircles-ggplot2}{92}{subsubsection.3.12.2}%
-\contentsline {subsubsection}{\numberline {3.12.3}Comparaciones}{93}{subsubsection.3.12.3}%
-\contentsline {subsection}{\numberline {3.13}Diagrama de Mapa de \'Arbol Circular}{94}{subsection.3.13}%
-\contentsline {subsubsection}{\numberline {3.13.1}Paquete ggraph}{94}{subsubsection.3.13.1}%
-\contentsline {subsubsection}{\numberline {3.13.2}Paquete ciclepackeR}{96}{subsubsection.3.13.2}%
-\contentsline {subsubsection}{\numberline {3.13.3}Comparaciones}{98}{subsubsection.3.13.3}%
-\contentsline {subsection}{\numberline {3.14}Diagrama Mapa de \'Arbol Voronoi}{99}{subsection.3.14}%
-\contentsline {subsubsection}{\numberline {3.14.1}Paquete voronoiTreemap}{99}{subsubsection.3.14.1}%
-\contentsline {subsection}{\numberline {3.15}Diagrama de Mapa Cirular}{102}{subsection.3.15}%
-\contentsline {subsubsection}{\numberline {3.15.1}Paquete ggplot2}{102}{subsubsection.3.15.1}%
-\contentsline {subsection}{\numberline {3.16}Dendograma Circular}{104}{subsection.3.16}%
-\contentsline {subsubsection}{\numberline {3.16.1}R B\'asico y ape}{104}{subsubsection.3.16.1}%
-\contentsline {subsubsection}{\numberline {3.16.2}Paquete ggraph}{105}{subsubsection.3.16.2}%
-\contentsline {subsubsection}{\numberline {3.16.3}Paquete ggplot2}{107}{subsubsection.3.16.3}%
-\contentsline {subsubsection}{\numberline {3.16.4}Paquete circlize}{108}{subsubsection.3.16.4}%
-\contentsline {subsubsection}{\numberline {3.16.5}Comparaciones}{111}{subsubsection.3.16.5}%
-\contentsline {subsection}{\numberline {3.17}Diagrama de Cuerdas}{112}{subsection.3.17}%
-\contentsline {subsubsection}{\numberline {3.17.1}Paquete Circlize}{112}{subsubsection.3.17.1}%
-\contentsline {subsubsection}{\numberline {3.17.2}Paquete chorddiag}{114}{subsubsection.3.17.2}%
-\contentsline {subsubsection}{\numberline {3.17.3}Comparaciones}{117}{subsubsection.3.17.3}%
-\contentsline {subsection}{\numberline {3.18}Diagrama de Redes Circulares}{118}{subsection.3.18}%
-\contentsline {subsubsection}{\numberline {3.18.1}Explosi\'on Centralizada}{118}{subsubsection.3.18.1}%
-\contentsline {subsubsection}{\numberline {3.18.2}Implosi\'on El\'iptica}{119}{subsubsection.3.18.2}%
-\contentsline {subsubsection}{\numberline {3.18.3}Anillo Centralizado, Convergencia Radial y C\'irculos de Escala}{121}{subsubsection.3.18.3}%
-\contentsline {subsubsection}{\numberline {3.18.4}Comparaciones}{121}{subsubsection.3.18.4}%
-\contentsline {section}{\numberline {4}Diagramas no Realizables}{122}{section.4}%
-\contentsline {section}{\numberline {5}Comparativa}{123}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Versatilidad}{124}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Desarrollo}{124}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Usabilidad}{126}{subsection.5.3}%
-\contentsline {section}{\numberline {6}Conclusiones}{127}{section.6}%
+\contentsline {subsection}{\numberline {2.1}Diagrama de Anillos}{9}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Diagrama de Barras Radiales}{10}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Diagrama en Espiral}{11}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Diagrama de Columnas Radiales}{12}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Diagrama de Sectores}{13}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Diagrama de \'Area Polar}{14}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Diagrama de Cuadr\'icula Circular Ordenada}{15}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Diagrama de Cuadr\'icula Circular Desordenada}{15}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Diagrama Rayos de Sol}{15}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Diagrama Radar}{17}{subsection.2.10}%
+\contentsline {subsection}{\numberline {2.11}Diagrama de Columnas con Formato Iris}{17}{subsection.2.11}%
+\contentsline {subsection}{\numberline {2.12}Diagrama de L\'ineas Circulares Multiseries}{17}{subsection.2.12}%
+\contentsline {subsection}{\numberline {2.13}Diagrama Nube de Burbujas}{19}{subsection.2.13}%
+\contentsline {subsection}{\numberline {2.14}Diagrama de Mapa de \'Arbol Circular}{20}{subsection.2.14}%
+\contentsline {subsection}{\numberline {2.15}Diagrama de Mapa de \'Arbol Voronoi}{21}{subsection.2.15}%
+\contentsline {subsection}{\numberline {2.16}Diagrama de Planos Circulares}{22}{subsection.2.16}%
+\contentsline {subsection}{\numberline {2.17}Diagrama Mapa Circular}{22}{subsection.2.17}%
+\contentsline {subsection}{\numberline {2.18}Diagrama Mapa de Esfera}{23}{subsection.2.18}%
+\contentsline {subsection}{\numberline {2.19}Dendograma Circular}{23}{subsection.2.19}%
+\contentsline {subsection}{\numberline {2.20}Diagrama de Cuerdas}{24}{subsection.2.20}%
+\contentsline {subsection}{\numberline {2.21}Diagrama de Redes Circulares}{25}{subsection.2.21}%
+\contentsline {section}{\numberline {3}Visualizaci\'on en R}{26}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Diagrama de Anillos}{26}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Paquete ggplot2}{26}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Paquete circlize}{29}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Paquete CMplot}{31}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}Comparaciones}{32}{subsubsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.2}Diagrama de Barras Radiales}{33}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Paquete ggplot2}{33}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Paquete Plotrix}{38}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Paquete circlize}{39}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Comparaciones}{41}{subsubsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.3}Diagrama Espiral}{42}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Paquete ggplot2}{42}{subsubsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.4}Diagrama de Columnas Radiales}{49}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Paquete ggplot2}{49}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Paquete plotrix}{52}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Paquete cplots}{54}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Paquete circlize}{55}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}Comparaciones}{56}{subsubsection.3.4.5}%
+\contentsline {subsection}{\numberline {3.5}Diagrama de Sectores}{57}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}R B\'asico}{57}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}Paquete ggplot2}{58}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}Paquete plotrix}{61}{subsubsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4}Paquete rCharts}{62}{subsubsection.3.5.4}%
+\contentsline {subsubsection}{\numberline {3.5.5}Paquete plotly}{63}{subsubsection.3.5.5}%
+\contentsline {subsubsection}{\numberline {3.5.6}Paquete ggiraphExtra}{64}{subsubsection.3.5.6}%
+\contentsline {subsubsection}{\numberline {3.5.7}Comparaciones}{65}{subsubsection.3.5.7}%
+\contentsline {subsection}{\numberline {3.6}Diagrama de \'Area Polar}{66}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Paquete ggplot2}{66}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}Paquete ggiraphExtra}{71}{subsubsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.3}Comparaciones}{72}{subsubsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.7}Diagrama de Cuadr\'icula Circular Ordenada}{73}{subsection.3.7}%
+\contentsline {subsubsection}{\numberline {3.7.1}Paquete circlize}{73}{subsubsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.8}Diagrama Rayos de Sol}{76}{subsection.3.8}%
+\contentsline {subsubsection}{\numberline {3.8.1}Paquete ggraph}{76}{subsubsection.3.8.1}%
+\contentsline {subsubsection}{\numberline {3.8.2}Paquete plotly}{79}{subsubsection.3.8.2}%
+\contentsline {subsubsection}{\numberline {3.8.3}Paquete webr}{81}{subsubsection.3.8.3}%
+\contentsline {subsubsection}{\numberline {3.8.4}Paquete ggiraphExtra}{82}{subsubsection.3.8.4}%
+\contentsline {subsubsection}{\numberline {3.8.5}Paquete sunburstR}{82}{subsubsection.3.8.5}%
+\contentsline {subsubsection}{\numberline {3.8.6}Comparaciones}{84}{subsubsection.3.8.6}%
+\contentsline {subsection}{\numberline {3.9}Diagrama Radar}{85}{subsection.3.9}%
+\contentsline {subsubsection}{\numberline {3.9.1}Paquete fmsb}{85}{subsubsection.3.9.1}%
+\contentsline {subsubsection}{\numberline {3.9.2}Paquete plotly}{86}{subsubsection.3.9.2}%
+\contentsline {subsubsection}{\numberline {3.9.3}Paquete plotrix}{87}{subsubsection.3.9.3}%
+\contentsline {subsubsection}{\numberline {3.9.4}Paquete ggiraphExtra}{89}{subsubsection.3.9.4}%
+\contentsline {subsubsection}{\numberline {3.9.5}Comparaciones}{90}{subsubsection.3.9.5}%
+\contentsline {subsection}{\numberline {3.10}Diagrama de Columnas Con Formato Iris}{91}{subsection.3.10}%
+\contentsline {subsubsection}{\numberline {3.10.1}Paquete ggplot2}{91}{subsubsection.3.10.1}%
+\contentsline {subsubsection}{\numberline {3.10.2}Paquete circlize}{95}{subsubsection.3.10.2}%
+\contentsline {subsubsection}{\numberline {3.10.3}Comparaciones}{97}{subsubsection.3.10.3}%
+\contentsline {subsection}{\numberline {3.11}Diagrama de L\'ineas Circulares Multiseries}{98}{subsection.3.11}%
+\contentsline {subsubsection}{\numberline {3.11.1}Paquete ggplot2}{98}{subsubsection.3.11.1}%
+\contentsline {subsection}{\numberline {3.12}Diagrama Nube de Burbujas}{101}{subsection.3.12}%
+\contentsline {subsubsection}{\numberline {3.12.1}Paquete ggraph-ggforce}{101}{subsubsection.3.12.1}%
+\contentsline {subsubsection}{\numberline {3.12.2}Paquete packcircles-ggplot2}{103}{subsubsection.3.12.2}%
+\contentsline {subsubsection}{\numberline {3.12.3}Comparaciones}{104}{subsubsection.3.12.3}%
+\contentsline {subsection}{\numberline {3.13}Diagrama de Mapa de \'Arbol Circular}{105}{subsection.3.13}%
+\contentsline {subsubsection}{\numberline {3.13.1}Paquete ggraph}{105}{subsubsection.3.13.1}%
+\contentsline {subsubsection}{\numberline {3.13.2}Paquete ciclepackeR}{107}{subsubsection.3.13.2}%
+\contentsline {subsubsection}{\numberline {3.13.3}Comparaciones}{109}{subsubsection.3.13.3}%
+\contentsline {subsection}{\numberline {3.14}Diagrama Mapa de \'Arbol Voronoi}{110}{subsection.3.14}%
+\contentsline {subsubsection}{\numberline {3.14.1}Paquete voronoiTreemap}{110}{subsubsection.3.14.1}%
+\contentsline {subsection}{\numberline {3.15}Diagrama de Mapa Cirular}{113}{subsection.3.15}%
+\contentsline {subsubsection}{\numberline {3.15.1}Paquete ggplot2}{113}{subsubsection.3.15.1}%
+\contentsline {subsection}{\numberline {3.16}Diagrama Mapa de Esfera}{115}{subsection.3.16}%
+\contentsline {subsubsection}{\numberline {3.16.1}Paquete ggplot2}{115}{subsubsection.3.16.1}%
+\contentsline {subsection}{\numberline {3.17}Dendograma Circular}{117}{subsection.3.17}%
+\contentsline {subsubsection}{\numberline {3.17.1}R B\'asico y ape}{117}{subsubsection.3.17.1}%
+\contentsline {subsubsection}{\numberline {3.17.2}Paquete ggraph}{118}{subsubsection.3.17.2}%
+\contentsline {subsubsection}{\numberline {3.17.3}Paquete ggplot2}{120}{subsubsection.3.17.3}%
+\contentsline {subsubsection}{\numberline {3.17.4}Paquete circlize}{121}{subsubsection.3.17.4}%
+\contentsline {subsubsection}{\numberline {3.17.5}Comparaciones}{124}{subsubsection.3.17.5}%
+\contentsline {subsection}{\numberline {3.18}Diagrama de Cuerdas}{125}{subsection.3.18}%
+\contentsline {subsubsection}{\numberline {3.18.1}Paquete Circlize}{125}{subsubsection.3.18.1}%
+\contentsline {subsubsection}{\numberline {3.18.2}Paquete chorddiag}{127}{subsubsection.3.18.2}%
+\contentsline {subsubsection}{\numberline {3.18.3}Paquete ggraph}{130}{subsubsection.3.18.3}%
+\contentsline {subsubsection}{\numberline {3.18.4}Comparaciones}{132}{subsubsection.3.18.4}%
+\contentsline {subsection}{\numberline {3.19}Diagrama de Redes Circulares}{133}{subsection.3.19}%
+\contentsline {subsubsection}{\numberline {3.19.1}Explosi\'on Centralizada}{133}{subsubsection.3.19.1}%
+\contentsline {subsubsection}{\numberline {3.19.2}Implosi\'on El\'iptica}{134}{subsubsection.3.19.2}%
+\contentsline {subsubsection}{\numberline {3.19.3}Anillo Centralizado, Convergencia Radial y C\'irculos de Escala}{136}{subsubsection.3.19.3}%
+\contentsline {subsubsection}{\numberline {3.19.4}Comparaciones}{136}{subsubsection.3.19.4}%
+\contentsline {section}{\numberline {4}Diagramas no Realizables}{137}{section.4}%
+\contentsline {section}{\numberline {5}Comparativa}{138}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Versatilidad}{139}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Desarrollo}{139}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Usabilidad}{141}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Conclusiones}{142}{section.6}%
+\contentsline {section}{Referencias}{143}{section*.8}%
